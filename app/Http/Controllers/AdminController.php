@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\RoyaltyReport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -17,7 +19,7 @@ class AdminController extends Controller
 
         if ($currentUser->is_admin) {
             // Admin sees all regular users
-            $users = User::where('is_admin', false)->latest()->get();
+            $users = User::with('royaltyReports')->where('is_admin', false)->latest()->get();
             return view('dashboard', [
                 'users' => $users,
                 'isAdmin' => true
@@ -25,6 +27,7 @@ class AdminController extends Controller
         }
 
         // Regular user sees their own dashboard details
+        $currentUser->load('royaltyReports');
         return view('dashboard', [
             'user' => $currentUser,
             'isAdmin' => false
@@ -93,5 +96,44 @@ class AdminController extends Controller
         $user->delete();
 
         return redirect()->route('dashboard')->with('status', 'user-deleted');
+    }
+
+    /**
+     * Upload a royalty report for a specific user.
+     */
+    public function uploadRoyaltyReport(Request $request, User $user)
+    {
+        if (!auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'report_file' => ['required', 'file', 'mimes:pdf', 'max:10240'], // Max 10MB PDF
+        ]);
+
+        $path = $request->file('report_file')->store('royalty-reports', 'public');
+
+        $user->royaltyReports()->create([
+            'title' => $request->title,
+            'file_path' => $path,
+        ]);
+
+        return redirect()->route('dashboard')->with('status', 'report-uploaded');
+    }
+
+    /**
+     * Download a specific royalty report.
+     */
+    public function downloadRoyaltyReport(RoyaltyReport $royaltyReport)
+    {
+        $currentUser = auth()->user();
+
+        // Allow download if admin OR if the user owns the report
+        if ($currentUser->is_admin || $currentUser->id === $royaltyReport->user_id) {
+            return Storage::disk('public')->download($royaltyReport->file_path);
+        }
+
+        abort(403);
     }
 }

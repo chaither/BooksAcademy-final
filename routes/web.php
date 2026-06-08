@@ -14,6 +14,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/admin/users', [AdminController::class, 'storeUser'])->name('admin.users.store');
     Route::patch('/admin/users/{user}', [AdminController::class, 'updateUserDashboard'])->name('admin.users.update-dashboard');
     Route::delete('/admin/users/{user}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
+    
+    // Royalty Report Routes
+    Route::post('/admin/users/{user}/royalty-reports', [AdminController::class, 'uploadRoyaltyReport'])->name('admin.users.royalty-reports.store');
+    Route::get('/royalty-reports/{royaltyReport}/download', [AdminController::class, 'downloadRoyaltyReport'])->name('royalty-reports.download');
 });
 
 Route::middleware('auth')->group(function () {

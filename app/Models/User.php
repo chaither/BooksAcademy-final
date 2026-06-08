@@ -22,6 +22,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'dashboard_title',
+        'dashboard_content',
+        'is_admin',
     ];
 
     /**
@@ -45,5 +48,10 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    public function royaltyReports()
+    {
+        return $this->hasMany(RoyaltyReport::class);
     }
 }
