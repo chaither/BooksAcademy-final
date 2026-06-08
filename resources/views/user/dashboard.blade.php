@@ -43,25 +43,33 @@
         @endif
     </div>
 
-    <!-- Extra decorative workflow list for visual completeness -->
-    <div class="space-y-4 pt-4">
-        <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider">Workspace Checklist</h4>
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-            <div class="p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                <span class="block text-slate-400 mb-1">Step 1</span>
-                <span class="font-bold block text-slate-800 dark:text-white">Manuscript Upload</span>
-                <span class="text-[10px] text-green-500 font-semibold block mt-1.5">✓ Uploaded & Completed</span>
+    <!-- Published Books Section -->
+    <div class="space-y-4 pt-4 border-t border-slate-100 dark:border-slate-800 mt-6">
+        <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider">Published Books</h4>
+        
+        @if ($user->publishedBooks->count() > 0)
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+                @foreach ($user->publishedBooks as $book)
+                    <div class="flex flex-col bg-slate-50 dark:bg-slate-900/40 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
+                        @if($book->cover_image_path)
+                            <div class="aspect-[2/3] w-full bg-slate-200 dark:bg-slate-800 relative">
+                                <img src="{{ Storage::url($book->cover_image_path) }}" alt="{{ $book->title }}" class="absolute inset-0 w-full h-full object-cover">
+                            </div>
+                        @else
+                            <div class="aspect-[2/3] w-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center p-4 text-center">
+                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider">No Cover</span>
+                            </div>
+                        @endif
+                        <div class="p-3 text-center border-t border-slate-200 dark:border-slate-800">
+                            <h5 class="font-bold text-xs text-slate-900 dark:text-white line-clamp-2">{{ $book->title }}</h5>
+                        </div>
+                    </div>
+                @endforeach
             </div>
-            <div class="p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                <span class="block text-slate-400 mb-1">Step 2</span>
-                <span class="font-bold block text-slate-800 dark:text-white">Editorial Review</span>
-                <span class="text-[10px] text-blue-600 dark:text-blue-400 font-semibold block mt-1.5">⚡ In Progress</span>
+        @else
+            <div class="p-6 text-center rounded-lg border border-dashed border-slate-300 dark:border-slate-700">
+                <p class="text-xs text-slate-500">You don't have any published books listed yet.</p>
             </div>
-            <div class="p-4 rounded-lg border border-slate-200 dark:border-slate-800">
-                <span class="block text-slate-400 mb-1">Step 3</span>
-                <span class="font-bold block text-slate-800 dark:text-white">Formatting & Art</span>
-                <span class="text-[10px] text-slate-400 block mt-1.5">🔒 Awaiting Step 2</span>
-            </div>
-        </div>
+        @endif
     </div>
 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\RoyaltyReport;
+use App\Models\PublishedBook;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -19,7 +20,7 @@ class AdminController extends Controller
 
         if ($currentUser->is_admin) {
             // Admin sees all regular users
-            $users = User::with('royaltyReports')->where('is_admin', false)->latest()->get();
+            $users = User::with(['royaltyReports', 'publishedBooks'])->where('is_admin', false)->latest()->get();
             return view('dashboard', [
                 'users' => $users,
                 'isAdmin' => true
@@ -27,7 +28,7 @@ class AdminController extends Controller
         }
 
         // Regular user sees their own dashboard details
-        $currentUser->load('royaltyReports');
+        $currentUser->load(['royaltyReports', 'publishedBooks']);
         return view('dashboard', [
             'user' => $currentUser,
             'isAdmin' => false
@@ -85,6 +86,27 @@ class AdminController extends Controller
     }
 
     /**
+     * Update target user's password.
+     */
+    public function updateUserPassword(Request $request, User $user)
+    {
+        // Check authorization
+        if (!auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $request->validate([
+            'password' => ['required', 'string', 'min:8'],
+        ]);
+
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('dashboard')->with('status', 'password-updated');
+    }
+
+    /**
      * Delete user credentials.
      */
     public function deleteUser(User $user)
@@ -135,5 +157,50 @@ class AdminController extends Controller
         }
 
         abort(403);
+    }
+
+    /**
+     * Store a new published book for a specific user.
+     */
+    public function storePublishedBook(Request $request, User $user)
+    {
+        if (!auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'cover_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:5120'], // Max 5MB Image
+        ]);
+
+        $path = null;
+        if ($request->hasFile('cover_image')) {
+            $path = $request->file('cover_image')->store('published-books', 'public');
+        }
+
+        $user->publishedBooks()->create([
+            'title' => $request->title,
+            'cover_image_path' => $path,
+        ]);
+
+        return redirect()->route('dashboard')->with('status', 'book-published');
+    }
+
+    /**
+     * Delete a published book.
+     */
+    public function deletePublishedBook(PublishedBook $publishedBook)
+    {
+        if (!auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        if ($publishedBook->cover_image_path) {
+            Storage::disk('public')->delete($publishedBook->cover_image_path);
+        }
+
+        $publishedBook->delete();
+
+        return redirect()->route('dashboard')->with('status', 'book-deleted');
     }
 }

@@ -32,6 +32,10 @@
                     <div class="m-4 p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800/30 text-green-600 dark:text-green-400 text-xs font-semibold">
                         ✓ Royalty report uploaded successfully!
                     </div>
+                @elseif (session('status') == 'password-updated')
+                    <div class="m-4 p-4 rounded-lg bg-yellow-50 dark:bg-yellow-900/10 border border-yellow-200 dark:border-yellow-800/30 text-yellow-700 dark:text-yellow-400 text-xs font-semibold">
+                        ✓ Author password updated successfully!
+                    </div>
                 @endif
                 
                 <div class="overflow-x-auto">
@@ -99,6 +103,26 @@
                                                     Save Dashboard
                                                 </button>
                                             </form>
+
+                                            <!-- Change Author Password -->
+                                            <form method="POST" action="{{ route('admin.users.update-password', $u->id) }}" class="space-y-4 pt-6 mt-6 border-t border-slate-200 dark:border-slate-800">
+                                                @csrf
+                                                @method('PATCH')
+                                                <div>
+                                                    <h4 class="font-bold text-xs text-slate-900 dark:text-white">Change Author Password</h4>
+                                                    <p class="text-[10px] text-slate-400">Set a new password for this author's account.</p>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">New Password</label>
+                                                    <input type="password" name="password" required placeholder="••••••••" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                                                    @if($errors->has('password'))
+                                                        <p class="text-[10px] text-red-500 mt-1">{{ $errors->first('password') }}</p>
+                                                    @endif
+                                                </div>
+                                                <button type="submit" class="px-4 py-2 rounded bg-yellow-600 hover:bg-yellow-700 text-white font-bold text-[10px] transition-colors">
+                                                    Update Password
+                                                </button>
+                                            </form>
                                             
                                             <!-- Upload Royalty Report -->
                                             <form method="POST" action="{{ route('admin.users.royalty-reports.store', $u->id) }}" enctype="multipart/form-data" class="space-y-4 pt-6 lg:pt-0 lg:border-l lg:border-slate-200 lg:dark:border-slate-800 lg:pl-8">
@@ -131,6 +155,61 @@
                                                 </div>
                                             </form>
                                             
+                                        </div>
+                                        
+                                        <!-- Published Books Section -->
+                                        <div class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800">
+                                            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                                <!-- Add Published Book Form -->
+                                                <form method="POST" action="{{ route('admin.users.published-books.store', $u->id) }}" enctype="multipart/form-data" class="space-y-4">
+                                                    @csrf
+                                                    <div>
+                                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Add Published Book</h4>
+                                                        <p class="text-[10px] text-slate-400">Add a book that has been published for this author.</p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Book Title</label>
+                                                        <input type="text" name="title" required placeholder="e.g. The Great Novel" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Cover Image (Optional)</label>
+                                                        <input type="file" name="cover_image" accept="image/*" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                                                    </div>
+                                                    <button type="submit" class="px-4 py-2 rounded bg-purple-600 hover:bg-purple-700 text-white font-bold text-[10px] transition-colors">
+                                                        Add Book
+                                                    </button>
+                                                </form>
+
+                                                <!-- Current Published Books -->
+                                                <div>
+                                                    <h4 class="font-bold text-xs text-slate-900 dark:text-white mb-4">Current Published Books</h4>
+                                                    <div class="space-y-2 max-h-48 overflow-y-auto">
+                                                        @forelse ($u->publishedBooks as $book)
+                                                            <div class="flex items-center justify-between p-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+                                                                <div class="flex items-center gap-3">
+                                                                    @if($book->cover_image_path)
+                                                                        <img src="{{ Storage::url($book->cover_image_path) }}" class="w-8 h-8 object-cover rounded">
+                                                                    @else
+                                                                        <div class="w-8 h-8 bg-slate-100 dark:bg-slate-800 rounded flex items-center justify-center">
+                                                                            <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
+                                                                        </div>
+                                                                    @endif
+                                                                    <span class="text-[10px] font-bold text-slate-700 dark:text-slate-300">{{ $book->title }}</span>
+                                                                </div>
+                                                                <form method="POST" action="{{ route('admin.published-books.delete', $book->id) }}" onsubmit="return confirm('Delete this published book?');">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="text-red-500 hover:text-red-700 p-1">
+                                                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        @empty
+                                                            <p class="text-[10px] text-slate-400 italic">No published books yet.</p>
+                                                        @endforelse
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
