@@ -35,20 +35,18 @@
             }
         </style>
     </head>
-    <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-200 selection:bg-blue-600 selection:text-white min-h-screen flex flex-col">
+    <body class="bg-[#E5D3B3] text-slate-800 transition-colors duration-200 selection:bg-blue-600 selection:text-white min-h-screen flex flex-col">
         
         <!-- Navigation Bar -->
-        <header class="sticky top-0 z-50 bg-white/95 dark:bg-slate-900/95 border-b border-slate-200/80 dark:border-slate-800/80 backdrop-blur-sm transition-all">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <header class="sticky top-0 z-50 bg-transparent transition-all">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 lg:py-4 flex items-center justify-between">
                 <!-- Logo -->
-                <a href="#" class="flex items-center gap-2.5 font-bold tracking-tight text-slate-900 dark:text-white" id="nav-logo">
-                    <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center text-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-4.5 h-4.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-16.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-16.25v14.25" />
-                        </svg>
-                    </div>
-                    <span class="text-lg">Books<span class="text-blue-600 font-semibold">Academy</span></span>
-                </a>
+                <div class="relative h-10 md:h-12 w-64 md:w-96 flex-shrink-0">
+                    <a href="#" class="absolute top-0 md:-top-4 -left-8 md:-left-16 z-[100] flex items-center hover:opacity-90 transition-opacity" id="nav-logo">
+                        <img id="logo-large" src="{{ asset('images/L02.png') }}" alt="BooksAcademy Logo Large" class="h-32 md:h-40 max-w-none w-auto object-contain drop-shadow-md origin-top-left will-change-transform mt-2">
+                        <img id="logo-small" src="{{ asset('images/L01.png') }}" alt="BooksAcademy Logo Small" class="absolute top-2 md:top-6 left-0 h-8 md:h-10 max-w-none w-auto object-contain opacity-0 scale-95 pointer-events-none transition-all duration-500 ease-out origin-left drop-shadow-sm">
+                    </a>
+                </div>
 
                 <!-- Middle Links -->
                 <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -92,19 +90,11 @@
 
                 <!-- Actions Right -->
                 <div class="flex items-center gap-3.5">
-                    <!-- Theme Toggle -->
-                    <button id="theme-toggle" type="button" class="w-9 h-9 rounded-lg border border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-900 flex items-center justify-center text-slate-600 dark:text-slate-400 transition-colors focus:outline-none" aria-label="Toggle theme">
-                        <svg id="theme-toggle-dark-icon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
-                        </svg>
-                        <svg id="theme-toggle-light-icon" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464a1 1 0 10-1.414-1.414l-.707.707a1 1 0 001.414 1.414l.707-.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 100 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
-                        </svg>
-                    </button>
+                    <!-- Removed Theme Toggle -->
 
                     <!-- Auth Links -->
                     @if (Route::has('login'))
-                        <div class="flex items-center gap-2">
+                        <div class="hidden md:flex items-center gap-2">
                             @auth
                                 <a href="{{ url('/dashboard') }}" class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white dark:bg-white dark:hover:bg-slate-100 dark:text-slate-900 font-semibold text-xs transition-colors" id="btn-dashboard">
                                     Dashboard
@@ -121,12 +111,45 @@
                             @endauth
                         </div>
                     @endif
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" type="button" class="md:hidden flex items-center justify-center p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors focus:outline-none" aria-label="Toggle mobile menu">
+                        <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                        </svg>
+                        <svg id="menu-close-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 hidden">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu Panel -->
+            <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200/80 bg-white/95 backdrop-blur-sm absolute w-full left-0 top-16 shadow-lg">
+                <div class="px-4 pt-2 pb-6 space-y-2">
+                    <a href="#" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Home</a>
+                    <a href="#about-us" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">About Us</a>
+                    <a href="#services" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Services</a>
+                    <a href="#bookstore" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Bookstore</a>
+                    <a href="#pressroom" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Pressroom</a>
+                    <a href="#contact-us" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Contact Us</a>
+                    @if (Route::has('login'))
+                        <div class="h-px bg-slate-200 my-2"></div>
+                        @auth
+                            <a href="{{ url('/dashboard') }}" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Dashboard</a>
+                        @else
+                            <a href="{{ route('login') }}" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Log in</a>
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="block px-3 py-2.5 rounded-md text-sm font-semibold text-blue-600 hover:bg-blue-50 transition-colors">Register</a>
+                            @endif
+                        @endauth
+                    @endif
                 </div>
             </div>
         </header>
 
         <!-- Hero Section with Intro Video -->
-        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-16 min-h-[calc(100vh-4rem)]">
             <!-- Left copy -->
             <div class="flex-1 text-center lg:text-left space-y-6">
                 <span class="text-xs font-semibold uppercase text-blue-600 dark:text-blue-400 tracking-wider">Independent Book Publishing</span>
@@ -173,7 +196,7 @@
         </section>
 
         <!-- About Us Section -->
-        <section id="about-us" class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
+        <section id="about-us" class="py-20 min-h-screen flex flex-col justify-center bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     <div class="space-y-5">
@@ -216,7 +239,7 @@
         </section>
 
         <!-- Latest Happenings Section -->
-        <section id="pressroom" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="pressroom" class="py-20 min-h-screen flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
                 <div>
                     <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Academy News</span>
@@ -252,7 +275,7 @@
         </section>
 
         <!-- Services Section (Publishing: Children's, B&W, Full Color, Marketing, Add-ons) -->
-        <section id="services" class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
+        <section id="services" class="py-20 min-h-screen flex flex-col justify-center bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Publishing Packages</span>
@@ -292,7 +315,7 @@
         </section>
 
         <!-- Why Writers Choose Our House (First Layout: Credentials) -->
-        <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="py-20 min-h-screen flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="space-y-5">
                     <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Writer Experience</span>
@@ -338,7 +361,7 @@
         </section>
 
         <!-- The Journey to Publication & Spotlight -->
-        <section class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
+        <section class="py-20 min-h-screen flex flex-col justify-center bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Our Pipeline</span>
@@ -392,7 +415,7 @@
         </section>
 
         <!-- The Literary Media Lounge -->
-        <section id="media-lounge" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="media-lounge" class="py-20 min-h-screen flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Multimedia</span>
                 <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">The Literary Media Lounge</h2>
@@ -429,7 +452,7 @@
         </section>
 
         <!-- Voices from the Penholders -->
-        <section class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
+        <section class="py-20 min-h-screen flex flex-col justify-center bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Author Testimonials</span>
@@ -484,7 +507,7 @@
         </section>
 
         <!-- Global Collaborations Section -->
-        <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="py-20 min-h-screen flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Bookstore Partners</span>
                 <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Global Collaborations</h2>
@@ -502,7 +525,7 @@
         </section>
 
         <!-- Voices of Appreciation -->
-        <section class="py-20 bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
+        <section class="py-20 min-h-screen flex flex-col justify-center bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Achievements</span>
@@ -531,7 +554,7 @@
         </section>
 
         <!-- Why Writers Choose Our House (Second Layout: Comparative Table) -->
-        <section class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section class="py-20 min-h-screen flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-2xl mx-auto mb-12">
                 <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Comparative Audit</span>
                 <h2 class="text-3xl font-extrabold text-slate-900 dark:text-white mt-1">Why Writers Choose Our House</h2>
@@ -582,7 +605,7 @@
         </section>
 
         <!-- Bookstore Section -->
-        <section id="bookstore" class="py-20 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
+        <section id="bookstore" class="py-20 min-h-screen flex flex-col justify-center bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 transition-colors">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center max-w-2xl mx-auto mb-12">
                     <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Catalog</span>
@@ -667,7 +690,7 @@
         </section>
 
         <!-- Contact Us Section -->
-        <section id="contact-us" class="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section id="contact-us" class="py-20 min-h-screen flex flex-col justify-center max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-8 sm:p-12 shadow-sm flex flex-col lg:flex-row gap-10 items-start">
                 <div class="max-w-md space-y-4">
                     <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Author Consultations</span>
@@ -741,35 +764,7 @@
 
         <!-- Inline JavaScript for Interactivity -->
         <script>
-            // 1. Theme Switcher Logic
-            const themeToggleBtn = document.getElementById('theme-toggle');
-            const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-            const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
-
-            const currentTheme = localStorage.getItem('theme') || 
-                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
-            if (currentTheme === 'dark') {
-                document.documentElement.classList.add('dark');
-                themeToggleLightIcon.classList.remove('hidden');
-            } else {
-                document.documentElement.classList.remove('dark');
-                themeToggleDarkIcon.classList.remove('hidden');
-            }
-
-            themeToggleBtn.addEventListener('click', function() {
-                if (document.documentElement.classList.contains('dark')) {
-                    document.documentElement.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                    themeToggleLightIcon.classList.add('hidden');
-                    themeToggleDarkIcon.classList.remove('hidden');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                    themeToggleDarkIcon.classList.add('hidden');
-                    themeToggleLightIcon.classList.remove('hidden');
-                }
-            });
+            // Theme switcher logic removed
 
             // 2. Mock Video Play Logic
             function playMockVideo() {
@@ -851,6 +846,59 @@
 
             // Default show children's book package
             selectServiceCard('children');
+
+            // Parallax Logo Scroll Animation
+            window.addEventListener('scroll', () => {
+                const scrollY = window.scrollY;
+                const logoLarge = document.getElementById('logo-large');
+                const logoSmall = document.getElementById('logo-small');
+                
+                if (logoLarge && logoSmall) {
+                    // Parallax logic for large logo
+                    // Move it up slightly slower than the scroll, fade it out, and shrink it
+                    const parallaxY = scrollY * 0.35;
+                    const scale = Math.max(0.6, 1 - scrollY * 0.003);
+                    const opacityLarge = Math.max(0, 1 - scrollY * 0.015);
+                    
+                    logoLarge.style.transform = `translateY(-${parallaxY}px) scale(${scale})`;
+                    logoLarge.style.opacity = opacityLarge;
+
+                    // Fade in the small logo in the navbar when scrolled past threshold
+                    if (scrollY > 60) {
+                        logoSmall.classList.remove('opacity-0', 'pointer-events-none', 'scale-95');
+                        logoSmall.classList.add('opacity-100', 'scale-100');
+                    } else {
+                        logoSmall.classList.add('opacity-0', 'pointer-events-none', 'scale-95');
+                        logoSmall.classList.remove('opacity-100', 'scale-100');
+                    }
+                }
+            });
+
+            // Mobile Menu Toggle
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            if(mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    menuOpenIcon.classList.toggle('hidden');
+                    menuCloseIcon.classList.toggle('hidden');
+                });
+            }
+
+            // Close mobile menu when a link is clicked
+            if(mobileMenu) {
+                const mobileLinks = mobileMenu.querySelectorAll('a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                        menuOpenIcon.classList.remove('hidden');
+                        menuCloseIcon.classList.add('hidden');
+                    });
+                });
+            }
         </script>
     </body>
 </html>
