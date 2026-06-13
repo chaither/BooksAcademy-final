@@ -1055,6 +1055,8 @@
         }
 
         // Logo Animation Logic
+        let logoAnimationComplete = false;
+
         function startLogoAnimation() {
             const logoContainer = document.getElementById('logo-container');
             const halfLeft = document.getElementById('logo-half-left');
@@ -1062,6 +1064,9 @@
             const logoLarge = document.getElementById('logo-large');
 
             if (logoContainer && halfLeft && halfRight && logoLarge) {
+                // Reset scroll to top on start to align animations
+                window.scrollTo(0, 0);
+
                 // Step 1: Slide container up to upper center and fade in
                 logoContainer.classList.remove('opacity-0');
                 logoContainer.classList.add('opacity-100');
@@ -1082,6 +1087,8 @@
                     setTimeout(() => {
                         halfLeft.style.display = 'none';
                         halfRight.style.display = 'none';
+                        logoAnimationComplete = true; // Unlock scroll parallax
+                        window.dispatchEvent(new Event('scroll')); // Initialize scroll state
                     }, 500);
                 }, 1200);
             }
@@ -1128,6 +1135,8 @@
 
         // Parallax Logo Scroll Animation
         window.addEventListener('scroll', () => {
+            if (!logoAnimationComplete) return;
+
             const scrollY = window.scrollY;
             const logoLarge = document.getElementById('logo-large');
             const logoSmall = document.getElementById('logo-small');
