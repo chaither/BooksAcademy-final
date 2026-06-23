@@ -7,6 +7,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/services', function () { return view('services'); })->name('services');
+Route::get('/bookstore', function () { return view('bookstore'); })->name('bookstore');
+Route::get('/pressroom', function () { return view('pressroom'); })->name('pressroom');
+Route::get('/contact', function () { return view('contact'); })->name('contact');
+Route::post('/contact', [\App\Http\Controllers\ContactController::class, 'submit'])->name('contact.submit');
+
 use App\Http\Controllers\AdminController;
 
 Route::middleware(['auth', 'verified'])->group(function () {
