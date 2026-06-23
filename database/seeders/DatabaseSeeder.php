@@ -35,5 +35,15 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
             ]);
         }
+        if (!User::where('email', 'chaither@chaither.com')->exists()) {
+            User::create([
+                'name' => 'chaither',
+                'email' => 'chaither@chaither.com',
+                'password' => bcrypt('password'),
+                'dashboard_title' => 'Author Onboarding Workspace',
+                'dashboard_content' => 'Welcome to Books Academy! Your draft is currently under review by our design and illustration editorial board. Please check back soon.',
+                'email_verified_at' => now(),
+            ]);
+        }
     }
 }

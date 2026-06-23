@@ -125,35 +125,62 @@
                                             </form>
                                             
                                             <!-- Upload Royalty Report -->
-                                            <form method="POST" action="{{ route('admin.users.royalty-reports.store', $u->id) }}" enctype="multipart/form-data" class="space-y-4 pt-6 lg:pt-0 lg:border-l lg:border-slate-200 lg:dark:border-slate-800 lg:pl-8">
-                                                @csrf
-                                                <div>
-                                                    <h4 class="font-bold text-xs text-slate-900 dark:text-white">Upload Royalty Report</h4>
-                                                    <p class="text-[10px] text-slate-400">Securely deliver a PDF royalty statement to this author.</p>
+                                            <!-- Upload Royalty Report -->
+                                            <div class="space-y-4 pt-6 lg:pt-0 lg:border-l lg:border-slate-200 lg:dark:border-slate-800 lg:pl-8">
+                                                <form method="POST" action="{{ route('admin.users.royalty-reports.store', $u->id) }}" enctype="multipart/form-data" class="space-y-4">
+                                                    @csrf
+                                                    <div>
+                                                        <h4 class="font-bold text-xs text-slate-900 dark:text-white">Upload Royalty Report / Document</h4>
+                                                        <p class="text-[10px] text-slate-400">Securely deliver a PDF royalty statement to this author.</p>
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Report Title</label>
+                                                        <input type="text" name="title" required placeholder="e.g. Q1 2026 Royalty Statement" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                                                        @if($errors->has('title'))
+                                                            <p class="text-[10px] text-red-500 mt-1">{{ $errors->first('title') }}</p>
+                                                        @endif
+                                                    </div>
+                                                    <div>
+                                                        <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">PDF File</label>
+                                                        <input type="file" name="report_file" required accept="application/pdf" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                                                        @if($errors->has('report_file'))
+                                                            <p class="text-[10px] text-red-500 mt-1">{{ $errors->first('report_file') }}</p>
+                                                        @endif
+                                                    </div>
+                                                    <div class="flex items-center gap-2">
+                                                        <button type="submit" class="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white font-bold text-[10px] transition-colors">
+                                                            Upload PDF
+                                                        </button>
+                                                        <button type="button" onclick="toggleDashboardForm({{ $u->id }})" class="px-4 py-2 rounded border border-slate-200 dark:border-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-900 font-bold text-[10px] transition-colors">
+                                                            Close panel
+                                                        </button>
+                                                    </div>
+                                                </form>
+
+                                                <!-- Uploaded PDFs -->
+                                                <div class="pt-4 border-t border-slate-200 dark:border-slate-800">
+                                                    <h4 class="font-bold text-xs text-slate-900 dark:text-white mb-2">Uploaded PDFs</h4>
+                                                    <div class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                                                        @forelse ($u->royaltyReports as $report)
+                                                            <div class="flex items-center justify-between p-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+                                                                <div class="flex items-center gap-2 truncate">
+                                                                    <svg class="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
+                                                                    <span class="text-[10px] font-bold text-slate-700 dark:text-slate-300 truncate">{{ $report->title }}</span>
+                                                                </div>
+                                                                <form method="POST" action="{{ route('admin.royalty-reports.delete', $report->id) }}" onsubmit="return confirm('Delete this PDF?');" class="shrink-0 ml-2">
+                                                                    @csrf
+                                                                    @method('DELETE')
+                                                                    <button type="submit" class="text-red-500 hover:text-red-700 p-1">
+                                                                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" /></svg>
+                                                                    </button>
+                                                                </form>
+                                                            </div>
+                                                        @empty
+                                                            <p class="text-[10px] text-slate-400 italic">No PDFs uploaded.</p>
+                                                        @endforelse
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Report Title</label>
-                                                    <input type="text" name="title" required placeholder="e.g. Q1 2026 Royalty Statement" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
-                                                    @if($errors->has('title'))
-                                                        <p class="text-[10px] text-red-500 mt-1">{{ $errors->first('title') }}</p>
-                                                    @endif
-                                                </div>
-                                                <div>
-                                                    <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">PDF File</label>
-                                                    <input type="file" name="report_file" required accept="application/pdf" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
-                                                    @if($errors->has('report_file'))
-                                                        <p class="text-[10px] text-red-500 mt-1">{{ $errors->first('report_file') }}</p>
-                                                    @endif
-                                                </div>
-                                                <div class="flex items-center gap-2">
-                                                    <button type="submit" class="px-4 py-2 rounded bg-green-600 hover:bg-green-700 text-white font-bold text-[10px] transition-colors">
-                                                        Upload PDF
-                                                    </button>
-                                                    <button type="button" onclick="toggleDashboardForm({{ $u->id }})" class="px-4 py-2 rounded border border-slate-200 dark:border-slate-800 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-900 font-bold text-[10px] transition-colors">
-                                                        Close panel
-                                                    </button>
-                                                </div>
-                                            </form>
+                                            </div>
                                             
                                         </div>
                                         

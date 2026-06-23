@@ -277,61 +277,86 @@
                     our house.</p>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <!-- Quote 1 -->
-                <div
-                    class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
-                            AM</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-slate-900 dark:text-white">Alvin Mercer</h4>
-                            <p class="text-[10px] text-slate-400">Author of *"Coded Thoughts"*</p>
+            @if(isset($authors) && $authors->count() > 0)
+                <div class="flex overflow-x-auto gap-6 pb-6 snap-x scroll-smooth" style="scrollbar-width: thin;">
+                    @foreach($authors as $author)
+                        @php
+                            $initials = collect(explode(' ', $author->name))->map(function($segment) { return strtoupper(substr($segment, 0, 1)); })->take(2)->join('');
+                            $bookTitle = $author->publishedBooks->first() ? 'Author of *"' . $author->publishedBooks->first()->title . '"*' : 'Independent Author';
+                        @endphp
+                        <div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4 min-w-[300px] sm:min-w-[350px] snap-center shrink-0">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
+                                    {{ $initials }}
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-xs text-slate-900 dark:text-white">{{ $author->name }}</h4>
+                                    <p class="text-[10px] text-slate-400">{{ $bookTitle }}</p>
+                                </div>
+                            </div>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+                                "Publishing through Books Academy gave me the control I needed over my creative work. The process was seamless and incredibly supportive."
+                            </p>
                         </div>
-                    </div>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                        "The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and
-                        professional support throughout the process."
-                    </p>
+                    @endforeach
                 </div>
+            @else
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                    <!-- Quote 1 -->
+                    <div
+                        class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
+                                AM</div>
+                            <div>
+                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Alvin Mercer</h4>
+                                <p class="text-[10px] text-slate-400">Author of *"Coded Thoughts"*</p>
+                            </div>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+                            "The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and
+                            professional support throughout the process."
+                        </p>
+                    </div>
 
-                <!-- Quote 2 -->
-                <div
-                    class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
-                            MV</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-slate-900 dark:text-white">Martha Vance</h4>
-                            <p class="text-[10px] text-slate-400">Author of *"Children of the Wild"*</p>
+                    <!-- Quote 2 -->
+                    <div
+                        class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
+                                MV</div>
+                            <div>
+                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Martha Vance</h4>
+                                <p class="text-[10px] text-slate-400">Author of *"Children of the Wild"*</p>
+                            </div>
                         </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+                            "Children's book illustrations need precise color alignment. Their formatting team verified
+                            files and set up spreads beautifully."
+                        </p>
                     </div>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                        "Children's book illustrations need precise color alignment. Their formatting team verified
-                        files and set up spreads beautifully."
-                    </p>
-                </div>
 
-                <!-- Quote 3 -->
-                <div
-                    class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
-                            HS</div>
-                        <div>
-                            <h4 class="font-bold text-xs text-slate-900 dark:text-white">Howard Stark</h4>
-                            <p class="text-[10px] text-slate-400">Author of *"Startup Architecture"*</p>
+                    <!-- Quote 3 -->
+                    <div
+                        class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div
+                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
+                                HS</div>
+                            <div>
+                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Howard Stark</h4>
+                                <p class="text-[10px] text-slate-400">Author of *"Startup Architecture"*</p>
+                            </div>
                         </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
+                            "Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live
+                            worldwide within 48 hours."
+                        </p>
                     </div>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                        "Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live
-                        worldwide within 48 hours."
-                    </p>
                 </div>
-            </div>
+            @endif
         </div>
     </section>
 

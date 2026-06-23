@@ -203,4 +203,22 @@ class AdminController extends Controller
 
         return redirect()->route('dashboard')->with('status', 'book-deleted');
     }
+
+    /**
+     * Delete a royalty report.
+     */
+    public function deleteRoyaltyReport(RoyaltyReport $royaltyReport)
+    {
+        if (!auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        if ($royaltyReport->file_path) {
+            Storage::disk('public')->delete($royaltyReport->file_path);
+        }
+
+        $royaltyReport->delete();
+
+        return redirect()->route('dashboard')->with('status', 'report-deleted');
+    }
 }

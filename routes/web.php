@@ -4,7 +4,8 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $authors = \App\Models\User::with('publishedBooks')->where('is_admin', false)->take(50)->get();
+    return view('welcome', compact('authors'));
 });
 
 Route::get('/services', function () { return view('services'); })->name('services');
@@ -25,16 +26,22 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Royalty Report Routes
     Route::post('/admin/users/{user}/royalty-reports', [AdminController::class, 'uploadRoyaltyReport'])->name('admin.users.royalty-reports.store');
     Route::get('/royalty-reports/{royaltyReport}/download', [AdminController::class, 'downloadRoyaltyReport'])->name('royalty-reports.download');
+    Route::delete('/admin/royalty-reports/{royaltyReport}', [AdminController::class, 'deleteRoyaltyReport'])->name('admin.royalty-reports.delete');
 
     // Published Books Routes
     Route::post('/admin/users/{user}/published-books', [AdminController::class, 'storePublishedBook'])->name('admin.users.published-books.store');
     Route::delete('/admin/published-books/{publishedBook}', [AdminController::class, 'deletePublishedBook'])->name('admin.published-books.delete');
 });
 
+use App\Http\Controllers\ReportController;
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // User PDF Uploads
+    Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
 });
 
 require __DIR__.'/auth.php';

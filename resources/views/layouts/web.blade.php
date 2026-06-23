@@ -75,7 +75,7 @@
                 <a href="{{ url('/') }}"
                     class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     id="link-home">Home</a>
-                <a href="{{ url('/#about-us') }}"
+                <a href="{{ url('/#about-us') }}" onclick="if(typeof hideIntro === 'function') hideIntro()"
                     class="text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                     id="link-about">About Us</a>
 
@@ -183,7 +183,7 @@
             <div class="px-4 pt-2 pb-6 space-y-2">
                 <a href="{{ url('/') }}"
                     class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">Home</a>
-                <a href="{{ url('/#about-us') }}"
+                <a href="{{ url('/#about-us') }}" onclick="if(typeof hideIntro === 'function') hideIntro()"
                     class="block px-3 py-2.5 rounded-md text-sm font-semibold text-slate-700 hover:text-blue-600 hover:bg-slate-50 transition-colors">About
                     Us</a>
                 <a href="{{ route('services') }}"
@@ -340,8 +340,10 @@
             const logoLarge = document.getElementById('logo-large');
 
             if (logoContainer && halfLeft && halfRight && logoLarge) {
-                // Reset scroll to top on start to align animations
-                window.scrollTo(0, 0);
+                // Reset scroll to top on start to align animations, unless a hash is present
+                if (!window.location.hash) {
+                    window.scrollTo(0, 0);
+                }
 
                 // Step 1: Slide container up to upper center and fade in
                 logoContainer.classList.remove('opacity-0');
@@ -375,18 +377,18 @@
         const introVideo = document.getElementById('intro-video');
         const skipIntroBtn = document.getElementById('skip-intro');
 
-        // Prevent scrolling on load if splash is present
-        if (introSplash) {
-            document.body.classList.add('overflow-y-hidden');
-        } else {
-            // Trigger animation immediately if splash is not present
-            setTimeout(startLogoAnimation, 100);
-        }
-
         function hideIntro() {
             if (introSplash) {
                 introSplash.classList.add('opacity-0', 'pointer-events-none');
                 document.body.classList.remove('overflow-y-hidden');
+                
+                if (window.location.hash) {
+                    const target = document.querySelector(window.location.hash);
+                    if (target) {
+                        setTimeout(() => target.scrollIntoView(), 50);
+                    }
+                }
+
                 if (introVideo) {
                     introVideo.pause();
                 }
@@ -399,7 +401,26 @@
             }
         }
 
-        if (introSplash && introVideo) {
+        const skipIntroHash = window.location.hash === '#about-us';
+
+        // Prevent scrolling on load if splash is present
+        if (introSplash && !skipIntroHash) {
+            document.body.classList.add('overflow-y-hidden');
+        } else if (introSplash && skipIntroHash) {
+            introSplash.style.display = 'none';
+            if (introVideo) introVideo.pause();
+            setTimeout(startLogoAnimation, 100);
+            
+            setTimeout(() => {
+                const target = document.querySelector(window.location.hash);
+                if (target) target.scrollIntoView();
+            }, 150);
+        } else {
+            // Trigger animation immediately if splash is not present
+            setTimeout(startLogoAnimation, 100);
+        }
+
+        if (introSplash && introVideo && !skipIntroHash) {
             introVideo.addEventListener('ended', hideIntro);
             if (skipIntroBtn) {
                 skipIntroBtn.addEventListener('click', hideIntro);
