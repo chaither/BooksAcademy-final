@@ -4,10 +4,11 @@ namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Mail\Mailables\Address;
+use Illuminate\Mail\Mailables\Attachment;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Mail\Mailables\Address;
 
 class ContactMail extends Mailable
 {
@@ -29,7 +30,7 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'New Contact Form Submission - ' . ucfirst($this->data['inquiry_type']),
+            subject: 'New Contact Form Submission - '.ucfirst($this->data['inquiry_type']),
             replyTo: [
                 new Address($this->data['email'], $this->data['name']),
             ],
@@ -49,7 +50,7 @@ class ContactMail extends Mailable
     /**
      * Get the attachments for the message.
      *
-     * @return array<int, \Illuminate\Mail\Mailables\Attachment>
+     * @return array<int, Attachment>
      */
     public function attachments(): array
     {

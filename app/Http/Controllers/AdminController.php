@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
-use App\Models\RoyaltyReport;
 use App\Models\PublishedBook;
+use App\Models\RoyaltyReport;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -21,17 +21,19 @@ class AdminController extends Controller
         if ($currentUser->is_admin) {
             // Admin sees all regular users
             $users = User::with(['royaltyReports', 'publishedBooks'])->where('is_admin', false)->latest()->get();
+
             return view('dashboard', [
                 'users' => $users,
-                'isAdmin' => true
+                'isAdmin' => true,
             ]);
         }
 
         // Regular user sees their own dashboard details
         $currentUser->load(['royaltyReports', 'publishedBooks']);
+
         return view('dashboard', [
             'user' => $currentUser,
-            'isAdmin' => false
+            'isAdmin' => false,
         ]);
     }
 
@@ -41,7 +43,7 @@ class AdminController extends Controller
     public function storeUser(Request $request)
     {
         // Check authorization
-        if (!auth()->user()->is_admin) {
+        if (! auth()->user()->is_admin) {
             abort(403);
         }
 
@@ -68,7 +70,7 @@ class AdminController extends Controller
     public function updateUserDashboard(Request $request, User $user)
     {
         // Check authorization
-        if (!auth()->user()->is_admin) {
+        if (! auth()->user()->is_admin) {
             abort(403);
         }
 
@@ -91,7 +93,7 @@ class AdminController extends Controller
     public function updateUserPassword(Request $request, User $user)
     {
         // Check authorization
-        if (!auth()->user()->is_admin) {
+        if (! auth()->user()->is_admin) {
             abort(403);
         }
 
@@ -111,7 +113,7 @@ class AdminController extends Controller
      */
     public function deleteUser(User $user)
     {
-        if (!auth()->user()->is_admin) {
+        if (! auth()->user()->is_admin) {
             abort(403);
         }
 
@@ -125,7 +127,7 @@ class AdminController extends Controller
      */
     public function uploadRoyaltyReport(Request $request, User $user)
     {
-        if (!auth()->user()->is_admin) {
+        if (! auth()->user()->is_admin) {
             abort(403);
         }
 
@@ -164,7 +166,7 @@ class AdminController extends Controller
      */
     public function storePublishedBook(Request $request, User $user)
     {
-        if (!auth()->user()->is_admin) {
+        if (! auth()->user()->is_admin) {
             abort(403);
         }
 
@@ -191,7 +193,7 @@ class AdminController extends Controller
      */
     public function deletePublishedBook(PublishedBook $publishedBook)
     {
-        if (!auth()->user()->is_admin) {
+        if (! auth()->user()->is_admin) {
             abort(403);
         }
 
@@ -209,7 +211,7 @@ class AdminController extends Controller
      */
     public function deleteRoyaltyReport(RoyaltyReport $royaltyReport)
     {
-        if (!auth()->user()->is_admin) {
+        if (! auth()->user()->is_admin) {
             abort(403);
         }
 

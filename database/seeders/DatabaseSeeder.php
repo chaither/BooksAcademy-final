@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        if (!User::where('email', 'admin@booksacademy.com')->exists()) {
+        if (! User::where('email', 'admin@booksacademy.com')->exists()) {
             User::create([
                 'name' => 'Admin User',
                 'email' => 'admin@admin.com',
@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        if (!User::where('email', 'test@example.com')->exists()) {
+        if (! User::where('email', 'test@example.com')->exists()) {
             User::create([
                 'name' => 'Test User',
                 'email' => 'test@example.com',
@@ -35,7 +35,7 @@ class DatabaseSeeder extends Seeder
                 'email_verified_at' => now(),
             ]);
         }
-        if (!User::where('email', 'chaither@chaither.com')->exists()) {
+        if (! User::where('email', 'chaither@chaither.com')->exists()) {
             User::create([
                 'name' => 'chaither',
                 'email' => 'chaither@chaither.com',

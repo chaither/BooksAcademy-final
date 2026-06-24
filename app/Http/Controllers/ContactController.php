@@ -20,8 +20,8 @@ class ContactController extends Controller
         // Send email to your Gmail address
         // The address it sends TO should be configured via the .env (e.g., MAIL_FROM_ADDRESS or a specific contact email)
         // Here we can use config('mail.from.address') or a hardcoded email, let's use config('mail.from.address')
-        $toEmail = config('mail.from.address', 'contact@booksacademy.com'); 
-        
+        $toEmail = config('mail.from.address', 'contact@booksacademy.com');
+
         Mail::to($toEmail)->send(new ContactMail($validated));
 
         return redirect()->back()->with('success', 'Your message has been sent successfully! We will reach out to you within 24 hours.');

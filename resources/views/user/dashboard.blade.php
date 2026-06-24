@@ -19,30 +19,7 @@
             <h4 class="font-bold text-xs uppercase text-slate-400 tracking-wider">Royalty Reports & Statements</h4>
         </div>
 
-        <!-- Upload Form -->
-        <form method="POST" action="{{ route('reports.store') }}" enctype="multipart/form-data" class="bg-slate-50 dark:bg-slate-900/40 p-4 rounded-lg border border-slate-200 dark:border-slate-800 space-y-4 mb-6">
-            @csrf
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                    <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Document Title</label>
-                    <input type="text" name="title" required placeholder="e.g. Manuscript Draft" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
-                    @if($errors->has('title'))
-                        <p class="text-[10px] text-red-500 mt-1">{{ $errors->first('title') }}</p>
-                    @endif
-                </div>
-                <div>
-                    <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">PDF File</label>
-                    <input type="file" name="report_file" required accept="application/pdf" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
-                    @if($errors->has('report_file'))
-                        <p class="text-[10px] text-red-500 mt-1">{{ $errors->first('report_file') }}</p>
-                    @endif
-                </div>
-            </div>
-            <button type="submit" class="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold text-[10px] transition-colors">
-                Upload PDF
-            </button>
-        </form>
-        
+       
         @if ($user->royaltyReports->count() > 0)
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 @foreach ($user->royaltyReports as $report)

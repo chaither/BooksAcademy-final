@@ -252,13 +252,7 @@
     <script>
         // Theme switcher logic removed
 
-        // 2. Mock Video Play Logic
-        function playMockVideo() {
-            document.getElementById('video-overlay').classList.add('hidden');
-            const player = document.getElementById('mock-video-player');
-            player.classList.remove('hidden');
-            player.play();
-        }
+
 
         // 3. Highlight/Select Service
         const servicesData = {
@@ -308,6 +302,7 @@
 
             // Update detail card content
             const container = document.getElementById('service-content-body');
+            if (!container) return;
 
             let pointsList = '';
             data.points.forEach(pt => {
