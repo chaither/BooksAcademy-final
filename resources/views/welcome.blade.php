@@ -628,442 +628,2296 @@
         </div>
     </section>
 
-    <!-- Journey to Publication (Storytelling Scroll) -->
-    <section id="journey-section" class="relative py-32 xl:py-48 bg-[#020617] text-white overflow-hidden border-t border-slate-800">
+    <!-- The Journey to Publication & Spotlight (Redesigned) -->
+    <style>
+    /* Journey Section Styles */
+    #journey-section {
+        background-color: #F8F6F2;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    /* Background elements */
+    .journey-bg-paper {
+        position: absolute;
+        inset: 0;
+        opacity: 0.05;
+        background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.4"/%3E%3C/svg%3E');
+        mix-blend-mode: multiply;
+        pointer-events: none;
+    }
+    .journey-light {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+    }
+    .journey-particle {
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        background-color: #C9A227;
+        border-radius: 50%;
+        box-shadow: 0 0 8px 2px rgba(201, 162, 39, 0.4);
+        opacity: 0.6;
+        pointer-events: none;
+    }
+    
+    /* Timeline specific */
+    .journey-card {
+        background-color: #FFFFFF;
+        box-shadow: 0 10px 30px rgba(15, 27, 61, 0.05);
+        border: 1px solid rgba(201, 162, 39, 0.1);
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform, opacity, filter;
+        opacity: 0; /* Default Hidden State */
+    }
+    .journey-card:hover {
+        transform: translateY(-12px) !important; /* Overrides floating */
+        box-shadow: 0 22px 40px rgba(15, 27, 61, 0.12);
+        border-color: rgba(201, 162, 39, 0.6);
+    }
+    .journey-card:hover .journey-icon-wrap {
+        transform: rotate(8deg) scale(1.1);
+        box-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
+    }
+    .journey-card:hover .journey-card-bg {
+        opacity: 1;
+    }
+    
+    .journey-card.is-active {
+        filter: brightness(1.05);
+        transform: scale(1.02);
+        box-shadow: 0 0 0 1px #C9A227, 0 0 20px rgba(47, 107, 255, 0.15);
+    }
+    .journey-card.is-active .journey-step-num {
+        color: #C9A227;
+    }
+    
+    .journey-icon-wrap {
+        transition: all 0.5s ease;
+    }
+    
+    /* Progress indicator */
+    .progress-line-fill {
+        transform-origin: top;
+        transform: scaleY(0);
+    }
+    
+    /* Float animation class added after appear */
+    @keyframes floatGentle {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-5px); }
+    }
+    .is-floating {
+        animation: floatGentle 6s ease-in-out infinite;
+    }
+    </style>
+
+    <section id="journey-section" class="py-24 xl:py-32 2xl:py-40 min-h-screen flex flex-col justify-center border-y border-[#C9A227]/20 relative z-10 text-[#0F1B3D]">
         
-        <!-- Ambient Glowing Backgrounds -->
-        <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-            <div class="floating-shape absolute top-0 left-1/4 w-[500px] h-[500px] bg-blue-900/30 rounded-full mix-blend-screen filter blur-[120px]"></div>
-            <div class="floating-shape absolute top-1/3 right-0 w-[600px] h-[600px] bg-[#C4A052]/20 rounded-full mix-blend-screen filter blur-[150px]"></div>
-            <div class="floating-shape absolute bottom-0 left-1/3 w-[800px] h-[800px] bg-indigo-900/20 rounded-full mix-blend-screen filter blur-[150px]"></div>
-            
-            <!-- Floating Particles (will be animated via GSAP) -->
-            <div class="journey-particles absolute inset-0 opacity-50 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.1)_0%,_transparent_1px)] bg-[length:30px_30px]"></div>
-        </div>
+        <!-- Background Elements -->
+        <div class="journey-bg-paper z-0"></div>
+        <div class="journey-light bg-[#C9A227]/10 w-[600px] h-[600px] top-[-100px] left-[-100px] z-0 parallax-bg-slow"></div>
+        <div class="journey-light bg-[#2F6BFF]/5 w-[500px] h-[500px] bottom-[20%] right-[-50px] z-0 parallax-bg-fast"></div>
+        
+        <!-- Golden Particles -->
+        <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
 
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10">
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-20 flex">
             
-            <!-- Section Header -->
-            <div class="text-center max-w-3xl mx-auto mb-32 md:mb-48 opacity-0 translate-y-10" id="journey-header">
-                <span class="text-xs font-bold text-[#C4A052] uppercase tracking-[0.3em] flex items-center justify-center gap-4 mb-6">
-                    <span class="w-12 h-[1px] bg-[#C4A052]"></span>
-                    The Process
-                    <span class="w-12 h-[1px] bg-[#C4A052]"></span>
-                </span>
-                <h2 class="text-5xl md:text-6xl xl:text-7xl font-serif text-white leading-[1.1] mb-8">
-                    Journey to <br><span class="italic text-[#C4A052]">Publication</span>
-                </h2>
-                <p class="text-lg text-slate-400 leading-relaxed font-light">
-                    Experience the evolution of your manuscript from a raw draft to a globally distributed masterpiece. Walk with us through every defining chapter.
-                </p>
+            <!-- Vertical Progress Indicator -->
+            <div class="hidden lg:flex flex-col items-center mr-12 relative w-8 shrink-0">
+                <div class="h-full w-px bg-slate-200 absolute left-1/2 -translate-x-1/2 top-0 bottom-0 z-0"></div>
+                <div id="progress-fill" class="h-full w-1 bg-gradient-to-b from-[#C9A227] to-[#2F6BFF] absolute left-1/2 -translate-x-1/2 top-0 bottom-0 z-10 progress-line-fill rounded-full"></div>
+                
+                <!-- Indicators -->
+                <div class="h-full w-full absolute top-0 left-0 flex flex-col justify-between py-[15%] z-20 pointer-events-none">
+                    <div class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300"></div>
+                    <div class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300"></div>
+                </div>
             </div>
 
-            <!-- Vertical Timeline Container -->
-            <div class="relative max-w-5xl mx-auto" id="timeline-container">
-                
-                <!-- The Track (Background Line) -->
-                <div class="absolute left-[40px] md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-[2px] bg-slate-800 rounded-full"></div>
-                
-                <!-- The Fill (Progress Line) -->
-                <div id="timeline-progress" class="absolute left-[40px] md:left-1/2 transform md:-translate-x-1/2 top-0 w-[2px] bg-gradient-to-b from-blue-500 via-[#C4A052] to-emerald-500 rounded-full origin-top h-0">
-                    <!-- Glowing Head -->
-                    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_8px_rgba(196,160,82,0.6)]"></div>
+            <!-- Content Container -->
+            <div class="flex-1" id="journey-content">
+                <div class="text-center lg:text-left max-w-2xl mb-20 md:mb-32 mx-auto lg:mx-0">
+                    <span id="journey-subtitle" class="text-[10px] font-bold text-[#C9A227] uppercase tracking-[0.25em] block mb-4 opacity-0">Our Pipeline</span>
+                    <h2 id="journey-title" class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#0F1B3D] leading-[1.1] opacity-0">
+                        The Journey to <span class="italic text-[#C9A227]">Publication</span>
+                    </h2>
                 </div>
 
-                <div class="space-y-24 md:space-y-40 pb-24">
+                <!-- Timeline Layout -->
+                <div class="relative w-full pb-32" id="timeline-container">
                     
-                    <!-- Step 01 -->
-                    <div class="journey-step relative flex flex-col md:flex-row items-start md:items-center w-full group">
-                        <div class="hidden md:block md:w-1/2 pr-16 text-right opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            <span class="text-8xl font-serif text-white/5 font-bold italic tracking-tighter">01</span>
-                        </div>
-                        
-                        <!-- Timeline Node -->
-                        <div class="absolute left-[40px] md:left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center z-10 step-node transition-colors duration-500 mt-4 md:mt-0">
-                            <span class="text-slate-500 font-bold text-xs md:text-sm node-number">01</span>
-                        </div>
-
-                        <!-- Card -->
-                        <div class="w-full md:w-1/2 pl-[90px] md:pl-16 step-card opacity-0 translate-x-10">
-                            <div class="p-8 md:p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-[#C4A052]/50 transition-all duration-500 group-hover:-translate-y-2 shadow-2xl relative overflow-hidden">
-                                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-bl-full blur-3xl"></div>
-                                <div class="w-12 h-12 rounded-2xl bg-blue-500/20 flex items-center justify-center text-blue-400 mb-6">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-                                </div>
-                                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#C4A052] transition-colors">Manuscript Submission</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">The journey begins. You upload your life's work. Our system securely logs your manuscript, ensuring 100% copyright protection from day one.</p>
-                            </div>
-                        </div>
+                    <!-- SVG Timeline connecting line -->
+                    <div class="absolute inset-0 pointer-events-none hidden md:block z-0 opacity-40">
+                        <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 1000 1400">
+                            <!-- Background path -->
+                            <path d="M 250,50 C 500,50 500,250 750,250 C 1000,250 1000,450 750,450 C 500,450 500,700 250,700 C 0,700 0,950 250,950 C 500,950 500,1200 750,1200" 
+                                  fill="none" stroke="#C9A227" stroke-width="1" stroke-dasharray="8,8" opacity="0.3"/>
+                            <!-- Active path to be animated -->
+                            <path id="timeline-path-active" d="M 250,50 C 500,50 500,250 750,250 C 1000,250 1000,450 750,450 C 500,450 500,700 250,700 C 0,700 0,950 250,950 C 500,950 500,1200 750,1200" 
+                                  fill="none" stroke="url(#gold-grad-bright)" stroke-width="3" style="stroke-dasharray: 4000; stroke-dashoffset: 4000;"/>
+                                  
+                            <defs>
+                                <linearGradient id="gold-grad-bright" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" stop-color="#C9A227"/>
+                                    <stop offset="50%" stop-color="#2F6BFF"/>
+                                    <stop offset="100%" stop-color="#C9A227"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
                     </div>
 
-                    <!-- Step 02 -->
-                    <div class="journey-step relative flex flex-col md:flex-row-reverse items-start md:items-center w-full group">
-                        <div class="hidden md:block md:w-1/2 pl-16 text-left opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            <span class="text-8xl font-serif text-white/5 font-bold italic tracking-tighter">02</span>
-                        </div>
+                    <!-- Process Cards -->
+                    <div class="relative z-10 flex flex-col md:grid md:grid-cols-2 gap-y-12 md:gap-y-32 gap-x-12 lg:gap-x-24">
                         
-                        <div class="absolute left-[40px] md:left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center z-10 step-node transition-colors duration-500 mt-4 md:mt-0">
-                            <span class="text-slate-500 font-bold text-xs md:text-sm node-number">02</span>
-                        </div>
-
-                        <div class="w-full md:w-1/2 pl-[90px] md:pl-0 md:pr-16 step-card opacity-0 -translate-x-10 text-left md:text-right">
-                            <div class="p-8 md:p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-[#C4A052]/50 transition-all duration-500 group-hover:-translate-y-2 shadow-2xl relative overflow-hidden flex flex-col md:items-end">
-                                <div class="absolute top-0 left-0 w-32 h-32 bg-[#C4A052]/20 rounded-br-full blur-3xl"></div>
-                                <div class="w-12 h-12 rounded-2xl bg-[#C4A052]/20 flex items-center justify-center text-[#C4A052] mb-6">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7"></path></svg>
-                                </div>
-                                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#C4A052] transition-colors">Editorial Review</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed md:text-right">Expert editors conduct a deep-dive evaluation of your draft. We focus on structural flow, narrative pacing, and overall market readiness.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 03 -->
-                    <div class="journey-step relative flex flex-col md:flex-row items-start md:items-center w-full group">
-                        <div class="hidden md:block md:w-1/2 pr-16 text-right opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            <span class="text-8xl font-serif text-white/5 font-bold italic tracking-tighter">03</span>
-                        </div>
-                        
-                        <div class="absolute left-[40px] md:left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center z-10 step-node transition-colors duration-500 mt-4 md:mt-0">
-                            <span class="text-slate-500 font-bold text-xs md:text-sm node-number">03</span>
-                        </div>
-
-                        <div class="w-full md:w-1/2 pl-[90px] md:pl-16 step-card opacity-0 translate-x-10">
-                            <div class="p-8 md:p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-[#C4A052]/50 transition-all duration-500 group-hover:-translate-y-2 shadow-2xl relative overflow-hidden">
-                                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/20 rounded-bl-full blur-3xl"></div>
-                                <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 flex items-center justify-center text-emerald-400 mb-6">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
-                                </div>
-                                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#C4A052] transition-colors">Publishing Agreement</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">We formalize our partnership. You retain full copyright ownership while we agree on royalty splits, distribution channels, and timelines.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 04 -->
-                    <div class="journey-step relative flex flex-col md:flex-row-reverse items-start md:items-center w-full group">
-                        <div class="hidden md:block md:w-1/2 pl-16 text-left opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            <span class="text-8xl font-serif text-white/5 font-bold italic tracking-tighter">04</span>
-                        </div>
-                        
-                        <div class="absolute left-[40px] md:left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center z-10 step-node transition-colors duration-500 mt-4 md:mt-0">
-                            <span class="text-slate-500 font-bold text-xs md:text-sm node-number">04</span>
-                        </div>
-
-                        <div class="w-full md:w-1/2 pl-[90px] md:pl-0 md:pr-16 step-card opacity-0 -translate-x-10 text-left md:text-right">
-                            <div class="p-8 md:p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-[#C4A052]/50 transition-all duration-500 group-hover:-translate-y-2 shadow-2xl relative overflow-hidden flex flex-col md:items-end">
-                                <div class="absolute top-0 left-0 w-32 h-32 bg-purple-500/20 rounded-br-full blur-3xl"></div>
-                                <div class="w-12 h-12 rounded-2xl bg-purple-500/20 flex items-center justify-center text-purple-400 mb-6">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
-                                </div>
-                                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#C4A052] transition-colors">Book Production</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed md:text-right">Our designers bring your book to life. This includes custom cover design, interior typesetting, formatting for Kindle, and final proof audits.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 05 -->
-                    <div class="journey-step relative flex flex-col md:flex-row items-start md:items-center w-full group">
-                        <div class="hidden md:block md:w-1/2 pr-16 text-right opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            <span class="text-8xl font-serif text-white/5 font-bold italic tracking-tighter">05</span>
-                        </div>
-                        
-                        <div class="absolute left-[40px] md:left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center z-10 step-node transition-colors duration-500 mt-4 md:mt-0">
-                            <span class="text-slate-500 font-bold text-xs md:text-sm node-number">05</span>
-                        </div>
-
-                        <div class="w-full md:w-1/2 pl-[90px] md:pl-16 step-card opacity-0 translate-x-10">
-                            <div class="p-8 md:p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-[#C4A052]/50 transition-all duration-500 group-hover:-translate-y-2 shadow-2xl relative overflow-hidden">
-                                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-500/20 rounded-bl-full blur-3xl"></div>
-                                <div class="w-12 h-12 rounded-2xl bg-cyan-500/20 flex items-center justify-center text-cyan-400 mb-6">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
-                                </div>
-                                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#C4A052] transition-colors">Printing & Distribution</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">Files are locked. We initiate print-on-demand setups and upload your manuscript to Ingram, Amazon KDP, and Apple Books for global reach.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 06 -->
-                    <div class="journey-step relative flex flex-col md:flex-row-reverse items-start md:items-center w-full group">
-                        <div class="hidden md:block md:w-1/2 pl-16 text-left opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            <span class="text-8xl font-serif text-white/5 font-bold italic tracking-tighter">06</span>
-                        </div>
-                        
-                        <div class="absolute left-[40px] md:left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center z-10 step-node transition-colors duration-500 mt-4 md:mt-0">
-                            <span class="text-slate-500 font-bold text-xs md:text-sm node-number">06</span>
-                        </div>
-
-                        <div class="w-full md:w-1/2 pl-[90px] md:pl-0 md:pr-16 step-card opacity-0 -translate-x-10 text-left md:text-right">
-                            <div class="p-8 md:p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-[#C4A052]/50 transition-all duration-500 group-hover:-translate-y-2 shadow-2xl relative overflow-hidden flex flex-col md:items-end">
-                                <div class="absolute top-0 left-0 w-32 h-32 bg-pink-500/20 rounded-br-full blur-3xl"></div>
-                                <div class="w-12 h-12 rounded-2xl bg-pink-500/20 flex items-center justify-center text-pink-400 mb-6">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path></svg>
-                                </div>
-                                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#C4A052] transition-colors">Marketing & Promotion</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed md:text-right">The buzz begins. We deploy targeted social media campaigns, author interviews, and press wire distributions to build anticipation.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 07 -->
-                    <div class="journey-step relative flex flex-col md:flex-row items-start md:items-center w-full group">
-                        <div class="hidden md:block md:w-1/2 pr-16 text-right opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            <span class="text-8xl font-serif text-white/5 font-bold italic tracking-tighter">07</span>
-                        </div>
-                        
-                        <div class="absolute left-[40px] md:left-1/2 transform -translate-x-1/2 w-10 h-10 md:w-14 md:h-14 rounded-full bg-[#0f172a] border-4 border-slate-800 flex items-center justify-center z-10 step-node transition-colors duration-500 mt-4 md:mt-0">
-                            <span class="text-slate-500 font-bold text-xs md:text-sm node-number">07</span>
-                        </div>
-
-                        <div class="w-full md:w-1/2 pl-[90px] md:pl-16 step-card opacity-0 translate-x-10">
-                            <div class="p-8 md:p-10 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 hover:bg-white/10 hover:border-[#C4A052]/50 transition-all duration-500 group-hover:-translate-y-2 shadow-2xl relative overflow-hidden">
-                                <div class="absolute top-0 right-0 w-32 h-32 bg-sky-500/20 rounded-bl-full blur-3xl"></div>
-                                <div class="w-12 h-12 rounded-2xl bg-sky-500/20 flex items-center justify-center text-sky-400 mb-6">
-                                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                </div>
-                                <h3 class="text-2xl font-serif text-white mb-3 group-hover:text-[#C4A052] transition-colors">Global Publication</h3>
-                                <p class="text-sm text-slate-400 leading-relaxed">Launch Day. Your book is officially published and available for purchase in bookstores and online retailers across the globe.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Step 08 -->
-                    <div class="journey-step relative flex flex-col md:flex-row-reverse items-start md:items-center w-full group">
-                        <div class="hidden md:block md:w-1/2 pl-16 text-left opacity-0 md:group-hover:opacity-100 transition-opacity duration-700 pointer-events-none">
-                            <span class="text-8xl font-serif text-[#C4A052]/10 font-bold italic tracking-tighter">08</span>
-                        </div>
-                        
-                        <div class="absolute left-[40px] md:left-1/2 transform -translate-x-1/2 w-12 h-12 md:w-16 md:h-16 rounded-full bg-[#1b253b] border-4 border-[#C4A052] shadow-[0_0_30px_rgba(196,160,82,0.5)] flex items-center justify-center z-10 step-node final-node mt-3 md:mt-0">
-                            <svg class="w-6 h-6 text-[#C4A052]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path></svg>
-                        </div>
-
-                        <div class="w-full md:w-1/2 pl-[90px] md:pl-0 md:pr-16 step-card opacity-0 -translate-x-10 text-left md:text-right">
-                            <div class="p-8 md:p-10 rounded-3xl bg-[#C4A052]/10 backdrop-blur-xl border border-[#C4A052]/40 hover:bg-[#C4A052]/20 transition-all duration-500 shadow-[0_0_50px_rgba(196,160,82,0.15)] relative overflow-hidden flex flex-col md:items-end">
-                                <h3 class="text-3xl font-serif text-[#C4A052] mb-4">Author Success Spotlight</h3>
-                                <p class="text-sm text-slate-300 leading-relaxed md:text-right mb-8">You are now a published author. Enjoy the royalties, track your global sales, and start thinking about your next masterpiece.</p>
+                        <!-- Step 1 -->
+                        <div class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:ml-auto md:mr-0 mt-0">
+                            <div class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+                            
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">01</span>
                                 
-                                <a href="#" class="inline-flex items-center gap-3 px-8 py-4 bg-[#C4A052] text-[#0f172a] rounded-full font-bold text-xs uppercase tracking-widest hover:bg-white hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-[#C4A052]/30 group">
-                                    Start Your Journey
-                                    <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                                </a>
+                                <div class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    📖
+                                </div>
+                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Manuscript</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed z-10">Comprehensive evaluation of your draft for structural flow, pacing, and narrative alignment.</p>
                             </div>
+                        </div>
+
+                        <!-- Step 2 -->
+                        <div class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:mr-auto md:ml-0 md:mt-32">
+                            <div class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+                            
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">02</span>
+                                
+                                <div class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    ✏️
+                                </div>
+                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Editing</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed z-10">Professional line edits and copyediting to polish prose while preserving your authentic voice.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 3 -->
+                        <div class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:ml-auto md:mr-0 mt-0">
+                            <div class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+                            
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">03</span>
+                                
+                                <div class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    🎨
+                                </div>
+                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Design</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed z-10">Bespoke cover artistry and interior typesetting crafted to capture your story's essence.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 4 -->
+                        <div class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:mr-auto md:ml-0 md:mt-32">
+                            <div class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+                            
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">04</span>
+                                
+                                <div class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    🔍
+                                </div>
+                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Proofreading</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed z-10">Rigorous final audit of digital proofs to ensure impeccable quality before production.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 5 -->
+                        <div class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:ml-auto md:mr-0 mt-0">
+                            <div class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+                            
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">05</span>
+                                
+                                <div class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    🖨️
+                                </div>
+                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Printing</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed z-10">High-end physical production utilizing premium paper stock, bindings, and finishes.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 6 -->
+                        <div class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:mr-auto md:ml-0 md:mt-32">
+                            <div class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+                            
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">06</span>
+                                
+                                <div class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    🌍
+                                </div>
+                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Distribution</h3>
+                                <p class="text-xs text-slate-500 leading-relaxed z-10">Seamless integration with global networks including Amazon, Apple Books, and Ingram.</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Step 7 -->
+                        <div class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:col-span-2 mt-0 md:mt-12">
+                            <div class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#2F6BFF]/10 opacity-0 transition-opacity duration-500 pointer-events-none"></div>
+                            
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">07</span>
+                                
+                                <div class="journey-icon-wrap w-20 h-20 rounded-full bg-gradient-to-r from-[#0F1B3D] to-[#2F6BFF] text-white flex items-center justify-center text-3xl mb-6 shadow-[0_10px_25px_rgba(47,107,255,0.3)] z-10">
+                                    🚀
+                                </div>
+                                <h3 class="text-2xl font-bold text-[#0F1B3D] mb-3 z-10">Launch</h3>
+                                <p class="text-sm text-slate-500 leading-relaxed max-w-md z-10">Targeted marketing strategies, press wire releases, and dedicated support to celebrate and elevate your debut.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Transition Gradient to next section -->
+        <div id="journey-bottom-transition" class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white dark:from-slate-900 to-transparent pointer-events-none z-10 transition-colors duration-1000"></div>
+    </section>
+
+    <!-- JS dependencies for GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Generate Golden Particles
+        const particlesContainer = document.getElementById('particles-container');
+        for (let i = 0; i < 40; i++) {
+            const p = document.createElement('div');
+            p.className = 'journey-particle';
+            p.style.left = Math.random() * 100 + '%';
+            p.style.top = Math.random() * 100 + '%';
+            p.style.opacity = Math.random() * 0.4 + 0.1;
+            particlesContainer.appendChild(p);
+            
+            // Random floating animation
+            gsap.to(p, {
+                y: -100 - Math.random() * 200,
+                x: (Math.random() - 0.5) * 100,
+                duration: 10 + Math.random() * 20,
+                repeat: -1,
+                yoyo: true,
+                ease: "sine.inOut"
+            });
+        }
+
+        // Parallax effects
+        gsap.to(".parallax-bg-slow", {
+            y: 200,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#journey-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+        
+        gsap.to(".parallax-bg-fast", {
+            y: -300,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#journey-section",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+        
+        // Progress Indicator Fill
+        gsap.to(".progress-line-fill", {
+            scaleY: 1,
+            ease: "none",
+            scrollTrigger: {
+                trigger: "#timeline-container",
+                start: "top center",
+                end: "bottom center",
+                scrub: true
+            }
+        });
+        
+        // Timeline connecting line
+        const timelinePath = document.getElementById('timeline-path-active');
+        if (timelinePath) {
+            gsap.to(timelinePath, {
+                strokeDashoffset: 0,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "#timeline-container",
+                    start: "top 60%",
+                    end: "bottom 80%",
+                    scrub: true
+                }
+            });
+        }
+
+        // Title animations
+        gsap.to("#journey-title", 
+            { y: 0, opacity: 1, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "#journey-content", start: "top 80%" } }
+        );
+        gsap.fromTo("#journey-title", {y: 50}, {y: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: "#journey-content", start: "top 80%" }});
+        
+        gsap.to("#journey-subtitle", 
+            { y: 0, opacity: 1, duration: 1, delay: 0.2, ease: "power3.out", scrollTrigger: { trigger: "#journey-content", start: "top 80%" } }
+        );
+        gsap.fromTo("#journey-subtitle", {y: 20}, {y: 0, duration: 1, delay: 0.2, ease: "power3.out", scrollTrigger: { trigger: "#journey-content", start: "top 80%" }});
+
+        // Cards sequential animation
+        const cards = document.querySelectorAll('.journey-card');
+        const dots = document.querySelectorAll('.prog-dot');
+        
+        cards.forEach((card, index) => {
+            // Enter animation
+            gsap.to(card, {
+                opacity: 1,
+                scale: 1,
+                y: 0,
+                filter: "blur(0px)",
+                duration: 0.9,
+                ease: "expo.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%",
+                    onEnter: () => {
+                        card.classList.add('is-active');
+                        if(dots[index]) {
+                            dots[index].style.borderColor = '#C9A227';
+                            dots[index].style.boxShadow = '0 0 10px rgba(201, 162, 39, 0.5)';
+                        }
+                        // Add floating after appearance
+                        setTimeout(() => card.classList.add('is-floating'), 900);
+                    },
+                    onLeaveBack: () => {
+                        card.classList.remove('is-active', 'is-floating');
+                        if(dots[index]) {
+                            dots[index].style.borderColor = '';
+                            dots[index].style.boxShadow = '';
+                        }
+                    }
+                }
+            });
+            gsap.fromTo(card, {y: 80, scale: 0.9, filter: "blur(12px)"}, {
+                y: 0, scale: 1, filter: "blur(0px)", duration: 0.9, ease: "expo.out",
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top 80%"
+                }
+            });
+            
+            // Remove active state when scrolling past
+            ScrollTrigger.create({
+                trigger: card,
+                start: "top 40%",
+                onEnter: () => card.classList.remove('is-active'),
+                onLeaveBack: () => card.classList.add('is-active')
+            });
+        });
+        
+        // Final transition to next section
+        gsap.to("#journey-section", {
+            backgroundColor: "#0F1B3D", // Darker transition matching next section's theme
+            ease: "power2.inOut",
+            scrollTrigger: {
+                trigger: cards[cards.length - 1],
+                start: "top 50%",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+        
+        gsap.to(".journey-bg-paper", {
+            opacity: 0,
+            ease: "power2.inOut",
+            scrollTrigger: {
+                trigger: cards[cards.length - 1],
+                start: "top 50%",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+    });
+    </script>
+
+    <!-- The Literary Media Lounge (Redesigned) -->
+    <style>
+    /* Media Lounge Styles */
+    #media-lounge {
+        background: linear-gradient(135deg, #F8F5EE 0%, #F2E7D3 100%);
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Parallax background layers */
+    .media-layer-bg {
+        position: absolute;
+        inset: -10%;
+        opacity: 0.03;
+        background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.3"/%3E%3C/svg%3E');
+        pointer-events: none;
+    }
+    .media-spotlight {
+        position: absolute;
+        width: 800px;
+        height: 800px;
+        background: radial-gradient(circle, rgba(201,162,39,0.08) 0%, rgba(255,255,255,0) 70%);
+        border-radius: 50%;
+        pointer-events: none;
+        top: -10%;
+        left: -10%;
+    }
+    .media-feather {
+        position: absolute;
+        opacity: 0.15;
+        pointer-events: none;
+        filter: blur(2px);
+    }
+
+    /* Cards */
+    .media-featured-card {
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        box-shadow: 0 20px 40px rgba(15, 27, 61, 0.06);
+        border-radius: 24px;
+        overflow: hidden;
+        transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+    }
+    .media-featured-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 60px rgba(15, 27, 61, 0.1);
+    }
+    .media-featured-img-wrap {
+        overflow: hidden;
+        position: relative;
+    }
+    .media-featured-img {
+        transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .media-featured-card:hover .media-featured-img {
+        transform: scale(1.05);
+    }
+    .glass-sweep {
+        position: absolute;
+        top: 0; left: -100%;
+        width: 50%; height: 100%;
+        background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+        transform: skewX(-20deg);
+        transition: none;
+    }
+    .media-featured-card:hover .glass-sweep {
+        animation: sweep 1.2s ease-in-out;
+    }
+    @keyframes sweep {
+        0% { left: -100%; }
+        100% { left: 200%; }
+    }
+
+    .media-play-btn {
+        transition: all 0.3s ease;
+    }
+    .media-featured-card:hover .media-play-btn {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(201,162,39,0.5);
+    }
+
+    /* List Cards */
+    .media-list-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        border-radius: 16px;
+        padding: 20px;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        box-shadow: 0 10px 20px rgba(15, 27, 61, 0.03);
+    }
+    .media-list-card:hover {
+        transform: translateY(-5px) scale(1.02);
+        box-shadow: 0 15px 30px rgba(15, 27, 61, 0.08);
+        border-color: rgba(201, 162, 39, 0.3);
+    }
+
+    /* Mini Player */
+    #mini-player {
+        position: fixed;
+        bottom: -100px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(15, 27, 61, 0.95);
+        backdrop-filter: blur(15px);
+        padding: 12px 24px;
+        border-radius: 50px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        z-index: 100;
+        transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        border: 1px solid rgba(201, 162, 39, 0.3);
+        color: white;
+    }
+    #mini-player.show {
+        bottom: 30px;
+    }
+    
+    .waveform-bar {
+        width: 3px;
+        background: #C9A227;
+        border-radius: 3px;
+        display: inline-block;
+        animation: pulseWave 1.2s ease-in-out infinite alternate;
+    }
+    .waveform-bar:nth-child(2) { animation-delay: 0.2s; }
+    .waveform-bar:nth-child(3) { animation-delay: 0.4s; }
+    .waveform-bar:nth-child(4) { animation-delay: 0.1s; }
+    .waveform-bar:nth-child(5) { animation-delay: 0.3s; }
+    @keyframes pulseWave {
+        0% { height: 4px; }
+        100% { height: 16px; }
+    }
+    </style>
+
+    <section id="media-lounge" class="py-24 xl:py-32 min-h-screen flex flex-col justify-center border-y border-[#C9A227]/20 z-10 text-[#0F1B3D]">
+        
+        <!-- Parallax Backgrounds -->
+        <div class="media-layer-bg media-parallax-slow"></div>
+        <div class="media-spotlight media-parallax-mid" id="media-spotlight-1"></div>
+        
+        <!-- Abstract background elements -->
+        <div class="absolute inset-0 pointer-events-none overflow-hidden z-0">
+            <svg class="media-feather media-parallax-mid" style="top:20%; right:15%; width:120px;" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="0.5" opacity="0.3"><path d="M12 2C8 6 4 12 4 18C4 20.2 5.8 22 8 22C11.5 22 15 17 18 12C20 8.5 21 5.5 20 4C19 2.5 16 1.5 12 2Z"/></svg>
+            <svg class="media-feather media-parallax-fast" style="bottom:15%; left:10%; width:80px; transform: rotate(-45deg);" viewBox="0 0 24 24" fill="none" stroke="#C9A227" stroke-width="0.5" opacity="0.2"><path d="M12 2C8 6 4 12 4 18C4 20.2 5.8 22 8 22C11.5 22 15 17 18 12C20 8.5 21 5.5 20 4C19 2.5 16 1.5 12 2Z"/></svg>
+        </div>
+
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-20">
+            
+            <div class="text-center mb-16 md:mb-24 media-header opacity-0 translate-y-8">
+                <span class="text-[10px] font-bold text-[#C9A227] uppercase tracking-[0.25em] block mb-4">Multimedia</span>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#0F1B3D] leading-[1.1]">
+                    The Literary Media <span class="italic text-[#C9A227]">Lounge</span>
+                </h2>
+                <p class="text-sm text-slate-500 mt-4 max-w-xl mx-auto">Immerse yourself in our curated collection of expert podcasts, author interviews, and publishing masterclasses.</p>
+            </div>
+
+            <!-- Editorial Layout -->
+            <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+                
+                <!-- Left: Sticky Featured Content -->
+                <div class="w-full lg:w-7/12 sticky top-32 media-featured-container opacity-0 translate-y-10">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-2 h-2 rounded-full bg-[#2F6BFF] animate-pulse"></div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-[#0F1B3D]">Featured Masterclass</span>
+                    </div>
+                    
+                    <div class="media-featured-card cursor-pointer group">
+                        <div class="media-featured-img-wrap aspect-[16/9] w-full bg-slate-200">
+                            <!-- Placeholder premium image -->
+                            <div class="media-featured-img w-full h-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1000')] bg-cover bg-center"></div>
+                            <div class="absolute inset-0 bg-gradient-to-t from-[#0F1B3D]/80 via-[#0F1B3D]/20 to-transparent"></div>
+                            <div class="glass-sweep"></div>
+                            
+                            <!-- Play Button Overlay -->
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="media-play-btn w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center text-white">
+                                    <svg class="w-8 h-8 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                </div>
+                            </div>
+                            
+                            <!-- Bottom Info -->
+                            <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <span class="px-3 py-1 rounded-full bg-[#C9A227] text-white text-[9px] uppercase font-bold tracking-wider">Video</span>
+                                    <span class="text-[10px] font-medium opacity-80">45 Min</span>
+                                </div>
+                                <h3 class="text-3xl font-serif mb-2 leading-tight">The Architecture of Bestselling Storytelling</h3>
+                                <p class="text-sm opacity-80 line-clamp-2">Join industry veteran Elena Rostova as she deconstructs the structural elements that define modern literary success.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Scrolling List -->
+                <div class="w-full lg:w-5/12 flex flex-col gap-6 media-list-container pt-12 lg:pt-0">
+                    
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="text-lg font-serif font-bold text-[#0F1B3D]">Latest Episodes</h4>
+                        <a href="#" class="text-xs font-bold text-[#C9A227] hover:text-[#0F1B3D] transition-colors">View All &rarr;</a>
+                    </div>
+
+                    <!-- Podcast Card 1 -->
+                    <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger" data-title="Designing Book Covers that Sell" data-author="Sarah Jennings">
+                        <div class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1589998059171-989d887dda19?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[#0F1B3D]/40 group-hover:bg-[#0F1B3D]/20 transition-colors"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[9px] uppercase font-bold text-[#C9A227] tracking-wider">Podcast • Ep 48</span>
+                            </div>
+                            <h5 class="font-bold text-sm text-[#0F1B3D] mb-1 group-hover:text-[#2F6BFF] transition-colors">Designing Book Covers that Sell</h5>
+                            <p class="text-[10px] text-slate-500 line-clamp-2 mb-2">Sarah Jennings breaks down cover formats, typography alignment, and color psychology.</p>
+                            <div class="h-4 flex items-end gap-[2px] opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="waveform-bar h-1"></div><div class="waveform-bar h-1"></div><div class="waveform-bar h-1"></div><div class="waveform-bar h-1"></div><div class="waveform-bar h-1"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video Card 1 -->
+                    <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group" data-title="From Manuscript to Series A">
+                        <div class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[#0F1B3D]/40 group-hover:bg-[#0F1B3D]/10 transition-colors"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white">
+                                <svg class="w-8 h-8 drop-shadow-md group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[9px] uppercase font-bold text-[#2F6BFF] tracking-wider">Interview</span>
+                            </div>
+                            <h5 class="font-bold text-sm text-[#0F1B3D] mb-1 group-hover:text-[#2F6BFF] transition-colors">From Manuscript to Series A</h5>
+                            <p class="text-[10px] text-slate-500 line-clamp-2">R. Cunningham details publishing, organizing startup books, and reaching target audiences.</p>
+                        </div>
+                    </div>
+
+                    <!-- Podcast Card 2 -->
+                    <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger" data-title="The Art of Editing" data-author="Michael Chang">
+                        <div class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[#0F1B3D]/40 group-hover:bg-[#0F1B3D]/20 transition-colors"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[9px] uppercase font-bold text-[#C9A227] tracking-wider">Podcast • Ep 47</span>
+                            </div>
+                            <h5 class="font-bold text-sm text-[#0F1B3D] mb-1 group-hover:text-[#2F6BFF] transition-colors">The Art of Ruthless Editing</h5>
+                            <p class="text-[10px] text-slate-500 line-clamp-2 mb-2">How to kill your darlings and tighten your prose without losing your voice.</p>
+                            <div class="h-4 flex items-end gap-[2px] opacity-0 group-hover:opacity-100 transition-opacity">
+                                <div class="waveform-bar h-1"></div><div class="waveform-bar h-1"></div><div class="waveform-bar h-1"></div><div class="waveform-bar h-1"></div><div class="waveform-bar h-1"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Video Card 2 -->
+                    <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group" data-title="Distribution Networks Explained">
+                        <div class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden">
+                            <div class="absolute inset-0 bg-[#0F1B3D]/40 group-hover:bg-[#0F1B3D]/10 transition-colors"></div>
+                            <div class="absolute inset-0 flex items-center justify-center text-white">
+                                <svg class="w-8 h-8 drop-shadow-md group-hover:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="flex-1">
+                            <div class="flex items-center gap-2 mb-1">
+                                <span class="text-[9px] uppercase font-bold text-[#2F6BFF] tracking-wider">Panel</span>
+                            </div>
+                            <h5 class="font-bold text-sm text-[#0F1B3D] mb-1 group-hover:text-[#2F6BFF] transition-colors">Global Distribution Networks</h5>
+                            <p class="text-[10px] text-slate-500 line-clamp-2">Navigating IngramSpark, Amazon KDP, and international retail channels.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mini Floating Player -->
+        <div id="mini-player">
+            <div class="w-10 h-10 rounded-full bg-[#C9A227] flex items-center justify-center text-white cursor-pointer hover:bg-white hover:text-[#C9A227] transition-colors">
+                <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </div>
+            <div class="flex flex-col min-w-[150px]">
+                <span id="player-title" class="text-xs font-bold truncate max-w-[200px]">Episode Title</span>
+                <span id="player-author" class="text-[10px] text-slate-400">Author</span>
+            </div>
+            <div class="flex items-center gap-2">
+                <span class="text-[9px] text-slate-400">12:04</span>
+                <div class="w-32 h-1 bg-white/20 rounded-full relative overflow-hidden">
+                    <div class="absolute top-0 left-0 bottom-0 w-1/3 bg-[#C9A227] rounded-full"></div>
+                </div>
+                <span class="text-[9px] text-slate-400">-33:12</span>
+            </div>
+            <div class="ml-2 text-slate-400 hover:text-white cursor-pointer">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5 10c-1.1 0-2 .9-2 2v4c0 1.1.9 2 2 2h3l4 4V6l-4 4H5z"/></svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- JS dependencies for GSAP are already included from previous section -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        // Media Lounge Entrance Animations
+        gsap.to(".media-header", {
+            y: 0, opacity: 1, duration: 1, ease: "power3.out",
+            scrollTrigger: {
+                trigger: "#media-lounge",
+                start: "top 70%"
+            }
+        });
+
+        // Featured Card Entrance
+        gsap.to(".media-featured-container", {
+            y: 0, opacity: 1, duration: 1, delay: 0.2, ease: "power3.out",
+            scrollTrigger: {
+                trigger: "#media-lounge",
+                start: "top 60%"
+            }
+        });
+
+        // Staggered List Cards
+        gsap.to(".media-item", {
+            y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: "power3.out",
+            scrollTrigger: {
+                trigger: ".media-list-container",
+                start: "top 70%"
+            }
+        });
+
+        // Parallax Layers
+        gsap.to(".media-parallax-slow", {
+            y: 100, ease: "none",
+            scrollTrigger: { trigger: "#media-lounge", start: "top bottom", end: "bottom top", scrub: true }
+        });
+        gsap.to(".media-parallax-mid", {
+            y: 200, ease: "none",
+            scrollTrigger: { trigger: "#media-lounge", start: "top bottom", end: "bottom top", scrub: true }
+        });
+        gsap.to(".media-parallax-fast", {
+            y: -150, ease: "none",
+            scrollTrigger: { trigger: "#media-lounge", start: "top bottom", end: "bottom top", scrub: true }
+        });
+
+        // Mousemove 3D Tilt & Light Follow
+        const section = document.getElementById('media-lounge');
+        const spotlight = document.getElementById('media-spotlight-1');
+        const cards = document.querySelectorAll('.media-list-card, .media-featured-card');
+
+        if(section && spotlight) {
+            section.addEventListener('mousemove', (e) => {
+                const rect = section.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Move spotlight
+                gsap.to(spotlight, {
+                    x: (x - rect.width/2) * 0.1,
+                    y: (y - rect.height/2) * 0.1,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+
+                // Tilt cards slightly
+                cards.forEach(card => {
+                    const cardRect = card.getBoundingClientRect();
+                    const cardCenterX = cardRect.left + cardRect.width / 2;
+                    const cardCenterY = cardRect.top + cardRect.height / 2;
+                    const deltaX = e.clientX - cardCenterX;
+                    const deltaY = e.clientY - cardCenterY;
+                    
+                    // Only tilt if mouse is relatively close
+                    if(Math.abs(deltaX) < 400 && Math.abs(deltaY) < 400) {
+                        gsap.to(card, {
+                            rotateY: deltaX * 0.01,
+                            rotateX: -deltaY * 0.01,
+                            transformPerspective: 1000,
+                            duration: 0.5,
+                            ease: "power1.out"
+                        });
+                    } else {
+                        gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.5 });
+                    }
+                });
+            });
+            
+            section.addEventListener('mouseleave', () => {
+                cards.forEach(card => gsap.to(card, { rotateY: 0, rotateX: 0, duration: 0.5 }));
+                gsap.to(spotlight, { x: 0, y: 0, duration: 1 });
+            });
+        }
+
+        // Mini Player Interaction
+        const player = document.getElementById('mini-player');
+        const playerTitle = document.getElementById('player-title');
+        const playerAuthor = document.getElementById('player-author');
+        const podcastTriggers = document.querySelectorAll('.podcast-trigger');
+
+        podcastTriggers.forEach(trigger => {
+            trigger.addEventListener('mouseenter', () => {
+                playerTitle.textContent = trigger.dataset.title;
+                playerAuthor.textContent = trigger.dataset.author;
+                player.classList.add('show');
+            });
+        });
+        
+        if(section && player) {
+            section.addEventListener('mouseleave', () => {
+                player.classList.remove('show');
+            });
+        }
+    });
+    </script>
+
+    <!-- Voices from the Penholders (Redesigned) -->
+    <style>
+    /* Hall of Authors Styles */
+    .penholders-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: #F8F5EE; /* Base ivory */
+        transition: background-color 1s ease;
+    }
+    .penholders-bg-layer {
+        position: absolute;
+        inset: -10%;
+        width: 120%;
+        height: 120%;
+        pointer-events: none;
+    }
+    .penholders-bg-texture {
+        opacity: 0.04;
+        background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.4"/%3E%3C/svg%3E');
+    }
+    .penholders-bg-manuscript {
+        opacity: 0.03;
+        background-size: 400px;
+        background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200" opacity="0.5"%3E%3Cpath d="M10 50 Q 50 20 100 50 T 200 50 T 300 50" stroke="%230F1B3D" fill="transparent" stroke-width="0.5"/%3E%3Cpath d="M10 80 Q 80 110 150 80 T 300 80 T 380 80" stroke="%230F1B3D" fill="transparent" stroke-width="0.5"/%3E%3Cpath d="M10 110 Q 60 140 120 110 T 250 110 T 360 110" stroke="%230F1B3D" fill="transparent" stroke-width="0.5"/%3E%3C/svg%3E');
+    }
+    .penholders-bg-rays {
+        background: radial-gradient(circle at 50% 0%, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%);
+        opacity: 0.5;
+    }
+    
+    .author-slide {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    .author-slide.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+    .premium-testimonial-card {
+        background: rgba(255, 255, 255, 0.75);
+        backdrop-filter: blur(24px);
+        border: 1px solid rgba(201, 162, 39, 0.3);
+        border-radius: 24px;
+        box-shadow: 0 30px 60px rgba(15, 27, 61, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+        padding: 40px;
+        max-width: 600px;
+        width: 90%;
+        position: relative;
+        transform-style: preserve-3d;
+        z-index: 10;
+    }
+
+    .book-cover-3d {
+        width: 140px;
+        height: 210px;
+        background: #0F1B3D;
+        border-radius: 4px 8px 8px 4px;
+        box-shadow: -5px 0 10px rgba(0,0,0,0.2), 10px 20px 30px rgba(15, 27, 61, 0.2);
+        position: absolute;
+        top: -60px;
+        right: -40px;
+        transform: rotateY(-20deg) rotateX(10deg);
+        transform-style: preserve-3d;
+        transition: transform 0.5s ease;
+        background-image: url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=300');
+        background-size: cover;
+        background-position: center;
+    }
+    .book-cover-3d::before {
+        content: '';
+        position: absolute;
+        left: 0; top: 0; bottom: 0; width: 8px;
+        background: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,255,255,0.1) 50%, rgba(0,0,0,0.2));
+        border-radius: 4px 0 0 4px;
+    }
+    
+    .quote-word {
+        display: inline-block;
+        opacity: 0.2;
+        transform: translateY(5px);
+        transition: all 0.4s ease;
+    }
+    .quote-word.revealed {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    
+    .quote-mark-bg {
+        position: absolute;
+        font-family: serif;
+        font-size: 200px;
+        line-height: 1;
+        color: rgba(201, 162, 39, 0.08);
+        top: -20px;
+        left: -10px;
+        z-index: -1;
+        user-select: none;
+    }
+
+    .journey-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 30px;
+    }
+    .journey-step {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(15, 27, 61, 0.2);
+    }
+    .journey-step.active {
+        background: #C9A227;
+        box-shadow: 0 0 10px #C9A227;
+    }
+    .journey-line {
+        height: 1px;
+        flex: 1;
+        background: rgba(15, 27, 61, 0.1);
+    }
+
+    .floating-badge {
+        position: absolute;
+        background: rgba(255,255,255,0.9);
+        backdrop-filter: blur(10px);
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: bold;
+        color: #0F1B3D;
+        border: 1px solid rgba(201, 162, 39, 0.3);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        animation: floatBadge 6s ease-in-out infinite;
+    }
+    @keyframes floatBadge {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+    }
+
+    .ending-scene {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: 20;
+        background: rgba(15, 27, 61, 0.85);
+        backdrop-filter: blur(10px);
+        color: white;
+    }
+    </style>
+
+    <div class="penholders-wrapper" id="hall-of-authors">
+        
+        <!-- Background Layers -->
+        <div class="penholders-bg-layer penholders-bg-texture" id="hoa-texture"></div>
+        <div class="penholders-bg-layer penholders-bg-manuscript" id="hoa-manuscript"></div>
+        <div class="penholders-bg-layer penholders-bg-rays" id="hoa-rays"></div>
+
+        <!-- Header -->
+        <div class="absolute top-12 md:top-20 left-0 right-0 text-center z-20 px-4">
+            <span class="text-[10px] sm:text-xs font-bold text-[#C9A227] uppercase tracking-[0.25em] block mb-2 sm:mb-4">Hall of Authors</span>
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-serif text-[#0F1B3D] leading-tight">Voices from the Penholders</h2>
+            <p class="text-xs sm:text-sm text-slate-500 mt-3 sm:mt-4 max-w-xl mx-auto">Publishing testimonials from writers who worked with our house.</p>
+        </div>
+
+        <!-- Dynamic Authors Data -->
+        @php
+            $authorData = [];
+            if(isset($authors) && $authors->count() > 0) {
+                foreach($authors as $index => $author) {
+                    $bookTitle = $author->publishedBooks->first() ? $author->publishedBooks->first()->title : 'Independent Work';
+                    $authorData[] = [
+                        'name' => $author->name,
+                        'book' => $bookTitle,
+                        'quote' => "Publishing through Books Academy gave me the control I needed over my creative work. The process was seamless and incredibly supportive.",
+                        'bg' => ['#F8F5EE', '#F3E5D8', '#F9F6F0', '#F4EFE6', '#F5ECE4'][$index % 5]
+                    ];
+                }
+            } else {
+                $authorData = [
+                    ['name' => 'Alvin Mercer', 'book' => 'Coded Thoughts', 'quote' => 'The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and professional support throughout the process.', 'bg' => '#F8F5EE'],
+                    ['name' => 'Martha Vance', 'book' => 'Children of the Wild', 'quote' => 'Children\'s book illustrations need precise color alignment. Their formatting team verified files and set up spreads beautifully.', 'bg' => '#F3E5D8'],
+                    ['name' => 'Howard Stark', 'book' => 'Startup Architecture', 'quote' => 'Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live worldwide within 48 hours.', 'bg' => '#F9F6F0'],
+                ];
+            }
+        @endphp
+
+        <!-- Authors Container -->
+        <div class="authors-container w-full h-full relative" id="hoa-container" data-authors="{{ json_encode($authorData) }}">
+            @foreach($authorData as $index => $data)
+            <div class="author-slide" id="author-slide-{{ $index }}">
+                <div class="premium-testimonial-card hoa-card">
+                    <div class="quote-mark-bg">"</div>
+                    <div class="book-cover-3d hoa-book"></div>
+                    
+                    <div class="floating-badge" style="top: -20px; left: -20px; animation-delay: 0s;">⭐ 5-Star Review</div>
+                    <div class="floating-badge" style="bottom: -20px; right: 20px; animation-delay: 1.5s;">🌍 Published Worldwide</div>
+
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-[#0F1B3D]">{{ $data['name'] }}</h3>
+                        <p class="text-xs font-bold uppercase tracking-wider text-[#C9A227]">Author of "{{ $data['book'] }}"</p>
+                    </div>
+
+                    <p class="text-lg text-slate-700 leading-relaxed font-serif italic quote-container" data-quote="{{ $data['quote'] }}">
+                        <!-- Quote injected via JS for word-by-word reveal -->
+                    </p>
+
+                    <div class="mt-8 flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-slate-200 flex items-center justify-center font-bold text-[#0F1B3D]">
+                            {{ collect(explode(' ', $data['name']))->map(fn($s) => strtoupper(substr($s,0,1)))->join('') }}
+                        </div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Signature_of_John_Hancock.svg" class="h-8 opacity-30" alt="Signature">
+                    </div>
+
+                    <div class="journey-bar">
+                        <div class="journey-step active"></div><div class="journey-line"></div>
+                        <div class="journey-step active"></div><div class="journey-line"></div>
+                        <div class="journey-step active"></div><div class="journey-line"></div>
+                        <div class="journey-step active"></div><div class="journey-line"></div>
+                        <div class="journey-step active" style="box-shadow: 0 0 15px #C9A227;"></div>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+
+        <!-- Ending Scene -->
+        <div class="ending-scene" id="hoa-ending">
+            <h2 class="text-5xl font-serif mb-6 text-center text-white text-shadow-lg">Your Story Could Be Next.</h2>
+            <p class="text-slate-300 mb-8 max-w-md text-center">Join thousands of authors who have successfully brought their manuscripts to life in our Hall of Authors.</p>
+            <button class="px-8 py-4 bg-gradient-to-r from-[#C9A227] to-[#D4B247] rounded-full text-white font-bold tracking-wider uppercase text-sm shadow-[0_0_30px_rgba(201,162,39,0.5)] hover:scale-105 hover:shadow-[0_0_50px_rgba(201,162,39,0.8)] transition-all duration-300">
+                Start Your Publishing Journey
+            </button>
+        </div>
+
+    </div>
+
+    <!-- JS dependencies for GSAP are already included -->
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+        const wrapper = document.getElementById('hall-of-authors');
+        const container = document.getElementById('hoa-container');
+        const ending = document.getElementById('hoa-ending');
+        if(!wrapper || !container) return;
+
+        const authorData = JSON.parse(container.dataset.authors);
+        const numAuthors = authorData.length;
+        const slides = document.querySelectorAll('.author-slide');
+
+        // Prepare quotes for word-by-word reveal
+        document.querySelectorAll('.quote-container').forEach(qc => {
+            const words = qc.dataset.quote.split(' ');
+            qc.innerHTML = words.map(w => `<span class="quote-word">${w}</span>`).join(' ');
+        });
+
+        // 3D Mouse Tilt
+        wrapper.addEventListener('mousemove', (e) => {
+            const rect = wrapper.getBoundingClientRect();
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const y = (e.clientY - rect.top) / rect.height - 0.5;
+            
+            gsap.to('.author-slide.active .hoa-card', {
+                rotateY: x * 10,
+                rotateX: -y * 10,
+                duration: 0.5,
+                ease: "power2.out"
+            });
+            gsap.to('.author-slide.active .hoa-book', {
+                rotateY: -20 + (x * 20),
+                rotateX: 10 + (-y * 20),
+                duration: 0.5,
+                ease: "power2.out"
+            });
+        });
+        wrapper.addEventListener('mouseleave', () => {
+            gsap.to('.hoa-card', { rotateY: 0, rotateX: 0, duration: 0.5 });
+            gsap.to('.hoa-book', { rotateY: -20, rotateX: 10, duration: 0.5 });
+        });
+
+        // Master Timeline
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: wrapper,
+                start: "top top",
+                end: `+=${numAuthors * 100}%`,
+                pin: true,
+                scrub: 1,
+            }
+        });
+
+        // Loop through authors and create staggered transitions
+        slides.forEach((slide, i) => {
+            const isLast = i === numAuthors - 1;
+            const words = slide.querySelectorAll('.quote-word');
+            
+            // Enter current slide
+            tl.to(slide, { autoAlpha: 1, duration: 0.5, onStart: () => {
+                slides.forEach(s => s.classList.remove('active'));
+                slide.classList.add('active');
+                gsap.to(wrapper, { backgroundColor: authorData[i].bg, duration: 1 });
+            }}, i * 2);
+            
+            // Pop in card
+            tl.fromTo(slide.querySelector('.hoa-card'), 
+                { scale: 0.9, y: 50 }, 
+                { scale: 1, y: 0, duration: 0.5, ease: "back.out(1.5)" }, 
+                i * 2
+            );
+
+            // Word-by-word reveal
+            tl.to(words, { opacity: 1, y: 0, stagger: 0.05, duration: 0.1 }, i * 2 + 0.5);
+
+            if (!isLast) {
+                // Exit current slide before next
+                tl.to(slide, { autoAlpha: 0, scale: 0.9, y: -50, duration: 0.5 }, (i * 2) + 1.5);
+            } else {
+                // End Scene
+                tl.to(slide, { autoAlpha: 0, scale: 0.9, y: -50, duration: 0.5 }, (i * 2) + 1.5);
+                tl.to(ending, { autoAlpha: 1, duration: 0.5 }, (i * 2) + 2);
+            }
+        });
+
+        // Background Parallax within the pinned section using progress
+        gsap.to("#hoa-texture", {
+            y: "-10%",
+            ease: "none",
+            scrollTrigger: { trigger: wrapper, start: "top top", end: `+=${numAuthors * 100}%`, scrub: true }
+        });
+        gsap.to("#hoa-manuscript", {
+            y: "-20%", x: "-5%",
+            ease: "none",
+            scrollTrigger: { trigger: wrapper, start: "top top", end: `+=${numAuthors * 100}%`, scrub: true }
+        });
+    });
+    </script>
+
+    <!-- Global Collaborations Section (Interactive 3D Experience) -->
+    <style>
+    /* Globe Section Premium Styling */
+    .globe-section-wrapper {
+        position: relative;
+        width: 100%;
+        min-height: 100vh;
+        overflow: hidden;
+        background: linear-gradient(to bottom, #FFFBF5, #F8F5EE); /* Warm Ivory Gradient */
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+    }
+    
+    /* Background Elements */
+    .globe-bg-marble {
+        position: absolute;
+        inset: 0;
+        opacity: 0.15;
+        background-image: url('https://images.unsplash.com/photo-1542880941-18ed36592275?q=80&w=1920'); /* subtle marble/paper texture */
+        background-size: cover;
+        background-position: center;
+        mix-blend-mode: multiply;
+        pointer-events: none;
+    }
+    .globe-bg-dust {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 70% 50%, rgba(201, 162, 39, 0.1) 0%, rgba(255,255,255,0) 60%);
+        pointer-events: none;
+    }
+
+    /* Layout Split */
+    .globe-content {
+        width: 100%;
+        padding-right: 0;
+        z-index: 20;
+    }
+
+    .globe-canvas-container {
+        width: 100%;
+        height: 60vh;
+        position: relative;
+        z-index: 10;
+        cursor: grab;
+    }
+    .globe-canvas-container:active {
+        cursor: grabbing;
+    }
+
+    @media (min-width: 1024px) {
+        .globe-content {
+            padding-right: 4rem;
+        }
+        .globe-canvas-container {
+            height: 80vh;
+        }
+    }
+
+    /* Typography & Content */
+    .globe-subtitle {
+        font-size: 0.75rem;
+        font-weight: 700;
+        color: #C9A227;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        margin-bottom: 1rem;
+        display: block;
+    }
+    
+    .globe-title {
+        font-size: 3.5rem;
+        font-family: serif;
+        color: #0F1B3D;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+    }
+    .globe-title span {
+        font-style: italic;
+        color: #C9A227;
+    }
+
+    .globe-desc {
+        font-size: 1rem;
+        color: #64748b;
+        line-height: 1.7;
+        margin-bottom: 2.5rem;
+        max-width: 90%;
+    }
+
+    .globe-cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 2rem;
+        background: #0F1B3D;
+        color: #fff;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        border-radius: 9999px;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(15, 27, 61, 0.15);
+    }
+    .globe-cta:hover {
+        background: #C9A227;
+        transform: translateY(-2px);
+        box-shadow: 0 15px 30px rgba(201, 162, 39, 0.3);
+    }
+
+    /* Statistics */
+    .globe-stats-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        margin-top: 4rem;
+        border-top: 1px solid rgba(201, 162, 39, 0.2);
+        padding-top: 3rem;
+    }
+    .globe-stat-item h4 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        font-family: serif;
+        color: #0F1B3D;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    .globe-stat-item span {
+        font-size: 0.75rem;
+        color: #64748b;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 600;
+    }
+
+    /* Partner Logos in 3D Space (HTML Overlays) */
+    .partner-logo-satellite {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transform-origin: center center;
+        width: 80px;
+        height: 80px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(12px);
+        border: 1px solid rgba(201, 162, 39, 0.4);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1), inset 0 0 15px rgba(255,255,255,0.8);
+        cursor: pointer;
+        z-index: 30;
+        will-change: transform;
+    }
+    .partner-logo-satellite.hovered-state {
+        border-color: rgba(201, 162, 39, 0.8);
+        box-shadow: 0 15px 40px rgba(201, 162, 39, 0.3), inset 0 0 20px rgba(255,255,255,1);
+        z-index: 50 !important;
+    }
+    .partner-logo-satellite img {
+        max-width: 75%;
+        max-height: 75%;
+        opacity: 0.9;
+        transition: all 0.3s ease;
+    }
+    .partner-logo-satellite.hovered-state img {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+
+    /* Info Card */
+    .partner-info-card {
+        position: absolute;
+        top: -140px;
+        left: 50%;
+        transform: translateX(-50%) translateY(20px);
+        width: 260px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(201, 162, 39, 0.3);
+        border-radius: 16px;
+        padding: 1.5rem;
+        box-shadow: 0 20px 40px rgba(15, 27, 61, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        pointer-events: none;
+    }
+    .partner-info-card::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%) rotate(45deg);
+        width: 16px;
+        height: 16px;
+        background: rgba(255, 255, 255, 0.95);
+        border-bottom: 1px solid rgba(201, 162, 39, 0.3);
+        border-right: 1px solid rgba(201, 162, 39, 0.3);
+    }
+    .partner-logo-satellite.hovered-state .partner-info-card {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+    }
+    .partner-card-title {
+        font-family: serif;
+        font-size: 1.25rem;
+        color: #0F1B3D;
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+    }
+    .partner-card-subtitle {
+        font-size: 0.65rem;
+        color: #C9A227;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+    }
+    .partner-card-desc {
+        font-size: 0.8rem;
+        color: #64748b;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+    }
+    .partner-card-link {
+        font-size: 0.75rem;
+        color: #0F1B3D;
+        font-weight: 700;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.25rem;
+        pointer-events: auto;
+    }
+    .partner-card-link:hover {
+        color: #C9A227;
+    }
+
+    #globe-webgl-container {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+    </style>
+
+    <section class="globe-section-wrapper" id="global-collaborations">
+        <!-- Background Layers -->
+        <div class="globe-bg-marble" data-speed="0.2"></div>
+        <div class="globe-bg-dust"></div>
+
+        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between">
+            
+            <!-- Left: Text & Typography (40%) -->
+            <div class="globe-content lg:w-5/12 mb-16 lg:mb-0 globe-text-content opacity-0 translate-y-10">
+                <span class="globe-subtitle">Bookstore Partners</span>
+                <h2 class="globe-title">
+                    Global<br><span>Collaborations</span>
+                </h2>
+                <p class="globe-desc">
+                    Books Academy is not just a publisher. We connect authors to readers all over the world. The globe represents the journey of every published book traveling across continents through our trusted publishing network.
+                </p>
+                <a href="#" class="globe-cta">
+                    Explore Partners 
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </a>
+
+                <div class="globe-stats-grid">
+                    <div class="globe-stat-item">
+                        <h4><span class="counter" data-target="50">0</span>+</h4>
+                        <span>Publishing Partners</span>
+                    </div>
+                    <div class="globe-stat-item">
+                        <h4><span class="counter" data-target="1000">0</span>+</h4>
+                        <span>Bookstores Worldwide</span>
+                    </div>
+                    <div class="globe-stat-item">
+                        <h4><span class="counter" data-target="25">0</span>+</h4>
+                        <span>Countries Reached</span>
+                    </div>
+                    <div class="globe-stat-item">
+                        <h4><span class="counter" data-target="2">0</span>M+</h4>
+                        <span>Readers Worldwide</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Interactive 3D Globe (60%) -->
+            <div class="w-full lg:w-7/12 globe-canvas-container opacity-0 scale-95" id="globe-interactive-area">
+                <div id="globe-webgl-container"></div>
+                
+                <!-- HTML Overlays for Logos (Managed by JS) -->
+                <div id="satellites-container" class="absolute inset-0 pointer-events-none overflow-visible">
+                    <!-- Satellites will be injected here -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Load Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof THREE === 'undefined') return;
+
+        // --- GSAP Scroll Animations ---
+        const globeSection = document.getElementById('global-collaborations');
+        
+        gsap.to('.globe-text-content', {
+            y: 0, opacity: 1, duration: 1, ease: "power3.out",
+            scrollTrigger: {
+                trigger: globeSection,
+                start: "top 60%"
+            }
+        });
+
+        gsap.to('#globe-interactive-area', {
+            scale: 1, opacity: 1, duration: 1.5, ease: "power2.out", delay: 0.2,
+            scrollTrigger: {
+                trigger: globeSection,
+                start: "top 60%"
+            }
+        });
+
+        // Animated Counters
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            ScrollTrigger.create({
+                trigger: globeSection,
+                start: "top 50%",
+                onEnter: () => {
+                    gsap.to(counter, {
+                        innerHTML: counter.dataset.target,
+                        duration: 2,
+                        snap: { innerHTML: 1 },
+                        ease: "power2.out"
+                    });
+                },
+                once: true
+            });
+        });
+
+        // --- Three.js Globe Implementation ---
+        const container = document.getElementById('globe-webgl-container');
+        const satellitesContainer = document.getElementById('satellites-container');
+        if(!container) return;
+        
+        // Scene, Camera, Renderer
+        const scene = new THREE.Scene();
+        
+        const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+        camera.position.z = 250;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        container.appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffdfa0, 0.8);
+        directionalLight.position.set(100, 100, 50);
+        scene.add(directionalLight);
+
+        const pointLight = new THREE.PointLight(0xc9a227, 0.5);
+        pointLight.position.set(-100, -50, 100);
+        scene.add(pointLight);
+
+        // Globe Group
+        const globeGroup = new THREE.Group();
+        scene.add(globeGroup);
+
+        // 1. Base Sphere (Earth Map)
+        const globeRadius = 70;
+        const textureLoader = new THREE.TextureLoader();
+        textureLoader.setCrossOrigin("anonymous");
+        
+        // Load a beautiful dark earth map to match the aesthetic
+        const earthMap = textureLoader.load('https://unpkg.com/three-globe/example/img/earth-dark.jpg');
+
+        const sphereGeo = new THREE.SphereGeometry(globeRadius, 64, 64);
+        const sphereMat = new THREE.MeshPhongMaterial({
+            map: earthMap,
+            color: 0xcccccc, // Dim it slightly
+            emissive: 0x0a1128,
+            specular: 0x223355,
+            shininess: 15,
+            transparent: true,
+            opacity: 0.98
+        });
+        const globeMesh = new THREE.Mesh(sphereGeo, sphereMat);
+        globeGroup.add(globeMesh);
+
+        // 2. Removed wireframe, using the actual map texture now
+
+        // Add particles around the globe
+        const particleGeo = new THREE.BufferGeometry();
+        const particleCount = 200;
+        const posArray = new Float32Array(particleCount * 3);
+        for(let i=0; i<particleCount*3; i+=3) {
+            const r = globeRadius + 5 + Math.random() * 20;
+            const theta = Math.random() * Math.PI * 2;
+            const phi = Math.acos((Math.random() * 2) - 1);
+            posArray[i] = r * Math.sin(phi) * Math.cos(theta);
+            posArray[i+1] = r * Math.sin(phi) * Math.sin(theta);
+            posArray[i+2] = r * Math.cos(phi);
+        }
+        particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particleMat = new THREE.PointsMaterial({ size: 1.5, color: 0xc9a227, transparent: true, opacity: 0.6 });
+        const particleMesh = new THREE.Points(particleGeo, particleMat);
+        globeGroup.add(particleMesh);
+
+        // 3. Atmosphere Glow
+        const atmosGeo = new THREE.SphereGeometry(globeRadius + 8, 64, 64);
+        const atmosMat = new THREE.MeshBasicMaterial({
+            color: 0xc9a227,
+            transparent: true,
+            opacity: 0.05,
+            side: THREE.BackSide
+        });
+        const atmosMesh = new THREE.Mesh(atmosGeo, atmosMat);
+        globeGroup.add(atmosMesh);
+
+        // Orbit Rings
+        const orbits = [
+            { radius: 100, speed: 0.002, angle: 0, direction: 1, tilt: 0.2 },
+            { radius: 125, speed: 0.0015, angle: Math.PI/3, direction: -1, tilt: -0.1 },
+            { radius: 150, speed: 0.001, angle: Math.PI, direction: 1, tilt: 0.3 }
+        ];
+
+        orbits.forEach(orbit => {
+            const ringGeo = new THREE.RingGeometry(orbit.radius - 0.5, orbit.radius + 0.5, 64);
+            const ringMat = new THREE.MeshBasicMaterial({ color: 0xc9a227, transparent: true, opacity: 0.2, side: THREE.DoubleSide });
+            const ring = new THREE.Mesh(ringGeo, ringMat);
+            ring.rotation.x = Math.PI / 2 + orbit.tilt;
+            globeGroup.add(ring);
+        });
+
+        // Partner Data
+        const partners = [
+            { name: "Amazon Kindle", platform: "E-Reader Dist.", desc: "Global ebook distribution to millions of Kindle devices.", orbitIndex: 2, logo: "/images/globe.png" },
+            { name: "Google Books", platform: "Digital Library", desc: "Indexed and sold through the massive Google Play ecosystem.", orbitIndex: 2, logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
+            { name: "Apple Books", platform: "iOS Ecosystem", desc: "Premium placement for users across all Apple devices.", orbitIndex: 1, logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
+            { name: "Kobo Books", platform: "International", desc: "Strong presence in Canada, Japan, and European markets.", orbitIndex: 1, logo: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Rakuten_logo.svg" },
+            { name: "Barnes & Noble", platform: "Nook & Print", desc: "US retail distribution and Nook digital storefronts.", orbitIndex: 0, logo: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Barnes_%26_Noble_logo.svg" },
+            { name: "IngramSpark", platform: "Global Print", desc: "Connecting to 40,000+ independent bookstores and libraries.", orbitIndex: 0, logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Book_icon_%28closed%29_-_Blue_and_gold.svg" },
+        ];
+
+        // Create HTML Satellites
+        const satellites = [];
+        partners.forEach((partner, i) => {
+            // Distribute them evenly on their orbits
+            const countInOrbit = partners.filter(p => p.orbitIndex === partner.orbitIndex).length;
+            const indexInOrbit = partners.filter((p, idx) => idx < i && p.orbitIndex === partner.orbitIndex).length;
+            const angleOffset = (Math.PI * 2 / countInOrbit) * indexInOrbit;
+
+            const el = document.createElement('div');
+            el.className = 'partner-logo-satellite pointer-events-auto';
+            el.innerHTML = `
+                <img src="${partner.logo}" loading="lazy" alt="${partner.name} logo" onerror="this.src='https://via.placeholder.com/60?text=${partner.name.charAt(0)}'" />
+                <div class="partner-info-card">
+                    <div class="partner-card-subtitle">${partner.platform}</div>
+                    <div class="partner-card-title">${partner.name}</div>
+                    <div class="partner-card-desc">${partner.desc}</div>
+                    <a href="#" class="partner-card-link">Learn More &rarr;</a>
+                </div>
+            `;
+            satellitesContainer.appendChild(el);
+
+            satellites.push({
+                element: el,
+                orbitIndex: partner.orbitIndex,
+                angle: angleOffset,
+                isHovered: false
+            });
+
+            // Pause on hover
+            el.addEventListener('mouseenter', () => {
+                satellites[i].isHovered = true;
+                el.classList.add('hovered-state');
+            });
+            el.addEventListener('mouseleave', () => {
+                satellites[i].isHovered = false;
+                el.classList.remove('hovered-state');
+            });
+        });
+
+        // Drag & Inertia Interaction
+        let isDragging = false;
+        let previousMousePosition = { x: 0, y: 0 };
+        let rotationVelocity = { x: 0.002, y: 0.001 }; // initial auto-spin
+
+        const interactiveArea = document.getElementById('globe-interactive-area');
+
+        interactiveArea.addEventListener('mousedown', (e) => {
+            isDragging = true;
+            previousMousePosition = { x: e.offsetX, y: e.offsetY };
+            interactiveArea.style.cursor = 'grabbing';
+        });
+
+        interactiveArea.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+                const deltaMove = {
+                    x: e.offsetX - previousMousePosition.x,
+                    y: e.offsetY - previousMousePosition.y
+                };
+
+                rotationVelocity.x = deltaMove.x * 0.005;
+                rotationVelocity.y = deltaMove.y * 0.005;
+
+                globeGroup.rotation.y += rotationVelocity.x;
+                globeGroup.rotation.x += rotationVelocity.y;
+
+                previousMousePosition = { x: e.offsetX, y: e.offsetY };
+            }
+        });
+
+        window.addEventListener('mouseup', () => { 
+            isDragging = false; 
+            interactiveArea.style.cursor = 'grab';
+        });
+        interactiveArea.addEventListener('mouseleave', () => { 
+            isDragging = false; 
+            interactiveArea.style.cursor = 'grab';
+        });
+
+        // Touch support
+        interactiveArea.addEventListener('touchstart', (e) => {
+            isDragging = true;
+            previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+        }, {passive: true});
+        interactiveArea.addEventListener('touchmove', (e) => {
+            if (isDragging) {
+                const deltaMove = {
+                    x: e.touches[0].clientX - previousMousePosition.x,
+                    y: e.touches[0].clientY - previousMousePosition.y
+                };
+                rotationVelocity.x = deltaMove.x * 0.005;
+                rotationVelocity.y = deltaMove.y * 0.005;
+                globeGroup.rotation.y += rotationVelocity.x;
+                globeGroup.rotation.x += rotationVelocity.y;
+                previousMousePosition = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+            }
+        }, {passive: true});
+        interactiveArea.addEventListener('touchend', () => { isDragging = false; });
+
+        // Animation Loop
+        let halfW = container.clientWidth / 2;
+        let halfH = container.clientHeight / 2;
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            // Apply inertia
+            if (!isDragging) {
+                globeGroup.rotation.y += rotationVelocity.x;
+                globeGroup.rotation.x += rotationVelocity.y;
+                
+                // Friction
+                rotationVelocity.x *= 0.95;
+                rotationVelocity.y *= 0.95;
+
+                // Baseline auto-spin
+                if (Math.abs(rotationVelocity.x) < 0.001) rotationVelocity.x += 0.0001 * (rotationVelocity.x > 0 ? 1 : -1);
+                if (Math.abs(rotationVelocity.x) < 0.002) rotationVelocity.x = 0.002;
+            }
+
+            // Limit X rotation
+            globeGroup.rotation.x = Math.max(-Math.PI/4, Math.min(Math.PI/4, globeGroup.rotation.x));
+            
+            // Rotate particles slowly
+            particleMesh.rotation.y -= 0.001;
+
+            // Update Satellites
+            satellites.forEach(sat => {
+                const orbit = orbits[sat.orbitIndex];
+                
+                // Only move if not hovered
+                if (!sat.isHovered) {
+                    sat.angle += orbit.speed * orbit.direction;
+                }
+
+                // Calculate 3D position based on orbit params
+                // We tilt it around X axis initially
+                const vector = new THREE.Vector3(
+                    Math.cos(sat.angle) * orbit.radius,
+                    0,
+                    Math.sin(sat.angle) * orbit.radius
+                );
+                
+                // Apply the ring's tilt
+                const euler = new THREE.Euler(orbit.tilt, 0, 0);
+                vector.applyEuler(euler);
+                
+                // Apply globe group's rotation to get world position
+                vector.applyEuler(globeGroup.rotation);
+
+                // Project to 2D screen space
+                const projected = vector.clone();
+                projected.project(camera);
+
+                const screenX = (projected.x * halfW) + halfW;
+                const screenY = -(projected.y * halfH) + halfH;
+
+                // Globe radius is 70. Negative z means it's pointing away from the camera.
+                // We hide elements when they go completely behind the globe (z < -30)
+                const isBehind = vector.z < -30;
+
+                // Update HTML element
+                if (isBehind) {
+                    sat.element.style.display = 'none';
+                } else {
+                    sat.element.style.display = 'flex';
+                    // Depth goes from roughly -150 to +150. Normalize to 0-1 for scaling.
+                    const depth = (vector.z + 150) / 300; 
+                    
+                    let scaleBase = depth * 0.5 + 0.6; 
+                    let finalScale = sat.isHovered ? scaleBase * 1.3 : scaleBase;
+                    
+                    // Smoothly fade out as it goes behind the globe
+                    const opacity = vector.z < 20 ? Math.max(0, (vector.z + 30) / 50) : 1;
+                    
+                    sat.element.style.transform = `translate(-50%, -50%) translate(${screenX}px, ${screenY}px) scale(${finalScale})`;
+                    sat.element.style.opacity = opacity;
+                    
+                    // Don't overwrite z-index if hovered so card stays on top
+                    if(!sat.isHovered) {
+                        sat.element.style.zIndex = vector.z > 0 ? 40 : 20;
+                    }
+                }
+            });
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        // Handle Resize
+        window.addEventListener('resize', () => {
+            halfW = container.clientWidth / 2;
+            halfH = container.clientHeight / 2;
+            camera.aspect = container.clientWidth / container.clientHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(container.clientWidth, container.clientHeight);
+        });
+    });
+    </script>
+
+    <!-- Voices of Appreciation (Hall of Recognition) -->
+<style>
+    /* Hall of Recognition Parallax & Layout */
+    #hall-of-recognition {
+        position: relative;
+        background-color: #F8F4ED; /* Warm Ivory */
+        color: #0F1B3D; /* Deep Navy */
+        overflow: hidden;
+        font-family: 'Inter', sans-serif;
+        border-top: 1px solid rgba(201, 162, 39, 0.2);
+    }
+    .hor-bg-layer {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+    }
+    .hor-marble {
+        opacity: 0.15;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        mix-blend-mode: multiply;
+    }
+    .hor-rays {
+        background: radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.15) 0%, transparent 60%);
+    }
+    .hor-handwriting {
+        opacity: 0.04;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Ctext x='10' y='40' font-family='cursive' font-size='24' fill='%230F1B3D' transform='rotate(-5)'%3EThe finest stories ever told...%3C/text%3E%3Ctext x='50' y='120' font-family='cursive' font-size='20' fill='%230F1B3D' transform='rotate(-2)'%3EAward winning publication.%3C/text%3E%3C/svg%3E");
+        background-repeat: repeat;
+    }
+    
+    /* 3D Book Styles */
+    .preserve-3d { transform-style: preserve-3d; }
+    .book-page {
+        backface-visibility: hidden;
+        transform-origin: left center;
+        box-shadow: inset 5px 0 20px rgba(0,0,0,0.05);
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+    }
+    .book-page-back {
+        position: absolute;
+        inset: 0;
+        background: #f4eee1;
+        transform: rotateY(180deg);
+        backface-visibility: hidden;
+    }
+    
+    .gold-text {
+        background: linear-gradient(135deg, #c9a227 0%, #e6cd73 50%, #c9a227 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    
+    @keyframes sweep {
+        0% { transform: translateX(-100%) skewX(-20deg); }
+        100% { transform: translateX(200%) skewX(-20deg); }
+    }
+</style>
+
+<section id="hall-of-recognition">
+    <!-- Background Layers -->
+    <div class="hor-bg-layer hor-marble" id="hor-bg-marble"></div>
+    <div class="hor-bg-layer hor-handwriting" id="hor-bg-text"></div>
+    <div class="hor-bg-layer hor-rays"></div>
+    <canvas class="hor-bg-layer z-0" id="hor-particles-canvas"></canvas>
+
+    <!-- Intro Header & Featured Award -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-32 text-center" id="hor-intro">
+        <span class="text-xs font-semibold text-yellow-600 uppercase tracking-widest block mb-4">Achievements</span>
+        <h2 class="text-4xl md:text-6xl font-extrabold text-[#0F1B3D] mb-4" style="font-family: serif;">Voices of Appreciation</h2>
+        <p class="text-lg md:text-xl text-slate-500 italic mb-16">"Recognized for Excellence Worldwide"</p>
+        
+        <!-- Featured Award Glass Card -->
+        <div class="mx-auto max-w-3xl p-8 md:p-12 rounded-3xl backdrop-blur-xl bg-white/70 border border-yellow-500/40 shadow-[0_30px_60px_-15px_rgba(15,27,61,0.1)] relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_40px_80px_-15px_rgba(201,162,39,0.2)]">
+            <div class="absolute inset-0 bg-gradient-to-br from-white/90 to-transparent pointer-events-none"></div>
+            <div class="relative z-10">
+                <span class="text-6xl block mb-6 drop-shadow-lg">🏆</span>
+                <h3 class="text-3xl md:text-4xl font-bold mb-3 text-[#0F1B3D]">Global Publisher of the Year</h3>
+                <p class="text-sm font-bold text-yellow-600 tracking-[0.2em] uppercase mb-6">Independent Press Award • 2025</p>
+                <p class="text-slate-600 leading-relaxed max-w-xl mx-auto">Selected as the premier publishing design and distribution platform, demonstrating unparalleled commitment to author success and literary excellence across continents.</p>
+            </div>
+            <div class="absolute inset-0 translate-x-[-100%] group-hover:animate-[sweep_2s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent transform skew-x-[-20deg]"></div>
+        </div>
+    </div>
+
+    <!-- Sticky Scroll Storytelling Section -->
+    <div id="hor-sticky-container" class="relative z-10 w-full bg-transparent">
+        <div class="h-screen w-full flex items-center overflow-hidden max-w-7xl mx-auto px-4" id="hor-sticky-content">
+            
+            <!-- Left: Timeline -->
+            <div class="hidden md:flex w-1/4 h-full flex-col justify-center relative opacity-0 translate-x-[-50px]" id="hor-timeline">
+                <div class="absolute left-8 top-1/4 bottom-1/4 w-[2px] bg-slate-300 rounded-full">
+                    <div id="hor-timeline-progress" class="w-full bg-yellow-500 rounded-full" style="height: 0%;"></div>
+                </div>
+                
+                <div class="flex flex-col h-1/2 justify-between pl-16 relative">
+                    <div class="hor-timeline-item relative">
+                        <div class="absolute -left-[42px] top-1 w-4 h-4 rounded-full border-4 border-white bg-slate-300 shadow hor-tl-dot" data-step="1"></div>
+                        <h4 class="font-bold text-lg text-[#0F1B3D]">2022</h4>
+                        <p class="text-xs text-slate-500">First Recognition</p>
+                    </div>
+                    <div class="hor-timeline-item relative">
+                        <div class="absolute -left-[42px] top-1 w-4 h-4 rounded-full border-4 border-white bg-slate-300 shadow hor-tl-dot" data-step="2"></div>
+                        <h4 class="font-bold text-lg text-[#0F1B3D]">2023</h4>
+                        <p class="text-xs text-slate-500">Publishing Excellence</p>
+                    </div>
+                    <div class="hor-timeline-item relative">
+                        <div class="absolute -left-[42px] top-1 w-4 h-4 rounded-full border-4 border-white bg-slate-300 shadow hor-tl-dot" data-step="3"></div>
+                        <h4 class="font-bold text-lg text-[#0F1B3D]">2024</h4>
+                        <p class="text-xs text-slate-500">Global Expansion</p>
+                    </div>
+                    <div class="hor-timeline-item relative">
+                        <div class="absolute -left-[42px] top-1 w-4 h-4 rounded-full border-4 border-white bg-slate-300 shadow hor-tl-dot" data-step="4"></div>
+                        <h4 class="font-bold text-lg text-[#0F1B3D] gold-text">2025</h4>
+                        <p class="text-xs text-slate-500 font-semibold">Industry Award</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Center: The 3D Book of Recognition -->
+            <div class="w-full md:w-2/4 h-full perspective-[2000px] flex items-center justify-center relative z-20">
+                <div id="hor-book" class="relative w-[320px] md:w-[380px] h-[480px] md:h-[540px] preserve-3d translate-y-[200px] opacity-0 rotate-x-[30deg] rotate-y-[-20deg] shadow-[0_50px_100px_rgba(0,0,0,0.2)]">
+                    
+                    <!-- Back Cover -->
+                    <div class="absolute inset-0 bg-[#0F1B3D] border-2 border-yellow-600 rounded-r-xl shadow-2xl preserve-3d"></div>
+                    
+                    <!-- Pages -->
+                    <!-- Page 3 (Final) -->
+                    <div class="book-page absolute inset-y-2 left-2 right-1 bg-[#fdfbf7] rounded-r-lg border border-slate-200 z-10 flex flex-col justify-center items-center text-center px-8">
+                        <h4 class="text-xl font-bold font-serif text-[#0F1B3D] mb-4">Every recognition begins with a story.</h4>
+                        <p class="text-sm text-slate-600 italic mb-8">Yours could be next.</p>
+                        <a href="#" class="px-6 py-3 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-bold rounded-full shadow-[0_10px_20px_rgba(201,162,39,0.3)] hover:shadow-[0_15px_30px_rgba(201,162,39,0.5)] transition-all hover:-translate-y-1 relative overflow-hidden group">
+                            <span class="relative z-10">Begin Your Journey</span>
+                            <div class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:animate-[sweep_1.5s_ease-in-out_infinite] skew-x-[-20deg]"></div>
+                        </a>
+                    </div>
+                    
+                    <!-- Page 2 (Inside Right) -->
+                    <div id="book-page-2" class="book-page absolute inset-y-2 left-2 right-1 bg-[#fdfbf7] rounded-r-lg border border-slate-200 z-20">
+                        <div class="book-page-back"></div>
+                        <div class="w-full h-full flex flex-col justify-center text-center preserve-3d transform translate-z-[1px]">
+                            <span class="text-4xl mb-4">⭐</span>
+                            <h4 class="text-lg font-bold text-[#0F1B3D] mb-2">Trustpilot 4.9 Rating</h4>
+                            <p class="text-xs text-slate-500">High-score ratings verified by our global author community.</p>
+                        </div>
+                    </div>
+
+                    <!-- Page 1 (Inside Front) -->
+                    <div id="book-page-1" class="book-page absolute inset-y-2 left-2 right-1 bg-[#fdfbf7] rounded-r-lg border border-slate-200 z-30">
+                        <div class="book-page-back"></div>
+                        <div class="w-full h-full flex flex-col justify-center text-center preserve-3d transform translate-z-[1px]">
+                            <span class="text-4xl mb-4">🎖️</span>
+                            <h4 class="text-lg font-bold text-[#0F1B3D] mb-2">Literary Layout Medal</h4>
+                            <p class="text-xs text-slate-500">Commended for publishing high-end, premium interior layouts.</p>
+                        </div>
+                    </div>
+
+                    <!-- Front Cover -->
+                    <div id="book-cover" class="absolute inset-0 bg-gradient-to-br from-[#0F1B3D] to-[#0a1128] border-2 border-yellow-600 rounded-r-xl shadow-2xl origin-left preserve-3d z-40 flex flex-col items-center justify-center">
+                        <div class="book-page-back bg-gradient-to-bl from-[#f4eee1] to-[#e8dfc8]"></div>
+                        <div class="w-4/5 h-5/6 border border-yellow-600/50 rounded flex flex-col items-center justify-center preserve-3d transform translate-z-[2px]">
+                            <div class="w-16 h-16 rounded-full border border-yellow-500 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(201,162,39,0.5)]">
+                                <span class="text-2xl text-yellow-500 font-serif font-bold">BA</span>
+                            </div>
+                            <h3 class="text-white font-serif text-2xl tracking-widest uppercase text-center px-4 leading-relaxed">Book of<br>Recognition</h3>
                         </div>
                     </div>
                     
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- The Literary Media Lounge -->
-    <section id="media-lounge"
-        class="py-20 xl:py-28 2xl:py-32 min-h-screen flex flex-col justify-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Multimedia</span>
-            <h2
-                class="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-extrabold text-slate-900 dark:text-white mt-1">
-                The Literary Media Lounge</h2>
-            <p class="text-xs sm:text-sm text-slate-400 mt-2">Listen to podcast discussions and watch writer panel
-                releases.</p>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 lg:gap-8">
-            <!-- Lounge item 1 -->
-            <div
-                class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center gap-5">
-                <div
-                    class="w-16 h-16 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center text-2xl flex-shrink-0">
-                    🎙️
-                </div>
-                <div class="flex-1 space-y-1">
-                    <span class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Podcast • Episode
-                        48</span>
-                    <h4 class="font-bold text-sm text-slate-900 dark:text-white">Designing Book Covers that Sell</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-normal"> Sarah Jennings breaks down
-                        cover formats and type alignments.</p>
-                    <button onclick="alert('Playing audio...');"
-                        class="text-xs font-bold text-blue-600 hover:text-blue-500 transition-colors pt-1">Listen
-                        Episode →</button>
-                </div>
+            <!-- Right: 3D Trophy Showcase -->
+            <div class="hidden md:flex w-1/4 h-full relative items-center opacity-0 translate-x-[50px]" id="hor-trophy">
+                <canvas id="trophy-canvas" class="w-full h-[400px] cursor-pointer drop-shadow-[0_20px_30px_rgba(201,162,39,0.2)]"></canvas>
             </div>
+            
+        </div>
+    </div>
 
-            <!-- Lounge item 2 -->
-            <div
-                class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 flex items-center gap-5">
-                <div
-                    class="w-16 h-16 rounded-lg bg-blue-100 dark:bg-blue-900/30 text-blue-600 flex items-center justify-center text-2xl flex-shrink-0">
-                    🎥
-                </div>
-                <div class="flex-1 space-y-1">
-                    <span class="text-[9px] uppercase font-bold text-slate-400 tracking-wider">Video Interview</span>
-                    <h4 class="font-bold text-sm text-slate-900 dark:text-white">From Manuscript to Series A</h4>
-                    <p class="text-[11px] text-slate-500 dark:text-slate-400 leading-normal">R. Cunningham details
-                        publishing and organizing startup books.</p>
-                    <a href="#intro-video"
-                        class="text-xs font-bold text-blue-600 hover:text-blue-500 transition-colors pt-1 block">Watch
-                        Video →</a>
-                </div>
+    <!-- Premium Statistics -->
+    <div class="relative z-10 w-full max-w-5xl mx-auto px-4 pb-32">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center hor-stats-grid">
+            <div class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
+                <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter" data-target="25">0</span>+</div>
+                <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Industry Awards</div>
+            </div>
+            <div class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
+                <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter" data-target="4.9">0</span></div>
+                <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Average Rating</div>
+            </div>
+            <div class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
+                <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter" data-target="1000">0</span>+</div>
+                <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Books Published</div>
+            </div>
+            <div class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
+                <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter" data-target="25">0</span>+</div>
+                <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Countries</div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Voices from the Penholders -->
-    <section
-        class="py-20 xl:py-28 2xl:py-32 min-h-screen flex flex-col justify-center bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Author
-                    Testimonials</span>
-                <h2
-                    class="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-extrabold text-slate-900 dark:text-white mt-1">
-                    Voices from the Penholders</h2>
-                <p class="text-xs sm:text-sm text-slate-400 mt-2">Publishing testimonials from writers who worked with
-                    our house.</p>
-            </div>
+<!-- Scripts for Hall of Recognition -->
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof THREE === 'undefined') return;
 
-            @if(isset($authors) && $authors->count() > 0)
-                <div class="flex overflow-x-auto gap-6 pb-6 snap-x scroll-smooth" style="scrollbar-width: thin;">
-                    @foreach($authors as $author)
-                        @php
-                            $initials = collect(explode(' ', $author->name))->map(function($segment) { return strtoupper(substr($segment, 0, 1)); })->take(2)->join('');
-                            $bookTitle = $author->publishedBooks->first() ? 'Author of *"' . $author->publishedBooks->first()->title . '"*' : 'Independent Author';
-                        @endphp
-                        <div class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4 min-w-[300px] sm:min-w-[350px] snap-center shrink-0">
-                            <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
-                                    {{ $initials }}
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-xs text-slate-900 dark:text-white">{{ $author->name }}</h4>
-                                    <p class="text-[10px] text-slate-400">{{ $bookTitle }}</p>
-                                </div>
-                            </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                                "Publishing through Books Academy gave me the control I needed over my creative work. The process was seamless and incredibly supportive."
-                            </p>
-                        </div>
-                    @endforeach
-                </div>
-            @else
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                    <!-- Quote 1 -->
-                    <div
-                        class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
-                                AM</div>
-                            <div>
-                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Alvin Mercer</h4>
-                                <p class="text-[10px] text-slate-400">Author of *"Coded Thoughts"*</p>
-                            </div>
-                        </div>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                            "The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and
-                            professional support throughout the process."
-                        </p>
-                    </div>
+    // --- Particle Canvas Background ---
+    const pCanvas = document.getElementById('hor-particles-canvas');
+    if(!pCanvas) return;
+    const pCtx = pCanvas.getContext('2d');
+    let pW, pH;
+    let particles = [];
+    
+    function resizeParticles() {
+        const horSection = document.getElementById('hall-of-recognition');
+        pW = pCanvas.width = window.innerWidth;
+        pH = pCanvas.height = horSection ? horSection.offsetHeight : window.innerHeight;
+    }
+    window.addEventListener('resize', resizeParticles);
+    
+    function initParticles() {
+        resizeParticles();
+        particles = [];
+        for(let i=0; i<80; i++) {
+            particles.push({
+                x: Math.random() * pW,
+                y: Math.random() * pH,
+                size: Math.random() * 2 + 0.5,
+                speedY: Math.random() * 0.3 + 0.1,
+                opacity: Math.random() * 0.4 + 0.1
+            });
+        }
+    }
+    
+    function animateParticles() {
+        requestAnimationFrame(animateParticles);
+        pCtx.clearRect(0, 0, pW, pH);
+        pCtx.fillStyle = 'rgba(201, 162, 39, 1)'; // Gold color
+        
+        particles.forEach(p => {
+            p.y -= p.speedY;
+            if(p.y < 0) p.y = pH;
+            
+            pCtx.globalAlpha = p.opacity;
+            pCtx.beginPath();
+            pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            pCtx.fill();
+        });
+    }
+    initParticles();
+    animateParticles();
 
-                    <!-- Quote 2 -->
-                    <div
-                        class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
-                                MV</div>
-                            <div>
-                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Martha Vance</h4>
-                                <p class="text-[10px] text-slate-400">Author of *"Children of the Wild"*</p>
-                            </div>
-                        </div>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                            "Children's book illustrations need precise color alignment. Their formatting team verified
-                            files and set up spreads beautifully."
-                        </p>
-                    </div>
+    // --- GSAP Scroll Storytelling ---
+    const horSticky = document.getElementById('hor-sticky-container');
+    if(horSticky) {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#hor-sticky-container",
+                start: "top top",
+                end: "+=120%", // Faster, shorter scroll
+                scrub: 1,
+                pin: true,
+            }
+        });
 
-                    <!-- Quote 3 -->
-                    <div
-                        class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-4">
-                        <div class="flex items-center gap-3">
-                            <div
-                                class="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold text-xs flex items-center justify-center">
-                                HS</div>
-                            <div>
-                                <h4 class="font-bold text-xs text-slate-900 dark:text-white">Howard Stark</h4>
-                                <p class="text-[10px] text-slate-400">Author of *"Startup Architecture"*</p>
-                            </div>
-                        </div>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed italic">
-                            "Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live
-                            worldwide within 48 hours."
-                        </p>
-                    </div>
-                </div>
-            @endif
-        </div>
-    </section>
+        // 1. Entrance of elements
+        tl.to("#hor-book", { y: 0, opacity: 1, rotateX: 0, rotateY: 0, duration: 1 }, 0)
+          .to("#hor-timeline", { opacity: 1, x: 0, duration: 1 }, 0)
+          .to("#hor-trophy", { opacity: 1, x: 0, duration: 1 }, 0);
 
-    <!-- Global Collaborations Section -->
-    <section
-        class="py-20 xl:py-28 2xl:py-32 min-h-screen flex flex-col justify-center w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-        <div class="text-center max-w-2xl mx-auto mb-12">
-            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Bookstore Partners</span>
-            <h2
-                class="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-extrabold text-slate-900 dark:text-white mt-1">
-                Global Collaborations</h2>
-            <p class="text-xs sm:text-sm text-slate-400 mt-2">Publishing channels and distributors helping list Books
-                Academy titles.</p>
-        </div>
+        // 2. Book opens, Timeline progresses to 2023
+        tl.to("#book-cover", { rotationY: -160, duration: 2, ease: "power2.inOut" }, 1)
+          .to("#hor-timeline-progress", { height: "33%", duration: 2 }, 1)
+          .to(".hor-tl-dot[data-step='2']", { backgroundColor: '#eab308', borderColor: '#ca8a04' }, 2);
 
-        <div
-            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 items-center text-slate-400 dark:text-slate-500 font-bold text-xs text-center">
-            <div class="py-3 px-4 border border-slate-200 dark:border-slate-800 rounded-lg">Amazon Kindle</div>
-            <div class="py-3 px-4 border border-slate-200 dark:border-slate-800 rounded-lg">Barnes & Noble</div>
-            <div class="py-3 px-4 border border-slate-200 dark:border-slate-800 rounded-lg">IngramSpark</div>
-            <div class="py-3 px-4 border border-slate-200 dark:border-slate-800 rounded-lg">Google Books</div>
-            <div class="py-3 px-4 border border-slate-200 dark:border-slate-800 rounded-lg">Kobo Books</div>
-            <div class="py-3 px-4 border border-slate-200 dark:border-slate-800 rounded-lg">Apple Books</div>
-        </div>
-    </section>
+        // 3. Page 1 turns, Timeline progresses to 2024
+        tl.to("#book-page-1", { rotationY: -155, duration: 2, ease: "power2.inOut" }, 3)
+          .to("#hor-timeline-progress", { height: "66%", duration: 2 }, 3)
+          .to(".hor-tl-dot[data-step='3']", { backgroundColor: '#eab308', borderColor: '#ca8a04' }, 4);
 
-    <!-- Voices of Appreciation -->
-    <section
-        class="py-20 xl:py-28 2xl:py-32 min-h-screen flex flex-col justify-center bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 transition-colors">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-            <div class="text-center max-w-2xl mx-auto mb-12">
-                <span
-                    class="text-xs font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider">Achievements</span>
-                <h2
-                    class="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-extrabold text-slate-900 dark:text-white mt-1">
-                    Voices of Appreciation</h2>
-                <p class="text-xs sm:text-sm text-slate-400 mt-2">Literary medals and partner recognitions received by
-                    our catalog titles.</p>
-            </div>
+        // 4. Page 2 turns, Timeline progresses to 2025
+        tl.to("#book-page-2", { rotationY: -150, duration: 2, ease: "power2.inOut" }, 5)
+          .to("#hor-timeline-progress", { height: "100%", duration: 2 }, 5)
+          .to(".hor-tl-dot[data-step='4']", { backgroundColor: '#eab308', borderColor: '#ca8a04' }, 6);
+    }
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 text-center">
-                <div
-                    class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-2">
-                    <span class="text-2xl block">🏆</span>
-                    <h4 class="font-bold text-sm text-slate-900 dark:text-white">Independent Press Award</h4>
-                    <p class="text-[11px] text-slate-500">Selected as a premier publishing design platform (2025).</p>
-                </div>
-                <div
-                    class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-2">
-                    <span class="text-2xl block">⭐</span>
-                    <h4 class="font-bold text-sm text-slate-900 dark:text-white">Trustpilot 4.9 Rating</h4>
-                    <p class="text-[11px] text-slate-500">High-score ratings verified by our author community.</p>
-                </div>
-                <div
-                    class="p-6 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950 space-y-2">
-                    <span class="text-2xl block">🎖️</span>
-                    <h4 class="font-bold text-sm text-slate-900 dark:text-white">Literary Layout Medal</h4>
-                    <p class="text-[11px] text-slate-500">Commended for publishing high-end children's layouts.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    // --- Stats Counters ---
+    const counters = document.querySelectorAll('.hor-counter');
+    counters.forEach(counter => {
+        ScrollTrigger.create({
+            trigger: ".hor-stats-grid",
+            start: "top 80%",
+            onEnter: () => {
+                let target = parseFloat(counter.dataset.target);
+                let isDecimal = counter.dataset.target.includes('.');
+                gsap.to(counter, {
+                    innerHTML: target,
+                    duration: 2,
+                    snap: isDecimal ? { innerHTML: 0.1 } : { innerHTML: 1 },
+                    ease: "power2.out",
+                    onUpdate: function() {
+                        if(isDecimal) counter.innerHTML = parseFloat(counter.innerHTML).toFixed(1);
+                    }
+                });
+            },
+            once: true
+        });
+    });
+
+    // --- Three.js Trophy ---
+    const tCanvas = document.getElementById('trophy-canvas');
+    if(tCanvas) {
+        const tScene = new THREE.Scene();
+        const tCamera = new THREE.PerspectiveCamera(35, tCanvas.clientWidth / tCanvas.clientHeight, 0.1, 1000);
+        tCamera.position.z = 25;
+
+        const tRenderer = new THREE.WebGLRenderer({ canvas: tCanvas, alpha: true, antialias: true });
+        tRenderer.setSize(tCanvas.clientWidth, tCanvas.clientHeight);
+        tRenderer.setPixelRatio(window.devicePixelRatio);
+
+        // Lighting for luxury gold reflection
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
+        tScene.add(ambientLight);
+
+        const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+        dirLight.position.set(5, 10, 7);
+        tScene.add(dirLight);
+
+        const fillLight = new THREE.DirectionalLight(0xc9a227, 0.8);
+        fillLight.position.set(-5, 0, -5);
+        tScene.add(fillLight);
+
+        const goldMat = new THREE.MeshStandardMaterial({
+            color: 0xe6cd73,
+            roughness: 0.2,
+            metalness: 0.9,
+        });
+
+        const trophyGroup = new THREE.Group();
+        tScene.add(trophyGroup);
+
+        // Base
+        const baseGeo = new THREE.CylinderGeometry(2.5, 3, 1, 32);
+        const base = new THREE.Mesh(baseGeo, goldMat);
+        base.position.y = -4;
+        trophyGroup.add(base);
+
+        const base2Geo = new THREE.CylinderGeometry(2, 2.5, 0.5, 32);
+        const base2 = new THREE.Mesh(base2Geo, goldMat);
+        base2.position.y = -3.25;
+        trophyGroup.add(base2);
+
+        // Stem
+        const stemGeo = new THREE.CylinderGeometry(0.4, 0.8, 4, 32);
+        const stem = new THREE.Mesh(stemGeo, goldMat);
+        stem.position.y = -1;
+        trophyGroup.add(stem);
+        
+        const knotGeo = new THREE.SphereGeometry(1, 32, 32);
+        const knot = new THREE.Mesh(knotGeo, goldMat);
+        knot.position.y = -0.5;
+        knot.scale.set(1, 0.5, 1);
+        trophyGroup.add(knot);
+
+        // Cup
+        const cupGeo = new THREE.SphereGeometry(2.5, 32, 32, 0, Math.PI * 2, 0, Math.PI / 1.8);
+        const cup = new THREE.Mesh(cupGeo, goldMat);
+        cup.position.y = 1.5;
+        cup.rotation.x = Math.PI; // flip upside down to make a bowl
+        trophyGroup.add(cup);
+
+        // Handles
+        const handleGeo = new THREE.TorusGeometry(1.5, 0.25, 16, 32);
+        const handle1 = new THREE.Mesh(handleGeo, goldMat);
+        handle1.position.set(-2.5, 2.5, 0);
+        handle1.rotation.z = Math.PI / 4;
+        trophyGroup.add(handle1);
+
+        const handle2 = new THREE.Mesh(handleGeo, goldMat);
+        handle2.position.set(2.5, 2.5, 0);
+        handle2.rotation.z = -Math.PI / 4;
+        trophyGroup.add(handle2);
+
+        // Animation loop
+        function tAnimate() {
+            requestAnimationFrame(tAnimate);
+            trophyGroup.rotation.y += 0.005;
+            tRenderer.render(tScene, tCamera);
+        }
+        tAnimate();
+
+        // Mouse interaction
+        const trophyContainer = document.getElementById('hor-trophy');
+        if(trophyContainer) {
+            trophyContainer.addEventListener('mousemove', (e) => {
+                const rect = tCanvas.getBoundingClientRect();
+                const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+                const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+                
+                gsap.to(trophyGroup.rotation, {
+                    x: y * 0.3,
+                    z: -x * 0.3,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+            trophyContainer.addEventListener('mouseleave', () => {
+                gsap.to(trophyGroup.rotation, {
+                    x: 0,
+                    z: 0,
+                    duration: 1,
+                    ease: "power2.out"
+                });
+            });
+        }
+        
+        window.addEventListener('resize', () => {
+            if(tCanvas.clientWidth === 0) return;
+            tCamera.aspect = tCanvas.clientWidth / tCanvas.clientHeight;
+            tCamera.updateProjectionMatrix();
+            tRenderer.setSize(tCanvas.clientWidth, tCanvas.clientHeight);
+        });
+    }
+});
+</script>
 
     
 

@@ -40,7 +40,7 @@
 </head>
 
 <body
-    class="bg-[#E5D3B3] text-slate-800 transition-colors duration-200 selection:bg-blue-600 selection:text-white min-h-screen flex flex-col overflow-x-hidden">
+    class="bg-[#E5D3B3] text-slate-800 transition-colors duratiwon-200 selection:bg-blue-600 selection:text-white min-h-screen flex flex-col overflow-x-hidden">
 
     @if(request()->is('/'))
     <!-- Fullscreen Video Intro Splash -->
@@ -221,35 +221,7 @@
         @yield('content')
     </main>
     <!-- Footer -->
-    <footer
-        class="mt-auto border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950 transition-colors">
-        <div
-            class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-            <!-- Left brand -->
-            <div class="flex items-center gap-2.5 font-bold text-slate-800 dark:text-white">
-                <div class="w-7 h-7 rounded-lg bg-blue-600 flex items-center justify-center text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
-                        stroke="currentColor" class="w-4 h-4">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-16.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-16.25v14.25" />
-                    </svg>
-                </div>
-                <span class="text-sm">Books<span class="text-blue-600 font-semibold">Academy</span></span>
-            </div>
-
-            <!-- Copyright -->
-            <p class="text-xs text-slate-400">
-                &copy; 2026 Books Academy Inc. All rights reserved. Laravel
-                v{{ Illuminate\Foundation\Application::VERSION }}
-            </p>
-
-            <!-- Footer Links -->
-            <div class="flex gap-4 text-xs text-slate-400">
-                <a href="#" class="hover:text-blue-600 transition-colors">Privacy Policy</a>
-                <a href="#" class="hover:text-blue-600 transition-colors">Terms of Service</a>
-            </div>
-        </div>
-    </footer>
+    <x-footer />
 
     <!-- Inline JavaScript for Interactivity -->
     <script>
@@ -619,116 +591,6 @@
                 });
             });
         }
-    </script>
-
-    <!-- GSAP & ScrollTrigger -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
-    @stack('scripts')
-
-    <!-- Journey GSAP Animations -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-                gsap.registerPlugin(ScrollTrigger);
-
-                const journeySection = document.getElementById('journey-section');
-                if (journeySection) {
-                    
-                    // Parallax Background Layers
-                    gsap.utils.toArray('.floating-shape').forEach((shape, i) => {
-                        gsap.to(shape, {
-                            y: -200 + (i * 50),
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: journeySection,
-                                start: "top bottom",
-                                end: "bottom top",
-                                scrub: true
-                            }
-                        });
-                    });
-
-                    // Section Header Entrance
-                    gsap.to('#journey-header', {
-                        opacity: 1,
-                        y: 0,
-                        duration: 1,
-                        ease: "power3.out",
-                        scrollTrigger: {
-                            trigger: '#journey-header',
-                            start: "top 80%",
-                        }
-                    });
-
-                    // Timeline Progress Fill
-                    const timelineContainer = document.getElementById('timeline-container');
-                    const timelineProgress = document.getElementById('timeline-progress');
-                    
-                    if (timelineContainer && timelineProgress) {
-                        gsap.to(timelineProgress, {
-                            height: "100%",
-                            ease: "none",
-                            scrollTrigger: {
-                                trigger: timelineContainer,
-                                start: "top 50%",
-                                end: "bottom 80%",
-                                scrub: 0.5
-                            }
-                        });
-                    }
-
-                    // Staggered Step Animations
-                    const steps = gsap.utils.toArray('.journey-step');
-                    
-                    steps.forEach((step, i) => {
-                        const card = step.querySelector('.step-card');
-                        const node = step.querySelector('.step-node');
-                        const num = step.querySelector('.node-number');
-                        
-                        // Entrance Animation
-                        gsap.to(card, {
-                            opacity: 1,
-                            x: 0,
-                            y: 0,
-                            duration: 0.8,
-                            ease: "power3.out",
-                            scrollTrigger: {
-                                trigger: step,
-                                start: "top 75%",
-                            }
-                        });
-
-                        // Active State (When Timeline Reaches Node)
-                        ScrollTrigger.create({
-                            trigger: step,
-                            start: "top 50%",
-                            onEnter: () => {
-                                if(node && !node.classList.contains('final-node')) {
-                                    node.classList.remove('bg-[#0f172a]', 'border-slate-800');
-                                    node.classList.add('bg-[#1b253b]', 'border-[#C4A052]', 'shadow-[0_0_20px_rgba(196,160,82,0.4)]');
-                                }
-                                if(num) {
-                                    num.classList.remove('text-slate-500');
-                                    num.classList.add('text-[#C4A052]');
-                                }
-                            },
-                            onLeaveBack: () => {
-                                if(node && !node.classList.contains('final-node')) {
-                                    node.classList.remove('bg-[#1b253b]', 'border-[#C4A052]', 'shadow-[0_0_20px_rgba(196,160,82,0.4)]');
-                                    node.classList.add('bg-[#0f172a]', 'border-slate-800');
-                                }
-                                if(num) {
-                                    num.classList.remove('text-[#C4A052]');
-                                    num.classList.add('text-slate-500');
-                                }
-                            }
-                        });
-                    });
-                }
-            }
-        });
     </script>
 </body>
 
