@@ -3,11 +3,11 @@
 @section('content')
     <!-- Left Aligned Large Logo and Hero Content -->
     <section
-        class="relative w-full min-h-[100dvh] flex flex-col justify-between -mt-24 pt-32 pb-8 px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-
+        class="relative w-full min-h-[100dvh] flex flex-col justify-between -mt-24 pt-24 pb-4 px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
 
         <!-- Top Hero Content -->
-        <div class="w-full max-w-7xl mx-auto flex-1 flex flex-col items-center justify-center mt-12 sm:mt-16 z-10 px-4 text-center">
+        <div
+            class="w-full max-w-7xl mx-auto flex-1 flex flex-col items-center justify-center sm:mt-8 z-10 px-4 text-center">
             <div class="max-w-3xl flex flex-col items-center space-y-6">
                 <!-- Welcome text -->
                 <div class="inline-flex items-center justify-center gap-4">
@@ -31,54 +31,81 @@
                         class="absolute inset-0 h-auto w-full object-contain logo-half"
                         style="clip-path: inset(0 0 0 50%); transform: translateX(60px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
                 </div>
-
-
             </div>
+
+            <div class="  flex flex-col items-center text-center opacity-0 transition-opacity duration-[1500ms] delay-700 fade-in-up"
+                id="hero-content">
+                <p class="text-[15px] sm:text-base md:text-lg text-white mb-2 font-serif tracking-wide">
+                    Empowering writers. Enriching readers.
+                </p>
+                <p class="text-[14px] sm:text-sm md:text-base text-gray-300 font-serif tracking-wide">
+                    We publish exceptional stories and build a legacy of literary brilliance.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mt-6">
+                    <a href="{{ route('services') }}"
+                        class="px-8 py-3.5 rounded bg-[#bd9a55] text-white text-xs sm:text-[13px] font-bold tracking-wider hover:bg-[#a88849] transition-colors flex items-center justify-center gap-2 shadow-lg shadow-[#bd9a55]/20 font-sans">
+                        EXPLORE OUR SERVICES <span class="font-normal">&rarr;</span>
+                    </a>
+                    <a href="{{ route('bookstore') }}"
+                        class="px-8 py-3.5 rounded border border-[#bd9a55] text-[#e6d3af] text-xs sm:text-[13px] font-bold tracking-wider hover:bg-[#bd9a55]/10 transition-colors flex items-center justify-center gap-2 font-sans">
+                        VISIT BOOKSTORE <span class="font-normal">&rarr;</span>
+                    </a>
+                </div>
+            </div>
+
         </div>
 
         <!-- Premium Book Showcase -->
-        <div class="w-full relative mt-16 mb-4 sm:mb-8 pt-8 pb-12 z-20 overflow-visible">
-            
+        <div class="w-full relative mt-8 lg:mt-12 mb-2 sm:mb-4 pt-4 pb-6 z-20 overflow-visible">
+
             <div class="swiper book-showcase-swiper relative z-10 max-w-[1000px] mx-auto">
                 <div class="swiper-wrapper flex items-end">
                     @php
                         // Array of book images - easily replaceable with dynamic data
                         $showcaseBooks = [
-                            'images/book1.jpg',
-                            'images/book2.jpg',
-                            'images/book3.jpg',
-                            'images/book4.jpg',
-                            'images/book5.jpg',
-                            'images/book6.jpg',
-                            'images/book7.jpg',
-                            'images/book8.jpg',
-                         
+                            'images/book1.png',
+                            'images/book1.png',
+                            'images/book1.png',
+                            'images/book1.png',
+                            'images/book1.png',
+                            'images/book1.png',
+                            'images/book1.png',
+                            'images/book1.png',
+
                         ];
                     @endphp
 
                     @foreach($showcaseBooks as $index => $bookImg)
-                    <div class="swiper-slide cursor-pointer">
-                        <div class="book-wrapper">
-                            <!-- Back Cover -->
-                            <div class="book-back bg-[#0a0f18]"></div>
-                            
-                            <!-- Spine -->
-                            <div class="book-spine bg-[#111827]">
-                                <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-black/60 pointer-events-none"></div>
-                            </div>
-                            
-                            <!-- Page Edge (Right side) -->
-                            <div class="book-right-edge"></div>
-                            
-                            <!-- Page Edge (Top side) -->
-                            <div class="book-top-edge"></div>
+                        <div class="swiper-slide cursor-pointer">
+                            <div class="book-wrapper">
+                                <!-- Back Cover -->
+                                <div class="book-back bg-[#0a0f18]"></div>
 
-                            <!-- Front Cover -->
-                            <div class="book-front bg-[#111827]">
-                                <img loading="lazy" src="{{ asset($bookImg) }}" class="w-full h-full object-cover relative z-0" alt="Premium Book {{ $index + 1 }}" onerror="this.onerror=null; this.parentElement.style.background='#1A1A1A'; this.parentElement.innerHTML+='<div class=\'absolute inset-0 flex items-center justify-center text-[#C4A052]/50 text-xs font-serif p-4 text-center border-l-4 border-[#C4A052]\'>Book Title ' + ({{ $index }} + 1) + '</div>'; this.remove();">
+                                <!-- Spine -->
+                                <div class="book-spine bg-[#111827]">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-black/60 pointer-events-none">
+                                    </div>
+                                </div>
+
+                                <!-- Page Edge (Right side) -->
+                                <div class="book-right-edge"></div>
+
+                                <!-- Page Edge (Top side) -->
+                                <div class="book-top-edge"></div>
+
+                                <!-- Front Cover -->
+                                <div class="book-front bg-[#111827]">
+                                    <div
+                                        class="book-lighting absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent z-10 pointer-events-none">
+                                    </div>
+                                    <img loading="lazy" src="{{ asset($bookImg) }}" class="w-full h-full relative z-0"
+                                        style="object-fit: fill;" alt="Premium Book {{ $index + 1 }}"
+                                        onerror="this.onerror=null; this.parentElement.style.background='#1A1A1A'; this.parentElement.innerHTML+='<div class=\'absolute inset-0 flex items-center justify-center text-[#C4A052]/50 text-xs font-serif p-4 text-center border-l-4 border-[#C4A052]\'>Book Title ' + ({{ $index }} + 1) + '</div>'; this.remove();">
+                                </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -86,7 +113,7 @@
 
         <!-- Bottom Feature Columns (Over dark blue wave) -->
         <div
-            class="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center text-[#E5D3B3] pt-16 lg:pt-32 pb-4 z-10">
+            class="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center text-[#E5D3B3] pt-6 lg:pt-10 pb-2 z-10">
             <!-- Feature 1 -->
             <div
                 class="flex flex-col items-center gap-3 border-transparent sm:border-r border-[#C4A052]/30 last:border-0 relative">
@@ -2269,7 +2296,7 @@
 
         <!-- Ending Scene -->
         <div
-            class="relative z-10 w-full bg-[#0F1B3D] py-16 px-4 text-center mt-8 mb-16 rounded-2xl max-w-5xl mx-auto shadow-2xl">
+            class="relative z-10 w-full bg-[#0F1B3D] py-16 px-4 text-center mt-8 mb-0 rounded-2xl max-w-5xl mx-auto shadow-2xl">
             <h2 class="text-4xl font-serif mb-4 text-white">Your Story Could Be Next.</h2>
             <p class="text-slate-300 mb-8 max-w-md mx-auto">Join thousands of authors who have successfully brought their
                 manuscripts to life in our Hall of Authors.</p>
@@ -2278,6 +2305,9 @@
                 Start Your Publishing Journey
             </button>
         </div>
+        
+        <!-- Padding block to prevent margin collapse -->
+        <div class="h-16 w-full"></div>
 
     </div>
 
@@ -2773,14 +2803,14 @@
                 const el = document.createElement('div');
                 el.className = 'partner-logo-satellite pointer-events-auto';
                 el.innerHTML = `
-                    <img src="${partner.logo}" loading="lazy" alt="${partner.name} logo" onerror="this.src='https://via.placeholder.com/60?text=${partner.name.charAt(0)}'" />
-                    <div class="partner-info-card">
-                        <div class="partner-card-subtitle">${partner.platform}</div>
-                        <div class="partner-card-title">${partner.name}</div>
-                        <div class="partner-card-desc">${partner.desc}</div>
-                        <a href="#" class="partner-card-link">Learn More &rarr;</a>
-                    </div>
-                `;
+                                                        <img src="${partner.logo}" loading="lazy" alt="${partner.name} logo" onerror="this.src='https://via.placeholder.com/60?text=${partner.name.charAt(0)}'" />
+                                                        <div class="partner-info-card">
+                                                            <div class="partner-card-subtitle">${partner.platform}</div>
+                                                            <div class="partner-card-title">${partner.name}</div>
+                                                            <div class="partner-card-desc">${partner.desc}</div>
+                                                            <a href="#" class="partner-card-link">Learn More &rarr;</a>
+                                                        </div>
+                                                    `;
                 satellitesContainer.appendChild(el);
 
                 satellites.push({
@@ -2982,22 +3012,6 @@
             pointer-events: none;
         }
 
-        .hor-marble {
-            opacity: 0.15;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.015' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-            mix-blend-mode: multiply;
-        }
-
-        .hor-rays {
-            background: radial-gradient(circle at 50% 0%, rgba(201, 162, 39, 0.15) 0%, transparent 60%);
-        }
-
-        .hor-handwriting {
-            opacity: 0.04;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='200'%3E%3Ctext x='10' y='40' font-family='cursive' font-size='24' fill='%230F1B3D' transform='rotate(-5)'%3EThe finest stories ever told...%3C/text%3E%3Ctext x='50' y='120' font-family='cursive' font-size='20' fill='%230F1B3D' transform='rotate(-2)'%3EAward winning publication.%3C/text%3E%3C/svg%3E");
-            background-repeat: repeat;
-        }
-
         /* 3D Book Styles */
         .preserve-3d {
             transform-style: preserve-3d;
@@ -3038,11 +3052,6 @@
     </style>
 
     <section id="hall-of-recognition">
-        <!-- Background Layers -->
-        <div class="hor-bg-layer hor-marble" id="hor-bg-marble"></div>
-        <div class="hor-bg-layer hor-handwriting" id="hor-bg-text"></div>
-        <div class="hor-bg-layer hor-rays"></div>
-        <canvas class="hor-bg-layer z-0" id="hor-particles-canvas"></canvas>
 
         <!-- Intro Header & Featured Award -->
         <div class="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-32 text-center" id="hor-intro">
@@ -3053,7 +3062,7 @@
 
             <!-- Featured Award Glass Card -->
             <div
-                class="mx-auto max-w-3xl p-8 md:p-12 rounded-3xl backdrop-blur-xl bg-white/70 border border-yellow-500/40 shadow-[0_30px_60px_-15px_rgba(15,27,61,0.1)] relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_40px_80px_-15px_rgba(201,162,39,0.2)]">
+                class="mx-auto max-w-3xl p-8 md:p-12 rounded-3xl bg-white/90 border border-yellow-500/40 shadow-[0_30px_60px_-15px_rgba(15,27,61,0.1)] relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_40px_80px_-15px_rgba(201,162,39,0.2)]">
                 <div class="absolute inset-0 bg-gradient-to-br from-white/90 to-transparent pointer-events-none"></div>
                 <div class="relative z-10">
                     <span class="text-6xl block mb-6 drop-shadow-lg">🏆</span>
@@ -3070,123 +3079,40 @@
             </div>
         </div>
 
-        <!-- Sticky Scroll Storytelling Section -->
-        <div id="hor-sticky-container" class="relative z-10 w-full bg-transparent">
-            <div class="h-screen w-full flex items-center overflow-hidden max-w-7xl mx-auto px-4" id="hor-sticky-content">
-
-                <!-- Left: Timeline -->
-                <div class="hidden md:flex w-1/4 h-full flex-col justify-center relative opacity-0 translate-x-[-50px]"
-                    id="hor-timeline">
-                    <div class="absolute left-8 top-1/4 bottom-1/4 w-[2px] bg-slate-300 rounded-full">
-                        <div id="hor-timeline-progress" class="w-full bg-yellow-500 rounded-full" style="height: 0%;"></div>
-                    </div>
-
-                    <div class="flex flex-col h-1/2 justify-between pl-16 relative">
-                        <div class="hor-timeline-item relative">
-                            <div class="absolute -left-[42px] top-1 w-4 h-4 rounded-full border-4 border-white bg-slate-300 shadow hor-tl-dot"
-                                data-step="1"></div>
-                            <h4 class="font-bold text-lg text-[#0F1B3D]">2022</h4>
-                            <p class="text-xs text-slate-500">First Recognition</p>
-                        </div>
-                        <div class="hor-timeline-item relative">
-                            <div class="absolute -left-[42px] top-1 w-4 h-4 rounded-full border-4 border-white bg-slate-300 shadow hor-tl-dot"
-                                data-step="2"></div>
-                            <h4 class="font-bold text-lg text-[#0F1B3D]">2023</h4>
-                            <p class="text-xs text-slate-500">Publishing Excellence</p>
-                        </div>
-                        <div class="hor-timeline-item relative">
-                            <div class="absolute -left-[42px] top-1 w-4 h-4 rounded-full border-4 border-white bg-slate-300 shadow hor-tl-dot"
-                                data-step="3"></div>
-                            <h4 class="font-bold text-lg text-[#0F1B3D]">2024</h4>
-                            <p class="text-xs text-slate-500">Global Expansion</p>
-                        </div>
-                        <div class="hor-timeline-item relative">
-                            <div class="absolute -left-[42px] top-1 w-4 h-4 rounded-full border-4 border-white bg-slate-300 shadow hor-tl-dot"
-                                data-step="4"></div>
-                            <h4 class="font-bold text-lg text-[#0F1B3D] gold-text">2025</h4>
-                            <p class="text-xs text-slate-500 font-semibold">Industry Award</p>
-                        </div>
-                    </div>
+        <!-- Clean Static Timeline / Awards -->
+        <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-20">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- 2022 -->
+                <div class="p-6 bg-white/90 border border-yellow-500/20 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl font-bold text-yellow-600 mb-3 font-serif">2022</div>
+                    <h4 class="font-bold text-[#0F1B3D] text-lg mb-2">First Recognition</h4>
+                    <p class="text-sm text-slate-600">Establishing a new standard in independent publishing.</p>
                 </div>
-
-                <!-- Center: The 3D Book of Recognition -->
-                <div class="w-full md:w-2/4 h-full perspective-[2000px] flex items-center justify-center relative z-20">
-                    <div id="hor-book"
-                        class="relative w-[320px] md:w-[380px] h-[480px] md:h-[540px] preserve-3d translate-y-[200px] opacity-0 rotate-x-[30deg] rotate-y-[-20deg] shadow-[0_50px_100px_rgba(0,0,0,0.2)]">
-
-                        <!-- Back Cover -->
-                        <div
-                            class="absolute inset-0 bg-[#0F1B3D] border-2 border-yellow-600 rounded-r-xl shadow-2xl preserve-3d">
-                        </div>
-
-                        <!-- Pages -->
-                        <!-- Page 4 (Final) -->
-                        <div
-                            class="book-page absolute inset-y-2 left-2 right-1 bg-[#fdfbf7] rounded-r-lg border border-slate-200 z-10 flex flex-col justify-center items-center text-center px-8">
-                            <h4 class="text-xl font-bold font-serif text-[#0F1B3D] mb-4">Every recognition begins with a
-                                story.</h4>
-                            <p class="text-sm text-slate-600 italic mb-8">Yours could be next.</p>
-                            <button type="button" onclick="document.getElementById('recognitions-modal').classList.remove('hidden')"
-                                class="px-6 py-3 bg-gradient-to-r from-yellow-600 to-yellow-500 text-white font-bold rounded-full shadow-[0_10px_20px_rgba(201,162,39,0.3)] hover:shadow-[0_15px_30px_rgba(201,162,39,0.5)] transition-all hover:-translate-y-1 relative overflow-hidden group">
-                                <span class="relative z-10">View More</span>
-                                <div
-                                    class="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:animate-[sweep_1.5s_ease-in-out_infinite] skew-x-[-20deg]">
-                                </div>
-                            </button>
-                        </div>
-
-                          
-                        <!-- Page 2 (Inside Right) -->
-                        <div id="book-page-2"
-                            class="book-page absolute inset-y-2 left-2 right-1 bg-[#fdfbf7] rounded-r-lg border border-slate-200 z-20">
-                            <div class="book-page-back"></div>
-                            <div
-                                class="w-full h-full flex flex-col justify-center text-center preserve-3d transform translate-z-[1px]">
-                                <span class="text-4xl mb-4">⭐</span>
-                                <h4 class="text-lg font-bold text-[#0F1B3D] mb-2">Trustpilot 4.9 Rating</h4>
-                                <p class="text-xs text-slate-500">High-score ratings verified by our global author
-                                    community.</p>
-                            </div>
-                        </div>
-
-                        <!-- Page 1 (Inside Front) -->
-                        <div id="book-page-1"
-                            class="book-page absolute inset-y-2 left-2 right-1 bg-[#fdfbf7] rounded-r-lg border border-slate-200 z-30">
-                            <div class="book-page-back"></div>
-                            <div
-                                class="w-full h-full flex flex-col justify-center text-center preserve-3d transform translate-z-[1px]">
-                                <span class="text-4xl mb-4">🎖️</span>
-                                <h4 class="text-lg font-bold text-[#0F1B3D] mb-2">Literary Layout Medal</h4>
-                                <p class="text-xs text-slate-500">Commended for publishing high-end, premium interior
-                                    layouts.</p>
-                            </div>
-                        </div>
-
-                        <!-- Front Cover -->
-                        <div id="book-cover"
-                            class="absolute inset-0 bg-gradient-to-br from-[#0F1B3D] to-[#0a1128] border-2 border-yellow-600 rounded-r-xl shadow-2xl origin-left preserve-3d z-40 flex flex-col items-center justify-center">
-                            <div class="book-page-back bg-gradient-to-bl from-[#f4eee1] to-[#e8dfc8]"></div>
-                            <div
-                                class="w-4/5 h-5/6 border border-yellow-600/50 rounded flex flex-col items-center justify-center preserve-3d transform translate-z-[2px]">
-                                <div
-                                    class="w-16 h-16 rounded-full border border-yellow-500 flex items-center justify-center mb-6 shadow-[0_0_15px_rgba(201,162,39,0.5)]">
-                                    <span class="text-2xl text-yellow-500 font-serif font-bold">BA</span>
-                                </div>
-                                <h3
-                                    class="text-white font-serif text-2xl tracking-widest uppercase text-center px-4 leading-relaxed">
-                                    Book of<br>Recognition</h3>
-                            </div>
-                        </div>
-
-                    </div>
+                <!-- 2023 -->
+                <div class="p-6 bg-white/90 border border-yellow-500/20 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl font-bold text-yellow-600 mb-3 font-serif">2023</div>
+                    <h4 class="font-bold text-[#0F1B3D] text-lg mb-2">Publishing Excellence</h4>
+                    <p class="text-sm text-slate-600">Recognized for outstanding editorial support and distribution.</p>
                 </div>
-
-                <!-- Right: 3D Trophy Showcase -->
-                <div class="hidden md:flex w-1/4 h-full relative items-center opacity-0 translate-x-[50px]" id="hor-trophy">
-                    <canvas id="trophy-canvas"
-                        class="w-full h-[400px] cursor-pointer drop-shadow-[0_20px_30px_rgba(201,162,39,0.2)]"></canvas>
+                <!-- 2024 -->
+                <div class="p-6 bg-white/90 border border-yellow-500/20 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl font-bold text-yellow-600 mb-3 font-serif">2024</div>
+                    <h4 class="font-bold text-[#0F1B3D] text-lg mb-2">Global Expansion</h4>
+                    <p class="text-sm text-slate-600">Reaching authors and readers across 45+ distribution networks.</p>
                 </div>
-
+                <!-- 2025 -->
+                <div class="p-6 bg-white/90 border border-yellow-500/30 rounded-2xl shadow-md text-center ring-2 ring-yellow-500/50 hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl font-bold text-yellow-600 mb-3 font-serif">2025</div>
+                    <h4 class="font-bold text-[#0F1B3D] text-lg mb-2">Industry Award</h4>
+                    <p class="text-sm text-slate-600">Celebrating our legacy in literary excellence and author success.</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button type="button" onclick="document.getElementById('recognitions-modal').classList.remove('hidden')"
+                    class="px-8 py-3.5 bg-[#C4A052] hover:bg-[#a88849] text-white font-bold rounded shadow-lg transition-colors inline-flex items-center gap-2">
+                    View All Recognitions <span>&rarr;</span>
+                </button>
             </div>
         </div>
 
@@ -3194,31 +3120,25 @@
         <div class="relative z-10 w-full max-w-5xl mx-auto px-4 pb-32">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center hor-stats-grid">
                 <div
-                    class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
+                    class="p-6 bg-white rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
                             data-target="25">0</span>+</div>
                     <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Industry Awards</div>
                 </div>
                 <div
-                    class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
+                    class="p-6 bg-white rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
                             data-target="4.9">0</span></div>
                     <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Average Rating</div>
                 </div>
                 <div
-                    class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
-                    <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
-                            data-target="4.9">0</span></div>
-                    <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Average Rating</div>
-                </div>
-                <div
-                    class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
+                    class="p-6 bg-white rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
                             data-target="1000">0</span>+</div>
                     <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Books Published</div>
                 </div>
                 <div
-                    class="p-6 bg-white/40 backdrop-blur-md rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
+                    class="p-6 bg-white rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
                             data-target="25">0</span>+</div>
                     <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Countries</div>
@@ -3230,87 +3150,7 @@
     <!-- Scripts for Hall of Recognition -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined' || typeof THREE === 'undefined') return;
-
-            // --- Particle Canvas Background ---
-            const pCanvas = document.getElementById('hor-particles-canvas');
-            if (!pCanvas) return;
-            const pCtx = pCanvas.getContext('2d');
-            let pW, pH;
-            let particles = [];
-
-            function resizeParticles() {
-                const horSection = document.getElementById('hall-of-recognition');
-                pW = pCanvas.width = window.innerWidth;
-                pH = pCanvas.height = horSection ? horSection.offsetHeight : window.innerHeight;
-            }
-            window.addEventListener('resize', resizeParticles);
-
-            function initParticles() {
-                resizeParticles();
-                particles = [];
-                for (let i = 0; i < 80; i++) {
-                    particles.push({
-                        x: Math.random() * pW,
-                        y: Math.random() * pH,
-                        size: Math.random() * 2 + 0.5,
-                        speedY: Math.random() * 0.3 + 0.1,
-                        opacity: Math.random() * 0.4 + 0.1
-                    });
-                }
-            }
-
-            function animateParticles() {
-                requestAnimationFrame(animateParticles);
-                pCtx.clearRect(0, 0, pW, pH);
-                pCtx.fillStyle = 'rgba(201, 162, 39, 1)'; // Gold color
-
-                particles.forEach(p => {
-                    p.y -= p.speedY;
-                    if (p.y < 0) p.y = pH;
-
-                    pCtx.globalAlpha = p.opacity;
-                    pCtx.beginPath();
-                    pCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-                    pCtx.fill();
-                });
-            }
-            initParticles();
-            animateParticles();
-
-            // --- GSAP Scroll Storytelling ---
-            const horSticky = document.getElementById('hor-sticky-container');
-            if (horSticky) {
-                const tl = gsap.timeline({
-                    scrollTrigger: {
-                        trigger: "#hor-sticky-container",
-                        start: "top top",
-                        end: "+=120%", // Faster, shorter scroll
-                        scrub: 1,
-                        pin: true,
-                    }
-                });
-
-                // 1. Entrance of elements
-                tl.to("#hor-book", { y: 0, opacity: 1, rotateX: 0, rotateY: 0, duration: 1 }, 0)
-                    .to("#hor-timeline", { opacity: 1, x: 0, duration: 1 }, 0)
-                    .to("#hor-trophy", { opacity: 1, x: 0, duration: 1 }, 0);
-
-                // 2. Book opens, Timeline progresses to 2023
-                tl.to("#book-cover", { rotationY: -160, duration: 2, ease: "power2.inOut" }, 1)
-                    .to("#hor-timeline-progress", { height: "33%", duration: 2 }, 1)
-                    .to(".hor-tl-dot[data-step='2']", { backgroundColor: '#eab308', borderColor: '#ca8a04' }, 2);
-
-                // 3. Page 1 turns, Timeline progresses to 2024
-                tl.to("#book-page-1", { rotationY: -155, duration: 2, ease: "power2.inOut" }, 3)
-                    .to("#hor-timeline-progress", { height: "66%", duration: 2 }, 3)
-                    .to(".hor-tl-dot[data-step='3']", { backgroundColor: '#eab308', borderColor: '#ca8a04' }, 4);
-
-                // 4. Page 2 turns, Timeline progresses to 2025
-                tl.to("#book-page-2", { rotationY: -150, duration: 2, ease: "power2.inOut" }, 5)
-                    .to("#hor-timeline-progress", { height: "100%", duration: 2 }, 5)
-                    .to(".hor-tl-dot[data-step='4']", { backgroundColor: '#eab308', borderColor: '#ca8a04' }, 6);
-            }
+            if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
 
             // --- Stats Counters ---
             const counters = document.querySelectorAll('.hor-counter');
@@ -3334,346 +3174,295 @@
                     once: true
                 });
             });
-
-            // --- Three.js Trophy ---
-            const tCanvas = document.getElementById('trophy-canvas');
-            if (tCanvas) {
-                const tScene = new THREE.Scene();
-                const tCamera = new THREE.PerspectiveCamera(35, tCanvas.clientWidth / tCanvas.clientHeight, 0.1, 1000);
-                tCamera.position.z = 25;
-
-                const tRenderer = new THREE.WebGLRenderer({ canvas: tCanvas, alpha: true, antialias: true });
-                tRenderer.setSize(tCanvas.clientWidth, tCanvas.clientHeight);
-                tRenderer.setPixelRatio(window.devicePixelRatio);
-
-                // Lighting for luxury gold reflection
-                const ambientLight = new THREE.AmbientLight(0xffffff, 0.4);
-                tScene.add(ambientLight);
-
-                const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
-                dirLight.position.set(5, 10, 7);
-                tScene.add(dirLight);
-
-                const fillLight = new THREE.DirectionalLight(0xc9a227, 0.8);
-                fillLight.position.set(-5, 0, -5);
-                tScene.add(fillLight);
-
-                const goldMat = new THREE.MeshStandardMaterial({
-                    color: 0xe6cd73,
-                    roughness: 0.2,
-                    metalness: 0.9,
-                });
-
-                const trophyGroup = new THREE.Group();
-                tScene.add(trophyGroup);
-
-                // Base
-                const baseGeo = new THREE.CylinderGeometry(2.5, 3, 1, 32);
-                const base = new THREE.Mesh(baseGeo, goldMat);
-                base.position.y = -4;
-                trophyGroup.add(base);
-
-                const base2Geo = new THREE.CylinderGeometry(2, 2.5, 0.5, 32);
-                const base2 = new THREE.Mesh(base2Geo, goldMat);
-                base2.position.y = -3.25;
-                trophyGroup.add(base2);
-
-                // Stem
-                const stemGeo = new THREE.CylinderGeometry(0.4, 0.8, 4, 32);
-                const stem = new THREE.Mesh(stemGeo, goldMat);
-                stem.position.y = -1;
-                trophyGroup.add(stem);
-
-                const knotGeo = new THREE.SphereGeometry(1, 32, 32);
-                const knot = new THREE.Mesh(knotGeo, goldMat);
-                knot.position.y = -0.5;
-                knot.scale.set(1, 0.5, 1);
-                trophyGroup.add(knot);
-
-                // Cup
-                const cupGeo = new THREE.SphereGeometry(2.5, 32, 32, 0, Math.PI * 2, 0, Math.PI / 1.8);
-                const cup = new THREE.Mesh(cupGeo, goldMat);
-                cup.position.y = 1.5;
-                cup.rotation.x = Math.PI; // flip upside down to make a bowl
-                trophyGroup.add(cup);
-
-                // Handles
-                const handleGeo = new THREE.TorusGeometry(1.5, 0.25, 16, 32);
-                const handle1 = new THREE.Mesh(handleGeo, goldMat);
-                handle1.position.set(-2.5, 2.5, 0);
-                handle1.rotation.z = Math.PI / 4;
-                trophyGroup.add(handle1);
-
-                const handle2 = new THREE.Mesh(handleGeo, goldMat);
-                handle2.position.set(2.5, 2.5, 0);
-                handle2.rotation.z = -Math.PI / 4;
-                trophyGroup.add(handle2);
-
-                // Animation loop
-                function tAnimate() {
-                    requestAnimationFrame(tAnimate);
-                    trophyGroup.rotation.y += 0.005;
-                    tRenderer.render(tScene, tCamera);
-                }
-                tAnimate();
-
-                // Mouse interaction
-                const trophyContainer = document.getElementById('hor-trophy');
-                if (trophyContainer) {
-                    trophyContainer.addEventListener('mousemove', (e) => {
-                        const rect = tCanvas.getBoundingClientRect();
-                        const x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
-                        const y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
-
-                        gsap.to(trophyGroup.rotation, {
-                            x: y * 0.3,
-                            z: -x * 0.3,
-                            duration: 1,
-                            ease: "power2.out"
-                        });
-                    });
-                    trophyContainer.addEventListener('mouseleave', () => {
-                        gsap.to(trophyGroup.rotation, {
-                            x: 0,
-                            z: 0,
-                            duration: 1,
-                            ease: "power2.out"
-                        });
-                    });
-                }
-
-                window.addEventListener('resize', () => {
-                    if (tCanvas.clientWidth === 0) return;
-                    tCamera.aspect = tCanvas.clientWidth / tCanvas.clientHeight;
-                    tCamera.updateProjectionMatrix();
-                    tRenderer.setSize(tCanvas.clientWidth, tCanvas.clientHeight);
-                });
-            }
         });
     </script>
 
 
 
 
-<!-- Recognitions Modal -->
-<div id="recognitions-modal" class="fixed inset-0 z-[10000] hidden">
-    <!-- Backdrop -->
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="document.getElementById('recognitions-modal').classList.add('hidden')"></div>
-    
-    <!-- Modal Content -->
-    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-[#0F1B3D]/80 backdrop-blur-xl border border-yellow-500/20 rounded-2xl shadow-2xl p-6 md:p-8">
-        <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
-            <h3 class="text-2xl font-serif font-bold text-white">All Recognitions</h3>
-            <button onclick="document.getElementById('recognitions-modal').classList.add('hidden')" class="text-slate-300 hover:text-white transition-colors">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-        </div>
-        
-        <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
-            <!-- Recognition Item -->
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
-                <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
-                    2022
-                </div>
-                <div>
-                    <h4 class="font-bold text-white">First Recognition</h4>
-                    <p class="text-sm text-slate-300 mt-1">Awarded for establishing a new standard in independent publishing.</p>
-                </div>
+    <!-- Recognitions Modal -->
+    <div id="recognitions-modal" class="fixed inset-0 z-[10000] hidden">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"
+            onclick="document.getElementById('recognitions-modal').classList.add('hidden')"></div>
+
+        <!-- Modal Content -->
+        <div
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-[#0F1B3D]/80 backdrop-blur-xl border border-yellow-500/20 rounded-2xl shadow-2xl p-6 md:p-8">
+            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                <h3 class="text-2xl font-serif font-bold text-white">All Recognitions</h3>
+                <button onclick="document.getElementById('recognitions-modal').classList.add('hidden')"
+                    class="text-slate-300 hover:text-white transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12">
+                        </path>
+                    </svg>
+                </button>
             </div>
-            
-            <!-- Recognition Item -->
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
-                <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
-                    2023
+
+            <div class="space-y-4 max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+                <!-- Recognition Item -->
+                <div
+                    class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
+                    <div
+                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
+                        2022
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white">First Recognition</h4>
+                        <p class="text-sm text-slate-300 mt-1">Awarded for establishing a new standard in independent
+                            publishing.</p>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white">Publishing Excellence</h4>
-                    <p class="text-sm text-slate-300 mt-1">Recognized for outstanding editorial support and global distribution networks.</p>
+
+                <!-- Recognition Item -->
+                <div
+                    class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
+                    <div
+                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
+                        2023
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white">Publishing Excellence</h4>
+                        <p class="text-sm text-slate-300 mt-1">Recognized for outstanding editorial support and global
+                            distribution networks.</p>
+                    </div>
                 </div>
-            </div>
-            
-            <!-- Recognition Item -->
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
-                <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
-                    2024
+
+                <!-- Recognition Item -->
+                <div
+                    class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
+                    <div
+                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
+                        2024
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white">Global Expansion</h4>
+                        <p class="text-sm text-slate-300 mt-1">Honored for successfully reaching authors and readers across
+                            45+ distribution networks.</p>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white">Global Expansion</h4>
-                    <p class="text-sm text-slate-300 mt-1">Honored for successfully reaching authors and readers across 45+ distribution networks.</p>
-                </div>
-            </div>
-            
-            <!-- Recognition Item -->
-            <div class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
-                <div class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
-                    2025
-                </div>
-                <div>
-                    <h4 class="font-bold text-white">Industry Award</h4>
-                    <p class="text-sm text-slate-300 mt-1">Celebrating our continued legacy in building literary excellence and author success.</p>
+
+                <!-- Recognition Item -->
+                <div
+                    class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
+                    <div
+                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
+                        2025
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white">Industry Award</h4>
+                        <p class="text-sm text-slate-300 mt-1">Celebrating our continued legacy in building literary
+                            excellence and author success.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<style>
-.custom-scrollbar::-webkit-scrollbar { width: 6px; }
-.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
-.custom-scrollbar::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
-</style>
-
-<!-- Swiper JS and CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<style>
-    .book-showcase-swiper {
-        width: 100%;
-        padding-top: 40px;
-        padding-bottom: 80px;
-    }
-    
-    .book-showcase-swiper .swiper-slide {
-        background-position: center;
-        background-size: cover;
-        width: 80px;
-        height: 130px; /* Thinner proportion */
-        filter: drop-shadow(15px 15px 10px rgba(0,0,0,0.6));
-        transition: filter 0.5s ease;
-    }
-    
-    @media (min-width: 640px) {
-        .book-showcase-swiper .swiper-slide {
-            width: 100px;
-            height: 160px;
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
         }
-    }
-    
-    @media (min-width: 1024px) {
-        .book-showcase-swiper .swiper-slide {
-            width: 130px;
-            height: 210px;
+
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
         }
-    }
 
-    /* Active hover shadow */
-    .book-showcase-swiper .swiper-slide:hover {
-        filter: drop-shadow(25px 25px 15px rgba(0,0,0,0.8)) drop-shadow(0 0 20px rgba(196, 160, 82, 0.4));
-    }
-    
-    /* 3D Book wrapper to handle right-facing rotation */
-    .book-wrapper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;
-        transform: perspective(1000px) rotateY(-30deg); /* Face right */
-        transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
 
-    /* Active hover animation */
-    .book-showcase-swiper .swiper-slide:hover .book-wrapper {
-        transform: perspective(1000px) rotateY(-15deg) translateY(-15px) scale(1.08);
-    }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
 
-    /* 3D Book Components */
-    .book-front, .book-back, .book-spine, .book-right-edge, .book-top-edge {
-        position: absolute;
-    }
+    <!-- Swiper JS and CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .book-showcase-swiper {
+            width: 100%;
+            padding-top: 40px;
+            padding-bottom: 80px;
+        }
 
-    /* Front Cover */
-    .book-front {
-        width: 100%;
-        height: 100%;
-        transform: translateZ(10px); /* Half of book thickness */
-        border-radius: 2px 6px 6px 2px;
-        overflow: hidden;
-        /* Cover thickness inner highlight */
-        box-shadow: inset 4px 0 10px rgba(0,0,0,0.3), inset -1px 0 2px rgba(255,255,255,0.2);
-    }
-    
-    /* Spine hinge indent */
-    .book-front::after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; bottom: 0;
-        width: 12px;
-        background: linear-gradient(to right, rgba(255,255,255,0.1) 0%, rgba(0,0,0,0.4) 15%, rgba(255,255,255,0.05) 30%, transparent 100%);
-        z-index: 2;
-    }
+        .book-showcase-swiper .swiper-slide {
+            background-position: center;
+            background-size: cover;
+            width: 80px;
+            height: 140px;
+            filter: drop-shadow(15px 15px 10px rgba(0, 0, 0, 0.6));
+            transition: filter 0.5s ease;
+        }
 
-    /* Back Cover */
-    .book-back {
-        width: 100%;
-        height: 100%;
-        transform: rotateY(180deg) translateZ(10px);
-        border-radius: 6px 2px 2px 6px;
-    }
-
-    /* Spine */
-    .book-spine {
-        width: 20px; /* Book thickness */
-        height: 100%;
-        left: 0;
-        transform-origin: center left;
-        transform: translateZ(10px) rotateY(-90deg);
-        border-radius: 4px 0 0 4px;
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-    }
-
-    /* Page edges */
-    .book-right-edge {
-        width: 20px; /* Book thickness */
-        height: 98%;
-        right: 0;
-        top: 1%;
-        transform-origin: center right;
-        transform: translateZ(10px) rotateY(90deg);
-        background: #e6e2d3;
-        border-radius: 0 4px 4px 0;
-        background-image: repeating-linear-gradient(to right, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 3px);
-        box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
-    }
-
-    /* Page edges top */
-    .book-top-edge {
-        width: 98%;
-        height: 20px; /* Book thickness */
-        top: 0;
-        left: 1%;
-        transform-origin: top center;
-        transform: translateZ(10px) rotateX(90deg);
-        background: #e6e2d3;
-        background-image: repeating-linear-gradient(to bottom, transparent, transparent 2px, rgba(0,0,0,0.05) 2px, rgba(0,0,0,0.05) 3px);
-    }
-</style>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const swiper = new Swiper('.book-showcase-swiper', {
-            grabCursor: true,
-            centeredSlides: true,
-            loop: true,
-            slidesPerView: 2, // Mobile default
-            speed: 1000, // Smooth easing
-            spaceBetween: 10, // Books very close together
-            autoplay: {
-                delay: 4000, // Auto-scroll every 4 seconds
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true, // Pause on hover
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 3, // Tablet
-                    spaceBetween: 10,
-                },
-                1024: {
-                    slidesPerView: 5, // Exactly 5 books visible
-                    spaceBetween: 15, // Slightly larger gap for desktop, still very close
-                }
+        @media (min-width: 640px) {
+            .book-showcase-swiper .swiper-slide {
+                width: 100px;
+                height: 180px;
             }
+        }
+
+        @media (min-width: 1024px) {
+            .book-showcase-swiper .swiper-slide {
+                width: 120px;
+                height: 220px;
+            }
+        }
+
+        /* Active hover shadow */
+        .book-showcase-swiper .swiper-slide:hover {
+            filter: drop-shadow(25px 25px 15px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(196, 160, 82, 0.4));
+        }
+
+        /* 3D Book wrapper to handle right-facing rotation */
+        .book-wrapper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transform: perspective(1200px) rotateY(-35deg);
+            /* Face right */
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Active hover animation */
+        .book-showcase-swiper .swiper-slide:hover .book-wrapper {
+            transform: perspective(1200px) rotateY(-18deg) translateY(-10px) scale(1.05);
+        }
+
+        /* 3D Book Components */
+        .book-front,
+        .book-back,
+        .book-spine,
+        .book-right-edge,
+        .book-top-edge {
+            position: absolute;
+        }
+
+        /* Front Cover */
+        .book-front {
+            width: 100%;
+            height: 100%;
+            transform: translateZ(12px);
+            /* Half of book thickness */
+            border-radius: 3px 5px 5px 3px;
+            overflow: hidden;
+            /* Cover thickness inner highlight and border */
+            box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.2), inset -1px 0 2px rgba(255, 255, 255, 0.3), 0 0 1px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Glossy Sheen Overlay on Cover */
+        .book-front::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Spine hinge indent */
+        .book-front::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            width: 10px;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 20%, rgba(255, 255, 255, 0.1) 40%, rgba(0, 0, 0, 0.1) 100%);
+            z-index: 2;
+            border-right: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        /* Back Cover */
+        .book-back {
+            width: 100%;
+            height: 100%;
+            transform: rotateY(180deg) translateZ(12px);
+            border-radius: 5px 3px 3px 5px;
+            background-color: #05080c;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+        }
+
+        /* Spine */
+        .book-spine {
+            width: 24px;
+            /* Book thickness */
+            height: 100%;
+            left: 0;
+            transform-origin: center left;
+            transform: translateZ(12px) rotateY(-90deg);
+            border-radius: 6px 0 0 6px;
+            /* rounded spine */
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Page edges */
+        .book-right-edge {
+            width: 22px;
+            /* Thinner than cover for lip overhang */
+            height: 96%;
+            /* Shorter than cover */
+            right: 2px;
+            /* Recessed inward */
+            top: 2%;
+            transform-origin: center right;
+            transform: translateZ(11px) rotateY(90deg);
+            /* 11px perfectly centers it within the 24px cover */
+            background: #f0ebd8;
+            border-radius: 0 2px 2px 0;
+            background-image: repeating-linear-gradient(to right, transparent, transparent 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0.1) 2px);
+            box-shadow: inset 2px 0 10px rgba(0, 0, 0, 0.4);
+            /* Shadow from the cover overhang */
+        }
+
+        /* Page edges top */
+        .book-top-edge {
+            width: 96%;
+            /* Shorter than cover */
+            height: 22px;
+            /* Thinner than cover for lip overhang */
+            top: 2px;
+            /* Recessed downward */
+            left: 2%;
+            transform-origin: top center;
+            transform: translateZ(11px) rotateX(90deg);
+            /* 11px perfectly centers it */
+            background: #e6e2d3;
+            background-image: repeating-linear-gradient(to bottom, transparent, transparent 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0.1) 2px);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+            /* Shadow from the cover overhang */
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const swiper = new Swiper('.book-showcase-swiper', {
+                grabCursor: true,
+                centeredSlides: true,
+                loop: true,
+                slidesPerView: 2, // Mobile default
+                speed: 1000, // Smooth easing
+                spaceBetween: -10, // Books very close together (negative offsets the 3D rotation bounding box)
+                autoplay: {
+                    delay: 4000, // Auto-scroll every 4 seconds
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true, // Pause on hover
+                },
+                breakpoints: {
+                    640: {
+                        slidesPerView: 3, // Tablet
+                        spaceBetween: -15,
+                    },
+                    1024: {
+                        slidesPerView: 5, // Exactly 5 books visible
+                        spaceBetween: -20, // Negative spacing to bring them right next to each other
+                    }
+                }
+            });
         });
-    });
-</script>
+    </script>
 
 @endsection

@@ -324,6 +324,12 @@
                 logoContainer.classList.add('opacity-100');
                 logoContainer.style.transform = 'translateY(-50px)';
 
+                const heroContent = document.getElementById('hero-content');
+                if(heroContent) {
+                    heroContent.classList.remove('opacity-0');
+                    heroContent.classList.add('opacity-100');
+                }
+
                 // Step 2: Connect the logo halves in the middle
                 halfLeft.style.transform = 'translateX(0)';
                 halfLeft.style.opacity = '1';
