@@ -165,7 +165,7 @@
                                                             <div class="flex items-center justify-between p-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
                                                                 <div class="flex items-center gap-2 truncate">
                                                                     <svg class="w-4 h-4 text-red-500 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" /></svg>
-                                                                    <span class="text-[10px] font-bold text-slate-700 dark:text-slate-300 truncate">{{ $report->title }}</span>
+                                                                    <a href="{{ route('royalty-reports.view', $report->id) }}" target="_blank" class="text-[10px] font-bold text-blue-600 hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 truncate">{{ $report->title }}</a>
                                                                 </div>
                                                                 <form method="POST" action="{{ route('admin.royalty-reports.delete', $report->id) }}" onsubmit="return confirm('Delete this PDF?');" class="shrink-0 ml-2">
                                                                     @csrf
@@ -215,7 +215,7 @@
                                                             <div class="flex items-center justify-between p-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
                                                                 <div class="flex items-center gap-3">
                                                                     @if($book->cover_image_path)
-                                                                        <img src="{{ Storage::url($book->cover_image_path) }}" class="w-8 h-8 object-cover rounded">
+                                                                        <img src="{{ asset('storage/' . $book->cover_image_path) }}" class="w-8 h-8 object-cover rounded">
                                                                     @else
                                                                         <div class="w-8 h-8 bg-slate-100 dark:bg-slate-800 rounded flex items-center justify-center">
                                                                             <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>

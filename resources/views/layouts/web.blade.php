@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Books Academy — Professional Publishing House</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/L01.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/gold1.png') }}">
 
     <!-- Inter Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,11 @@
 </head>
 
 <body
-    class="bg-[#E5D3B3] text-slate-800 transition-colors duratiwon-200 selection:bg-blue-600 selection:text-white min-h-screen flex flex-col overflow-x-hidden">
+    class="bg-transparent text-slate-800 transition-colors duratiwon-200 selection:bg-blue-600 selection:text-white min-h-screen flex flex-col overflow-x-hidden"
+    @if(request()->is('/'))
+        style="background-image: url('{{ asset('images/cover9.png') }}'); background-size: cover; background-position: center; background-attachment: fixed; background-repeat: no-repeat;"
+    @endif
+>
 
     @if(request()->is('/'))
     <!-- Fullscreen Video Intro Splash -->
@@ -58,31 +62,31 @@
     @endif
 
     <!-- Navigation Bar -->
-    <header id="main-navbar" class="sticky top-0 z-50 bg-black/10 backdrop-blur-sm transition-transform duration-300 w-full">
+    <header id="main-navbar" class="sticky top-0 z-50 bg-transparent transition-transform duration-300 w-full">
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-4 lg:py-6 flex items-center justify-between relative">
-            <!-- Navbar Logo (L01) -->
-            <div class="relative h-14 lg:h-20 w-40 lg:w-48 xl:w-56 flex-shrink-0 flex items-center z-10">
-                <a href="{{ url('/') }}" class="flex items-center hover:opacity-90 transition-opacity" id="nav-logo">
-                    <img id="logo-small" src="{{ asset('images/L01.png') }}" alt="BooksAcademy Logo Small"
-                        class="h-12 lg:h-16 max-w-none w-auto object-contain opacity-0 scale-95 pointer-events-none transition-all duration-500 ease-out origin-left drop-shadow-sm">
+            <!-- Navbar Logo -->
+            <div class="relative h-14 lg:h-16 w-48 lg:w-56 xl:w-64 flex-shrink-0 flex items-center z-[100]">
+                <a href="{{ url('/') }}" class="absolute -top-6 lg:-top-10 -left-2 hover:opacity-90 transition-opacity" id="nav-logo">
+                    <img id="logo-small" src="{{ asset('images/gold1.png') }}" alt="BooksAcademy Logo Small"
+                        class="h-28 lg:h-40 max-w-none w-auto object-contain opacity-0 scale-95 pointer-events-none transition-all duration-500 ease-out origin-left drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
                 </a>
             </div>
 
             <!-- Middle Links -->
             <nav
-                class="hidden lg:flex items-center justify-center gap-4 xl:gap-8 text-xs lg:text-sm xl:text-base font-medium absolute left-1/2 -translate-x-1/2 z-0">
+                class="hidden lg:flex flex-1 items-center justify-center gap-4 xl:gap-8 text-xs lg:text-sm xl:text-base font-medium z-0 px-4">
                 <a href="{{ url('/') }}"
-                    class="text-slate-800 hover:text-[#A67C52] transition-colors"
+                    class="text-white hover:text-[#A67C52] transition-colors"
                     id="link-home">Home</a>
                 <a href="{{ url('/#about-us') }}" onclick="if(typeof hideIntro === 'function') hideIntro()"
-                    class="text-slate-800 hover:text-[#A67C52] transition-colors"
+                    class="text-white hover:text-[#A67C52] transition-colors"
                     id="link-about">About Us</a>
 
                 <!-- Services Dropdown -->
                 <div class="relative group/dropdown">
                     <button id="services-dropdown-btn"
-                        class="flex items-center gap-1 text-slate-800 hover:text-[#A67C52] transition-colors focus:outline-none">
+                        class="flex items-center gap-1 text-white hover:text-[#A67C52] transition-colors focus:outline-none">
                         Services
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                             class="w-4 h-4 transition-transform group-hover/dropdown:rotate-180">
@@ -120,13 +124,13 @@
                 </div>
 
                 <a href="{{ route('bookstore') }}"
-                    class="text-slate-800 hover:text-[#A67C52] transition-colors"
+                    class="text-white hover:text-[#A67C52] transition-colors"
                     id="link-bookstore">Bookstore</a>
                 <a href="{{ route('pressroom') }}"
-                    class="text-slate-800 hover:text-[#A67C52] transition-colors"
+                    class="text-white hover:text-[#A67C52] transition-colors"
                     id="link-pressroom">Pressroom</a>
                 <a href="{{ route('contact') }}"
-                    class="text-slate-800 hover:text-[#A67C52] transition-colors"
+                    class="text-white hover:text-[#A67C52] transition-colors"
                     id="link-contact">Contact Us</a>
             </nav>
 
@@ -165,7 +169,7 @@
 
                 <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" type="button"
-                    class="lg:hidden flex items-center justify-center p-2 rounded-lg text-slate-600 hover:bg-slate-100 transition-colors focus:outline-none"
+                    class="lg:hidden flex items-center justify-center p-2 rounded-lg text-white hover:bg-white/10 transition-colors focus:outline-none"
                     aria-label="Toggle mobile menu">
                     <svg id="menu-open-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                         stroke-width="1.5" stroke="currentColor" class="w-6 h-6">

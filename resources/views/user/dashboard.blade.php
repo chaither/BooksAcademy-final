@@ -33,9 +33,14 @@
                                 <p class="text-[9px] text-slate-400 mt-0.5">Uploaded {{ $report->created_at->format('M d, Y') }}</p>
                             </div>
                         </div>
-                        <a href="{{ route('royalty-reports.download', $report->id) }}" class="px-3 py-1.5 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-[10px] font-bold text-slate-700 dark:text-slate-300 transition-colors" target="_blank">
-                            Download PDF
-                        </a>
+                        <div class="flex gap-2">
+                            <a href="{{ route('royalty-reports.view', $report->id) }}" class="px-3 py-1.5 rounded bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-800/30 text-[10px] font-bold text-blue-700 dark:text-blue-300 transition-colors" target="_blank">
+                                View PDF
+                            </a>
+                            <a href="{{ route('royalty-reports.download', $report->id) }}" class="px-3 py-1.5 rounded bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-[10px] font-bold text-slate-700 dark:text-slate-300 transition-colors" target="_blank">
+                                Download PDF
+                            </a>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -56,7 +61,7 @@
                     <div class="flex flex-col bg-slate-50 dark:bg-slate-900/40 rounded-lg border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm">
                         @if($book->cover_image_path)
                             <div class="aspect-[2/3] w-full bg-slate-200 dark:bg-slate-800 relative">
-                                <img src="{{ Storage::url($book->cover_image_path) }}" alt="{{ $book->title }}" class="absolute inset-0 w-full h-full object-cover">
+                                <img src="{{ asset('storage/' . $book->cover_image_path) }}" alt="{{ $book->title }}" class="absolute inset-0 w-full h-full object-cover">
                             </div>
                         @else
                             <div class="aspect-[2/3] w-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center p-4 text-center">

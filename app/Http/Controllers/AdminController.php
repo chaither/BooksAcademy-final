@@ -147,6 +147,21 @@ class AdminController extends Controller
     }
 
     /**
+     * View a specific royalty report.
+     */
+    public function viewRoyaltyReport(RoyaltyReport $royaltyReport)
+    {
+        $currentUser = auth()->user();
+
+        // Allow view if admin OR if the user owns the report
+        if ($currentUser->is_admin || $currentUser->id === $royaltyReport->user_id) {
+            return Storage::disk('public')->response($royaltyReport->file_path);
+        }
+
+        abort(403);
+    }
+
+    /**
      * Download a specific royalty report.
      */
     public function downloadRoyaltyReport(RoyaltyReport $royaltyReport)

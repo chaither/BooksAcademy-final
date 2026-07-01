@@ -5,7 +5,7 @@
             <!-- Brand Column -->
             <div class="md:col-span-2 space-y-6">
                 <a href="{{ url('/') }}" class="inline-block transition-opacity hover:opacity-80">
-                    <img src="{{ asset('images/L01.png') }}" alt="BooksAcademy Logo" class="h-16 w-auto object-contain brightness-0 invert">
+                    <img src="{{ asset('images/gold1.png') }}" alt="BooksAcademy Logo" class="h-16 w-auto object-contain brightness-0 invert">
                 </a>
                 <p class="text-sm text-slate-400 max-w-sm leading-relaxed font-serif italic">
                     Elevating literary voices through premium publishing experiences and global distribution networks.
