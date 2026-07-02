@@ -1,5 +1,6 @@
-<footer class="bg-[#0F1B3D] border-t border-[#C9A227]/20 relative overflow-hidden text-[#F8F5EE]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-16 md:py-24">
+<footer class="bg-[url('{{ asset('images/global.png') }}')] bg-cover bg-center bg-fixed relative overflow-hidden text-[#F8F5EE] border-t border-[#C4A052]/20">
+    <div class="absolute inset-0 bg-black/80"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-16 md:py-24 relative z-10">
         
         <div class="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-8">
             <!-- Brand Column -->

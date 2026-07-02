@@ -62,31 +62,38 @@
     @endif
 
     <!-- Navigation Bar -->
-    <header id="main-navbar" class="sticky top-0 z-50 bg-transparent transition-transform duration-300 w-full">
+    <header id="main-navbar" class="sticky top-0 z-50 bg-[#06080b]/90 backdrop-blur-md transition-transform duration-300 w-full border-b border-transparent">
+        <!-- Glowing Golden Line -->
+        <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C4A052]/80 to-transparent z-10"></div>
+        <div class="absolute bottom-0 left-0 w-full h-[3px] bg-gradient-to-r from-transparent via-[#C4A052] to-transparent blur-[3px] opacity-40 z-0"></div>
+        
         <div
             class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 py-4 lg:py-6 flex items-center justify-between relative">
             <!-- Navbar Logo -->
             <div class="relative h-14 lg:h-16 w-48 lg:w-56 xl:w-64 flex-shrink-0 flex items-center z-[100]">
-                <a href="{{ url('/') }}" class="absolute -top-6 lg:-top-10 -left-2 hover:opacity-90 transition-opacity" id="nav-logo">
+                <a href="{{ url('/') }}" class="absolute -top-4 lg:-top-8 -left-2 hover:opacity-90 transition-opacity" id="nav-logo">
                     <img id="logo-small" src="{{ asset('images/gold1.png') }}" alt="BooksAcademy Logo Small"
-                        class="h-28 lg:h-40 max-w-none w-auto object-contain opacity-0 scale-95 pointer-events-none transition-all duration-500 ease-out origin-left drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
+                        class="h-20 lg:h-28 max-w-none w-auto object-contain opacity-0 scale-95 pointer-events-none transition-all duration-500 ease-out origin-left drop-shadow-[0_4px_20px_rgba(0,0,0,0.3)]">
                 </a>
             </div>
 
             <!-- Middle Links -->
             <nav
-                class="hidden lg:flex flex-1 items-center justify-center gap-4 xl:gap-8 text-xs lg:text-sm xl:text-base font-medium z-0 px-4">
+                class="hidden lg:flex flex-1 items-center justify-center gap-6 xl:gap-10 text-sm lg:text-base font-serif z-0 px-4">
                 <a href="{{ url('/') }}"
-                    class="text-white hover:text-[#A67C52] transition-colors"
-                    id="link-home">Home</a>
+                    class="text-[#C4A052] hover:text-[#D4B886] transition-colors relative"
+                    id="link-home">
+                    Home
+                    <span class="absolute -bottom-2 left-1/2 -translate-x-1/2 w-6 h-[2px] bg-[#C4A052]"></span>
+                </a>
                 <a href="{{ url('/#about-us') }}" onclick="if(typeof hideIntro === 'function') hideIntro()"
-                    class="text-white hover:text-[#A67C52] transition-colors"
+                    class="text-slate-200 hover:text-[#C4A052] transition-colors"
                     id="link-about">About Us</a>
 
                 <!-- Services Dropdown -->
                 <div class="relative group/dropdown">
                     <button id="services-dropdown-btn"
-                        class="flex items-center gap-1 text-white hover:text-[#A67C52] transition-colors focus:outline-none">
+                        class="flex items-center gap-1 text-slate-200 hover:text-[#C4A052] transition-colors focus:outline-none font-serif">
                         Services
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
                             class="w-4 h-4 transition-transform group-hover/dropdown:rotate-180">
@@ -98,7 +105,7 @@
 
                     <!-- Dropdown Menu -->
                     <div
-                        class="absolute left-0 mt-2 w-56 rounded-xl bg-white shadow-lg border border-slate-200 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-200 transform translate-y-1 group-hover/dropdown:translate-y-0 z-50 p-1.5">
+                        class="absolute left-0 mt-2 w-56 rounded-xl bg-white shadow-lg border border-slate-200 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-200 transform translate-y-1 group-hover/dropdown:translate-y-0 z-50 p-1.5 font-sans">
                         <a href="{{ route('services') }}" onclick="highlightService('children')"
                             class="block px-3 py-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors text-xs font-semibold">
                             Children's Books Publishing
@@ -124,13 +131,13 @@
                 </div>
 
                 <a href="{{ route('bookstore') }}"
-                    class="text-white hover:text-[#A67C52] transition-colors"
+                    class="text-slate-200 hover:text-[#C4A052] transition-colors"
                     id="link-bookstore">Bookstore</a>
                 <a href="{{ route('pressroom') }}"
-                    class="text-white hover:text-[#A67C52] transition-colors"
+                    class="text-slate-200 hover:text-[#C4A052] transition-colors"
                     id="link-pressroom">Pressroom</a>
                 <a href="{{ route('contact') }}"
-                    class="text-white hover:text-[#A67C52] transition-colors"
+                    class="text-slate-200 hover:text-[#C4A052] transition-colors"
                     id="link-contact">Contact Us</a>
             </nav>
 
@@ -149,7 +156,7 @@
                             </a>
                         @else
                             <a href="{{ route('login') }}"
-                                class="flex items-center gap-1.5 px-4 py-2 rounded-lg border border-[#A67C52] text-[#A67C52] hover:bg-[#A67C52] hover:text-white transition-colors text-sm font-medium"
+                                class="flex items-center gap-1.5 px-5 py-2 rounded-full border border-[#C4A052] text-[#C4A052] hover:bg-[#C4A052] hover:text-[#06080b] transition-colors text-sm font-serif tracking-wide"
                                 id="btn-login">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
                                   <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />

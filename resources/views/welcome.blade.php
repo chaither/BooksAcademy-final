@@ -18,10 +18,10 @@
 
                 <!-- Logo replaces BOOKS ACADEMY text -->
                 <div id="logo-container"
-                    class="relative w-full max-w-[350px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] opacity-0 transition-all duration-[1200ms] ease-out flex justify-center"
+                    class="relative -left-4 sm:-left-8 md:-left-12 lg:-left-16 w-full max-w-[350px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] opacity-0 transition-all duration-[1200ms] ease-out flex justify-start self-start"
                     style="transform: translateY(30px); will-change: transform, opacity;">
                     <img id="logo-large" src="{{ asset('images/cover8.png') }}" alt="BooksAcademy Logo Large"
-                        class="h-auto w-full object-contain opacity-0 transition-opacity duration-500 will-change-transform">
+                        class="h-auto w-full object-contain object-left opacity-0 transition-opacity duration-500 will-change-transform">
 
                     <img id="logo-half-left" src="{{ asset('images/cover8.png') }}" alt="BooksAcademy Logo Left"
                         class="absolute inset-0 h-auto w-full object-contain logo-half"
@@ -33,7 +33,7 @@
                 </div>
             </div>
 
-            <div class="  flex flex-col items-center text-center opacity-0 transition-opacity duration-[1500ms] delay-700 fade-in-up"
+            <div class="-mt-6 sm:-mt-10 lg:-mt-8 flex flex-col items-center text-center opacity-0 transition-opacity duration-[1500ms] delay-700 fade-in-up"
                 id="hero-content">
                 <p class="text-[15px] sm:text-base md:text-lg text-white mb-2 font-serif tracking-wide">
                     Empowering writers. Enriching readers.
@@ -57,7 +57,7 @@
         </div>
 
         <!-- Premium Book Showcase -->
-        <div class="w-full relative mt-8 lg:mt-12 mb-2 sm:mb-4 pt-4 pb-6 z-20 overflow-visible">
+        <div class="w-full relative mt-1 mb-2 sm:mb-1 pt-4 pb-0 z-20 overflow-visible">
 
             <div class="swiper book-showcase-swiper relative z-10 max-w-[1000px] mx-auto">
                 <div class="swiper-wrapper flex items-end">
@@ -108,84 +108,189 @@
                         </div>
                     @endforeach
                 </div>
+                <!-- Removed Shelf Graphic -->
             </div>
         </div>
 
         <!-- Bottom Feature Columns (Over dark blue wave) -->
-        <div
-            class="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 text-center text-[#E5D3B3] pt-6 lg:pt-10 pb-2 z-10">
-            <!-- Feature 1 -->
+        <div class="relative w-full max-w-6xl mx-auto -mt-8 sm:-mt-12 lg:-mt-8 pt-4 pb-12 z-10">
+            <!-- Continuous Horizontal Line (Desktop) -->
             <div
-                class="flex flex-col items-center gap-3 border-transparent sm:border-r border-[#C4A052]/30 last:border-0 relative">
-                <div
-                    class="w-12 h-12 rounded-full border border-[#C4A052] flex items-center justify-center text-[#C4A052] bg-[#111827]">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
-                        </path>
-                    </svg>
-                </div>
-                <div class="px-2">
-                    <h5 class="text-[#C4A052] text-xs sm:text-sm font-serif uppercase tracking-widest mb-1.5">Expert
-                        Publishing</h5>
-                    <p class="text-[10px] sm:text-[11px] text-slate-300">Professional publishing<br>with a personal touch.
-                    </p>
-                </div>
+                class="hidden lg:block absolute top-[100px] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-[#C4A052]/40 to-transparent z-0">
             </div>
 
-            <!-- Feature 2 -->
-            <div
-                class="flex flex-col items-center gap-3 border-transparent lg:border-r border-[#C4A052]/30 last:border-0 relative">
-                <div
-                    class="w-12 h-12 rounded-full border border-[#C4A052] flex items-center justify-center text-[#C4A052] bg-[#111827]">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                        </path>
-                    </svg>
-                </div>
-                <div class="px-2">
-                    <h5 class="text-[#C4A052] text-xs sm:text-sm font-serif uppercase tracking-widest mb-1.5">Author Support
-                    </h5>
-                    <p class="text-[10px] sm:text-[11px] text-slate-300">Guiding authors from<br>manuscript to masterpiece.
-                    </p>
-                </div>
-            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 text-center z-10">
 
-            <!-- Feature 3 -->
-            <div
-                class="flex flex-col items-center gap-3 border-transparent sm:border-r border-[#C4A052]/30 last:border-0 relative">
-                <div
-                    class="w-12 h-12 rounded-full border border-[#C4A052] flex items-center justify-center text-[#C4A052] bg-[#111827]">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
-                        </path>
-                    </svg>
-                </div>
-                <div class="px-2">
-                    <h5 class="text-[#C4A052] text-xs sm:text-sm font-serif uppercase tracking-widest mb-1.5">Quality &
-                        Excellence</h5>
-                    <p class="text-[10px] sm:text-[11px] text-slate-300">Committed to the highest<br>standards in every
-                        book.</p>
-                </div>
-            </div>
+                <!-- Feature 1 -->
+                <div class="flex flex-col items-center relative py-4">
+                    <!-- Icon Container -->
+                    <div class="relative mb-8">
+                        <div
+                            class="relative w-[84px] h-[84px] rounded-full bg-[#121824] border border-[#a68242] flex items-center justify-center shadow-lg">
+                            <div
+                                class="w-[66px] h-[66px] rounded-full border-[2px] border-[#d6b772] flex items-center justify-center bg-gradient-to-b from-[#1a2130] to-[#0a0d14]">
+                                <!-- Feather Pen Icon -->
+                                <svg class="w-7 h-7 text-[#d6b772]" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <!-- Glowing bottom dot -->
+                            <div
+                                class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#ffeaad] blur-[2px] rounded-full z-10">
+                            </div>
+                            <div
+                                class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_2px_#ffeaad] z-20">
+                            </div>
+                        </div>
+                    </div>
 
-            <!-- Feature 4 -->
-            <div class="flex flex-col items-center gap-3 border-transparent border-[#C4A052]/30 last:border-0 relative">
-                <div
-                    class="w-12 h-12 rounded-full border border-[#C4A052] flex items-center justify-center text-[#C4A052] bg-[#111827]">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
-                        </path>
-                    </svg>
+                    <!-- Text Content -->
+                    <div class="px-4">
+                        <h5 class="text-[#d6b772] text-[13px] font-serif uppercase tracking-widest mb-3">Expert Publishing
+                        </h5>
+                        <p class="text-[11px] text-[#9ca3af] leading-relaxed">Professional publishing<br>with a personal
+                            touch.</p>
+                    </div>
+
+                    <!-- Right Divider & Star (Desktop) -->
+                    <div
+                        class="hidden lg:block absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#C4A052]/30 to-transparent">
+                    </div>
+                    <div
+                        class="hidden lg:flex absolute -right-[7px] top-[93px] w-[15px] h-[15px] items-center justify-center text-[#ffeaad] z-20 drop-shadow-[0_0_6px_#C4A052]">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                            <path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5Z" />
+                        </svg>
+                    </div>
                 </div>
-                <div class="px-2">
-                    <h5 class="text-[#C4A052] text-xs sm:text-sm font-serif uppercase tracking-widest mb-1.5">Legacy
-                        Building</h5>
-                    <p class="text-[10px] sm:text-[11px] text-slate-300">Creating timeless stories<br>that inspire
-                        generations.</p>
+
+                <!-- Feature 2 -->
+                <div class="flex flex-col items-center relative py-4">
+                    <!-- Icon Container -->
+                    <div class="relative mb-8">
+                        <div
+                            class="relative w-[84px] h-[84px] rounded-full bg-[#121824] border border-[#a68242] flex items-center justify-center shadow-lg">
+                            <div
+                                class="w-[66px] h-[66px] rounded-full border-[2px] border-[#d6b772] flex items-center justify-center bg-gradient-to-b from-[#1a2130] to-[#0a0d14]">
+                                <!-- Book Icon -->
+                                <svg class="w-7 h-7 text-[#d6b772]" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
+                                    </path>
+                                </svg>
+                            </div>
+                            <!-- Glowing bottom dot -->
+                            <div
+                                class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#ffeaad] blur-[2px] rounded-full z-10">
+                            </div>
+                            <div
+                                class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_2px_#ffeaad] z-20">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="px-4">
+                        <h5 class="text-[#d6b772] text-[13px] font-serif uppercase tracking-widest mb-3">Author Support</h5>
+                        <p class="text-[11px] text-[#9ca3af] leading-relaxed">Guiding authors from<br>manuscript to
+                            masterpiece.</p>
+                    </div>
+
+                    <!-- Right Divider & Star (Desktop) -->
+                    <div
+                        class="hidden lg:block absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#C4A052]/30 to-transparent">
+                    </div>
+                    <div
+                        class="hidden lg:flex absolute -right-[7px] top-[93px] w-[15px] h-[15px] items-center justify-center text-[#ffeaad] z-20 drop-shadow-[0_0_6px_#C4A052]">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                            <path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5Z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="flex flex-col items-center relative py-4">
+                    <!-- Icon Container -->
+                    <div class="relative mb-8">
+                        <div
+                            class="relative w-[84px] h-[84px] rounded-full bg-[#121824] border border-[#a68242] flex items-center justify-center shadow-lg">
+                            <div
+                                class="w-[66px] h-[66px] rounded-full border-[2px] border-[#d6b772] flex items-center justify-center bg-gradient-to-b from-[#1a2130] to-[#0a0d14]">
+                                <!-- Star Icon -->
+                                <svg class="w-7 h-7 text-[#d6b772]" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <!-- Glowing bottom dot -->
+                            <div
+                                class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#ffeaad] blur-[2px] rounded-full z-10">
+                            </div>
+                            <div
+                                class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_2px_#ffeaad] z-20">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="px-4">
+                        <h5 class="text-[#d6b772] text-[13px] font-serif uppercase tracking-widest mb-3">Quality &
+                            Excellence</h5>
+                        <p class="text-[11px] text-[#9ca3af] leading-relaxed">Committed to the highest<br>standards in every
+                            book.</p>
+                    </div>
+
+                    <!-- Right Divider & Star (Desktop) -->
+                    <div
+                        class="hidden lg:block absolute right-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-[#C4A052]/30 to-transparent">
+                    </div>
+                    <div
+                        class="hidden lg:flex absolute -right-[7px] top-[93px] w-[15px] h-[15px] items-center justify-center text-[#ffeaad] z-20 drop-shadow-[0_0_6px_#C4A052]">
+                        <svg viewBox="0 0 24 24" fill="currentColor" class="w-full h-full">
+                            <path d="M12 0L13.5 10.5L24 12L13.5 13.5L12 24L10.5 13.5L0 12L10.5 10.5Z" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Feature 4 -->
+                <div class="flex flex-col items-center relative py-4">
+                    <!-- Icon Container -->
+                    <div class="relative mb-8">
+                        <div
+                            class="relative w-[84px] h-[84px] rounded-full bg-[#121824] border border-[#a68242] flex items-center justify-center shadow-lg">
+                            <div
+                                class="w-[66px] h-[66px] rounded-full border-[2px] border-[#d6b772] flex items-center justify-center bg-gradient-to-b from-[#1a2130] to-[#0a0d14]">
+                                <!-- Shield Icon -->
+                                <svg class="w-7 h-7 text-[#d6b772]" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                        d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <!-- Glowing bottom dot -->
+                            <div
+                                class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#ffeaad] blur-[2px] rounded-full z-10">
+                            </div>
+                            <div
+                                class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1.5 h-1.5 bg-white rounded-full shadow-[0_0_8px_2px_#ffeaad] z-20">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text Content -->
+                    <div class="px-4">
+                        <h5 class="text-[#d6b772] text-[13px] font-serif uppercase tracking-widest mb-3">Legacy Building
+                        </h5>
+                        <p class="text-[11px] text-[#9ca3af] leading-relaxed">Creating timeless stories<br>that inspire
+                            generations.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -193,12 +298,13 @@
 
     <!-- About Us Section -->
     <section id="about-us"
-        class="relative py-24 xl:py-32 2xl:py-40 min-h-screen flex flex-col justify-center bg-[#Fdfbf7] dark:bg-slate-900 border-y border-[#C4A052]/20 transition-colors overflow-hidden">
+        class="relative py-24 xl:py-32 2xl:py-40 min-h-screen flex flex-col justify-center bg-[#0a0502] border-y border-[#C4A052]/20 transition-colors overflow-hidden">
 
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('images/cover4.png') }}" alt="About Us Background"
-                class="w-full h-full object-cover opacity-100 mix-blend-multiply dark:mix-blend-screen dark:opacity-30">
+            <img src="{{ asset('images/about.png') }}" alt="About Us Background"
+                class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0502]/90 via-[#0a0502]/50 to-[#0a0502]/90"></div>
         </div>
 
         <!-- Main container -->
@@ -215,14 +321,13 @@
                             <span class="w-8 h-[1px] bg-[#C4A052]"></span>
                             Who We Are
                         </span>
-                        <h2
-                            class="text-3xl sm:text-4xl xl:text-5xl font-serif text-slate-900 dark:text-white leading-[1.15]">
+                        <h2 class="text-3xl sm:text-4xl xl:text-5xl font-serif text-white leading-[1.15]">
                             A Professional <br class="hidden lg:block">Academy for <br class="hidden lg:block">
                             <span class="italic text-[#C4A052]">Independent Authors</span>
                         </h2>
                     </div>
 
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+                    <p class="text-slate-300 leading-relaxed text-sm drop-shadow-md">
                         Books Academy bridges the gap between creators and global markets. We provide transparent
                         self-publishing solutions, expert editorial support, stunning design, and worldwide distribution to
                         help your book succeed.
@@ -230,54 +335,65 @@
 
                     <div class="flex flex-wrap items-center gap-4">
                         <a href="{{ route('services') }}"
-                            class="px-6 py-3 rounded bg-[#111827] text-white text-xs font-semibold hover:bg-slate-800 transition-colors flex items-center gap-2 shadow-lg shadow-[#111827]/20">
-                            Explore Our Services <span class="text-slate-400">&rarr;</span>
+                            class="px-6 py-3 rounded bg-[#C4A052] text-[#0a0502] text-xs font-bold hover:bg-[#D4B886] transition-colors flex items-center gap-2 shadow-[0_0_15px_rgba(196,160,82,0.3)]">
+                            Explore Our Services <span class="text-[#0a0502]/70">&rarr;</span>
                         </a>
                         <button
-                            class="px-6 py-3 rounded border border-[#C4A052]/50 text-slate-700 dark:text-slate-300 text-xs font-semibold hover:bg-[#C4A052]/5 transition-colors flex items-center gap-2">
+                            class="px-6 py-3 rounded border border-[#C4A052]/50 text-slate-200 text-xs font-semibold hover:bg-[#C4A052]/10 transition-colors flex items-center gap-2">
                             <span
                                 class="w-5 h-5 rounded-full bg-[#C4A052] text-white flex items-center justify-center text-[10px]">▶</span>
                             How It Works
                         </button>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-4 pt-6 mt-2">
-                        <div class="text-center sm:text-left space-y-2 relative pr-4">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-4 pt-6 mt-2">
+                        <div
+                            class="text-center sm:text-left space-y-2 relative sm:pr-4 border-b sm:border-b-0 border-[#C4A052]/20 pb-6 sm:pb-0">
                             <div
-                                class="w-10 h-10 mx-auto sm:mx-0 rounded-full border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] bg-[#Fdfbf7] shadow-inner mb-3">
+                                class="w-10 h-10 mx-auto sm:mx-0 rounded-full border border-[#C4A052]/40 flex items-center justify-center text-[#C4A052] bg-black/40 backdrop-blur-sm shadow-[0_0_10px_rgba(196,160,82,0.1)] mb-3">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
                                     </path>
                                 </svg>
                             </div>
-                            <h5 class="font-bold text-[11px] text-slate-800 uppercase tracking-widest">Author<br>First</h5>
-                            <p class="text-[9px] text-slate-500 leading-tight">We protect your<br>rights and royalties.</p>
+                            <h5
+                                class="font-bold text-[13px] sm:text-[11px] text-white uppercase tracking-widest drop-shadow-sm">
+                                Author<br class="hidden sm:block">First</h5>
+                            <p class="text-[11px] sm:text-[9px] text-slate-400 leading-tight">We protect your<br
+                                    class="hidden sm:block">rights and royalties.</p>
                         </div>
-                        <div class="text-center sm:text-left space-y-2 relative border-l border-[#C4A052]/20 pl-4">
+                        <div
+                            class="text-center sm:text-left space-y-2 relative sm:border-l border-b sm:border-b-0 border-[#C4A052]/20 pb-6 sm:pb-0 sm:pl-4">
                             <div
-                                class="w-10 h-10 mx-auto sm:mx-0 rounded-full border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] bg-[#Fdfbf7] shadow-inner mb-3">
+                                class="w-10 h-10 mx-auto sm:mx-0 rounded-full border border-[#C4A052]/40 flex items-center justify-center text-[#C4A052] bg-black/40 backdrop-blur-sm shadow-[0_0_10px_rgba(196,160,82,0.1)] mb-3">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
                                     </path>
                                 </svg>
                             </div>
-                            <h5 class="font-bold text-[11px] text-slate-800 uppercase tracking-widest">Expert<br>Support
+                            <h5
+                                class="font-bold text-[13px] sm:text-[11px] text-white uppercase tracking-widest drop-shadow-sm">
+                                Expert<br class="hidden sm:block">Support
                             </h5>
-                            <p class="text-[9px] text-slate-500 leading-tight">From manuscript<br>to marketplace.</p>
+                            <p class="text-[11px] sm:text-[9px] text-slate-400 leading-tight">From manuscript<br
+                                    class="hidden sm:block">to marketplace.</p>
                         </div>
-                        <div class="text-center sm:text-left space-y-2 relative border-l border-[#C4A052]/20 pl-4">
+                        <div class="text-center sm:text-left space-y-2 relative sm:border-l border-[#C4A052]/20 sm:pl-4">
                             <div
-                                class="w-10 h-10 mx-auto sm:mx-0 rounded-full border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] bg-[#Fdfbf7] shadow-inner mb-3">
+                                class="w-10 h-10 mx-auto sm:mx-0 rounded-full border border-[#C4A052]/40 flex items-center justify-center text-[#C4A052] bg-black/40 backdrop-blur-sm shadow-[0_0_10px_rgba(196,160,82,0.1)] mb-3">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
                                     </path>
                                 </svg>
                             </div>
-                            <h5 class="font-bold text-[11px] text-slate-800 uppercase tracking-widest">Global<br>Reach</h5>
-                            <p class="text-[9px] text-slate-500 leading-tight">Your book,<br>worldwide.</p>
+                            <h5
+                                class="font-bold text-[13px] sm:text-[11px] text-white uppercase tracking-widest drop-shadow-sm">
+                                Global<br class="hidden sm:block">Reach</h5>
+                            <p class="text-[11px] sm:text-[9px] text-slate-400 leading-tight">Your book,<br
+                                    class="hidden sm:block">worldwide.</p>
                         </div>
                     </div>
                 </div>
@@ -412,29 +528,31 @@
                         <span
                             class="absolute -top-6 left-4 text-5xl text-[#C4A052] opacity-30 font-serif leading-none">"</span>
                         <div id="testimonial-content" class="transition-opacity duration-300 opacity-100">
-                            <p id="testimonial-text"
-                                class="text-xs text-slate-600 dark:text-slate-400 italic leading-relaxed">
+                            <p id="testimonial-text" class="text-xs text-slate-300 italic leading-relaxed drop-shadow-md">
                                 Books Academy made my publishing journey smooth, professional, and truly empowering.
                             </p>
                             <p id="testimonial-author"
-                                class="text-[9px] text-slate-500 font-bold uppercase tracking-widest mt-4">- Sarah J.,
+                                class="text-[9px] text-slate-400 font-bold uppercase tracking-widest mt-4">- Sarah J.,
                                 Published Author</p>
                         </div>
 
-                        <div class="flex justify-between items-center w-full mt-2 absolute bottom-0 left-0 px-6">
+                        <div class="flex justify-between items-center w-full mt-2 absolute bottom-0 left-0 px-2 sm:px-6">
                             <button id="testimonial-prev"
-                                class="w-7 h-7 rounded-full bg-slate-800 text-white flex items-center justify-center text-[10px] hover:bg-[#C4A052] transition-colors shadow-lg focus:outline-none">&lt;</button>
-                            <div class="flex justify-center gap-2" id="testimonial-dots">
+                                class="w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-slate-800 text-white flex items-center justify-center text-sm sm:text-xs hover:bg-[#C4A052] transition-colors shadow-lg focus:outline-none">&lt;</button>
+                            <div class="flex justify-center gap-3 sm:gap-2" id="testimonial-dots">
                                 <!-- Dots will be managed by JS -->
-                                <button class="w-1.5 h-1.5 rounded-full bg-slate-800 transition-colors focus:outline-none"
+                                <button
+                                    class="w-2 h-2 sm:w-1.5 sm:h-1.5 rounded-full bg-slate-800 transition-colors focus:outline-none"
                                     data-index="0"></button>
-                                <button class="w-1.5 h-1.5 rounded-full bg-slate-300 transition-colors focus:outline-none"
+                                <button
+                                    class="w-2 h-2 sm:w-1.5 sm:h-1.5 rounded-full bg-slate-300 transition-colors focus:outline-none"
                                     data-index="1"></button>
-                                <button class="w-1.5 h-1.5 rounded-full bg-slate-300 transition-colors focus:outline-none"
+                                <button
+                                    class="w-2 h-2 sm:w-1.5 sm:h-1.5 rounded-full bg-slate-300 transition-colors focus:outline-none"
                                     data-index="2"></button>
                             </div>
                             <button id="testimonial-next"
-                                class="w-7 h-7 rounded-full bg-slate-800 text-white flex items-center justify-center text-[10px] hover:bg-[#C4A052] transition-colors shadow-lg focus:outline-none">&gt;</button>
+                                class="w-10 h-10 sm:w-8 sm:h-8 rounded-full bg-slate-800 text-white flex items-center justify-center text-sm sm:text-xs hover:bg-[#C4A052] transition-colors shadow-lg focus:outline-none">&gt;</button>
                         </div>
                     </div>
                 </div>
@@ -443,10 +561,10 @@
                 <div class="relative opacity-0 transition-all duration-1000 ease-out translate-y-10 delay-[400ms] mt-12 lg:mt-0"
                     id="about-col-3">
                     <div
-                        class="p-8 rounded-2xl bg-[#0f172a] shadow-2xl space-y-8 relative overflow-hidden h-full flex flex-col border border-slate-800">
+                        class="p-8 rounded-2xl bg-black/50 backdrop-blur-md shadow-[0_0_30px_rgba(0,0,0,0.8)] space-y-8 relative overflow-hidden h-full flex flex-col border border-[#C4A052]/30">
                         <h3 class="font-bold text-[10px] text-white uppercase tracking-[0.2em] flex items-center gap-3">
                             <div
-                                class="w-8 h-8 rounded bg-slate-800 border border-slate-700 flex items-center justify-center text-[#C4A052] shadow-inner shadow-black/50">
+                                class="w-8 h-8 rounded bg-black/60 border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] shadow-inner shadow-black/50">
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
@@ -458,9 +576,9 @@
 
                         <ul class="space-y-6 flex-1">
                             <!-- Item 1 -->
-                            <li class="flex items-start gap-4 pb-5 border-b border-slate-800/50">
+                            <li class="flex items-start gap-4 pb-5 border-b border-[#C4A052]/20">
                                 <div
-                                    class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-inner shadow-black/50">
+                                    class="w-8 h-8 rounded-full bg-black/60 border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-inner shadow-black/50">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z">
@@ -474,9 +592,9 @@
                                 </div>
                             </li>
                             <!-- Item 2 -->
-                            <li class="flex items-start gap-4 pb-5 border-b border-slate-800/50">
+                            <li class="flex items-start gap-4 pb-5 border-b border-[#C4A052]/20">
                                 <div
-                                    class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-inner shadow-black/50">
+                                    class="w-8 h-8 rounded-full bg-black/60 border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-inner shadow-black/50">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
@@ -490,9 +608,9 @@
                                 </div>
                             </li>
                             <!-- Item 3 -->
-                            <li class="flex items-start gap-4 pb-5 border-b border-slate-800/50">
+                            <li class="flex items-start gap-4 pb-5 border-b border-[#C4A052]/20">
                                 <div
-                                    class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-inner shadow-black/50">
+                                    class="w-8 h-8 rounded-full bg-black/60 border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-inner shadow-black/50">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
@@ -508,7 +626,7 @@
                             <!-- Item 4 -->
                             <li class="flex items-start gap-4">
                                 <div
-                                    class="w-8 h-8 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-inner shadow-black/50">
+                                    class="w-8 h-8 rounded-full bg-black/60 border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-inner shadow-black/50">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
@@ -524,9 +642,9 @@
                         </ul>
 
                         <div
-                            class="mt-4 bg-gradient-to-r from-[#D4B886] to-[#C4A052] p-4 rounded-xl flex items-center justify-between cursor-pointer hover:shadow-lg hover:shadow-[#C4A052]/20 hover:-translate-y-0.5 transition-all group">
+                            class="mt-4 bg-gradient-to-r from-[#D4B886] to-[#C4A052] p-4 rounded-xl flex items-center justify-between cursor-pointer hover:shadow-[0_0_20px_rgba(196,160,82,0.4)] hover:-translate-y-0.5 transition-all group">
                             <div class="flex items-center gap-3">
-                                <div class="w-8 h-8 rounded bg-white/20 flex items-center justify-center text-white">
+                                <div class="w-8 h-8 rounded bg-black/20 flex items-center justify-center text-[#0a0502]">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z">
@@ -534,14 +652,14 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <strong class="text-white text-[11px] block mb-0.5">Ready to bring your book to
+                                    <strong class="text-[#0a0502] text-[11px] block mb-0.5">Ready to bring your book to
                                         life?</strong>
-                                    <span class="text-white/80 text-[9px] block">Join thousands of authors who trust
+                                    <span class="text-[#0a0502]/80 text-[9px] block">Join thousands of authors who trust
                                         us.</span>
                                 </div>
                             </div>
                             <div
-                                class="w-7 h-7 rounded-full bg-white flex items-center justify-center text-[#C4A052] text-xs group-hover:translate-x-1 transition-transform">
+                                class="w-7 h-7 rounded-full bg-[#0a0502] flex items-center justify-center text-[#C4A052] text-xs group-hover:translate-x-1 transition-transform">
                                 &rarr;
                             </div>
                         </div>
@@ -551,13 +669,13 @@
             </div>
 
             <!-- Bottom Banner Stats -->
-            <div class="w-full bg-[#0f172a] rounded-2xl p-8 shadow-2xl opacity-0 transition-all duration-1000 ease-out translate-y-10 delay-[600ms] border border-slate-800"
+            <div class="w-full bg-[#0a0502]/80 backdrop-blur-md rounded-2xl p-8 shadow-2xl opacity-0 transition-all duration-1000 ease-out translate-y-10 delay-[600ms] border border-[#C4A052]/30"
                 id="about-banner">
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-slate-800/50">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 divide-x-0 md:divide-x divide-[#C4A052]/20">
                     <!-- Stat 1 -->
                     <div class="flex items-center justify-center gap-4 group cursor-default">
                         <div
-                            class="w-10 h-10 rounded-full bg-slate-800/50 border border-slate-700/50 flex items-center justify-center text-[#C4A052] group-hover:bg-[#C4A052] group-hover:text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-[#1a110a] border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] group-hover:bg-[#C4A052] group-hover:text-[#1a110a] transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
@@ -566,15 +684,15 @@
                         </div>
                         <div>
                             <strong
-                                class="text-[#C4A052] text-xl font-serif block group-hover:scale-105 transition-transform origin-left">1.5K+</strong>
-                            <span class="text-white text-[9px] tracking-wider uppercase block mt-0.5">Published
+                                class="text-[#D4B886] text-xl font-serif block group-hover:scale-105 transition-transform origin-left drop-shadow-md">1.5K+</strong>
+                            <span class="text-slate-300 text-[9px] tracking-wider uppercase block mt-0.5">Published
                                 Authors</span>
                         </div>
                     </div>
                     <!-- Stat 2 -->
                     <div class="flex items-center justify-center gap-4 md:pl-4 group cursor-default">
                         <div
-                            class="w-10 h-10 rounded-full bg-slate-800/50 border border-slate-700/50 flex items-center justify-center text-[#C4A052] group-hover:bg-[#C4A052] group-hover:text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-[#1a110a] border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] group-hover:bg-[#C4A052] group-hover:text-[#1a110a] transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
@@ -583,14 +701,15 @@
                         </div>
                         <div>
                             <strong
-                                class="text-[#C4A052] text-xl font-serif block group-hover:scale-105 transition-transform origin-left">2.3K+</strong>
-                            <span class="text-white text-[9px] tracking-wider uppercase block mt-0.5">Books Published</span>
+                                class="text-[#D4B886] text-xl font-serif block group-hover:scale-105 transition-transform origin-left drop-shadow-md">2.3K+</strong>
+                            <span class="text-slate-300 text-[9px] tracking-wider uppercase block mt-0.5">Books
+                                Published</span>
                         </div>
                     </div>
                     <!-- Stat 3 -->
                     <div class="flex items-center justify-center gap-4 md:pl-4 group cursor-default">
                         <div
-                            class="w-10 h-10 rounded-full bg-slate-800/50 border border-slate-700/50 flex items-center justify-center text-[#C4A052] group-hover:bg-[#C4A052] group-hover:text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-[#1a110a] border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] group-hover:bg-[#C4A052] group-hover:text-[#1a110a] transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
@@ -599,15 +718,15 @@
                         </div>
                         <div>
                             <strong
-                                class="text-[#C4A052] text-xl font-serif block group-hover:scale-105 transition-transform origin-left">45</strong>
-                            <span class="text-white text-[9px] tracking-wider uppercase block mt-0.5">Distribution
+                                class="text-[#D4B886] text-xl font-serif block group-hover:scale-105 transition-transform origin-left drop-shadow-md">45</strong>
+                            <span class="text-slate-300 text-[9px] tracking-wider uppercase block mt-0.5">Distribution
                                 Networks</span>
                         </div>
                     </div>
                     <!-- Stat 4 -->
                     <div class="flex items-center justify-center gap-4 md:pl-4 group cursor-default">
                         <div
-                            class="w-10 h-10 rounded-full bg-slate-800/50 border border-slate-700/50 flex items-center justify-center text-[#C4A052] group-hover:bg-[#C4A052] group-hover:text-white transition-colors">
+                            class="w-10 h-10 rounded-full bg-[#1a110a] border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] group-hover:bg-[#C4A052] group-hover:text-[#1a110a] transition-colors">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
@@ -616,8 +735,8 @@
                         </div>
                         <div>
                             <strong
-                                class="text-[#C4A052] text-xl font-serif block group-hover:scale-105 transition-transform origin-left">98%</strong>
-                            <span class="text-white text-[9px] tracking-wider uppercase block mt-0.5">Author
+                                class="text-[#D4B886] text-xl font-serif block group-hover:scale-105 transition-transform origin-left drop-shadow-md">98%</strong>
+                            <span class="text-slate-300 text-[9px] tracking-wider uppercase block mt-0.5">Author
                                 Satisfaction</span>
                         </div>
                     </div>
@@ -631,12 +750,13 @@
 
     <!-- Why Writers Choose Our House (Writer Experience) -->
     <section
-        class="relative py-24 xl:py-32 2xl:py-40 min-h-screen flex flex-col justify-center overflow-hidden bg-[#FDFBF7] dark:bg-slate-900 border-b border-[#C4A052]/20 transition-colors">
+        class="relative py-24 xl:py-32 2xl:py-40 min-h-screen flex flex-col justify-center overflow-hidden bg-[#0a0502] border-b border-[#C4A052]/20 transition-colors">
 
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('images/cover2.png') }}" alt="Background Texture"
-                class="w-full h-full object-cover opacity-100 mix-blend-multiply dark:mix-blend-screen dark:opacity-30">
+            <img src="{{ asset('images/writer.png') }}" alt="Background Texture"
+                class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-r from-[#0a0502] via-[#0a0502]/70 to-[#0a0502]/40"></div>
         </div>
 
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10">
@@ -649,11 +769,11 @@
                         <span class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.2em]">Writer
                             Experience</span>
                         <h2
-                            class="text-3xl sm:text-4xl lg:text-5xl font-serif text-[#1b253b] dark:text-white leading-[1.1]">
-                            Full Control.<br><span class="text-[#1b253b] dark:text-[#C4A052]">Direct Distribution.</span>
+                            class="text-3xl sm:text-4xl lg:text-5xl font-serif text-white leading-[1.1] drop-shadow-md">
+                            Full Control.<br><span class="text-white dark:text-[#C4A052]">Direct Distribution.</span>
                         </h2>
                         <div class="w-12 h-0.5 bg-[#C4A052] my-4"></div>
-                        <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-md pt-2">
+                        <p class="text-sm text-slate-300 leading-relaxed max-w-md pt-2">
                             Traditional publishing setups require full copyright signovers and return minimal net royalties.
                             Books Academy leaves creative control where it belongs—with the author.
                         </p>
@@ -663,7 +783,7 @@
                     <div class="space-y-6 pt-4">
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-10 h-10 rounded-full bg-[#1b253b] dark:bg-[#C4A052] flex items-center justify-center text-[#C4A052] dark:text-white flex-shrink-0 shadow-lg">
+                                class="w-10 h-10 rounded-full bg-[#1a110a] border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-lg">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
@@ -671,15 +791,15 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-sm font-bold text-[#1b253b] dark:text-white">Keep 100% of book permissions
+                                <h4 class="text-sm font-bold text-white">Keep 100% of book permissions
                                 </h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">and copyright listings.</p>
+                                <p class="text-[11px] text-slate-400 mt-0.5">and copyright listings.</p>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-10 h-10 rounded-full bg-[#1b253b] dark:bg-[#C4A052] flex items-center justify-center text-[#C4A052] dark:text-white flex-shrink-0 shadow-lg">
+                                class="w-10 h-10 rounded-full bg-[#1a110a] border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-lg">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
@@ -687,14 +807,14 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-sm font-bold text-[#1b253b] dark:text-white">Secure up to 85% royalties</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">on paperback and digital prints.</p>
+                                <h4 class="text-sm font-bold text-white">Secure up to 85% royalties</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">on paperback and digital prints.</p>
                             </div>
                         </div>
 
                         <div class="flex items-center gap-4">
                             <div
-                                class="w-10 h-10 rounded-full bg-[#1b253b] dark:bg-[#C4A052] flex items-center justify-center text-[#C4A052] dark:text-white flex-shrink-0 shadow-lg">
+                                class="w-10 h-10 rounded-full bg-[#1a110a] border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] flex-shrink-0 shadow-lg">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z">
@@ -702,17 +822,17 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-sm font-bold text-[#1b253b] dark:text-white">Direct consulting with</h4>
-                                <p class="text-[11px] text-slate-500 mt-0.5">dedicated design editors.</p>
+                                <h4 class="text-sm font-bold text-white">Direct consulting with</h4>
+                                <p class="text-[11px] text-slate-400 mt-0.5">dedicated design editors.</p>
                             </div>
                         </div>
                     </div>
 
                     <!-- Bottom Card -->
                     <div
-                        class="bg-white/60 dark:bg-slate-800/60 backdrop-blur-md rounded-xl p-5 border border-[#C4A052]/20 flex items-center gap-6 mt-8 max-w-full sm:max-w-[420px] shadow-xl shadow-[#C4A052]/5">
+                        class="bg-black/50 backdrop-blur-md rounded-xl p-5 border border-[#C4A052]/20 flex items-center gap-6 mt-8 max-w-full sm:max-w-[420px] shadow-[0_0_20px_rgba(196,160,82,0.1)]">
                         <div
-                            class="w-10 h-10 rounded-full bg-[#C4A052] flex items-center justify-center text-white flex-shrink-0">
+                            class="w-10 h-10 rounded-full bg-[#C4A052] flex items-center justify-center text-[#0a0502] flex-shrink-0 shadow-[0_0_15px_rgba(196,160,82,0.5)]">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                     d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
@@ -720,12 +840,12 @@
                             </svg>
                         </div>
                         <div class="flex-1">
-                            <h5 class="text-[11px] font-bold text-[#1b253b] dark:text-white">Your story. Your rights. Our
+                            <h5 class="text-[11px] font-bold text-white">Your story. Your rights. Our
                                 platform.</h5>
-                            <p class="text-[9px] text-slate-500 mt-0.5">We're here to empower your journey<br>from
+                            <p class="text-[9px] text-slate-400 mt-0.5">We're here to empower your journey<br>from
                                 manuscript to marketplace.</p>
                         </div>
-                        <div class="text-[#C4A052] font-serif text-sm italic whitespace-nowrap transform -rotate-2 pr-2">
+                        <div class="text-[#C4A052] font-serif text-sm italic whitespace-nowrap transform -rotate-2 pr-2 drop-shadow-sm">
                             Let's publish<br>together.
                         </div>
                     </div>
@@ -733,75 +853,75 @@
 
                 <!-- Right Column (Large Card) -->
                 <div
-                    class="bg-white dark:bg-slate-800 rounded-[2rem] shadow-2xl p-8 lg:p-10 border border-[#C4A052]/10 relative overflow-hidden group hover:shadow-[#C4A052]/10 transition-shadow duration-500">
-                    <div class="mb-8">
-                        <h3 class="text-3xl font-serif text-[#1b253b] dark:text-white leading-[1.2]">Built for Authors.</h3>
-                        <h3 class="text-3xl font-serif text-[#C4A052] italic leading-[1.2]">Focused on You.</h3>
+                    class="bg-black/60 backdrop-blur-xl rounded-[2rem] shadow-[0_0_40px_rgba(0,0,0,0.8)] p-8 lg:p-10 border border-[#C4A052]/30 relative overflow-hidden group hover:shadow-[0_0_50px_rgba(196,160,82,0.15)] transition-shadow duration-500">
+                    <div class="mb-8 relative z-10">
+                        <h3 class="text-3xl font-serif text-white leading-[1.2] drop-shadow-sm">Built for Authors.</h3>
+                        <h3 class="text-3xl font-serif text-[#C4A052] italic leading-[1.2] drop-shadow-sm">Focused on You.</h3>
                         <div class="w-12 h-0.5 bg-[#C4A052] mt-5"></div>
                     </div>
 
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 mb-8 relative z-10">
                         <!-- 100% -->
                         <div
-                            class="bg-[#FDFBF7] dark:bg-slate-900 rounded-2xl p-6 text-center border border-[#C4A052]/10 shadow-sm hover:shadow-md transition-shadow group-hover:-translate-y-1 duration-300">
+                            class="bg-black/40 backdrop-blur-md rounded-2xl p-6 text-center border border-[#C4A052]/20 hover:border-[#C4A052]/50 shadow-sm hover:shadow-[0_0_15px_rgba(196,160,82,0.15)] transition-all group-hover:-translate-y-1 duration-300">
                             <div
-                                class="w-10 h-10 mx-auto rounded-full border border-emerald-500/30 flex items-center justify-center text-emerald-600 mb-4 bg-white dark:bg-slate-800">
+                                class="w-10 h-10 mx-auto rounded-full border border-emerald-500/50 flex items-center justify-center text-emerald-400 mb-4 bg-[#1a110a]">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z">
                                     </path>
                                 </svg>
                             </div>
-                            <span class="text-2xl font-bold text-[#1b253b] dark:text-white block">100%</span>
+                            <span class="text-2xl font-bold text-white block drop-shadow-sm">100%</span>
                             <span
-                                class="text-[7px] font-bold text-slate-800 dark:text-slate-300 uppercase tracking-widest mt-1.5 block">Author
+                                class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Author
                                 Ownership</span>
-                            <p class="text-[8px] text-slate-500 mt-2.5 leading-relaxed px-2">You keep 100% control of your
+                            <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">You keep 100% control of your
                                 copyright and rights.</p>
                         </div>
 
                         <!-- 85% -->
                         <div
-                            class="bg-[#FDFBF7] dark:bg-slate-900 rounded-2xl p-6 text-center border border-[#C4A052]/10 shadow-sm hover:shadow-md transition-shadow group-hover:-translate-y-1 duration-300 delay-75">
+                            class="bg-black/40 backdrop-blur-md rounded-2xl p-6 text-center border border-[#C4A052]/20 hover:border-[#C4A052]/50 shadow-sm hover:shadow-[0_0_15px_rgba(196,160,82,0.15)] transition-all group-hover:-translate-y-1 duration-300 delay-75">
                             <div
-                                class="w-10 h-10 mx-auto rounded-full border border-[#C4A052]/30 flex items-center justify-center text-[#C4A052] mb-4 bg-white dark:bg-slate-800">
+                                class="w-10 h-10 mx-auto rounded-full border border-[#C4A052]/50 flex items-center justify-center text-[#C4A052] mb-4 bg-[#1a110a]">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                                 </svg>
                             </div>
-                            <span class="text-2xl font-bold text-[#1b253b] dark:text-white block">85%</span>
+                            <span class="text-2xl font-bold text-white block drop-shadow-sm">85%</span>
                             <span
-                                class="text-[7px] font-bold text-slate-800 dark:text-slate-300 uppercase tracking-widest mt-1.5 block">Net
+                                class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Net
                                 Royalties</span>
-                            <p class="text-[8px] text-slate-500 mt-2.5 leading-relaxed px-2">Earn up to 85% royalties on
+                            <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Earn up to 85% royalties on
                                 paperback and digital prints.</p>
                         </div>
 
                         <!-- 24/7 -->
                         <div
-                            class="bg-[#FDFBF7] dark:bg-slate-900 rounded-2xl p-6 text-center border border-[#C4A052]/10 shadow-sm hover:shadow-md transition-shadow group-hover:-translate-y-1 duration-300 delay-100">
+                            class="bg-black/40 backdrop-blur-md rounded-2xl p-6 text-center border border-[#C4A052]/20 hover:border-[#C4A052]/50 shadow-sm hover:shadow-[0_0_15px_rgba(196,160,82,0.15)] transition-all group-hover:-translate-y-1 duration-300 delay-100">
                             <div
-                                class="w-10 h-10 mx-auto rounded-full border border-blue-500/30 flex items-center justify-center text-blue-500 mb-4 bg-white dark:bg-slate-800">
+                                class="w-10 h-10 mx-auto rounded-full border border-blue-500/50 flex items-center justify-center text-blue-400 mb-4 bg-[#1a110a]">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z">
                                     </path>
                                 </svg>
                             </div>
-                            <span class="text-2xl font-bold text-[#1b253b] dark:text-white block">24/7</span>
+                            <span class="text-2xl font-bold text-white block drop-shadow-sm">24/7</span>
                             <span
-                                class="text-[7px] font-bold text-slate-800 dark:text-slate-300 uppercase tracking-widest mt-1.5 block">Author
+                                class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Author
                                 Support</span>
-                            <p class="text-[8px] text-slate-500 mt-2.5 leading-relaxed px-2">Our team is here for you,
+                            <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Our team is here for you,
                                 anytime you need us.</p>
                         </div>
 
                         <!-- Ingram -->
                         <div
-                            class="bg-[#FDFBF7] dark:bg-slate-900 rounded-2xl p-6 text-center border border-[#C4A052]/10 shadow-sm hover:shadow-md transition-shadow group-hover:-translate-y-1 duration-300 delay-150">
+                            class="bg-black/40 backdrop-blur-md rounded-2xl p-6 text-center border border-[#C4A052]/20 hover:border-[#C4A052]/50 shadow-sm hover:shadow-[0_0_15px_rgba(196,160,82,0.15)] transition-all group-hover:-translate-y-1 duration-300 delay-150">
                             <div
-                                class="w-10 h-10 mx-auto rounded-full border border-purple-500/30 flex items-center justify-center text-purple-600 mb-4 bg-white dark:bg-slate-800">
+                                class="w-10 h-10 mx-auto rounded-full border border-purple-500/50 flex items-center justify-center text-purple-400 mb-4 bg-[#1a110a]">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9">
@@ -809,18 +929,18 @@
                                 </svg>
                             </div>
                             <span
-                                class="text-2xl font-serif text-[#1b253b] dark:text-white block tracking-wide">Ingram</span>
+                                class="text-2xl font-serif text-white block tracking-wide drop-shadow-sm">Ingram</span>
                             <span
-                                class="text-[7px] font-bold text-slate-800 dark:text-slate-300 uppercase tracking-widest mt-1.5 block">Global
+                                class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Global
                                 Distribution</span>
-                            <p class="text-[8px] text-slate-500 mt-2.5 leading-relaxed px-2">Your book, available worldwide
+                            <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Your book, available worldwide
                                 through Ingram distribution.</p>
                         </div>
                     </div>
 
                     <!-- Bottom CTA Banner -->
                     <div
-                        class="bg-[#1b253b] dark:bg-[#0f1523] rounded-xl p-5 flex items-center justify-between shadow-inner transition-transform group-hover:scale-[1.02] duration-500">
+                        class="bg-[#0a0502] rounded-xl p-5 flex items-center justify-between shadow-inner transition-transform group-hover:scale-[1.02] duration-500 relative z-10 border border-[#C4A052]/20">
                         <div class="flex items-center gap-4">
                             <div class="text-[#C4A052]">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -829,7 +949,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <p class="text-[9px] text-slate-300 pr-4 border-r border-slate-600/50 leading-relaxed">We
+                            <p class="text-[9px] text-slate-300 pr-4 border-r border-[#C4A052]/20 leading-relaxed">We
                                 empower authors with the tools,<br>support, and freedom to succeed.</p>
                         </div>
                         <a href="#"
@@ -844,12 +964,13 @@
 
     <!-- Latest Happenings Section -->
     <section id="latest-happenings"
-        class="relative py-24 xl:py-32 2xl:py-40 border-b border-[#C4A052]/20 transition-colors overflow-hidden">
+        class="relative py-24 xl:py-32 2xl:py-40 border-b bg-[#0a0502] border-[#C4A052]/20 transition-colors overflow-hidden">
 
         <!-- Background Image -->
         <div class="absolute inset-0 z-0">
-            <img src="{{ asset('images/cover4.png') }}" alt="Latest Happenings Background"
-                class="w-full h-full object-cover opacity-100 mix-blend-multiply dark:mix-blend-screen dark:opacity-30">
+            <img src="{{ asset('images/latest.png') }}" alt="Latest Happenings Background"
+                class="w-full h-full object-cover opacity-60">
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0502] via-[#0a0502]/60 to-[#0a0502]"></div>
         </div>
 
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10">
@@ -861,18 +982,18 @@
                         <span class="w-8 h-[1px] bg-[#C4A052]"></span>
                         Stay Updated
                     </span>
-                    <h2 class="text-4xl sm:text-5xl font-serif text-[#1b253b] dark:text-white leading-[1.1]">
+                    <h2 class="text-4xl sm:text-5xl font-serif text-white leading-[1.1] drop-shadow-md">
                         Latest <span class="italic text-[#C4A052]">Happenings</span>
                     </h2>
-                    <p class="text-[13px] text-slate-600 dark:text-slate-400 pt-2 leading-relaxed max-w-md">
+                    <p class="text-[13px] text-slate-300 pt-2 leading-relaxed max-w-md">
                         News, events, and achievements—discover what's new in the world of books and beyond.
                     </p>
                 </div>
                 <a href="#"
-                    class="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-[#1b253b] dark:text-slate-300 hover:text-[#C4A052] transition-colors group">
+                    class="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-slate-300 hover:text-[#C4A052] transition-colors group">
                     View All Updates
                     <span
-                        class="w-8 h-8 rounded-full border border-[#1b253b]/20 dark:border-slate-600 flex items-center justify-center group-hover:border-[#C4A052] group-hover:text-[#C4A052] transition-all">&rarr;</span>
+                        class="w-8 h-8 rounded-full border border-slate-600 flex items-center justify-center group-hover:border-[#C4A052] group-hover:text-[#C4A052] transition-all">&rarr;</span>
                 </a>
             </div>
 
@@ -880,19 +1001,19 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Card 1 -->
                 <article
-                    class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#C4A052]/10 transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 border border-white/40 dark:border-slate-800"
+                    class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 border border-[#C4A052]/30 hover:border-[#C4A052]/60"
                     id="happening-card-1">
                     <div class="aspect-[16/11] overflow-hidden relative p-3 pb-0">
-                        <div class="w-full h-full rounded-2xl overflow-hidden relative">
+                        <div class="w-full h-full rounded-2xl overflow-hidden relative border border-[#C4A052]/20">
                             <div
                                 class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&q=80')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700">
                             </div>
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80">
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <span
-                                    class="px-4 py-1.5 bg-[#C4A052] text-[#1b253b] text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg">Book
+                                    class="px-4 py-1.5 bg-[#C4A052] text-[#0a0502] text-[9px] font-bold uppercase tracking-widest rounded-full shadow-[0_0_15px_rgba(196,160,82,0.5)]">Book
                                     Launch</span>
                             </div>
                         </div>
@@ -900,14 +1021,14 @@
                     <div class="p-8 space-y-4">
                         <div class="flex items-center gap-3">
                             <div class="w-6 h-[1px] bg-[#C4A052]"></div>
-                            <time class="text-[9px] text-slate-500 font-bold uppercase tracking-widest block">Oct 24,
+                            <time class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">Oct 24,
                                 2026</time>
                         </div>
                         <h3
-                            class="text-[22px] font-serif text-[#1b253b] dark:text-white group-hover:text-[#C4A052] transition-colors leading-[1.3]">
+                            class="text-[22px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm">
                             <a href="#">"The Quiet Path" Reaches #1 on Bestseller List</a>
                         </h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-3 pt-2">
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-3 pt-2">
                             Lena Morgan's breathtaking new release has captured the hearts of readers worldwide, securing
                             the top spot in literary fiction just one week after launch.
                         </p>
@@ -916,33 +1037,33 @@
 
                 <!-- Card 2 -->
                 <article
-                    class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#C4A052]/10 transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 delay-[200ms] border border-white/40 dark:border-slate-800"
+                    class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 delay-[200ms] border border-[#C4A052]/30 hover:border-[#C4A052]/60"
                     id="happening-card-2">
                     <div class="aspect-[16/11] overflow-hidden relative p-3 pb-0">
-                        <div class="w-full h-full rounded-2xl overflow-hidden relative">
+                        <div class="w-full h-full rounded-2xl overflow-hidden relative border border-[#C4A052]/20">
                             <div
                                 class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1561489422-45de3d015e3e?w=600&q=80')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700">
                             </div>
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80">
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <span
-                                    class="px-4 py-1.5 bg-[#1b253b] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg">Award</span>
+                                    class="px-4 py-1.5 bg-[#1a110a] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-[#C4A052]/50">Award</span>
                             </div>
                         </div>
                     </div>
                     <div class="p-8 space-y-4">
                         <div class="flex items-center gap-3">
                             <div class="w-6 h-[1px] bg-[#C4A052]"></div>
-                            <time class="text-[9px] text-slate-500 font-bold uppercase tracking-widest block">Oct 18,
+                            <time class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">Oct 18,
                                 2026</time>
                         </div>
                         <h3
-                            class="text-[22px] font-serif text-[#1b253b] dark:text-white group-hover:text-[#C4A052] transition-colors leading-[1.3]">
+                            class="text-[22px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm">
                             <a href="#">Books Academy Wins Publishing Excellence Award</a>
                         </h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-3 pt-2">
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-3 pt-2">
                             We are honored to receive the prestigious 2026 Publishing Excellence Award for our unwavering
                             commitment to author rights and transparent publishing.
                         </p>
@@ -951,33 +1072,33 @@
 
                 <!-- Card 3 -->
                 <article
-                    class="group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden hover:shadow-2xl hover:shadow-[#C4A052]/10 transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 delay-[400ms] border border-white/40 dark:border-slate-800"
+                    class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 delay-[400ms] border border-[#C4A052]/30 hover:border-[#C4A052]/60"
                     id="happening-card-3">
                     <div class="aspect-[16/11] overflow-hidden relative p-3 pb-0">
-                        <div class="w-full h-full rounded-2xl overflow-hidden relative">
+                        <div class="w-full h-full rounded-2xl overflow-hidden relative border border-[#C4A052]/20">
                             <div
                                 class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=600&q=80')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700">
                             </div>
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-80">
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <span
-                                    class="px-4 py-1.5 bg-[#1b253b] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg">Event</span>
+                                    class="px-4 py-1.5 bg-[#1a110a] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-[#C4A052]/50">Event</span>
                             </div>
                         </div>
                     </div>
                     <div class="p-8 space-y-4">
                         <div class="flex items-center gap-3">
                             <div class="w-6 h-[1px] bg-[#C4A052]"></div>
-                            <time class="text-[9px] text-slate-500 font-bold uppercase tracking-widest block">Nov 05,
+                            <time class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">Nov 05,
                                 2026</time>
                         </div>
                         <h3
-                            class="text-[22px] font-serif text-[#1b253b] dark:text-white group-hover:text-[#C4A052] transition-colors leading-[1.3]">
+                            class="text-[22px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm">
                             <a href="#">Upcoming Masterclass: Building Your Author Brand</a>
                         </h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed line-clamp-3 pt-2">
+                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-3 pt-2">
                             Join our expert panel for an exclusive online masterclass on how to build a resilient,
                             recognizable author brand in today's saturated digital marketplace.
                         </p>
@@ -991,7 +1112,7 @@
     <style>
         /* Journey Section Styles */
         #journey-section {
-            background-color: #F8F6F2;
+            background-color: #0a0502;
             position: relative;
             overflow: hidden;
         }
@@ -1000,9 +1121,17 @@
         .journey-bg-paper {
             position: absolute;
             inset: 0;
-            opacity: 0.05;
-            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.4"/%3E%3C/svg%3E');
-            mix-blend-mode: multiply;
+            background-image: url('{{ asset('images/latest.png') }}');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .journey-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 5, 2, 0.9), rgba(10, 5, 2, 0.5), rgba(10, 5, 2, 0.9));
             pointer-events: none;
         }
 
@@ -1017,18 +1146,19 @@
             position: absolute;
             width: 3px;
             height: 3px;
-            background-color: #C9A227;
+            background-color: #C4A052;
             border-radius: 50%;
-            box-shadow: 0 0 8px 2px rgba(201, 162, 39, 0.4);
+            box-shadow: 0 0 8px 2px rgba(196, 160, 82, 0.4);
             opacity: 0.6;
             pointer-events: none;
         }
 
         /* Timeline specific */
         .journey-card {
-            background-color: #FFFFFF;
-            box-shadow: 0 10px 30px rgba(15, 27, 61, 0.05);
-            border: 1px solid rgba(201, 162, 39, 0.1);
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(196, 160, 82, 0.3);
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity, filter;
             opacity: 0;
@@ -1038,13 +1168,13 @@
         .journey-card:hover {
             transform: translateY(-12px) !important;
             /* Overrides floating */
-            box-shadow: 0 22px 40px rgba(15, 27, 61, 0.12);
-            border-color: rgba(201, 162, 39, 0.6);
+            box-shadow: 0 22px 40px rgba(0, 0, 0, 0.9);
+            border-color: rgba(196, 160, 82, 0.8);
         }
 
         .journey-card:hover .journey-icon-wrap {
             transform: rotate(8deg) scale(1.1);
-            box-shadow: 0 0 15px rgba(201, 162, 39, 0.4);
+            box-shadow: 0 0 15px rgba(196, 160, 82, 0.4);
         }
 
         .journey-card:hover .journey-card-bg {
@@ -1052,9 +1182,9 @@
         }
 
         .journey-card.is-active {
-            filter: brightness(1.05);
+            filter: brightness(1.1);
             transform: scale(1.02);
-            box-shadow: 0 0 0 1px #C9A227, 0 0 20px rgba(47, 107, 255, 0.15);
+            box-shadow: 0 0 0 1px #C4A052, 0 0 20px rgba(196, 160, 82, 0.3);
         }
 
         .journey-card.is-active .journey-step-num {
@@ -1090,13 +1220,14 @@
     </style>
 
     <section id="journey-section"
-        class="py-24 xl:py-32 2xl:py-40 min-h-screen flex flex-col justify-center border-y border-[#C9A227]/20 relative z-10 text-[#0F1B3D]">
+        class="py-24 xl:py-32 2xl:py-40 min-h-screen flex flex-col justify-center border-y border-[#C4A052]/20 relative z-10 text-white">
 
         <!-- Background Elements -->
         <div class="journey-bg-paper z-0"></div>
-        <div class="journey-light bg-[#C9A227]/10 w-[600px] h-[600px] top-[-100px] left-[-100px] z-0 parallax-bg-slow">
+        <div class="journey-bg-overlay z-0"></div>
+        <div class="journey-light bg-[#C4A052]/10 w-[600px] h-[600px] top-[-100px] left-[-100px] z-0 parallax-bg-slow">
         </div>
-        <div class="journey-light bg-[#2F6BFF]/5 w-[500px] h-[500px] bottom-[20%] right-[-50px] z-0 parallax-bg-fast"></div>
+        <div class="journey-light bg-[#C4A052]/5 w-[500px] h-[500px] bottom-[20%] right-[-50px] z-0 parallax-bg-fast"></div>
 
         <!-- Golden Particles -->
         <div id="particles-container" class="absolute inset-0 overflow-hidden pointer-events-none z-0"></div>
@@ -1105,34 +1236,34 @@
 
             <!-- Vertical Progress Indicator -->
             <div class="hidden lg:flex flex-col items-center mr-12 relative w-8 shrink-0">
-                <div class="h-full w-px bg-slate-200 absolute left-1/2 -translate-x-1/2 top-0 bottom-0 z-0"></div>
+                <div class="h-full w-px bg-slate-800 absolute left-1/2 -translate-x-1/2 top-0 bottom-0 z-0"></div>
                 <div id="progress-fill"
-                    class="h-full w-1 bg-gradient-to-b from-[#C9A227] to-[#2F6BFF] absolute left-1/2 -translate-x-1/2 top-0 bottom-0 z-10 progress-line-fill rounded-full">
+                    class="h-full w-1 bg-gradient-to-b from-[#D4B886] to-[#C4A052] absolute left-1/2 -translate-x-1/2 top-0 bottom-0 z-10 progress-line-fill rounded-full shadow-[0_0_10px_rgba(196,160,82,0.5)]">
                 </div>
 
                 <!-- Indicators -->
                 <div
                     class="h-full w-full absolute top-0 left-0 flex flex-col justify-between py-[15%] z-20 pointer-events-none">
                     <div
-                        class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300">
+                        class="w-3 h-3 rounded-full bg-[#0a0502] border-2 border-slate-600 mx-auto prog-dot transition-colors duration-300">
                     </div>
                     <div
-                        class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300">
+                        class="w-3 h-3 rounded-full bg-[#0a0502] border-2 border-slate-600 mx-auto prog-dot transition-colors duration-300">
                     </div>
                     <div
-                        class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300">
+                        class="w-3 h-3 rounded-full bg-[#0a0502] border-2 border-slate-600 mx-auto prog-dot transition-colors duration-300">
                     </div>
                     <div
-                        class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300">
+                        class="w-3 h-3 rounded-full bg-[#0a0502] border-2 border-slate-600 mx-auto prog-dot transition-colors duration-300">
                     </div>
                     <div
-                        class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300">
+                        class="w-3 h-3 rounded-full bg-[#0a0502] border-2 border-slate-600 mx-auto prog-dot transition-colors duration-300">
                     </div>
                     <div
-                        class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300">
+                        class="w-3 h-3 rounded-full bg-[#0a0502] border-2 border-slate-600 mx-auto prog-dot transition-colors duration-300">
                     </div>
                     <div
-                        class="w-3 h-3 rounded-full bg-white border-2 border-slate-300 mx-auto prog-dot transition-colors duration-300">
+                        class="w-3 h-3 rounded-full bg-[#0a0502] border-2 border-slate-600 mx-auto prog-dot transition-colors duration-300">
                     </div>
                 </div>
             </div>
@@ -1141,11 +1272,11 @@
             <div class="flex-1" id="journey-content">
                 <div class="text-center lg:text-left max-w-2xl mb-20 md:mb-32 mx-auto lg:mx-0">
                     <span id="journey-subtitle"
-                        class="text-[10px] font-bold text-[#C9A227] uppercase tracking-[0.25em] block mb-4 opacity-0">Our
+                        class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.25em] block mb-4 opacity-0">Our
                         Pipeline</span>
                     <h2 id="journey-title"
-                        class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#0F1B3D] leading-[1.1] opacity-0">
-                        The Journey to <span class="italic text-[#C9A227]">Publication</span>
+                        class="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-[1.1] opacity-0 drop-shadow-md">
+                        The Journey to <span class="italic text-[#C4A052]">Publication</span>
                     </h2>
                 </div>
 
@@ -1183,19 +1314,19 @@
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:ml-auto md:mr-0 mt-0">
                             <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none">
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
                             </div>
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">01</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">01</span>
 
                                 <div
-                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     📖
                                 </div>
-                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Manuscript</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed z-10">Comprehensive evaluation of your
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Manuscript</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Comprehensive evaluation of your
                                     draft for structural flow, pacing, and narrative alignment.</p>
                             </div>
                         </div>
@@ -1204,19 +1335,19 @@
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:mr-auto md:ml-0 md:mt-32">
                             <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none">
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
                             </div>
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">02</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">02</span>
 
                                 <div
-                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     ✏️
                                 </div>
-                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Editing</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed z-10">Professional line edits and
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Editing</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Professional line edits and
                                     copyediting to polish prose while preserving your authentic voice.</p>
                             </div>
                         </div>
@@ -1225,19 +1356,19 @@
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:ml-auto md:mr-0 mt-0">
                             <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none">
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
                             </div>
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">03</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">03</span>
 
                                 <div
-                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     🎨
                                 </div>
-                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Design</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed z-10">Bespoke cover artistry and interior
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Design</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Bespoke cover artistry and interior
                                     typesetting crafted to capture your story's essence.</p>
                             </div>
                         </div>
@@ -1246,19 +1377,19 @@
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:mr-auto md:ml-0 md:mt-32">
                             <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none">
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
                             </div>
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">04</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">04</span>
 
                                 <div
-                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     🔍
                                 </div>
-                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Proofreading</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed z-10">Rigorous final audit of digital
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Proofreading</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Rigorous final audit of digital
                                     proofs to ensure impeccable quality before production.</p>
                             </div>
                         </div>
@@ -1267,19 +1398,19 @@
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:ml-auto md:mr-0 mt-0">
                             <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none">
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
                             </div>
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">05</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">05</span>
 
                                 <div
-                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     🖨️
                                 </div>
-                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Printing</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed z-10">High-end physical production
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Printing</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">High-end physical production
                                     utilizing premium paper stock, bindings, and finishes.</p>
                             </div>
                         </div>
@@ -1288,19 +1419,19 @@
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:mr-auto md:ml-0 md:mt-32">
                             <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#C9A227]/10 opacity-0 transition-opacity duration-500 pointer-events-none">
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
                             </div>
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">06</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">06</span>
 
                                 <div
-                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-[#0F1B3D] text-white flex items-center justify-center text-2xl mb-6 shadow-lg z-10">
+                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     🌍
                                 </div>
-                                <h3 class="text-xl font-bold text-[#0F1B3D] mb-3 z-10">Distribution</h3>
-                                <p class="text-xs text-slate-500 leading-relaxed z-10">Seamless integration with global
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Distribution</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Seamless integration with global
                                     networks including Amazon, Apple Books, and Ingram.</p>
                             </div>
                         </div>
@@ -1309,19 +1440,19 @@
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:col-span-2 mt-0 md:mt-12">
                             <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-white via-[#F8F6F2] to-[#2F6BFF]/10 opacity-0 transition-opacity duration-500 pointer-events-none">
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/30 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
                             </div>
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-slate-100 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">07</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">07</span>
 
                                 <div
-                                    class="journey-icon-wrap w-20 h-20 rounded-full bg-gradient-to-r from-[#0F1B3D] to-[#2F6BFF] text-white flex items-center justify-center text-3xl mb-6 shadow-[0_10px_25px_rgba(47,107,255,0.3)] z-10">
+                                    class="journey-icon-wrap w-20 h-20 rounded-full bg-gradient-to-br from-black/80 to-black/60 border-2 border-[#C4A052] text-white flex items-center justify-center text-3xl mb-6 shadow-[0_0_30px_rgba(196,160,82,0.4)] z-10">
                                     🚀
                                 </div>
-                                <h3 class="text-2xl font-bold text-[#0F1B3D] mb-3 z-10">Launch</h3>
-                                <p class="text-sm text-slate-500 leading-relaxed max-w-md z-10">Targeted marketing
+                                <h3 class="text-2xl font-bold text-white mb-3 z-10 drop-shadow-sm">Launch</h3>
+                                <p class="text-sm text-slate-300 leading-relaxed max-w-md z-10">Targeted marketing
                                     strategies, press wire releases, and dedicated support to celebrate and elevate your
                                     debut.</p>
                             </div>
@@ -1334,7 +1465,7 @@
 
         <!-- Transition Gradient to next section -->
         <div id="journey-bottom-transition"
-            class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-white dark:from-slate-900 to-transparent pointer-events-none z-10 transition-colors duration-1000">
+            class="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-[#0a0502] to-transparent pointer-events-none z-10 transition-colors duration-1000">
         </div>
     </section>
 
@@ -1519,8 +1650,17 @@
         .media-layer-bg {
             position: absolute;
             inset: -10%;
-            opacity: 0.03;
-            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.3"/%3E%3C/svg%3E');
+            background-image: url('{{ asset('images/writer.png') }}');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.6;
+            pointer-events: none;
+        }
+
+        .media-bg-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 5, 2, 0.9), rgba(10, 5, 2, 0.5), rgba(10, 5, 2, 0.9));
             pointer-events: none;
         }
 
@@ -1544,10 +1684,10 @@
 
         /* Cards */
         .media-featured-card {
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 20px 40px rgba(15, 27, 61, 0.06);
+            border: 1px solid rgba(196, 160, 82, 0.3);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             border-radius: 24px;
             overflow: hidden;
             transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
@@ -1555,7 +1695,7 @@
 
         .media-featured-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 30px 60px rgba(15, 27, 61, 0.1);
+            box-shadow: 0 30px 60px rgba(196, 160, 82, 0.15);
         }
 
         .media-featured-img-wrap {
@@ -1607,19 +1747,19 @@
 
         /* List Cards */
         .media-list-card {
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(196, 160, 82, 0.2);
             border-radius: 16px;
             padding: 20px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 10px 20px rgba(15, 27, 61, 0.03);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
         .media-list-card:hover {
             transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(15, 27, 61, 0.08);
-            border-color: rgba(201, 162, 39, 0.3);
+            box-shadow: 0 15px 30px rgba(196, 160, 82, 0.1);
+            border-color: rgba(196, 160, 82, 0.6);
         }
 
         /* Mini Player */
@@ -1628,17 +1768,17 @@
             bottom: -100px;
             left: 50%;
             transform: translateX(-50%);
-            background: rgba(15, 27, 61, 0.95);
+            background: rgba(10, 5, 2, 0.95);
             backdrop-filter: blur(15px);
             padding: 12px 24px;
             border-radius: 50px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             gap: 16px;
             z-index: 100;
             transition: bottom 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-            border: 1px solid rgba(201, 162, 39, 0.3);
+            border: 1px solid rgba(196, 160, 82, 0.3);
             color: white;
         }
 
@@ -1682,10 +1822,11 @@
     </style>
 
     <section id="media-lounge"
-        class="py-24 xl:py-32 min-h-screen flex flex-col justify-center border-y border-[#C9A227]/20 z-10 text-[#0F1B3D]">
+        class="py-24 xl:py-32 min-h-screen flex flex-col justify-center border-y bg-[#0a0502] border-[#C4A052]/20 z-10 text-white relative overflow-hidden">
 
         <!-- Parallax Backgrounds -->
         <div class="media-layer-bg media-parallax-slow"></div>
+        <div class="media-bg-overlay z-0"></div>
         <div class="media-spotlight media-parallax-mid" id="media-spotlight-1"></div>
 
         <!-- Abstract background elements -->
@@ -1706,11 +1847,11 @@
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-20">
 
             <div class="text-center mb-16 md:mb-24 media-header opacity-0 translate-y-8">
-                <span class="text-[10px] font-bold text-[#C9A227] uppercase tracking-[0.25em] block mb-4">Multimedia</span>
-                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-[#0F1B3D] leading-[1.1]">
-                    The Literary Media <span class="italic text-[#C9A227]">Lounge</span>
+                <span class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.25em] block mb-4 drop-shadow-sm">Multimedia</span>
+                <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-[1.1] drop-shadow-md">
+                    The Literary Media <span class="italic text-[#C4A052]">Lounge</span>
                 </h2>
-                <p class="text-sm text-slate-500 mt-4 max-w-xl mx-auto">Immerse yourself in our curated collection of expert
+                <p class="text-sm text-slate-300 mt-4 max-w-xl mx-auto">Immerse yourself in our curated collection of expert
                     podcasts, author interviews, and publishing masterclasses.</p>
             </div>
 
@@ -1720,18 +1861,18 @@
                 <!-- Left: Sticky Featured Content -->
                 <div class="w-full lg:w-7/12 sticky top-32 media-featured-container opacity-0 translate-y-10">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-2 h-2 rounded-full bg-[#2F6BFF] animate-pulse"></div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-[#0F1B3D]">Featured Masterclass</span>
+                        <div class="w-2 h-2 rounded-full bg-[#C4A052] animate-pulse"></div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white drop-shadow-sm">Featured Masterclass</span>
                     </div>
 
                     <div class="media-featured-card cursor-pointer group">
-                        <div class="media-featured-img-wrap aspect-[16/9] w-full bg-slate-200">
+                        <div class="media-featured-img-wrap aspect-[16/9] w-full bg-[#0a0502]">
                             <!-- Placeholder premium image -->
                             <div
                                 class="media-featured-img w-full h-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1000')] bg-cover bg-center">
                             </div>
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-[#0F1B3D]/80 via-[#0F1B3D]/20 to-transparent">
+                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
                             </div>
                             <div class="glass-sweep"></div>
 
@@ -1749,10 +1890,10 @@
                             <div class="absolute bottom-0 left-0 right-0 p-8 text-white">
                                 <div class="flex items-center gap-3 mb-3">
                                     <span
-                                        class="px-3 py-1 rounded-full bg-[#C9A227] text-white text-[9px] uppercase font-bold tracking-wider">Video</span>
+                                        class="px-3 py-1 rounded-full bg-[#C4A052] text-[#0a0502] text-[9px] uppercase font-bold tracking-wider">Video</span>
                                     <span class="text-[10px] font-medium opacity-80">45 Min</span>
                                 </div>
-                                <h3 class="text-3xl font-serif mb-2 leading-tight">The Architecture of Bestselling
+                                <h3 class="text-3xl font-serif mb-2 leading-tight drop-shadow-sm">The Architecture of Bestselling
                                     Storytelling</h3>
                                 <p class="text-sm opacity-80 line-clamp-2">Join industry veteran Elena Rostova as she
                                     deconstructs the structural elements that define modern literary success.</p>
@@ -1765,8 +1906,8 @@
                 <div class="w-full lg:w-5/12 flex flex-col gap-6 media-list-container pt-12 lg:pt-0">
 
                     <div class="flex items-center justify-between mb-2">
-                        <h4 class="text-lg font-serif font-bold text-[#0F1B3D]">Latest Episodes</h4>
-                        <a href="#" class="text-xs font-bold text-[#C9A227] hover:text-[#0F1B3D] transition-colors">View All
+                        <h4 class="text-lg font-serif font-bold text-white drop-shadow-sm">Latest Episodes</h4>
+                        <a href="#" class="text-xs font-bold text-[#C4A052] hover:text-white transition-colors">View All
                             &rarr;</a>
                     </div>
 
@@ -1774,24 +1915,24 @@
                     <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
                         data-title="Designing Book Covers that Sell" data-author="Sarah Jennings">
                         <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1589998059171-989d887dda19?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden">
-                            <div class="absolute inset-0 bg-[#0F1B3D]/40 group-hover:bg-[#0F1B3D]/20 transition-colors">
+                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1589998059171-989d887dda19?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div
                                 class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)]" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </div>
                         </div>
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="text-[9px] uppercase font-bold text-[#C9A227] tracking-wider">Podcast • Ep
+                                <span class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Podcast • Ep
                                     48</span>
                             </div>
-                            <h5 class="font-bold text-sm text-[#0F1B3D] mb-1 group-hover:text-[#2F6BFF] transition-colors">
+                            <h5 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
                                 Designing Book Covers that Sell</h5>
-                            <p class="text-[10px] text-slate-500 line-clamp-2 mb-2">Sarah Jennings breaks down cover
+                            <p class="text-[10px] text-slate-400 line-clamp-2 mb-2">Sarah Jennings breaks down cover
                                 formats, typography alignment, and color psychology.</p>
                             <div class="h-4 flex items-end gap-[2px] opacity-0 group-hover:opacity-100 transition-opacity">
                                 <div class="waveform-bar h-1"></div>
@@ -1807,11 +1948,11 @@
                     <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group"
                         data-title="From Manuscript to Series A">
                         <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden">
-                            <div class="absolute inset-0 bg-[#0F1B3D]/40 group-hover:bg-[#0F1B3D]/10 transition-colors">
+                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div class="absolute inset-0 flex items-center justify-center text-white">
-                                <svg class="w-8 h-8 drop-shadow-md group-hover:scale-110 transition-transform"
+                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)] group-hover:scale-110 transition-transform"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
@@ -1819,11 +1960,11 @@
                         </div>
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="text-[9px] uppercase font-bold text-[#2F6BFF] tracking-wider">Interview</span>
+                                <span class="text-[9px] uppercase font-bold text-emerald-400 tracking-wider drop-shadow-sm">Interview</span>
                             </div>
-                            <h5 class="font-bold text-sm text-[#0F1B3D] mb-1 group-hover:text-[#2F6BFF] transition-colors">
+                            <h5 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
                                 From Manuscript to Series A</h5>
-                            <p class="text-[10px] text-slate-500 line-clamp-2">R. Cunningham details publishing, organizing
+                            <p class="text-[10px] text-slate-400 line-clamp-2">R. Cunningham details publishing, organizing
                                 startup books, and reaching target audiences.</p>
                         </div>
                     </div>
@@ -1832,24 +1973,24 @@
                     <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
                         data-title="The Art of Editing" data-author="Michael Chang">
                         <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden">
-                            <div class="absolute inset-0 bg-[#0F1B3D]/40 group-hover:bg-[#0F1B3D]/20 transition-colors">
+                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div
                                 class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)]" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </div>
                         </div>
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="text-[9px] uppercase font-bold text-[#C9A227] tracking-wider">Podcast • Ep
+                                <span class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Podcast • Ep
                                     47</span>
                             </div>
-                            <h5 class="font-bold text-sm text-[#0F1B3D] mb-1 group-hover:text-[#2F6BFF] transition-colors">
+                            <h5 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
                                 The Art of Ruthless Editing</h5>
-                            <p class="text-[10px] text-slate-500 line-clamp-2 mb-2">How to kill your darlings and tighten
+                            <p class="text-[10px] text-slate-400 line-clamp-2 mb-2">How to kill your darlings and tighten
                                 your prose without losing your voice.</p>
                             <div class="h-4 flex items-end gap-[2px] opacity-0 group-hover:opacity-100 transition-opacity">
                                 <div class="waveform-bar h-1"></div>
@@ -1865,11 +2006,11 @@
                     <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group"
                         data-title="Distribution Networks Explained">
                         <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden">
-                            <div class="absolute inset-0 bg-[#0F1B3D]/40 group-hover:bg-[#0F1B3D]/10 transition-colors">
+                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20">
+                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div class="absolute inset-0 flex items-center justify-center text-white">
-                                <svg class="w-8 h-8 drop-shadow-md group-hover:scale-110 transition-transform"
+                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)] group-hover:scale-110 transition-transform"
                                     fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
@@ -1877,11 +2018,11 @@
                         </div>
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="text-[9px] uppercase font-bold text-[#2F6BFF] tracking-wider">Panel</span>
+                                <span class="text-[9px] uppercase font-bold text-purple-400 tracking-wider drop-shadow-sm">Panel</span>
                             </div>
-                            <h5 class="font-bold text-sm text-[#0F1B3D] mb-1 group-hover:text-[#2F6BFF] transition-colors">
+                            <h5 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
                                 Global Distribution Networks</h5>
-                            <p class="text-[10px] text-slate-500 line-clamp-2">Navigating IngramSpark, Amazon KDP, and
+                            <p class="text-[10px] text-slate-400 line-clamp-2">Navigating IngramSpark, Amazon KDP, and
                                 international retail channels.</p>
                         </div>
                     </div>
@@ -2041,9 +2182,18 @@
             position: relative;
             width: 100%;
             min-height: 100vh;
-            background: #F8F5EE;
-            /* Base ivory */
+            background-image: url('{{ asset('images/global.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             transition: background-color 1s ease;
+        }
+
+        .penholders-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 5, 2, 0.9), rgba(10, 5, 2, 0.5), rgba(10, 5, 2, 0.9));
+            pointer-events: none;
         }
 
         .penholders-bg-layer {
@@ -2089,11 +2239,11 @@
         }
 
         .premium-testimonial-card {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(24px);
-            border: 1px solid rgba(201, 162, 39, 0.3);
+            border: 1px solid rgba(196, 160, 82, 0.3);
             border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(15, 27, 61, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
             padding: 40px;
             max-width: 600px;
             width: 90%;
@@ -2105,9 +2255,9 @@
         .book-cover-3d {
             width: 140px;
             height: 210px;
-            background: #0F1B3D;
+            background: #0a0502;
             border-radius: 4px 8px 8px 4px;
-            box-shadow: -5px 0 10px rgba(0, 0, 0, 0.2), 10px 20px 30px rgba(15, 27, 61, 0.2);
+            box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5), 10px 20px 30px rgba(0, 0, 0, 0.6);
             position: absolute;
             top: -60px;
             right: -40px;
@@ -2147,7 +2297,7 @@
             font-family: serif;
             font-size: 200px;
             line-height: 1;
-            color: rgba(201, 162, 39, 0.08);
+            color: rgba(196, 160, 82, 0.15);
             top: -20px;
             left: -10px;
             z-index: -1;
@@ -2181,15 +2331,15 @@
 
         .floating-badge {
             position: absolute;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(0, 0, 0, 0.7);
             backdrop-filter: blur(10px);
             padding: 6px 12px;
             border-radius: 20px;
             font-size: 10px;
             font-weight: bold;
-            color: #0F1B3D;
-            border: 1px solid rgba(201, 162, 39, 0.3);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            color: white;
+            border: 1px solid rgba(196, 160, 82, 0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
             animation: floatBadge 6s ease-in-out infinite;
         }
 
@@ -2216,13 +2366,14 @@
             visibility: hidden;
             pointer-events: none;
             z-index: 20;
-            background: rgba(15, 27, 61, 0.85);
+            background: rgba(0, 0, 0, 0.85);
             backdrop-filter: blur(10px);
             color: white;
         }
     </style>
 
-    <div class="penholders-wrapper" id="hall-of-authors">
+    <div class="penholders-wrapper border-y border-[#C4A052]/20" id="hall-of-authors">
+        <div class="penholders-overlay z-0"></div>
 
         <!-- Background Layers -->
         <div class="penholders-bg-layer penholders-bg-texture" id="hoa-texture"></div>
@@ -2230,13 +2381,13 @@
         <div class="penholders-bg-layer penholders-bg-rays" id="hoa-rays"></div>
 
         <!-- Header -->
-        <div class="pt-16 md:pt-24 pb-8 text-center relative z-20 px-4">
+        <div class="pt-16 md:pt-24 pb-8 text-center relative z-20 px-4 drop-shadow-md">
             <span
-                class="text-[10px] sm:text-xs font-bold text-[#C9A227] uppercase tracking-[0.25em] block mb-2 sm:mb-4">Hall
+                class="text-[10px] sm:text-xs font-bold text-[#C4A052] uppercase tracking-[0.25em] block mb-2 sm:mb-4">Hall
                 of Authors</span>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-serif text-[#0F1B3D] leading-tight">Voices from
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-serif text-white leading-tight">Voices from
                 the Penholders</h2>
-            <p class="text-xs sm:text-sm text-slate-500 mt-3 sm:mt-4 max-w-xl mx-auto">Publishing testimonials from writers
+            <p class="text-xs sm:text-sm text-slate-300 mt-3 sm:mt-4 max-w-xl mx-auto">Publishing testimonials from writers
                 who worked with our house.</p>
         </div>
 
@@ -2255,9 +2406,9 @@
                 }
             } else {
                 $authorData = [
-                    ['name' => 'Alvin Mercer', 'book' => 'Coded Thoughts', 'quote' => 'The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and professional support throughout the process.', 'bg' => '#F8F5EE'],
-                    ['name' => 'Martha Vance', 'book' => 'Children of the Wild', 'quote' => 'Children\'s book illustrations need precise color alignment. Their formatting team verified files and set up spreads beautifully.', 'bg' => '#F3E5D8'],
-                    ['name' => 'Howard Stark', 'book' => 'Startup Architecture', 'quote' => 'Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live worldwide within 48 hours.', 'bg' => '#F9F6F0'],
+                    ['name' => 'Alvin Mercer', 'book' => 'Coded Thoughts', 'quote' => 'The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and professional support throughout the process.', 'bg' => 'rgba(0,0,0,0.5)'],
+                    ['name' => 'Martha Vance', 'book' => 'Children of the Wild', 'quote' => 'Children\'s book illustrations need precise color alignment. Their formatting team verified files and set up spreads beautifully.', 'bg' => 'rgba(0,0,0,0.4)'],
+                    ['name' => 'Howard Stark', 'book' => 'Startup Architecture', 'quote' => 'Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live worldwide within 48 hours.', 'bg' => 'rgba(0,0,0,0.6)'],
                 ];
             }
         @endphp
@@ -2273,19 +2424,19 @@
 
                         <div>
                             <div class="mb-6">
-                                <h3 class="text-2xl font-bold text-[#0F1B3D]">{{ $data['name'] }}</h3>
-                                <p class="text-xs font-bold uppercase tracking-wider text-[#C9A227]">Author of
+                                <h3 class="text-2xl font-bold text-white drop-shadow-sm">{{ $data['name'] }}</h3>
+                                <p class="text-xs font-bold uppercase tracking-wider text-[#C4A052]">Author of
                                     "{{ $data['book'] }}"</p>
                             </div>
 
-                            <p class="text-lg text-slate-700 leading-relaxed font-serif italic">
+                            <p class="text-lg text-slate-300 leading-relaxed font-serif italic drop-shadow-sm">
                                 {{ $data['quote'] }}
                             </p>
                         </div>
 
                         <div class="mt-8 flex items-center gap-4">
                             <div
-                                class="w-12 h-12 rounded-full bg-white/50 border border-[#C9A227]/30 flex items-center justify-center font-bold text-[#0F1B3D]">
+                                class="w-12 h-12 rounded-full bg-black/50 border border-[#C4A052]/50 flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(196,160,82,0.3)]">
                                 {{ collect(explode(' ', $data['name']))->map(fn($s) => strtoupper(substr($s, 0, 1)))->join('') }}
                             </div>
                         </div>
@@ -2296,16 +2447,16 @@
 
         <!-- Ending Scene -->
         <div
-            class="relative z-10 w-full bg-[#0F1B3D] py-16 px-4 text-center mt-8 mb-0 rounded-2xl max-w-5xl mx-auto shadow-2xl">
-            <h2 class="text-4xl font-serif mb-4 text-white">Your Story Could Be Next.</h2>
+            class="relative z-10 w-full bg-black/60 backdrop-blur-md border border-[#C4A052]/30 py-16 px-4 text-center mt-8 mb-0 rounded-2xl max-w-5xl mx-auto shadow-2xl">
+            <h2 class="text-4xl font-serif mb-4 text-white drop-shadow-md">Your Story Could Be Next.</h2>
             <p class="text-slate-300 mb-8 max-w-md mx-auto">Join thousands of authors who have successfully brought their
                 manuscripts to life in our Hall of Authors.</p>
             <button
-                class="px-8 py-4 bg-gradient-to-r from-[#C9A227] to-[#D4B247] rounded-full text-white font-bold tracking-wider uppercase text-sm shadow-[0_0_30px_rgba(201,162,39,0.5)] hover:scale-105 hover:shadow-[0_0_50px_rgba(201,162,39,0.8)] transition-all duration-300">
+                class="px-8 py-4 bg-gradient-to-r from-[#C4A052] to-[#D4B247] rounded-full text-[#0a0502] font-bold tracking-wider uppercase text-sm shadow-[0_0_30px_rgba(196,160,82,0.5)] hover:scale-105 hover:shadow-[0_0_50px_rgba(196,160,82,0.8)] transition-all duration-300">
                 Start Your Publishing Journey
             </button>
         </div>
-        
+
         <!-- Padding block to prevent margin collapse -->
         <div class="h-16 w-full"></div>
 
@@ -2319,11 +2470,21 @@
             width: 100%;
             min-height: 100vh;
             overflow: hidden;
-            background: linear-gradient(to bottom, #FFFBF5, #F8F5EE);
-            /* Warm Ivory Gradient */
+            background-image: url('{{ asset('images/global.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             align-items: center;
-            border-bottom: 1px solid rgba(201, 162, 39, 0.2);
+            border-bottom: 1px solid rgba(196, 160, 82, 0.2);
+        }
+
+        .globe-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 5, 2, 0.9), rgba(10, 5, 2, 0.5), rgba(10, 5, 2, 0.9));
+            pointer-events: none;
+            z-index: 0;
         }
 
         /* Background Elements */
@@ -2379,32 +2540,35 @@
         .globe-subtitle {
             font-size: 0.75rem;
             font-weight: 700;
-            color: #C9A227;
+            color: #C4A052;
             text-transform: uppercase;
             letter-spacing: 0.2em;
             margin-bottom: 1rem;
             display: block;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .globe-title {
             font-size: 3.5rem;
             font-family: serif;
-            color: #0F1B3D;
+            color: #ffffff;
             line-height: 1.1;
             margin-bottom: 1.5rem;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         .globe-title span {
             font-style: italic;
-            color: #C9A227;
+            color: #C4A052;
         }
 
         .globe-desc {
             font-size: 1rem;
-            color: #64748b;
+            color: #cbd5e1;
             line-height: 1.7;
             margin-bottom: 2.5rem;
             max-width: 90%;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .globe-cta {
@@ -2412,21 +2576,21 @@
             align-items: center;
             gap: 0.75rem;
             padding: 1rem 2rem;
-            background: #0F1B3D;
-            color: #fff;
+            background: #C4A052;
+            color: #0a0502;
             font-size: 0.875rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             border-radius: 9999px;
             transition: all 0.3s ease;
-            box-shadow: 0 10px 20px rgba(15, 27, 61, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
         .globe-cta:hover {
-            background: #C9A227;
+            background: #D4B247;
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(201, 162, 39, 0.3);
+            box-shadow: 0 15px 30px rgba(196, 160, 82, 0.3);
         }
 
         /* Statistics */
@@ -2435,7 +2599,7 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 2rem;
             margin-top: 4rem;
-            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            border-top: 1px solid rgba(196, 160, 82, 0.2);
             padding-top: 3rem;
         }
 
@@ -2443,19 +2607,21 @@
             font-size: 2.5rem;
             font-weight: 700;
             font-family: serif;
-            color: #0F1B3D;
+            color: #ffffff;
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         .globe-stat-item span {
             font-size: 0.75rem;
-            color: #64748b;
+            color: #cbd5e1;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
         /* Partner Logos in 3D Space (HTML Overlays) */
@@ -2466,22 +2632,22 @@
             transform-origin: center center;
             width: 80px;
             height: 80px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(12px);
-            border: 1px solid rgba(201, 162, 39, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.8);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), inset 0 0 15px rgba(255, 255, 255, 0.8);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), inset 0 0 15px rgba(255, 255, 255, 1);
             cursor: pointer;
             z-index: 30;
             will-change: transform;
         }
 
         .partner-logo-satellite.hovered-state {
-            border-color: rgba(201, 162, 39, 0.8);
-            box-shadow: 0 15px 40px rgba(201, 162, 39, 0.3), inset 0 0 20px rgba(255, 255, 255, 1);
+            border-color: rgba(255, 255, 255, 1);
+            box-shadow: 0 15px 40px rgba(255, 255, 255, 0.3), inset 0 0 20px rgba(255, 255, 255, 1);
             z-index: 50 !important;
         }
 
@@ -2504,12 +2670,12 @@
             left: 50%;
             transform: translateX(-50%) translateY(20px);
             width: 260px;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(10, 5, 2, 0.95);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(201, 162, 39, 0.3);
+            border: 1px solid rgba(196, 160, 82, 0.3);
             border-radius: 16px;
             padding: 1.5rem;
-            box-shadow: 0 20px 40px rgba(15, 27, 61, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
             opacity: 0;
             visibility: hidden;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -2524,9 +2690,9 @@
             transform: translateX(-50%) rotate(45deg);
             width: 16px;
             height: 16px;
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid rgba(201, 162, 39, 0.3);
-            border-right: 1px solid rgba(201, 162, 39, 0.3);
+            background: rgba(10, 5, 2, 0.95);
+            border-bottom: 1px solid rgba(196, 160, 82, 0.3);
+            border-right: 1px solid rgba(196, 160, 82, 0.3);
         }
 
         .partner-logo-satellite.hovered-state .partner-info-card {
@@ -2538,14 +2704,14 @@
         .partner-card-title {
             font-family: serif;
             font-size: 1.25rem;
-            color: #0F1B3D;
+            color: #ffffff;
             font-weight: 700;
             margin-bottom: 0.25rem;
         }
 
         .partner-card-subtitle {
             font-size: 0.65rem;
-            color: #C9A227;
+            color: #C4A052;
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-weight: 700;
@@ -2554,14 +2720,14 @@
 
         .partner-card-desc {
             font-size: 0.8rem;
-            color: #64748b;
+            color: #cbd5e1;
             line-height: 1.5;
             margin-bottom: 1rem;
         }
 
         .partner-card-link {
             font-size: 0.75rem;
-            color: #0F1B3D;
+            color: #C4A052;
             font-weight: 700;
             display: inline-flex;
             align-items: center;
@@ -2570,21 +2736,24 @@
         }
 
         .partner-card-link:hover {
-            color: #C9A227;
+            color: #ffffff;
         }
 
         #globe-webgl-container {
             position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
+            top: -20%;
+            left: -20%;
+            width: 140%;
+            height: 140%;
+            pointer-events: none; /* Allows dragging on the parent container */
         }
     </style>
 
-    <section class="globe-section-wrapper" id="global-collaborations">
+    <section class="globe-section-wrapper border-y border-[#C4A052]/20" id="global-collaborations">
+        <div class="globe-overlay z-0"></div>
         <!-- Background Layers -->
         <div class="globe-bg-marble" data-speed="0.2"></div>
-        <div class="globe-bg-dust"></div>
+        <div class="globe-bg-dust z-0"></div>
 
         <div
             class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10 flex flex-col lg:flex-row items-center justify-between">
@@ -2633,7 +2802,7 @@
                 <div id="globe-webgl-container"></div>
 
                 <!-- HTML Overlays for Logos (Managed by JS) -->
-                <div id="satellites-container" class="absolute inset-0 pointer-events-none overflow-visible">
+                <div id="satellites-container" class="absolute pointer-events-none overflow-visible" style="top: -20%; left: -20%; width: 140%; height: 140%;">
                     <!-- Satellites will be injected here -->
                 </div>
             </div>
@@ -2693,7 +2862,7 @@
             const scene = new THREE.Scene();
 
             const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
-            camera.position.z = 250;
+            camera.position.z = 350; // Pulled back to match the 140% container scale
 
             const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
             renderer.setSize(container.clientWidth, container.clientHeight);
@@ -2721,14 +2890,15 @@
             const textureLoader = new THREE.TextureLoader();
             textureLoader.setCrossOrigin("anonymous");
 
-            // Load a beautiful dark earth map to match the aesthetic
-            const earthMap = textureLoader.load('https://unpkg.com/three-globe/example/img/earth-dark.jpg');
+            // Load a beautiful night earth map to match the aesthetic and show city lights
+            const earthMap = textureLoader.load('https://unpkg.com/three-globe/example/img/earth-night.jpg');
 
             const sphereGeo = new THREE.SphereGeometry(globeRadius, 64, 64);
             const sphereMat = new THREE.MeshPhongMaterial({
                 map: earthMap,
-                color: 0xcccccc, // Dim it slightly
-                emissive: 0x0a1128,
+                color: 0xffffff, // Use white so map colors show fully
+                emissive: 0x111111,
+
                 specular: 0x223355,
                 shininess: 15,
                 transparent: true,
@@ -2756,7 +2926,8 @@
             const particleMesh = new THREE.Points(particleGeo, particleMat);
             globeGroup.add(particleMesh);
 
-            // 3. Atmosphere Glow
+            // 3. Atmosphere Glow (Removed per user request)
+            /*
             const atmosGeo = new THREE.SphereGeometry(globeRadius + 8, 64, 64);
             const atmosMat = new THREE.MeshBasicMaterial({
                 color: 0xc9a227,
@@ -2766,6 +2937,7 @@
             });
             const atmosMesh = new THREE.Mesh(atmosGeo, atmosMat);
             globeGroup.add(atmosMesh);
+            */
 
             // Orbit Rings
             const orbits = [
@@ -2803,14 +2975,14 @@
                 const el = document.createElement('div');
                 el.className = 'partner-logo-satellite pointer-events-auto';
                 el.innerHTML = `
-                                                        <img src="${partner.logo}" loading="lazy" alt="${partner.name} logo" onerror="this.src='https://via.placeholder.com/60?text=${partner.name.charAt(0)}'" />
-                                                        <div class="partner-info-card">
-                                                            <div class="partner-card-subtitle">${partner.platform}</div>
-                                                            <div class="partner-card-title">${partner.name}</div>
-                                                            <div class="partner-card-desc">${partner.desc}</div>
-                                                            <a href="#" class="partner-card-link">Learn More &rarr;</a>
-                                                        </div>
-                                                    `;
+                                                            <img src="${partner.logo}" loading="lazy" alt="${partner.name} logo" onerror="this.src='https://via.placeholder.com/60?text=${partner.name.charAt(0)}'" />
+                                                            <div class="partner-info-card">
+                                                                <div class="partner-card-subtitle">${partner.platform}</div>
+                                                                <div class="partner-card-title">${partner.name}</div>
+                                                                <div class="partner-card-desc">${partner.desc}</div>
+                                                                <a href="#" class="partner-card-link">Learn More &rarr;</a>
+                                                            </div>
+                                                        `;
                 satellitesContainer.appendChild(el);
 
                 satellites.push({
@@ -2948,12 +3120,11 @@
                     const screenX = (projected.x * halfW) + halfW;
                     const screenY = -(projected.y * halfH) + halfH;
 
-                    // Globe radius is 70. Negative z means it's pointing away from the camera.
-                    // We hide elements when they go completely behind the globe (z < -30)
-                    const isBehind = vector.z < -30;
-
-                    // Update HTML element
-                    if (isBehind) {
+                    // Globe radius is 70.
+                    // We smoothly fade out elements when they go behind the globe
+                    const opacity = vector.z < 20 ? Math.max(0, (vector.z + 50) / 70) : 1;
+                    
+                    if (opacity <= 0.05) {
                         sat.element.style.display = 'none';
                     } else {
                         sat.element.style.display = 'flex';
@@ -2962,9 +3133,6 @@
 
                         let scaleBase = depth * 0.5 + 0.6;
                         let finalScale = sat.isHovered ? scaleBase * 1.3 : scaleBase;
-
-                        // Smoothly fade out as it goes behind the globe
-                        const opacity = vector.z < 20 ? Math.max(0, (vector.z + 30) / 50) : 1;
 
                         sat.element.style.transform = `translate(-50%, -50%) translate(${screenX}px, ${screenY}px) scale(${finalScale})`;
                         sat.element.style.opacity = opacity;
@@ -2997,13 +3165,22 @@
         /* Hall of Recognition Parallax & Layout */
         #hall-of-recognition {
             position: relative;
-            background-color: #F8F4ED;
-            /* Warm Ivory */
-            color: #0F1B3D;
-            /* Deep Navy */
+            background-image: url('{{ asset('images/global.png') }}');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #ffffff;
             overflow: hidden;
             font-family: 'Inter', sans-serif;
-            border-top: 1px solid rgba(201, 162, 39, 0.2);
+            border-top: 1px solid rgba(196, 160, 82, 0.2);
+        }
+
+        .hor-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(10, 5, 2, 0.9), rgba(10, 5, 2, 0.5), rgba(10, 5, 2, 0.9));
+            pointer-events: none;
+            z-index: 0;
         }
 
         .hor-bg-layer {
@@ -3052,29 +3229,30 @@
     </style>
 
     <section id="hall-of-recognition">
+        <div class="hor-overlay z-0"></div>
 
         <!-- Intro Header & Featured Award -->
         <div class="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-32 text-center" id="hor-intro">
-            <span class="text-xs font-semibold text-yellow-600 uppercase tracking-widest block mb-4">Achievements</span>
-            <h2 class="text-4xl md:text-6xl font-extrabold text-[#0F1B3D] mb-4" style="font-family: serif;">Voices of
+            <span class="text-xs font-semibold text-[#C4A052] uppercase tracking-widest block mb-4">Achievements</span>
+            <h2 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-md mb-4" style="font-family: serif;">Voices of
                 Appreciation</h2>
-            <p class="text-lg md:text-xl text-slate-500 italic mb-16">"Recognized for Excellence Worldwide"</p>
+            <p class="text-lg md:text-xl text-slate-300 drop-shadow-sm italic mb-16">"Recognized for Excellence Worldwide"</p>
 
             <!-- Featured Award Glass Card -->
             <div
-                class="mx-auto max-w-3xl p-8 md:p-12 rounded-3xl bg-white/90 border border-yellow-500/40 shadow-[0_30px_60px_-15px_rgba(15,27,61,0.1)] relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_40px_80px_-15px_rgba(201,162,39,0.2)]">
-                <div class="absolute inset-0 bg-gradient-to-br from-white/90 to-transparent pointer-events-none"></div>
+                class="mx-auto max-w-3xl p-8 md:p-12 rounded-3xl bg-black/60 border border-[#C4A052]/40 backdrop-blur-xl shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] relative overflow-hidden group transition-transform duration-500 hover:-translate-y-2 hover:shadow-[0_40px_80px_-15px_rgba(196,160,82,0.4)]">
+                <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
                 <div class="relative z-10">
                     <span class="text-6xl block mb-6 drop-shadow-lg">🏆</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-3 text-[#0F1B3D]">Global Publisher of the Year</h3>
-                    <p class="text-sm font-bold text-yellow-600 tracking-[0.2em] uppercase mb-6">Independent Press Award •
+                    <h3 class="text-3xl md:text-4xl font-bold mb-3 text-white drop-shadow-sm">Global Publisher of the Year</h3>
+                    <p class="text-sm font-bold text-[#C4A052] tracking-[0.2em] uppercase mb-6">Independent Press Award •
                         2025</p>
-                    <p class="text-slate-600 leading-relaxed max-w-xl mx-auto">Selected as the premier publishing design and
+                    <p class="text-slate-300 leading-relaxed max-w-xl mx-auto drop-shadow-sm">Selected as the premier publishing design and
                         distribution platform, demonstrating unparalleled commitment to author success and literary
                         excellence across continents.</p>
                 </div>
                 <div
-                    class="absolute inset-0 translate-x-[-100%] group-hover:animate-[sweep_2s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/60 to-transparent transform skew-x-[-20deg]">
+                    class="absolute inset-0 translate-x-[-100%] group-hover:animate-[sweep_2s_ease-in-out_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent transform skew-x-[-20deg]">
                 </div>
             </div>
         </div>
@@ -3083,31 +3261,35 @@
         <div class="relative z-10 w-full max-w-6xl mx-auto px-4 pb-20">
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- 2022 -->
-                <div class="p-6 bg-white/90 border border-yellow-500/20 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
-                    <div class="text-3xl font-bold text-yellow-600 mb-3 font-serif">2022</div>
-                    <h4 class="font-bold text-[#0F1B3D] text-lg mb-2">First Recognition</h4>
-                    <p class="text-sm text-slate-600">Establishing a new standard in independent publishing.</p>
+                <div
+                    class="p-6 bg-black/50 backdrop-blur-md border border-[#C4A052]/30 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl font-bold text-[#C4A052] mb-3 font-serif drop-shadow-sm">2022</div>
+                    <h4 class="font-bold text-white text-lg mb-2">First Recognition</h4>
+                    <p class="text-sm text-slate-300">Establishing a new standard in independent publishing.</p>
                 </div>
                 <!-- 2023 -->
-                <div class="p-6 bg-white/90 border border-yellow-500/20 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
-                    <div class="text-3xl font-bold text-yellow-600 mb-3 font-serif">2023</div>
-                    <h4 class="font-bold text-[#0F1B3D] text-lg mb-2">Publishing Excellence</h4>
-                    <p class="text-sm text-slate-600">Recognized for outstanding editorial support and distribution.</p>
+                <div
+                    class="p-6 bg-black/50 backdrop-blur-md border border-[#C4A052]/30 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl font-bold text-[#C4A052] mb-3 font-serif drop-shadow-sm">2023</div>
+                    <h4 class="font-bold text-white text-lg mb-2">Publishing Excellence</h4>
+                    <p class="text-sm text-slate-300">Recognized for outstanding editorial support and distribution.</p>
                 </div>
                 <!-- 2024 -->
-                <div class="p-6 bg-white/90 border border-yellow-500/20 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
-                    <div class="text-3xl font-bold text-yellow-600 mb-3 font-serif">2024</div>
-                    <h4 class="font-bold text-[#0F1B3D] text-lg mb-2">Global Expansion</h4>
-                    <p class="text-sm text-slate-600">Reaching authors and readers across 45+ distribution networks.</p>
+                <div
+                    class="p-6 bg-black/50 backdrop-blur-md border border-[#C4A052]/30 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl font-bold text-[#C4A052] mb-3 font-serif drop-shadow-sm">2024</div>
+                    <h4 class="font-bold text-white text-lg mb-2">Global Expansion</h4>
+                    <p class="text-sm text-slate-300">Reaching authors and readers across 45+ distribution networks.</p>
                 </div>
                 <!-- 2025 -->
-                <div class="p-6 bg-white/90 border border-yellow-500/30 rounded-2xl shadow-md text-center ring-2 ring-yellow-500/50 hover:-translate-y-1 transition-transform">
-                    <div class="text-3xl font-bold text-yellow-600 mb-3 font-serif">2025</div>
-                    <h4 class="font-bold text-[#0F1B3D] text-lg mb-2">Industry Award</h4>
-                    <p class="text-sm text-slate-600">Celebrating our legacy in literary excellence and author success.</p>
+                <div
+                    class="p-6 bg-black/50 backdrop-blur-md border border-[#C4A052]/50 rounded-2xl shadow-md text-center ring-2 ring-[#C4A052]/30 hover:-translate-y-1 transition-transform">
+                    <div class="text-3xl font-bold text-[#C4A052] mb-3 font-serif drop-shadow-sm">2025</div>
+                    <h4 class="font-bold text-white text-lg mb-2">Industry Award</h4>
+                    <p class="text-sm text-slate-300">Celebrating our legacy in literary excellence and author success.</p>
                 </div>
             </div>
-            
+
             <div class="mt-12 text-center">
                 <button type="button" onclick="document.getElementById('recognitions-modal').classList.remove('hidden')"
                     class="px-8 py-3.5 bg-[#C4A052] hover:bg-[#a88849] text-white font-bold rounded shadow-lg transition-colors inline-flex items-center gap-2">
@@ -3119,29 +3301,25 @@
         <!-- Premium Statistics -->
         <div class="relative z-10 w-full max-w-5xl mx-auto px-4 pb-32">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center hor-stats-grid">
-                <div
-                    class="p-6 bg-white rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
-                    <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
+                <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
+                    <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
                             data-target="25">0</span>+</div>
-                    <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Industry Awards</div>
+                    <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Industry Awards</div>
                 </div>
-                <div
-                    class="p-6 bg-white rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
-                    <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
+                <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
+                    <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
                             data-target="4.9">0</span></div>
-                    <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Average Rating</div>
+                    <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Average Rating</div>
                 </div>
-                <div
-                    class="p-6 bg-white rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
-                    <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
+                <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
+                    <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
                             data-target="1000">0</span>+</div>
-                    <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Books Published</div>
+                    <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Books Published</div>
                 </div>
-                <div
-                    class="p-6 bg-white rounded-2xl border border-slate-200 transition-transform hover:-translate-y-1">
-                    <div class="text-3xl font-extrabold text-[#0F1B3D] mb-2 font-serif"><span class="hor-counter"
+                <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
+                    <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
                             data-target="25">0</span>+</div>
-                    <div class="text-xs text-slate-500 font-bold tracking-wider uppercase">Countries</div>
+                    <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Countries</div>
                 </div>
             </div>
         </div>
@@ -3188,7 +3366,7 @@
 
         <!-- Modal Content -->
         <div
-            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-[#0F1B3D]/80 backdrop-blur-xl border border-yellow-500/20 rounded-2xl shadow-2xl p-6 md:p-8">
+            class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-lg bg-black/80 backdrop-blur-xl border border-[#C4A052]/30 rounded-2xl shadow-2xl p-6 md:p-8">
             <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
                 <h3 class="text-2xl font-serif font-bold text-white">All Recognitions</h3>
                 <button onclick="document.getElementById('recognitions-modal').classList.add('hidden')"
@@ -3285,51 +3463,50 @@
         .book-showcase-swiper {
             width: 100%;
             padding-top: 40px;
-            padding-bottom: 80px;
+            padding-bottom: 20px;
         }
 
         .book-showcase-swiper .swiper-slide {
             background-position: center;
             background-size: cover;
-            width: 80px;
-            height: 140px;
-            filter: drop-shadow(15px 15px 10px rgba(0, 0, 0, 0.6));
-            transition: filter 0.5s ease;
+            width: 115px;
+            height: 155px;
+            /* Removing harsh shadow, relying on subtle 3D lighting */
+            transition: transform 0.5s ease;
         }
 
         @media (min-width: 640px) {
             .book-showcase-swiper .swiper-slide {
-                width: 100px;
-                height: 180px;
+                width: 150px;
+                height: 200px;
             }
         }
 
         @media (min-width: 1024px) {
             .book-showcase-swiper .swiper-slide {
-                width: 120px;
-                height: 220px;
+                width: 195px;
+                height: 260px;
             }
         }
 
-        /* Active hover shadow */
+        /* Active hover effect instead of heavy shadow */
         .book-showcase-swiper .swiper-slide:hover {
-            filter: drop-shadow(25px 25px 15px rgba(0, 0, 0, 0.8)) drop-shadow(0 0 20px rgba(196, 160, 82, 0.4));
+            transform: translateY(-5px);
         }
 
-        /* 3D Book wrapper to handle right-facing rotation */
+        /* 3D Book wrapper with negative rotation to show the right pages (like the design) */
         .book-wrapper {
             position: relative;
             width: 100%;
             height: 100%;
             transform-style: preserve-3d;
-            transform: perspective(1200px) rotateY(-35deg);
-            /* Face right */
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: perspective(1200px) rotateY(-20deg);
+            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* Active hover animation */
+        /* Hover animation brings the cover slightly more forward */
         .book-showcase-swiper .swiper-slide:hover .book-wrapper {
-            transform: perspective(1200px) rotateY(-18deg) translateY(-10px) scale(1.05);
+            transform: perspective(1200px) rotateY(-10deg) scale(1.03);
         }
 
         /* 3D Book Components */
@@ -3339,13 +3516,14 @@
         .book-right-edge,
         .book-top-edge {
             position: absolute;
+            backface-visibility: hidden;
         }
 
         /* Front Cover */
         .book-front {
             width: 100%;
             height: 100%;
-            transform: translateZ(12px);
+            transform: translateZ(30px);
             /* Half of book thickness */
             border-radius: 3px 5px 5px 3px;
             overflow: hidden;
@@ -3380,7 +3558,7 @@
         .book-back {
             width: 100%;
             height: 100%;
-            transform: rotateY(180deg) translateZ(12px);
+            transform: rotateY(180deg) translateZ(30px);
             border-radius: 5px 3px 3px 5px;
             background-color: #05080c;
             box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
@@ -3388,12 +3566,12 @@
 
         /* Spine */
         .book-spine {
-            width: 24px;
+            width: 60px;
             /* Book thickness */
             height: 100%;
             left: 0;
             transform-origin: center left;
-            transform: translateZ(12px) rotateY(-90deg);
+            transform: translateZ(30px) rotateY(-90deg);
             border-radius: 6px 0 0 6px;
             /* rounded spine */
             box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
@@ -3401,20 +3579,20 @@
 
         /* Page edges */
         .book-right-edge {
-            width: 22px;
+            width: 58px;
             /* Thinner than cover for lip overhang */
-            height: 96%;
+            height: 97%;
             /* Shorter than cover */
             right: 2px;
             /* Recessed inward */
-            top: 2%;
+            top: 1.5%;
             transform-origin: center right;
-            transform: translateZ(11px) rotateY(90deg);
-            /* 11px perfectly centers it within the 24px cover */
-            background: #f0ebd8;
+            transform: translateZ(29px) rotateY(90deg);
+            /* perfectly centers it within the cover */
+            background: #e4dfce;
             border-radius: 0 2px 2px 0;
-            background-image: repeating-linear-gradient(to right, transparent, transparent 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0.1) 2px);
-            box-shadow: inset 2px 0 10px rgba(0, 0, 0, 0.4);
+            background-image: repeating-linear-gradient(to right, transparent, transparent 2px, rgba(0, 0, 0, 0.15) 3px, rgba(0, 0, 0, 0.05) 4px);
+            box-shadow: inset 3px 0 15px rgba(0, 0, 0, 0.6), inset -1px 0 2px rgba(255, 255, 255, 0.4);
             /* Shadow from the cover overhang */
         }
 
@@ -3422,17 +3600,17 @@
         .book-top-edge {
             width: 96%;
             /* Shorter than cover */
-            height: 22px;
+            height: 58px;
             /* Thinner than cover for lip overhang */
             top: 2px;
             /* Recessed downward */
-            left: 2%;
+            left: 4%;
             transform-origin: top center;
-            transform: translateZ(11px) rotateX(90deg);
-            /* 11px perfectly centers it */
-            background: #e6e2d3;
-            background-image: repeating-linear-gradient(to bottom, transparent, transparent 1px, rgba(0, 0, 0, 0.1) 1px, rgba(0, 0, 0, 0.1) 2px);
-            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+            transform: translateZ(29px) rotateX(90deg);
+            /* perfectly centers it */
+            background: #dbd6c3;
+            background-image: repeating-linear-gradient(to bottom, transparent, transparent 2px, rgba(0, 0, 0, 0.15) 3px, rgba(0, 0, 0, 0.05) 4px);
+            box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.5), inset 0 -1px 2px rgba(255, 255, 255, 0.3);
             /* Shadow from the cover overhang */
         }
     </style>
@@ -3445,7 +3623,7 @@
                 loop: true,
                 slidesPerView: 2, // Mobile default
                 speed: 1000, // Smooth easing
-                spaceBetween: -10, // Books very close together (negative offsets the 3D rotation bounding box)
+                spaceBetween: 10, // Books closer together
                 autoplay: {
                     delay: 4000, // Auto-scroll every 4 seconds
                     disableOnInteraction: false,
@@ -3454,11 +3632,11 @@
                 breakpoints: {
                     640: {
                         slidesPerView: 3, // Tablet
-                        spaceBetween: -15,
+                        spaceBetween: 15,
                     },
                     1024: {
-                        slidesPerView: 5, // Exactly 5 books visible
-                        spaceBetween: -20, // Negative spacing to bring them right next to each other
+                        slidesPerView: 5, // Exactly 5 books visible like the design
+                        spaceBetween: 15, // Reduced gap between books
                     }
                 }
             });
