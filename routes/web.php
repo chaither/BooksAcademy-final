@@ -36,6 +36,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Royalty Report Routes
     Route::post('/admin/users/{user}/royalty-reports', [AdminController::class, 'uploadRoyaltyReport'])->name('admin.users.royalty-reports.store');
+    Route::get('/royalty-reports/{royaltyReport}/view', [AdminController::class, 'viewRoyaltyReport'])->name('royalty-reports.view');
     Route::get('/royalty-reports/{royaltyReport}/download', [AdminController::class, 'downloadRoyaltyReport'])->name('royalty-reports.download');
     Route::delete('/admin/royalty-reports/{royaltyReport}', [AdminController::class, 'deleteRoyaltyReport'])->name('admin.royalty-reports.delete');
 
