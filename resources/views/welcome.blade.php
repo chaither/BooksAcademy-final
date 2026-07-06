@@ -69,13 +69,13 @@
                     @php
                         // Array of book images - easily replaceable with dynamic data
                         $showcaseBooks = [
-                            'images/A-1.png',
-                            'images/A-2.png',
+                            'images/A-20.png',
+                            'images/A-7.png',
                             'images/A-3.png',
                             'images/A-4.png',
                             'images/A-5.png',
                             'images/A-6.png',
-                            'images/A-7.png',
+                            'images/A-2.png',
                             'images/A-8.png',
                             'images/A-9.png',
                             'images/A-10.png',
@@ -88,12 +88,12 @@
                             'images/A-17.png',
                             'images/A-18.png',
                             'images/A-19.png',
-                            'images/A-20.png',
+                            'images/A-1.png',
                             'images/A-21.png',
-                            'images/A-22.png',
+                            'images/A-25.png',
                             'images/A-23.png',
                             'images/A-24.png',
-                            'images/A-25.png',
+                            'images/A-22.png',
                             'images/A-26.png',
 
 
@@ -101,33 +101,17 @@
                     @endphp
 
                     @foreach($showcaseBooks as $index => $bookImg)
-                        <div class="swiper-slide cursor-pointer">
-                            <div class="book-wrapper">
-                                <!-- Back Cover -->
-                                <div class="book-back bg-[#0a0f18]"></div>
-
-                                <!-- Spine -->
-                                <div class="book-spine bg-[#111827]">
-                                    <div
-                                        class="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-black/60 pointer-events-none">
-                                    </div>
+                        <div class="swiper-slide cursor-pointer flex items-center justify-center">
+                            <div class="book-3d-showcase group">
+                                <div class="book-face book-front">
+                                    <img loading="lazy" src="{{ asset($bookImg) }}" class="w-full h-full object-fill" alt="Premium Book {{ $index + 1 }}">
+                                    <div class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-white/10 pointer-events-none"></div>
                                 </div>
-
-                                <!-- Page Edge (Right side) -->
-                                <div class="book-right-edge"></div>
-
-                                <!-- Page Edge (Top side) -->
-                                <div class="book-top-edge"></div>
-
-                                <!-- Front Cover -->
-                                <div class="book-front bg-[#111827]">
-                                    <div
-                                        class="book-lighting absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent z-10 pointer-events-none">
-                                    </div>
-                                    <img loading="lazy" src="{{ asset($bookImg) }}" class="w-full h-full relative z-0"
-                                        style="object-fit: fill;" alt="Premium Book {{ $index + 1 }}"
-                                        onerror="this.onerror=null; this.parentElement.style.background='#1A1A1A'; this.parentElement.innerHTML+='<div class=\'absolute inset-0 flex items-center justify-center text-[#C4A052]/50 text-xs font-serif p-4 text-center border-l-4 border-[#C4A052]\'>Book Title ' + ({{ $index }} + 1) + '</div>'; this.remove();">
-                                </div>
+                                <div class="book-face book-back"></div>
+                                <div class="book-face book-spine"></div>
+                                <div class="book-face book-pages-right"></div>
+                                <div class="book-face book-pages-top"></div>
+                                <div class="book-face book-pages-bottom"></div>
                             </div>
                         </div>
                     @endforeach
@@ -3523,123 +3507,103 @@
         }
 
         /* 3D Book wrapper with negative rotation to show the right pages (like the design) */
-        .book-wrapper {
+        .book-3d-showcase {
             position: relative;
-            width: 100%;
-            height: 100%;
+            width: 160px;
+            height: 240px;
             transform-style: preserve-3d;
-            transform: perspective(1200px) rotateY(-20deg);
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            transform: rotateX(5deg) rotateY(-25deg);
+            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .swiper-slide:hover .book-3d-showcase {
+            transform: rotateX(2deg) rotateY(-5deg) translateY(-10px) translateZ(30px);
         }
 
-        /* Hover animation brings the cover slightly more forward */
-        .book-showcase-swiper .swiper-slide:hover .book-wrapper {
-            transform: perspective(1200px) rotateY(-10deg) scale(1.03);
-        }
-
-        /* 3D Book Components */
-        .book-front,
-        .book-back,
-        .book-spine,
-        .book-right-edge,
-        .book-top-edge {
+        .book-3d-showcase .book-face {
             position: absolute;
             backface-visibility: hidden;
         }
 
-        /* Front Cover */
-        .book-front {
-            width: 100%;
-            height: 100%;
-            transform: translateZ(30px);
-            /* Half of book thickness */
-            border-radius: 3px 5px 5px 3px;
-            overflow: hidden;
-            /* Cover thickness inner highlight and border */
-            box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.2), inset -1px 0 2px rgba(255, 255, 255, 0.3), 0 0 1px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Glossy Sheen Overlay on Cover */
-        .book-front::before {
-            content: '';
-            position: absolute;
+        .book-3d-showcase .book-front {
             inset: 0;
-            background: linear-gradient(115deg, transparent 20%, rgba(255, 255, 255, 0.08) 40%, rgba(255, 255, 255, 0.15) 50%, transparent 60%);
-            z-index: 10;
-            pointer-events: none;
+            transform: translateZ(15px);
+            border-radius: 2px 6px 6px 2px;
+            overflow: hidden;
+            box-shadow: inset 4px 0 10px rgba(0,0,0,0.1);
+            border-left: 1px solid rgba(255,255,255,0.2);
         }
 
-        /* Spine hinge indent */
-        .book-front::after {
-            content: '';
-            position: absolute;
+        .book-3d-showcase .book-back {
+            inset: 0;
+            transform: rotateY(180deg) translateZ(15px);
+            background: #0f131a;
+            border-radius: 6px 2px 2px 6px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .book-3d-showcase .book-spine {
+            width: 30px;
+            height: 100%;
+            left: 50%;
             top: 0;
-            left: 0;
-            bottom: 0;
-            width: 10px;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.5) 20%, rgba(255, 255, 255, 0.1) 40%, rgba(0, 0, 0, 0.1) 100%);
-            z-index: 2;
-            border-right: 1px solid rgba(0, 0, 0, 0.2);
+            margin-left: -15px;
+            transform: rotateY(-90deg) translateZ(80px);
+            background: linear-gradient(to right, #05070a, #151a24 20%, #0a0d14 80%, #05070a);
+            border-left: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* Back Cover */
-        .book-back {
-            width: 100%;
-            height: 100%;
-            transform: rotateY(180deg) translateZ(30px);
-            border-radius: 5px 3px 3px 5px;
-            background-color: #05080c;
-            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+        .book-3d-showcase .book-pages-right {
+            width: 26px;
+            height: 96%;
+            top: 2%;
+            left: 50%;
+            margin-left: -13px;
+            transform: rotateY(90deg) translateZ(77px);
+            background: repeating-linear-gradient(to right, #e2e8f0, #e2e8f0 2px, #cbd5e1 3px, #f8fafc 3px);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
         }
 
-        /* Spine */
-        .book-spine {
-            width: 60px;
-            /* Book thickness */
-            height: 100%;
-            left: 0;
-            transform-origin: center left;
-            transform: translateZ(30px) rotateY(-90deg);
-            border-radius: 6px 0 0 6px;
-            /* rounded spine */
-            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.6);
-        }
-
-        /* Page edges */
-        .book-right-edge {
-            width: 58px;
-            /* Thinner than cover for lip overhang */
-            height: 97%;
-            /* Shorter than cover */
-            right: 2px;
-            /* Recessed inward */
-            top: 1.5%;
-            transform-origin: center right;
-            transform: translateZ(29px) rotateY(90deg);
-            /* perfectly centers it within the cover */
-            background: #e4dfce;
-            border-radius: 0 2px 2px 0;
-            background-image: repeating-linear-gradient(to right, transparent, transparent 2px, rgba(0, 0, 0, 0.15) 3px, rgba(0, 0, 0, 0.05) 4px);
-            box-shadow: inset 3px 0 15px rgba(0, 0, 0, 0.6), inset -1px 0 2px rgba(255, 255, 255, 0.4);
-            /* Shadow from the cover overhang */
-        }
-
-        /* Page edges top */
-        .book-top-edge {
+        .book-3d-showcase .book-pages-top {
             width: 96%;
-            /* Shorter than cover */
-            height: 58px;
-            /* Thinner than cover for lip overhang */
-            top: 2px;
-            /* Recessed downward */
-            left: 4%;
-            transform-origin: top center;
-            transform: translateZ(29px) rotateX(90deg);
-            /* perfectly centers it */
-            background: #dbd6c3;
-            background-image: repeating-linear-gradient(to bottom, transparent, transparent 2px, rgba(0, 0, 0, 0.15) 3px, rgba(0, 0, 0, 0.05) 4px);
-            box-shadow: inset 0 3px 15px rgba(0, 0, 0, 0.5), inset 0 -1px 2px rgba(255, 255, 255, 0.3);
-            /* Shadow from the cover overhang */
+            height: 26px;
+            left: 2%;
+            top: 50%;
+            margin-top: -13px;
+            transform: rotateX(90deg) translateZ(117px);
+            background: repeating-linear-gradient(to bottom, #e2e8f0, #e2e8f0 2px, #cbd5e1 3px, #f8fafc 3px);
+        }
+
+        .book-3d-showcase .book-pages-bottom {
+            width: 96%;
+            height: 26px;
+            left: 2%;
+            top: 50%;
+            margin-top: -13px;
+            transform: rotateX(-90deg) translateZ(117px);
+            background: #cbd5e1;
+        }
+
+        @media (min-width: 640px) {
+            .book-3d-showcase {
+                width: 200px;
+                height: 300px;
+            }
+            .book-3d-showcase .book-front { transform: translateZ(20px); }
+            .book-3d-showcase .book-back { transform: rotateY(180deg) translateZ(20px); }
+            
+            .book-3d-showcase .book-spine {
+                width: 40px; margin-left: -20px; transform: rotateY(-90deg) translateZ(100px);
+            }
+            .book-3d-showcase .book-pages-right {
+                width: 36px; margin-left: -18px; transform: rotateY(90deg) translateZ(97px);
+            }
+            .book-3d-showcase .book-pages-top {
+                height: 36px; margin-top: -18px; transform: rotateX(90deg) translateZ(147px);
+            }
+            .book-3d-showcase .book-pages-bottom {
+                height: 36px; margin-top: -18px; transform: rotateX(-90deg) translateZ(147px);
+            }
         }
     </style>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
