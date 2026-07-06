@@ -64,14 +64,33 @@
                     @php
                         // Array of book images - easily replaceable with dynamic data
                         $showcaseBooks = [
-                            'images/book1.png',
-                            'images/book1.png',
-                            'images/book1.png',
-                            'images/book1.png',
-                            'images/book1.png',
-                            'images/book1.png',
-                            'images/book1.png',
-                            'images/book1.png',
+                            'images/A-1.png',
+                            'images/A-2.png',
+                            'images/A-3.png',
+                            'images/A-4.png',
+                            'images/A-5.png',
+                            'images/A-6.png',
+                            'images/A-7.png',
+                            'images/A-8.png',
+                            'images/A-9.png',
+                            'images/A-10.png',
+                            'images/A-11.png',
+                            'images/A-12.png',
+                            'images/A-13.png',
+                            'images/A-14.png',
+                            'images/A-15.png',
+                            'images/A-16.png',
+                            'images/A-17.png',
+                            'images/A-18.png',
+                            'images/A-19.png',
+                            'images/A-20.png',
+                            'images/A-21.png',
+                            'images/A-22.png',
+                            'images/A-23.png',
+                            'images/A-24.png',
+                            'images/A-25.png',
+                            'images/A-26.png',
+
 
                         ];
                     @endphp
@@ -2391,26 +2410,30 @@
                 who worked with our house.</p>
         </div>
 
-        <!-- Dynamic Authors Data -->
+        <!-- Editable Testimonials Data -->
         @php
-            $authorData = [];
-            if (isset($authors) && $authors->count() > 0) {
-                foreach ($authors as $index => $author) {
-                    $bookTitle = $author->publishedBooks->first() ? $author->publishedBooks->first()->title : 'Independent Work';
-                    $authorData[] = [
-                        'name' => $author->name,
-                        'book' => $bookTitle,
-                        'quote' => "Publishing through Books Academy gave me the control I needed over my creative work. The process was seamless and incredibly supportive.",
-                        'bg' => ['#F8F5EE', '#F3E5D8', '#F9F6F0', '#F4EFE6', '#F5ECE4'][$index % 5]
-                    ];
-                }
-            } else {
-                $authorData = [
-                    ['name' => 'Alvin Mercer', 'book' => 'Coded Thoughts', 'quote' => 'The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and professional support throughout the process.', 'bg' => 'rgba(0,0,0,0.5)'],
-                    ['name' => 'Martha Vance', 'book' => 'Children of the Wild', 'quote' => 'Children\'s book illustrations need precise color alignment. Their formatting team verified files and set up spreads beautifully.', 'bg' => 'rgba(0,0,0,0.4)'],
-                    ['name' => 'Howard Stark', 'book' => 'Startup Architecture', 'quote' => 'Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live worldwide within 48 hours.', 'bg' => 'rgba(0,0,0,0.6)'],
-                ];
-            }
+            // EDIT YOUR PENHOLDER VOICES (TESTIMONIALS) HERE
+            // You can easily add, edit, or remove testimonials by modifying this array.
+            $authorData = [
+                [
+                    'name' => 'Eleanor Vance', 
+                    'book' => 'The Whispering Shadows', 
+                    'quote' => 'Publishing through Books Academy gave me the control I needed over my creative work. The process was seamless and incredibly supportive.', 
+                    'bg' => '#0f131a' // Dark background to fit the page
+                ],
+                [
+                    'name' => 'Marcus Thorne', 
+                    'book' => 'Echoes of Eternity', 
+                    'quote' => 'The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and professional support throughout the process.', 
+                    'bg' => '#151a24' // Dark background to fit the page
+                ],
+                [
+                    'name' => 'Alvin Mercer', 
+                    'book' => 'Coded Thoughts', 
+                    'quote' => 'Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live worldwide within 48 hours.', 
+                    'bg' => '#0f131a' // Dark background to fit the page
+                ],
+            ];
         @endphp
 
         <!-- Authors Container -->
