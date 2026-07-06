@@ -4,7 +4,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Books Academy — Professional Publishing House</title>
+    <title>@yield('title', 'Books Academy — Professional Publishing House')</title>
+    
+    <!-- Primary Meta Tags -->
+    <meta name="title" content="@yield('meta_title', 'Books Academy — Professional Publishing House')">
+    <meta name="description" content="@yield('meta_description', 'Books Academy is a premier professional publishing house dedicated to helping authors refine, publish, and distribute their works globally. Turn your manuscript into a masterpiece.')">
+    <meta name="keywords" content="@yield('meta_keywords', 'books academy, book publishing, self publishing, professional publisher, author services, print books, ebooks')">
+    <meta name="author" content="Books Academy">
+    <link rel="canonical" href="@yield('canonical_url', url()->current())">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="@yield('og_type', 'website')">
+    <meta property="og:url" content="@yield('canonical_url', url()->current())">
+    <meta property="og:title" content="@yield('meta_title', 'Books Academy — Professional Publishing House')">
+    <meta property="og:description" content="@yield('meta_description', 'Books Academy is a premier professional publishing house dedicated to helping authors refine, publish, and distribute their works globally. Turn your manuscript into a masterpiece.')">
+    <meta property="og:image" content="@yield('og_image', asset('images/logo1.png'))">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="@yield('canonical_url', url()->current())">
+    <meta property="twitter:title" content="@yield('meta_title', 'Books Academy — Professional Publishing House')">
+    <meta property="twitter:description" content="@yield('meta_description', 'Books Academy is a premier professional publishing house dedicated to helping authors refine, publish, and distribute their works globally. Turn your manuscript into a masterpiece.')">
+    <meta property="twitter:image" content="@yield('og_image', asset('images/logo1.png'))">
+
     <link rel="icon" type="image/png" href="{{ asset('images/gold1.png') }}">
 
     <!-- Inter Google Font -->
