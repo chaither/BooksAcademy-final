@@ -1,5 +1,10 @@
 @extends('layouts.web')
 
+@section('title', 'Books Academy — Your Gateway to Professional Publishing')
+@section('meta_title', 'Books Academy — Your Gateway to Professional Publishing')
+@section('meta_description', 'Discover Books Academy, where we transform your manuscript into a beautifully published book. We offer premium publishing services, global distribution, and professional design.')
+@section('meta_keywords', 'publish book, professional publishing, authors academy, book distribution, book design')
+
 @section('content')
     <!-- Left Aligned Large Logo and Hero Content -->
     <section

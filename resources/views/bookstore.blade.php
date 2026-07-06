@@ -1,5 +1,10 @@
 @extends('layouts.web')
 
+@section('title', 'Books Academy Bookstore — Browse Our Catalog')
+@section('meta_title', 'Books Academy Bookstore — Browse Our Catalog')
+@section('meta_description', 'Browse the Books Academy Bookstore catalog. Acquire physical paperbacks or download direct eBooks from our talented authors.')
+@section('meta_keywords', 'books academy bookstore, buy books, ebooks, paperbacks, catalog, online bookstore')
+
 @section('content')
 
 @php
