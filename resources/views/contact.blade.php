@@ -154,7 +154,7 @@
                 <div class="absolute inset-0 z-0 opacity-80 mix-blend-luminosity hover:mix-blend-normal hover:opacity-100 transition-all duration-700">
                     <iframe 
                         class="w-full h-full border-0"
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d86066.07996767694!2d-122.42790933519894!3d47.61317429188043!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5490102c93e83355%3A0x102565466944d59a!2sSeattle%2C%20WA!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus&style=feature:all|element:geometry|color:0x0F1B3D&style=feature:water|element:geometry|color:0x08102B&style=feature:road|element:geometry|color:0x223259" 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.703273760456!2d-81.96831968480397!3d33.47580348076693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88f9cc6e6abc43a7%3A0xe0932c21b02c171!2s823%20Broad%20St%2C%20Augusta%2C%20GA%2030901%2C%20USA!5e0!3m2!1sen!2sph!4v1689310892011!5m2!1sen!2sph&style=feature:all|element:geometry|color:0x0F1B3D&style=feature:water|element:geometry|color:0x08102B&style=feature:road|element:geometry|color:0x223259" 
                         allowfullscreen="" 
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade">
@@ -176,7 +176,7 @@
                             </div>
                             <div>
                                 <h4 class="text-[11px] font-bold uppercase tracking-widest mb-1 text-slate-100">ADDRESS</h4>
-                                <p class="text-sm text-slate-300 leading-relaxed font-medium">Literary Media Building, Floor 4<br>Seattle, WA 98101</p>
+                                <p class="text-sm text-slate-300 leading-relaxed font-medium">823 Broad St, Augusta, GA 30901, Estados Unidos</p>
                             </div>
                         </div>
                         
@@ -186,7 +186,7 @@
                             </div>
                             <div>
                                 <h4 class="text-[11px] font-bold uppercase tracking-widest mb-1 text-slate-100">EMAIL US</h4>
-                                <p class="text-sm text-slate-300 leading-relaxed font-medium">contact@booksacademy.com<br>support@booksacademy.com</p>
+                                <p class="text-sm text-slate-300 leading-relaxed font-medium">support@booksacademy.org</p>
                             </div>
                         </div>
                     </div>
