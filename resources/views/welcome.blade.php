@@ -2183,296 +2183,427 @@
         });
     </script>
 
-    <!-- Voices from the Penholders (Redesigned) -->
-    <style>
-        /* Hall of Authors Styles */
-        .penholders-wrapper {
-            position: relative;
-            width: 100%;
-            min-height: 100vh;
-            background-image: url('{{ asset('images/global.png') }}');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            transition: background-color 1s ease;
-        }
+    <!-- Hall of Authors Section -->
+    <section class="relative w-full min-h-screen bg-[#0a0502] text-white py-24 overflow-hidden" style="background-image: url('{{ asset('images/global.png') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
+        <!-- Overlays -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0502]/90 via-[#0a0502]/60 to-[#0a0502]/90 pointer-events-none"></div>
 
-        .penholders-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(10, 5, 2, 0.9), rgba(10, 5, 2, 0.5), rgba(10, 5, 2, 0.9));
-            pointer-events: none;
-        }
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <!-- Header -->
+            <div class="text-center mb-16">
+                <p class="text-[#C4A052] text-xs font-bold uppercase tracking-[0.2em] mb-4">Hall of Authors</p>
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-serif mb-4">
+                    Voices from the <span class="text-[#C4A052] italic">Penholders</span>
+                </h2>
+                <p class="text-slate-300 text-sm max-w-2xl mx-auto">
+                    Publishing testimonials from writers who worked with our house.
+                </p>
+            </div>
 
-        .penholders-bg-layer {
-            position: absolute;
-            inset: -10%;
-            width: 120%;
-            height: 120%;
-            pointer-events: none;
-        }
+            <!-- Content Grid: Video on Left, Testimonial on Right -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24">
+                
+                <!-- Video Section -->
+                <div class="lg:col-span-7 relative rounded-3xl overflow-hidden bg-black/40 border border-[#C4A052]/20 backdrop-blur-sm group h-[450px]" id="testimonial-video-container">
+                    <video id="testimonial-video" src="{{ asset('images/testimonial1.mp4') }}" muted loop playsinline class="w-full h-full object-cover opacity-80"></video>
+                    <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+                    
+                    <!-- Top Badges -->
+                    <div class="absolute top-6 left-6 px-3 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">
+                        HD 1080p
+                    </div>
+                    <div class="absolute top-6 right-6 px-3 py-1 bg-black/60 backdrop-blur-md rounded border border-white/10 text-[10px] font-bold text-white tracking-wider" id="video-time-display">
+                        00:00 / 00:00
+                    </div>
 
-        .penholders-bg-texture {
-            opacity: 0.04;
-            background-image: url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noise"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="4" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100" height="100" filter="url(%23noise)" opacity="0.4"/%3E%3C/svg%3E');
-        }
 
-        .penholders-bg-manuscript {
-            opacity: 0.03;
-            background-size: 400px;
-            background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="200" opacity="0.5"%3E%3Cpath d="M10 50 Q 50 20 100 50 T 200 50 T 300 50" stroke="%230F1B3D" fill="transparent" stroke-width="0.5"/%3E%3Cpath d="M10 80 Q 80 110 150 80 T 300 80 T 380 80" stroke="%230F1B3D" fill="transparent" stroke-width="0.5"/%3E%3Cpath d="M10 110 Q 60 140 120 110 T 250 110 T 360 110" stroke="%230F1B3D" fill="transparent" stroke-width="0.5"/%3E%3C/svg%3E');
-        }
-
-        .penholders-bg-rays {
-            background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
-            opacity: 0.5;
-        }
-
-        .author-slide {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-        }
-
-        .author-slide.active {
-            opacity: 1;
-            visibility: visible;
-            pointer-events: auto;
-        }
-
-        .premium-testimonial-card {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(196, 160, 82, 0.3);
-            border-radius: 24px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
-            padding: 40px;
-            max-width: 600px;
-            width: 90%;
-            position: relative;
-            transform-style: preserve-3d;
-            z-index: 10;
-        }
-
-        .book-cover-3d {
-            width: 140px;
-            height: 210px;
-            background: #0a0502;
-            border-radius: 4px 8px 8px 4px;
-            box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5), 10px 20px 30px rgba(0, 0, 0, 0.6);
-            position: absolute;
-            top: -60px;
-            right: -40px;
-            transform: rotateY(-20deg) rotateX(10deg);
-            transform-style: preserve-3d;
-            transition: transform 0.5s ease;
-            background-image: url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=300');
-            background-size: cover;
-            background-position: center;
-        }
-
-        .book-cover-3d::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 8px;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 50%, rgba(0, 0, 0, 0.2));
-            border-radius: 4px 0 0 4px;
-        }
-
-        .quote-word {
-            display: inline-block;
-            opacity: 0.2;
-            transform: translateY(5px);
-            transition: all 0.4s ease;
-        }
-
-        .quote-word.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .quote-mark-bg {
-            position: absolute;
-            font-family: serif;
-            font-size: 200px;
-            line-height: 1;
-            color: rgba(196, 160, 82, 0.15);
-            top: -20px;
-            left: -10px;
-            z-index: -1;
-            user-select: none;
-        }
-
-        .journey-bar {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 30px;
-        }
-
-        .journey-step {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(15, 27, 61, 0.2);
-        }
-
-        .journey-step.active {
-            background: #C9A227;
-            box-shadow: 0 0 10px #C9A227;
-        }
-
-        .journey-line {
-            height: 1px;
-            flex: 1;
-            background: rgba(15, 27, 61, 0.1);
-        }
-
-        .floating-badge {
-            position: absolute;
-            background: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 10px;
-            font-weight: bold;
-            color: white;
-            border: 1px solid rgba(196, 160, 82, 0.3);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-            animation: floatBadge 6s ease-in-out infinite;
-        }
-
-        @keyframes floatBadge {
-
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        .ending-scene {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            z-index: 20;
-            background: rgba(0, 0, 0, 0.85);
-            backdrop-filter: blur(10px);
-            color: white;
-        }
-    </style>
-
-    <div class="penholders-wrapper border-y border-[#C4A052]/20" id="hall-of-authors">
-        <div class="penholders-overlay z-0"></div>
-
-        <!-- Background Layers -->
-        <div class="penholders-bg-layer penholders-bg-texture" id="hoa-texture"></div>
-        <div class="penholders-bg-layer penholders-bg-manuscript" id="hoa-manuscript"></div>
-        <div class="penholders-bg-layer penholders-bg-rays" id="hoa-rays"></div>
-
-        <!-- Header -->
-        <div class="pt-16 md:pt-24 pb-8 text-center relative z-20 px-4 drop-shadow-md">
-            <span
-                class="text-[10px] sm:text-xs font-bold text-[#C4A052] uppercase tracking-[0.25em] block mb-2 sm:mb-4">Hall
-                of Authors</span>
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-serif text-white leading-tight">Voices from
-                the Penholders</h2>
-            <p class="text-xs sm:text-sm text-slate-300 mt-3 sm:mt-4 max-w-xl mx-auto">Publishing testimonials from writers
-                who worked with our house.</p>
-        </div>
-
-        <!-- Editable Testimonials Data -->
-        @php
-            // EDIT YOUR PENHOLDER VOICES (TESTIMONIALS) HERE
-            // You can easily add, edit, or remove testimonials by modifying this array.
-            $authorData = [
-                [
-                    'name' => 'Eleanor Vance', 
-                    'book' => 'The Whispering Shadows', 
-                    'quote' => 'Publishing through Books Academy gave me the control I needed over my creative work. The process was seamless and incredibly supportive.', 
-                    'bg' => '#0f131a' // Dark background to fit the page
-                ],
-                [
-                    'name' => 'Marcus Thorne', 
-                    'book' => 'Echoes of Eternity', 
-                    'quote' => 'The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and professional support throughout the process.', 
-                    'bg' => '#151a24' // Dark background to fit the page
-                ],
-                [
-                    'name' => 'Alvin Mercer', 
-                    'book' => 'Coded Thoughts', 
-                    'quote' => 'Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live worldwide within 48 hours.', 
-                    'bg' => '#0f131a' // Dark background to fit the page
-                ],
-            ];
-        @endphp
-
-        <!-- Authors Container -->
-        <div class="w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-8 pb-16 relative z-10 px-4"
-            id="hoa-container">
-            @foreach($authorData as $index => $data)
-                <div class="flex flex-col h-full">
-                    <div class="premium-testimonial-card w-full h-full flex flex-col justify-between"
-                        style="background-color: {{ $data['bg'] }} !important;">
-                        <div class="quote-mark-bg">"</div>
-
-                        <div>
-                            <div class="mb-6">
-                                <h3 class="text-2xl font-bold text-white drop-shadow-sm">{{ $data['name'] }}</h3>
-                                <p class="text-xs font-bold uppercase tracking-wider text-[#C4A052]">Author of
-                                    "{{ $data['book'] }}"</p>
-                            </div>
-
-                            <p class="text-lg text-slate-300 leading-relaxed font-serif italic drop-shadow-sm">
-                                {{ $data['quote'] }}
-                            </p>
+                    <!-- Bottom Controls -->
+                    <div class="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                        <!-- Progress Bar -->
+                        <div class="w-full h-1 bg-white/20 rounded-full mb-6 relative cursor-pointer" id="video-progress-container">
+                            <div class="absolute left-0 top-0 h-full w-[0%] bg-[#C4A052] rounded-full" id="video-progress-fill"></div>
+                            <div class="absolute left-[0%] top-1/2 -translate-y-1/2 w-3 h-3 bg-[#C4A052] rounded-full shadow-[0_0_10px_#C4A052]" id="video-progress-thumb"></div>
                         </div>
-
-                        <div class="mt-8 flex items-center gap-4">
-                            <div
-                                class="w-12 h-12 rounded-full bg-black/50 border border-[#C4A052]/50 flex items-center justify-center font-bold text-white shadow-[0_0_15px_rgba(196,160,82,0.3)]">
-                                {{ collect(explode(' ', $data['name']))->map(fn($s) => strtoupper(substr($s, 0, 1)))->join('') }}
+                        
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <button id="video-mute-btn" class="text-white hover:text-[#C4A052] transition-colors focus:outline-none">
+                                    <!-- Speaker Icon (Muted by default) -->
+                                    <svg id="icon-muted" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" /></svg>
+                                    <!-- Speaker Icon (Unmuted) -->
+                                    <svg id="icon-unmuted" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg>
+                                </button>
+                                <input type="range" id="video-volume-slider" min="0" max="1" step="0.01" value="0" class="w-16 h-1 accent-[#C4A052] bg-white/20 rounded-lg appearance-none cursor-pointer">
                             </div>
+                            <button id="view-more-videos-btn" class="flex items-center gap-2 px-4 py-2 rounded-full border border-[#C4A052]/30 text-[#C4A052] text-[10px] font-bold uppercase tracking-wider hover:bg-[#C4A052]/10 transition-colors">
+                                View More Videos
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </button>
                         </div>
                     </div>
                 </div>
-            @endforeach
+
+                <!-- Testimonial Section (Carousel) -->
+                <div class="lg:col-span-5 relative rounded-3xl bg-[#0f131a]/80 border border-[#C4A052]/20 backdrop-blur-md p-10 lg:p-12 h-[450px] overflow-hidden" id="testimonial-carousel-container">
+                    @php
+                        $testimonials = [
+                            [
+                                'quote' => 'The design dashboard permitted me to upload and proof layouts directly. Simple, clean, and professional support throughout the process.',
+                                'name' => 'Marcus Thorne',
+                                'role' => 'Author'
+                            ],
+                            [
+                                'quote' => 'Publishing through Books Academy gave me the control I needed over my creative work. The process was seamless and incredibly supportive.',
+                                'name' => 'Eleanor Vance',
+                                'role' => 'Bestselling Author'
+                            ],
+                            [
+                                'quote' => 'Direct global distributions in Amazon and Barnes & Noble allowed my textbook to go live worldwide within 48 hours.',
+                                'name' => 'Alvin Mercer',
+                                'role' => 'Academic Writer'
+                            ]
+                        ];
+                    @endphp
+
+                    <div class="relative w-full h-full">
+                        @foreach($testimonials as $index => $test)
+                        <div class="testimonial-slide absolute inset-0 flex flex-col justify-between transition-opacity duration-500 {{ $index === 0 ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none' }}" data-index="{{ $index }}">
+                            <div>
+                                <div class="flex items-start justify-between mb-6">
+                                    <div class="text-[#C4A052]/20 font-serif text-6xl leading-none h-10">"</div>
+                                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#C4A052]/30 bg-[#C4A052]/10 text-[#C4A052] text-[10px] font-bold uppercase tracking-wider">
+                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                        Verified Review
+                                    </div>
+                                </div>
+
+                                <!-- Stars -->
+                                <div class="flex gap-1 mb-8">
+                                    @for($i = 0; $i < 5; $i++)
+                                        <svg class="w-4 h-4 text-[#C4A052]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                                    @endfor
+                                </div>
+
+                                <p class="text-xl md:text-2xl text-slate-200 font-serif italic leading-relaxed line-clamp-4">
+                                    {{ $test['quote'] }}
+                                </p>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center justify-between border-b border-white/5 pb-8 mb-8">
+                                    <div>
+                                        <h4 class="text-[#C4A052] text-xs font-bold uppercase tracking-wider mb-1">{{ $test['name'] }}</h4>
+                                        <p class="text-slate-500 text-[10px] uppercase tracking-wider">{{ $test['role'] }}</p>
+                                    </div>
+                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($test['name']) }}&background=0a0502&color=fff" alt="{{ $test['name'] }}" class="w-12 h-12 rounded-full border-2 border-transparent" />
+                                </div>
+
+                                <div class="flex items-center justify-between">
+                                    <button class="testi-prev-btn w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                                    </button>
+                                    <button class="testi-next-btn w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA Section -->
+            <div class="max-w-4xl mx-auto rounded-3xl bg-[#0a0502]/80 border border-[#C4A052]/20 p-12 md:p-16 text-center relative overflow-hidden backdrop-blur-md">
+                <!-- Subtle glow effects inside CTA -->
+                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[1px] bg-gradient-to-r from-transparent via-[#C4A052]/50 to-transparent"></div>
+                <div class="absolute top-[40%] left-0 w-full h-[1px] bg-[#C4A052]/10 pointer-events-none transform -rotate-3"></div>
+                <div class="absolute top-[60%] left-0 w-full h-[1px] bg-[#C4A052]/10 pointer-events-none transform rotate-3"></div>
+                
+                <h3 class="text-3xl md:text-4xl font-serif text-white mb-4 relative z-10">Your Story Could Be Next.</h3>
+                <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto mb-10 relative z-10">
+                    Join thousands of authors who have successfully brought their manuscripts to life in our Hall of Authors.
+                </p>
+                <button class="relative z-10 px-8 py-4 bg-[#C4A052] rounded-full text-black text-xs font-bold uppercase tracking-wider hover:bg-[#D4B247] transition-colors shadow-[0_0_20px_rgba(196,160,82,0.3)] hover:shadow-[0_0_30px_rgba(196,160,82,0.5)]">
+                    Start Your Publishing Journey
+                </button>
+            </div>
+
         </div>
 
-        <!-- Ending Scene -->
-        <div
-            class="relative z-10 w-full bg-black/60 backdrop-blur-md border border-[#C4A052]/30 py-16 px-4 text-center mt-8 mb-0 rounded-2xl max-w-5xl mx-auto shadow-2xl">
-            <h2 class="text-4xl font-serif mb-4 text-white drop-shadow-md">Your Story Could Be Next.</h2>
-            <p class="text-slate-300 mb-8 max-w-md mx-auto">Join thousands of authors who have successfully brought their
-                manuscripts to life in our Hall of Authors.</p>
-            <button
-                class="px-8 py-4 bg-gradient-to-r from-[#C4A052] to-[#D4B247] rounded-full text-[#0a0502] font-bold tracking-wider uppercase text-sm shadow-[0_0_30px_rgba(196,160,82,0.5)] hover:scale-105 hover:shadow-[0_0_50px_rgba(196,160,82,0.8)] transition-all duration-300">
-                Start Your Publishing Journey
-            </button>
+        <!-- Video Modal -->
+        <div id="video-modal" class="fixed inset-0 z-[100] hidden items-center justify-center pointer-events-none">
+            <div class="absolute inset-0 bg-black/80 backdrop-blur-sm modal-bg pointer-events-auto transition-opacity duration-300 opacity-0"></div>
+            <div class="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto bg-[#0a0502] border border-[#C4A052]/30 rounded-3xl p-8 z-10 scale-95 opacity-0 transition-all duration-300 pointer-events-auto shadow-2xl modal-content scrollbar-hide">
+                <button id="close-modal-btn" class="absolute top-6 right-6 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors bg-black/50 z-20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                </button>
+                <h3 class="text-2xl font-serif text-white mb-6">More Testimonial Videos</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Video Item 1 -->
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video cursor-pointer" onclick="playModalVideo(this)">
+                        <video src="{{ asset('images/testimonial1.mp4') }}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" preload="metadata"></video>
+                        <div class="absolute inset-0 flex items-center justify-center play-icon-wrapper">
+                            <div class="w-12 h-12 rounded-full bg-black/60 border border-[#C4A052]/50 backdrop-blur-sm flex items-center justify-center text-[#C4A052] group-hover:scale-110 group-hover:bg-[#C4A052] group-hover:text-black transition-all duration-300 pointer-events-none">
+                                <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-4 overlay-text">
+                            <span class="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">Vera Adjei</span>
+                        </div>
+                    </div>
+                    <!-- Video Item 2 -->
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video cursor-pointer" onclick="playModalVideo(this)">
+                        <video src="{{ asset('images/ROBERT TISCHJ TESTIMONIAL.mp4') }}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" preload="metadata"></video>
+                        <div class="absolute inset-0 flex items-center justify-center play-icon-wrapper">
+                            <div class="w-12 h-12 rounded-full bg-black/60 border border-[#C4A052]/50 backdrop-blur-sm flex items-center justify-center text-[#C4A052] group-hover:scale-110 group-hover:bg-[#C4A052] group-hover:text-black transition-all duration-300 pointer-events-none">
+                                <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-4 overlay-text">
+                            <span class="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">Robert Tisch</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <!-- Padding block to prevent margin collapse -->
-        <div class="h-16 w-full"></div>
+        <!-- Intersection Observer Script for Video -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                const video = document.getElementById('testimonial-video');
+                const timeDisplay = document.getElementById('video-time-display');
+                const progressFill = document.getElementById('video-progress-fill');
+                const progressThumb = document.getElementById('video-progress-thumb');
+                const progressContainer = document.getElementById('video-progress-container');
+                const muteBtn = document.getElementById('video-mute-btn');
+                const iconMuted = document.getElementById('icon-muted');
+                const iconUnmuted = document.getElementById('icon-unmuted');
 
-    </div>
+                function formatTime(seconds) {
+                    if (isNaN(seconds) || !isFinite(seconds)) return "00:00";
+                    const m = Math.floor(seconds / 60).toString().padStart(2, '0');
+                    const s = Math.floor(seconds % 60).toString().padStart(2, '0');
+                    return `${m}:${s}`;
+                }
+
+                if (video) {
+                    let isDraggingProgress = false;
+                    const volumeSlider = document.getElementById('video-volume-slider');
+
+                    if (volumeSlider) {
+                        volumeSlider.addEventListener('input', (e) => {
+                            const val = parseFloat(e.target.value);
+                            video.volume = val;
+                            if (val > 0) {
+                                video.muted = false;
+                                if(iconMuted) iconMuted.classList.add('hidden');
+                                if(iconUnmuted) iconUnmuted.classList.remove('hidden');
+                            } else {
+                                video.muted = true;
+                                if(iconMuted) iconMuted.classList.remove('hidden');
+                                if(iconUnmuted) iconUnmuted.classList.add('hidden');
+                            }
+                        });
+                    }
+
+                    video.addEventListener('loadedmetadata', () => {
+                        timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+                    });
+
+                    video.addEventListener('timeupdate', () => {
+                        timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
+                        if(video.duration && !isDraggingProgress) {
+                            const progress = (video.currentTime / video.duration) * 100;
+                            progressFill.style.width = `${progress}%`;
+                            progressThumb.style.left = `${progress}%`;
+                        }
+                    });
+
+                    if (progressContainer) {
+                        const updateVideoProgress = (e) => {
+                            const rect = progressContainer.getBoundingClientRect();
+                            let pos = (e.clientX - rect.left) / rect.width;
+                            pos = Math.max(0, Math.min(1, pos));
+                            progressFill.style.width = `${pos * 100}%`;
+                            progressThumb.style.left = `${pos * 100}%`;
+                            video.currentTime = pos * video.duration;
+                        };
+
+                        progressContainer.addEventListener('mousedown', (e) => {
+                            isDraggingProgress = true;
+                            updateVideoProgress(e);
+                        });
+
+                        document.addEventListener('mousemove', (e) => {
+                            if (isDraggingProgress) updateVideoProgress(e);
+                        });
+
+                        document.addEventListener('mouseup', () => {
+                            isDraggingProgress = false;
+                        });
+                    }
+
+                    if (muteBtn) {
+                        muteBtn.addEventListener('click', () => {
+                            video.muted = !video.muted;
+                            if (video.muted) {
+                                iconMuted.classList.remove('hidden');
+                                iconUnmuted.classList.add('hidden');
+                                if(volumeSlider) volumeSlider.value = 0;
+                            } else {
+                                iconMuted.classList.add('hidden');
+                                iconUnmuted.classList.remove('hidden');
+                                if (video.volume === 0) video.volume = 1; // restore if it was zero
+                                if(volumeSlider) volumeSlider.value = video.volume;
+                                // Ensure it's playing if user interacts
+                                if (video.paused) video.play();
+                            }
+                        });
+                    }
+                }
+                
+                if ('IntersectionObserver' in window && video) {
+                    const videoObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                video.play().catch(e => console.log('Autoplay prevented:', e));
+                            } else {
+                                video.pause();
+                            }
+                        });
+                    }, { threshold: 0.5 });
+
+                    videoObserver.observe(video);
+                } else if (video) {
+                    video.autoplay = true;
+                }
+
+                // Testimonial Carousel Logic
+                const slides = document.querySelectorAll('.testimonial-slide');
+                const prevBtns = document.querySelectorAll('.testi-prev-btn');
+                const nextBtns = document.querySelectorAll('.testi-next-btn');
+                let currentSlide = 0;
+
+                function showSlide(index) {
+                    slides.forEach((slide, i) => {
+                        if (i === index) {
+                            slide.classList.replace('opacity-0', 'opacity-100');
+                            slide.classList.replace('z-0', 'z-10');
+                            slide.classList.replace('pointer-events-none', 'pointer-events-auto');
+                        } else {
+                            slide.classList.replace('opacity-100', 'opacity-0');
+                            slide.classList.replace('z-10', 'z-0');
+                            slide.classList.replace('pointer-events-auto', 'pointer-events-none');
+                        }
+                    });
+                }
+
+                prevBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                        showSlide(currentSlide);
+                    });
+                });
+
+                nextBtns.forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        showSlide(currentSlide);
+                    });
+                });
+
+                // Modal Logic
+                const modal = document.getElementById('video-modal');
+                const modalBg = modal.querySelector('.modal-bg');
+                const modalContent = modal.querySelector('.modal-content');
+                const openModalBtn = document.getElementById('view-more-videos-btn');
+                const closeModalBtn = document.getElementById('close-modal-btn');
+
+                function openModal() {
+                    modal.classList.remove('hidden');
+                    modal.classList.add('flex');
+                    // Trigger reflow
+                    void modal.offsetWidth;
+                    modalBg.classList.replace('opacity-0', 'opacity-100');
+                    modalContent.classList.replace('scale-95', 'scale-100');
+                    modalContent.classList.replace('opacity-0', 'opacity-100');
+                    // Pause the main video
+                    if (video && !video.paused) {
+                        video.pause();
+                    }
+                }
+
+                function closeModal() {
+                    modalBg.classList.replace('opacity-100', 'opacity-0');
+                    modalContent.classList.replace('scale-100', 'scale-95');
+                    modalContent.classList.replace('opacity-100', 'opacity-0');
+                    
+                    // Stop any playing video in the modal
+                    const playingVideos = modal.querySelectorAll('video');
+                    playingVideos.forEach(v => {
+                        v.pause();
+                        const container = v.parentElement;
+                        container.querySelector('.play-icon-wrapper').classList.remove('hidden');
+                        container.querySelector('.overlay-text').classList.remove('hidden');
+                        v.controls = false;
+                        v.classList.replace('pointer-events-auto', 'pointer-events-none');
+                    });
+
+                    setTimeout(() => {
+                        modal.classList.remove('flex');
+                        modal.classList.add('hidden');
+                    }, 300);
+                }
+
+                if (openModalBtn) {
+                    openModalBtn.addEventListener('click', openModal);
+                }
+                if (closeModalBtn) {
+                    closeModalBtn.addEventListener('click', closeModal);
+                }
+                if (modalBg) {
+                    modalBg.addEventListener('click', closeModal);
+                }
+                
+                // Expose playModalVideo globally so inline onclick works
+                window.playModalVideo = function(container) {
+                    const v = container.querySelector('video');
+                    const playIcon = container.querySelector('.play-icon-wrapper');
+                    const overlayText = container.querySelector('.overlay-text');
+                    
+                    if (v.paused) {
+                        // Pause other videos
+                        modal.querySelectorAll('video').forEach(vid => {
+                            if (vid !== v && !vid.paused) {
+                                vid.pause();
+                                const otherContainer = vid.parentElement;
+                                otherContainer.querySelector('.play-icon-wrapper').classList.remove('hidden');
+                                otherContainer.querySelector('.overlay-text').classList.remove('hidden');
+                                vid.controls = false;
+                                vid.classList.replace('pointer-events-auto', 'pointer-events-none');
+                            }
+                        });
+                        v.play();
+                        v.muted = false;
+                        v.controls = true; // show controls once it starts playing
+                        playIcon.classList.add('hidden');
+                        overlayText.classList.add('hidden');
+                        v.classList.replace('opacity-60', 'opacity-100');
+                        v.classList.replace('pointer-events-none', 'pointer-events-auto');
+                    } else {
+                        v.pause();
+                        v.controls = false;
+                        playIcon.classList.remove('hidden');
+                        overlayText.classList.remove('hidden');
+                        v.classList.replace('pointer-events-auto', 'pointer-events-none');
+                    }
+                };
+            });
+        </script>
+    </section>
 
     <!-- Global Collaborations Section (Interactive 3D Experience) -->
     <style>
@@ -2968,11 +3099,11 @@
 
             // Partner Data
             const partners = [
-                { name: "Amazon Kindle", platform: "E-Reader Dist.", desc: "Global ebook distribution to millions of Kindle devices.", orbitIndex: 2, logo: "/images/globe.png" },
+                { name: "Amazon Kindle", platform: "E-Reader Dist.", desc: "Global ebook distribution to millions of Kindle devices.", orbitIndex: 2, logo: "/images/amazon.png" },
                 { name: "Google Books", platform: "Digital Library", desc: "Indexed and sold through the massive Google Play ecosystem.", orbitIndex: 2, logo: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" },
                 { name: "Apple Books", platform: "iOS Ecosystem", desc: "Premium placement for users across all Apple devices.", orbitIndex: 1, logo: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" },
                 { name: "Kobo Books", platform: "International", desc: "Strong presence in Canada, Japan, and European markets.", orbitIndex: 1, logo: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Rakuten_logo.svg" },
-                { name: "Barnes & Noble", platform: "Nook & Print", desc: "US retail distribution and Nook digital storefronts.", orbitIndex: 0, logo: "https://upload.wikimedia.org/wikipedia/commons/5/5e/Barnes_%26_Noble_logo.svg" },
+                { name: "Barnes & Noble", platform: "Nook & Print", desc: "US retail distribution and Nook digital storefronts.", orbitIndex: 0, logo: "/images/bn.png" },
                 { name: "IngramSpark", platform: "Global Print", desc: "Connecting to 40,000+ independent bookstores and libraries.", orbitIndex: 0, logo: "https://upload.wikimedia.org/wikipedia/commons/8/89/Book_icon_%28closed%29_-_Blue_and_gold.svg" },
             ];
 
