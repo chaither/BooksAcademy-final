@@ -937,18 +937,18 @@
                 <div class="space-y-4 max-w-xl">
                     <span class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.25em] flex items-center gap-4">
                         <span class="w-8 h-[1px] bg-[#C4A052]"></span>
-                        New Arrivals
+                        Stay Updated
                     </span>
                     <h2 class="text-4xl sm:text-5xl font-serif text-white leading-[1.1] drop-shadow-md">
-                        Newly Published <span class="italic text-[#C4A052]">Books</span>
+                        Latest <span class="italic text-[#C4A052]">Happenings</span>
                     </h2>
                     <p class="text-[13px] text-slate-300 pt-2 leading-relaxed max-w-md">
-                        Discover the newest additions to our catalog of exceptional literary works, fresh from the press.
+                        News, events, and achievements—discover what's new in the world of books and beyond.
                     </p>
                 </div>
                 <a href="#"
                     class="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-slate-300 hover:text-[#C4A052] transition-colors group">
-                    Browse Catalog
+                    View All Updates
                     <span
                         class="w-8 h-8 rounded-full border border-slate-600 flex items-center justify-center group-hover:border-[#C4A052] group-hover:text-[#C4A052] transition-all">&rarr;</span>
                 </a>
@@ -982,12 +982,8 @@
                             class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
                             <a href="#">Poetry at Its Best Volume 2: The Paraphrase of the New Testament</a>
                         </h3>
-                        <div class="text-[9px] font-medium tracking-wide text-[#C4A052]/80 space-y-1 pb-2">
-                            <p>Head Publicist: <span class="text-slate-300">John Fuentes</span></p>
-                            <p>Author Support: <span class="text-slate-300">Kelly Wilson</span></p>
-                        </div>
-                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-4">
-                            📚 Kudos to John Fuentes for another outstanding contribution in bringing a talented author into our publishing family. Your passion and commitment continue to inspire success.
+                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-5">
+                            Books Academy is thrilled to announce the successful launch of your book, “Poetry at Its Best Volume 2: The Paraphrase of the New Testament”. As your publishing partner, we are excited to embark on this literary journey with you, aiming for great success together.
                         </p>
                     </div>
                 </article>
@@ -1018,12 +1014,8 @@
                             class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
                             <a href="#">The Last Tournament: Book 2 of: William de Braose Squire of Winchester</a>
                         </h3>
-                        <div class="text-[9px] font-medium tracking-wide text-[#C4A052]/80 space-y-1 pb-2">
-                            <p>Head Publicist: <span class="text-slate-300">George Adam</span></p>
-                            <p>Author Support: <span class="text-slate-300">Kelly Wilson</span></p>
-                        </div>
-                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-4">
-                            📢 New Book Alert! We are excited to announce the publication of another outstanding title with our company. This achievement reflects the hard work and dedication behind every page, and we are proud to support authors in sharing their stories with the world. Cheers to another successful publication and many more to come!
+                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-5">
+                            Books Academy is thrilled to announce the successful launch of your book, “The Last Tournament: Book 2 of: William de Braose Squire of Winchester”. As your publishing partner, we are excited to embark on this literary journey with you, aiming for great success together.
                         </p>
                     </div>
                 </article>
@@ -1054,12 +1046,8 @@
                             class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
                             <a href="#">The Mountain of the New Jerusalem in Heaven</a>
                         </h3>
-                        <div class="text-[9px] font-medium tracking-wide text-[#C4A052]/80 space-y-1 pb-2">
-                            <p>Head Publicist: <span class="text-slate-300">Tiffany</span></p>
-                            <p>Author Support: <span class="text-slate-300">Kelly Wilson</span></p>
-                        </div>
-                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-4">
-                            Another successful partnership begins—thanks to Tiffany Jones for her commitment to connecting authors with new opportunities. We sincerely appreciate your enthusiasm and the important role you play in helping authors bring their stories to life.
+                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-5">
+                            Books Academy is thrilled to announce the successful launch of your book, “The Mountain of the New Jerusalem in Heaven”. As your publishing partner, we are excited to embark on this literary journey with you, aiming for great success together.
                         </p>
                     </div>
                 </article>
