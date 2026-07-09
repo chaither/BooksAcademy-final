@@ -422,7 +422,7 @@
                             <div
                                 class="group relative w-[30%] aspect-[2/3] rounded-r-md rounded-l-sm shadow-[-10px_10px_20px_rgba(0,0,0,0.4)] transform -rotate-2 hover:rotate-0 hover:-translate-y-4 transition-all duration-500 cursor-pointer overflow-hidden bg-[#e6dbcb] border-l-[3px] border-white/60">
                                 <div
-                                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=80')] bg-cover bg-center opacity-50 mix-blend-multiply">
+                                    class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/A-3.png') }}');">
                                 </div>
                                 <div
                                     class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/40 via-white/10 to-transparent">
@@ -430,27 +430,13 @@
                                 <div
                                     class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
                                 </div>
-
-                                <div
-                                    class="relative z-10 flex flex-col h-full items-center justify-start text-center p-3 pt-5">
-                                    <span
-                                        class="text-[14px] font-serif text-slate-900 leading-[1.1]">The<br>Quiet<br>Path</span>
-                                    <span class="text-[6px] text-slate-800 mt-2 tracking-widest uppercase font-medium">A
-                                        Journey Inward</span>
-                                    <span
-                                        class="mt-auto text-[7px] text-slate-900 font-bold tracking-[0.15em] uppercase pb-2">Lena
-                                        Morgan</span>
-                                </div>
                             </div>
 
                             <!-- Book 2: Beyond The Page -->
                             <div
                                 class="group relative w-[38%] aspect-[2/3] rounded-r-md rounded-l-sm shadow-[-15px_15px_25px_rgba(0,0,0,0.6)] transform hover:-translate-y-5 transition-all duration-500 cursor-pointer z-10 overflow-hidden bg-[#0c162d] border-l-[3px] border-[#D4B886]/40 -translate-y-3">
                                 <div
-                                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400&q=80')] bg-cover bg-center opacity-40">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#0c162d] via-[#0c162d]/50 to-transparent">
+                                    class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/A-7.png') }}');">
                                 </div>
                                 <div
                                     class="absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-black/60 via-white/10 to-transparent">
@@ -458,56 +444,19 @@
                                 <div
                                     class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-0 group-hover:opacity-100 transition-opacity">
                                 </div>
-
-                                <div
-                                    class="relative z-10 flex flex-col h-full items-center justify-start text-center p-3 pt-6">
-                                    <span class="text-[15px] font-serif text-[#E5D3B3] leading-[1.2] mb-1">BEYOND<br>THE
-                                        PAGE</span>
-                                    <span class="text-[7px] text-slate-300 tracking-wider">Turning Ideas into<br>Lasting
-                                        Impact</span>
-                                    <div class="mt-auto mb-4 relative">
-                                        <svg class="w-8 h-8 text-[#E5D3B3]" fill="none" stroke="currentColor"
-                                            viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1"
-                                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253">
-                                            </path>
-                                        </svg>
-                                        <div
-                                            class="absolute top-0 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#E5D3B3] rounded-full blur-[8px] opacity-80">
-                                        </div>
-                                    </div>
-                                    <span
-                                        class="text-[7px] text-[#E5D3B3] font-bold tracking-[0.15em] uppercase pb-2">Adrian
-                                        Holloway</span>
-                                </div>
                             </div>
 
                             <!-- Book 3: Waves of Change -->
                             <div
                                 class="group relative w-[30%] aspect-[2/3] rounded-r-md rounded-l-sm shadow-[-10px_10px_20px_rgba(0,0,0,0.4)] transform rotate-2 hover:rotate-0 hover:-translate-y-4 transition-all duration-500 cursor-pointer overflow-hidden bg-[#264653] border-l-[3px] border-white/30">
                                 <div
-                                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1498673394965-85cb14905c89?w=400&q=80')] bg-cover bg-center opacity-50 mix-blend-screen">
-                                </div>
-                                <div
-                                    class="absolute inset-0 bg-gradient-to-t from-[#264653] via-transparent to-transparent">
+                                    class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/A-20.png') }}');">
                                 </div>
                                 <div
                                     class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/50 via-white/10 to-transparent">
                                 </div>
                                 <div
                                     class="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity">
-                                </div>
-
-                                <div
-                                    class="relative z-10 flex flex-col h-full items-center justify-start text-center p-3 pt-5">
-                                    <span
-                                        class="text-[13px] font-serif text-white uppercase tracking-wider leading-[1.2]">Waves
-                                        of<br>Change</span>
-                                    <span class="text-[6px] text-emerald-50 mt-2 tracking-widest font-light">Stories of
-                                        Resilience<br>and Hope</span>
-                                    <span
-                                        class="mt-auto text-[7px] text-white font-bold tracking-[0.15em] uppercase pb-2">Maya
-                                        Sterling</span>
                                 </div>
                             </div>
                         </div>
@@ -815,7 +764,7 @@
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="text-sm font-bold text-white">Secure up to 85% royalties</h4>
+                                <h4 class="text-sm font-bold text-white">Secure up to 100% royalties</h4>
                                 <p class="text-[11px] text-slate-400 mt-0.5">on paperback and digital prints.</p>
                             </div>
                         </div>
@@ -898,11 +847,11 @@
                                         d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
                                 </svg>
                             </div>
-                            <span class="text-2xl font-bold text-white block drop-shadow-sm">85%</span>
+                            <span class="text-2xl font-bold text-white block drop-shadow-sm">100%</span>
                             <span
                                 class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Net
                                 Royalties</span>
-                            <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Earn up to 85% royalties on
+                            <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Earn up to 100% royalties on
                                 paperback and digital prints.</p>
                         </div>
 
@@ -937,12 +886,12 @@
                                 </svg>
                             </div>
                             <span
-                                class="text-2xl font-serif text-white block tracking-wide drop-shadow-sm">Ingram</span>
+                                class="text-2xl font-serif text-white block tracking-wide drop-shadow-sm">Global Distribution</span>
                             <span
                                 class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Global
                                 Distribution</span>
                             <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Your book, available worldwide
-                                through Ingram distribution.</p>
+                                through Global distribution.</p>
                         </div>
                     </div>
 
@@ -1333,9 +1282,16 @@
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     📖
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Manuscript</h3>
-                                <p class="text-xs text-slate-400 leading-relaxed z-10">Comprehensive evaluation of your
-                                    draft for structural flow, pacing, and narrative alignment.</p>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Available Format</h3>
+                                <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
+                                    <ul class="text-left list-disc list-inside flex flex-col gap-1">
+                                        <li>Paperback</li>
+                                        <li>E-Book</li>
+                                        <li>Cover</li>
+                                        <li>Custom text and layout formatting</li>
+                                        <li>Author-Designed Cover</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -1352,11 +1308,21 @@
 
                                 <div
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
-                                    ✏️
+                                    📝
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Editing</h3>
-                                <p class="text-xs text-slate-400 leading-relaxed z-10">Professional line edits and
-                                    copyediting to polish prose while preserving your authentic voice.</p>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Registrations & Distribution</h3>
+                                <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
+                                    <ul class="text-left list-disc list-inside flex flex-col gap-1">
+                                        <li>Registration with Books in Print database</li>
+                                        <li>Copyrights Registrations</li>
+                                        <li>Assignment of ISBN</li>
+                                        <li>Library of Congress Registration</li>
+                                        <li>Worldwide Online Book Distribution</li>
+                                        <li>Online book sales and Royalty Accounting</li>
+                                        <li>Quarterly Royalty Payments</li>
+                                        <li>Books Academy Bookstore Availability</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -1373,11 +1339,18 @@
 
                                 <div
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
-                                    🎨
+                                    📐
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Design</h3>
-                                <p class="text-xs text-slate-400 leading-relaxed z-10">Bespoke cover artistry and interior
-                                    typesetting crafted to capture your story's essence.</p>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Interior Layout</h3>
+                                <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
+                                    <ul class="text-left list-disc list-inside flex flex-col gap-1">
+                                        <li>Trim size: 5.5″ x 0.39 x 8.5″, 6*9 etc.</li>
+                                        <li>Standard Text & Layout Formatting</li>
+                                        <li>Unlimited Image Insertion</li>
+                                        <li>Unlimited Corrections – Production Stage</li>
+                                        <li>Author Copies (1 Paperback, 4 Complimentary)</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -1394,57 +1367,21 @@
 
                                 <div
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
-                                    🔍
+                                    ➕
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Proofreading</h3>
-                                <p class="text-xs text-slate-400 leading-relaxed z-10">Rigorous final audit of digital
-                                    proofs to ensure impeccable quality before production.</p>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Add Ons</h3>
+                                <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
+                                    <ul class="text-left list-disc list-inside flex flex-col gap-1">
+                                        <li>Right-pricing of the book</li>
+                                        <li>Author Discount for Bulk Book Orders</li>
+                                        <li>Social Media Creation (FB, IG, Twitter)</li>
+                                        <li>Free Promotions on blog site & social media</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Step 5 -->
-                        <div
-                            class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:ml-auto md:mr-0 mt-0">
-                            <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
-                            </div>
-
-                            <div class="relative z-10 flex flex-col items-center text-center">
-                                <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">05</span>
-
-                                <div
-                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
-                                    🖨️
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Printing</h3>
-                                <p class="text-xs text-slate-400 leading-relaxed z-10">High-end physical production
-                                    utilizing premium paper stock, bindings, and finishes.</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 6 -->
-                        <div
-                            class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:mr-auto md:ml-0 md:mt-32">
-                            <div
-                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
-                            </div>
-
-                            <div class="relative z-10 flex flex-col items-center text-center">
-                                <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">06</span>
-
-                                <div
-                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
-                                    🌍
-                                </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Distribution</h3>
-                                <p class="text-xs text-slate-400 leading-relaxed z-10">Seamless integration with global
-                                    networks including Amazon, Apple Books, and Ingram.</p>
-                            </div>
-                        </div>
-
-                        <!-- Step 7 -->
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:col-span-2 mt-0 md:mt-12">
                             <div
@@ -1453,16 +1390,22 @@
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">07</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">05</span>
 
                                 <div
                                     class="journey-icon-wrap w-20 h-20 rounded-full bg-gradient-to-br from-black/80 to-black/60 border-2 border-[#C4A052] text-white flex items-center justify-center text-3xl mb-6 shadow-[0_0_30px_rgba(196,160,82,0.4)] z-10">
-                                    🚀
+                                    🌍
                                 </div>
-                                <h3 class="text-2xl font-bold text-white mb-3 z-10 drop-shadow-sm">Launch</h3>
-                                <p class="text-sm text-slate-300 leading-relaxed max-w-md z-10">Targeted marketing
-                                    strategies, press wire releases, and dedicated support to celebrate and elevate your
-                                    debut.</p>
+                                <h3 class="text-2xl font-bold text-white mb-3 z-10 drop-shadow-sm">Worldwide Distribution</h3>
+                                <div class="text-sm text-slate-300 leading-relaxed max-w-md z-10 mx-auto">
+                                    <ul class="text-left list-disc list-inside flex flex-col gap-1 w-fit mx-auto">
+                                        <li>Amazon</li>
+                                        <li>Barnes and Noble</li>
+                                        <li>Books a Million</li>
+                                        <li>Walmart</li>
+                                        <li>Global Books Market Distribution Platforms</li>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
 
@@ -1873,11 +1816,12 @@
                         <span class="text-xs font-bold uppercase tracking-widest text-white drop-shadow-sm">Featured Masterclass</span>
                     </div>
 
-                    <div class="media-featured-card cursor-pointer group">
+                    <a href="https://www.youtube.com/watch?v=AY-qNr2rKrE" target="_blank" class="media-featured-card cursor-pointer group block">
+                        <!-- Replace href="#" above with your desired link -->
                         <div class="media-featured-img-wrap aspect-[16/9] w-full bg-[#0a0502]">
                             <!-- Placeholder premium image -->
                             <div
-                                class="media-featured-img w-full h-full bg-[url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?q=80&w=1000')] bg-cover bg-center">
+                                class="media-featured-img w-full h-full bg-cover bg-center" style="background-image: url('{{ asset('images/lounge1.png') }}');">
                             </div>
                             <div
                                 class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
@@ -1907,7 +1851,7 @@
                                     deconstructs the structural elements that define modern literary success.</p>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 </div>
 
                 <!-- Right: Scrolling List -->
@@ -1920,10 +1864,10 @@
                     </div>
 
                     <!-- Podcast Card 1 -->
-                    <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
+                    <a href="https://www.youtube.com/watch?v=GYHQYqv9zIE" target="_blank" class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
                         data-title="Designing Book Covers that Sell" data-author="Sarah Jennings">
                         <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1589998059171-989d887dda19?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20">
+                            class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20" style="background-image: url('{{ asset('images/lounge2.png') }}');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div
@@ -1950,13 +1894,13 @@
                                 <div class="waveform-bar h-1"></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Video Card 1 -->
-                    <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group"
+                    <a href="https://www.youtube.com/watch?v=EoZFSRthP10&t=4s" target="_blank" class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group"
                         data-title="From Manuscript to Series A">
                         <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1551818255-e6e10975bc17?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20">
+                            class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20" style="background-image: url('{{ asset('images/lounge3.png') }}');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div class="absolute inset-0 flex items-center justify-center text-white">
@@ -1975,13 +1919,13 @@
                             <p class="text-[10px] text-slate-400 line-clamp-2">R. Cunningham details publishing, organizing
                                 startup books, and reaching target audiences.</p>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Podcast Card 2 -->
-                    <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
+                    <a href="https://www.youtube.com/watch?v=F1U2Sp_ZKWc&t=23s" target="_blank" class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
                         data-title="The Art of Editing" data-author="Michael Chang">
                         <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1455390582262-044cdead27d8?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20">
+                            class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20" style="background-image: url('{{ asset('images/lounge4.png') }}');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div
@@ -2008,32 +1952,10 @@
                                 <div class="waveform-bar h-1"></div>
                             </div>
                         </div>
-                    </div>
+                    </a>
 
-                    <!-- Video Card 2 -->
-                    <div class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group"
-                        data-title="Distribution Networks Explained">
-                        <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=300')] bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20">
-                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
-                            </div>
-                            <div class="absolute inset-0 flex items-center justify-center text-white">
-                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)] group-hover:scale-110 transition-transform"
-                                    fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span class="text-[9px] uppercase font-bold text-purple-400 tracking-wider drop-shadow-sm">Panel</span>
-                            </div>
-                            <h5 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
-                                Global Distribution Networks</h5>
-                            <p class="text-[10px] text-slate-400 line-clamp-2">Navigating IngramSpark, Amazon KDP, and
-                                international retail channels.</p>
-                        </div>
-                    </div>
+                  
+                    
 
                 </div>
             </div>
@@ -2351,7 +2273,7 @@
                             </div>
                         </div>
                         <div class="absolute bottom-4 left-4 overlay-text">
-                            <span class="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">Vera Adjei</span>
+                            <span class="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">Vera Adjin</span>
                         </div>
                     </div>
                     <!-- Video Item 2 -->
@@ -3456,7 +3378,7 @@
                 </div>
                 <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
-                            data-target="1000">0</span>+</div>
+                            data-target="2.3">0</span>k</div>
                     <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Books Published</div>
                 </div>
                 <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">

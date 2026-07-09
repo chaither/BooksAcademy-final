@@ -17,7 +17,7 @@
                         <span class="text-xs font-bold uppercase tracking-wider group-hover:scale-110 transition-transform">Fb</span>
                     </a>
                     <a href="#" aria-label="Twitter" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:text-[#C9A227] hover:border-[#C9A227] transition-all group">
-                        <span class="text-xs font-bold uppercase tracking-wider group-hover:scale-110 transition-transform">Tw</span>
+                        <span class="text-xs font-bold uppercase tracking-wider group-hover:scale-110 transition-transform">X</span>
                     </a>
                     <a href="#" aria-label="Instagram" class="w-10 h-10 rounded-full border border-slate-700 flex items-center justify-center text-slate-400 hover:text-[#C9A227] hover:border-[#C9A227] transition-all group">
                         <span class="text-xs font-bold uppercase tracking-wider group-hover:scale-110 transition-transform">Ig</span>
