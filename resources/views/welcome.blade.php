@@ -104,8 +104,11 @@
                         <div class="swiper-slide cursor-pointer flex items-center justify-center">
                             <div class="book-3d-showcase group">
                                 <div class="book-face book-front">
-                                    <img loading="lazy" src="{{ asset($bookImg) }}" class="w-full h-full object-fill" alt="Premium Book {{ $index + 1 }}">
-                                    <div class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-white/10 pointer-events-none"></div>
+                                    <img loading="lazy" src="{{ asset($bookImg) }}" class="w-full h-full object-fill"
+                                        alt="Premium Book {{ $index + 1 }}">
+                                    <div
+                                        class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-white/10 pointer-events-none">
+                                    </div>
                                 </div>
                                 <div class="book-face book-back"></div>
                                 <div class="book-face book-spine"></div>
@@ -421,8 +424,8 @@
                             <!-- Book 1: The Quiet Path -->
                             <div
                                 class="group relative w-[30%] aspect-[2/3] rounded-r-md rounded-l-sm shadow-[-10px_10px_20px_rgba(0,0,0,0.4)] transform -rotate-2 hover:rotate-0 hover:-translate-y-4 transition-all duration-500 cursor-pointer overflow-hidden bg-[#e6dbcb] border-l-[3px] border-white/60">
-                                <div
-                                    class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/A-3.png') }}');">
+                                <div class="absolute inset-0 bg-cover bg-center"
+                                    style="background-image: url('{{ asset('images/A-3.png') }}');">
                                 </div>
                                 <div
                                     class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/40 via-white/10 to-transparent">
@@ -435,8 +438,8 @@
                             <!-- Book 2: Beyond The Page -->
                             <div
                                 class="group relative w-[38%] aspect-[2/3] rounded-r-md rounded-l-sm shadow-[-15px_15px_25px_rgba(0,0,0,0.6)] transform hover:-translate-y-5 transition-all duration-500 cursor-pointer z-10 overflow-hidden bg-[#0c162d] border-l-[3px] border-[#D4B886]/40 -translate-y-3">
-                                <div
-                                    class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/A-7.png') }}');">
+                                <div class="absolute inset-0 bg-cover bg-center"
+                                    style="background-image: url('{{ asset('images/A-7.png') }}');">
                                 </div>
                                 <div
                                     class="absolute inset-y-0 left-0 w-4 bg-gradient-to-r from-black/60 via-white/10 to-transparent">
@@ -449,8 +452,8 @@
                             <!-- Book 3: Waves of Change -->
                             <div
                                 class="group relative w-[30%] aspect-[2/3] rounded-r-md rounded-l-sm shadow-[-10px_10px_20px_rgba(0,0,0,0.4)] transform rotate-2 hover:rotate-0 hover:-translate-y-4 transition-all duration-500 cursor-pointer overflow-hidden bg-[#264653] border-l-[3px] border-white/30">
-                                <div
-                                    class="absolute inset-0 bg-cover bg-center" style="background-image: url('{{ asset('images/A-20.png') }}');">
+                                <div class="absolute inset-0 bg-cover bg-center"
+                                    style="background-image: url('{{ asset('images/A-20.png') }}');">
                                 </div>
                                 <div
                                     class="absolute inset-y-0 left-0 w-3 bg-gradient-to-r from-black/50 via-white/10 to-transparent">
@@ -725,8 +728,7 @@
                     <div class="space-y-4">
                         <span class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.2em]">Writer
                             Experience</span>
-                        <h2
-                            class="text-3xl sm:text-4xl lg:text-5xl font-serif text-white leading-[1.1] drop-shadow-md">
+                        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif text-white leading-[1.1] drop-shadow-md">
                             Full Control.<br><span class="text-white dark:text-[#C4A052]">Direct Distribution.</span>
                         </h2>
                         <div class="w-12 h-0.5 bg-[#C4A052] my-4"></div>
@@ -802,7 +804,8 @@
                             <p class="text-[9px] text-slate-400 mt-0.5">We're here to empower your journey<br>from
                                 manuscript to marketplace.</p>
                         </div>
-                        <div class="text-[#C4A052] font-serif text-sm italic whitespace-nowrap transform -rotate-2 pr-2 drop-shadow-sm">
+                        <div
+                            class="text-[#C4A052] font-serif text-sm italic whitespace-nowrap transform -rotate-2 pr-2 drop-shadow-sm">
                             Let's publish<br>together.
                         </div>
                     </div>
@@ -813,7 +816,8 @@
                     class="bg-black/60 backdrop-blur-xl rounded-[2rem] shadow-[0_0_40px_rgba(0,0,0,0.8)] p-8 lg:p-10 border border-[#C4A052]/30 relative overflow-hidden group hover:shadow-[0_0_50px_rgba(196,160,82,0.15)] transition-shadow duration-500">
                     <div class="mb-8 relative z-10">
                         <h3 class="text-3xl font-serif text-white leading-[1.2] drop-shadow-sm">Built for Authors.</h3>
-                        <h3 class="text-3xl font-serif text-[#C4A052] italic leading-[1.2] drop-shadow-sm">Focused on You.</h3>
+                        <h3 class="text-3xl font-serif text-[#C4A052] italic leading-[1.2] drop-shadow-sm">Focused on You.
+                        </h3>
                         <div class="w-12 h-0.5 bg-[#C4A052] mt-5"></div>
                     </div>
 
@@ -830,8 +834,7 @@
                                 </svg>
                             </div>
                             <span class="text-2xl font-bold text-white block drop-shadow-sm">100%</span>
-                            <span
-                                class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Author
+                            <span class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Author
                                 Ownership</span>
                             <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">You keep 100% control of your
                                 copyright and rights.</p>
@@ -848,8 +851,7 @@
                                 </svg>
                             </div>
                             <span class="text-2xl font-bold text-white block drop-shadow-sm">100%</span>
-                            <span
-                                class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Net
+                            <span class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Net
                                 Royalties</span>
                             <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Earn up to 100% royalties on
                                 paperback and digital prints.</p>
@@ -867,8 +869,7 @@
                                 </svg>
                             </div>
                             <span class="text-2xl font-bold text-white block drop-shadow-sm">24/7</span>
-                            <span
-                                class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Author
+                            <span class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Author
                                 Support</span>
                             <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Our team is here for you,
                                 anytime you need us.</p>
@@ -885,10 +886,9 @@
                                     </path>
                                 </svg>
                             </div>
-                            <span
-                                class="text-2xl font-serif text-white block tracking-wide drop-shadow-sm">Global Distribution</span>
-                            <span
-                                class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Global
+                            <span class="text-2xl font-serif text-white block tracking-wide drop-shadow-sm">Global
+                                Distribution</span>
+                            <span class="text-[7px] font-bold text-slate-300 uppercase tracking-widest mt-1.5 block">Global
                                 Distribution</span>
                             <p class="text-[8px] text-slate-400 mt-2.5 leading-relaxed px-2">Your book, available worldwide
                                 through Global distribution.</p>
@@ -937,18 +937,18 @@
                 <div class="space-y-4 max-w-xl">
                     <span class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.25em] flex items-center gap-4">
                         <span class="w-8 h-[1px] bg-[#C4A052]"></span>
-                        Stay Updated
+                        New Arrivals
                     </span>
                     <h2 class="text-4xl sm:text-5xl font-serif text-white leading-[1.1] drop-shadow-md">
-                        Latest <span class="italic text-[#C4A052]">Happenings</span>
+                        Newly Published <span class="italic text-[#C4A052]">Books</span>
                     </h2>
                     <p class="text-[13px] text-slate-300 pt-2 leading-relaxed max-w-md">
-                        News, events, and achievements—discover what's new in the world of books and beyond.
+                        Discover the newest additions to our catalog of exceptional literary works, fresh from the press.
                     </p>
                 </div>
                 <a href="#"
                     class="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-slate-300 hover:text-[#C4A052] transition-colors group">
-                    View All Updates
+                    Browse Catalog
                     <span
                         class="w-8 h-8 rounded-full border border-slate-600 flex items-center justify-center group-hover:border-[#C4A052] group-hover:text-[#C4A052] transition-all">&rarr;</span>
                 </a>
@@ -960,34 +960,34 @@
                 <article
                     class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 border border-[#C4A052]/30 hover:border-[#C4A052]/60"
                     id="happening-card-1">
-                    <div class="aspect-[16/11] overflow-hidden relative p-3 pb-0">
-                        <div class="w-full h-full rounded-2xl overflow-hidden relative border border-[#C4A052]/20">
-                            <div
-                                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=600&q=80')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="aspect-[4/5] overflow-hidden relative p-5 pb-0">
+                        <div class="w-full h-full rounded-t-2xl overflow-hidden relative border border-[#C4A052]/20 shadow-2xl bg-[#0a0502]">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ asset('images/A-42.jpg') }}');">
                             </div>
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80">
+                                class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <span
-                                    class="px-4 py-1.5 bg-[#C4A052] text-[#0a0502] text-[9px] font-bold uppercase tracking-widest rounded-full shadow-[0_0_15px_rgba(196,160,82,0.5)]">Book
-                                    Launch</span>
+                                    class="px-4 py-1.5 bg-[#C4A052] text-[#0a0502] text-[9px] font-bold uppercase tracking-widest rounded-full shadow-[0_0_15px_rgba(196,160,82,0.5)]">Partnership</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8 space-y-4">
+                    <div class="p-8 space-y-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-6 h-[1px] bg-[#C4A052]"></div>
-                            <time class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">Oct 24,
-                                2026</time>
+                           
+                            <span class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">By Mr. Kermit Holt</span>
                         </div>
                         <h3
-                            class="text-[22px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm">
-                            <a href="#">"The Quiet Path" Reaches #1 on Bestseller List</a>
+                            class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
+                            <a href="#">Poetry at Its Best Volume 2: The Paraphrase of the New Testament</a>
                         </h3>
-                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-3 pt-2">
-                            Lena Morgan's breathtaking new release has captured the hearts of readers worldwide, securing
-                            the top spot in literary fiction just one week after launch.
+                        <div class="text-[9px] font-medium tracking-wide text-[#C4A052]/80 space-y-1 pb-2">
+                            <p>Head Publicist: <span class="text-slate-300">John Fuentes</span></p>
+                            <p>Author Support: <span class="text-slate-300">Kelly Wilson</span></p>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-4">
+                            📚 Kudos to John Fuentes for another outstanding contribution in bringing a talented author into our publishing family. Your passion and commitment continue to inspire success.
                         </p>
                     </div>
                 </article>
@@ -996,33 +996,34 @@
                 <article
                     class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 delay-[200ms] border border-[#C4A052]/30 hover:border-[#C4A052]/60"
                     id="happening-card-2">
-                    <div class="aspect-[16/11] overflow-hidden relative p-3 pb-0">
-                        <div class="w-full h-full rounded-2xl overflow-hidden relative border border-[#C4A052]/20">
-                            <div
-                                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1561489422-45de3d015e3e?w=600&q=80')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="aspect-[4/5] overflow-hidden relative p-5 pb-0">
+                        <div class="w-full h-full rounded-t-2xl overflow-hidden relative border border-[#C4A052]/20 shadow-2xl bg-[#0a0502]">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ asset('images/A-41.jpg') }}');">
                             </div>
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80">
+                                class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <span
-                                    class="px-4 py-1.5 bg-[#1a110a] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-[#C4A052]/50">Award</span>
+                                    class="px-4 py-1.5 bg-[#1a110a] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-[#C4A052]/50">New Release</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8 space-y-4">
+                    <div class="p-8 space-y-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-6 h-[1px] bg-[#C4A052]"></div>
-                            <time class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">Oct 18,
-                                2026</time>
+                         
+                            <span class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">By Dr. Trent Stephens</span>
                         </div>
                         <h3
-                            class="text-[22px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm">
-                            <a href="#">Books Academy Wins Publishing Excellence Award</a>
+                            class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
+                            <a href="#">The Last Tournament: Book 2 of: William de Braose Squire of Winchester</a>
                         </h3>
-                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-3 pt-2">
-                            We are honored to receive the prestigious 2026 Publishing Excellence Award for our unwavering
-                            commitment to author rights and transparent publishing.
+                        <div class="text-[9px] font-medium tracking-wide text-[#C4A052]/80 space-y-1 pb-2">
+                            <p>Head Publicist: <span class="text-slate-300">George Adam</span></p>
+                            <p>Author Support: <span class="text-slate-300">Kelly Wilson</span></p>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-4">
+                            📢 New Book Alert! We are excited to announce the publication of another outstanding title with our company. This achievement reflects the hard work and dedication behind every page, and we are proud to support authors in sharing their stories with the world. Cheers to another successful publication and many more to come!
                         </p>
                     </div>
                 </article>
@@ -1031,33 +1032,34 @@
                 <article
                     class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 delay-[400ms] border border-[#C4A052]/30 hover:border-[#C4A052]/60"
                     id="happening-card-3">
-                    <div class="aspect-[16/11] overflow-hidden relative p-3 pb-0">
-                        <div class="w-full h-full rounded-2xl overflow-hidden relative border border-[#C4A052]/20">
-                            <div
-                                class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1515162816999-a0c47dc192f7?w=600&q=80')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700">
+                    <div class="aspect-[4/5] overflow-hidden relative p-5 pb-0">
+                        <div class="w-full h-full rounded-t-2xl overflow-hidden relative border border-[#C4A052]/20 shadow-2xl bg-[#0a0502]">
+                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ asset('images/A-40.jpg') }}');">
                             </div>
                             <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-80">
+                                class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80">
                             </div>
                             <div class="absolute bottom-4 left-4">
                                 <span
-                                    class="px-4 py-1.5 bg-[#1a110a] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-[#C4A052]/50">Event</span>
+                                    class="px-4 py-1.5 bg-[#1a110a] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-[#C4A052]/50">Partnership</span>
                             </div>
                         </div>
                     </div>
-                    <div class="p-8 space-y-4">
+                    <div class="p-8 space-y-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-6 h-[1px] bg-[#C4A052]"></div>
-                            <time class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">Nov 05,
-                                2026</time>
+                           
+                            <span class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">By Mr. Donald Mosbaugh</span>
                         </div>
                         <h3
-                            class="text-[22px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm">
-                            <a href="#">Upcoming Masterclass: Building Your Author Brand</a>
+                            class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
+                            <a href="#">The Mountain of the New Jerusalem in Heaven</a>
                         </h3>
-                        <p class="text-xs text-slate-400 leading-relaxed line-clamp-3 pt-2">
-                            Join our expert panel for an exclusive online masterclass on how to build a resilient,
-                            recognizable author brand in today's saturated digital marketplace.
+                        <div class="text-[9px] font-medium tracking-wide text-[#C4A052]/80 space-y-1 pb-2">
+                            <p>Head Publicist: <span class="text-slate-300">Tiffany</span></p>
+                            <p>Author Support: <span class="text-slate-300">Kelly Wilson</span></p>
+                        </div>
+                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-4">
+                            Another successful partnership begins—thanks to Tiffany Jones for her commitment to connecting authors with new opportunities. We sincerely appreciate your enthusiasm and the important role you play in helping authors bring their stories to life.
                         </p>
                     </div>
                 </article>
@@ -1310,7 +1312,8 @@
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     📝
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Registrations & Distribution</h3>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Registrations &
+                                    Distribution</h3>
                                 <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
                                     <ul class="text-left list-disc list-inside flex flex-col gap-1">
                                         <li>Registration with Books in Print database</li>
@@ -1396,7 +1399,8 @@
                                     class="journey-icon-wrap w-20 h-20 rounded-full bg-gradient-to-br from-black/80 to-black/60 border-2 border-[#C4A052] text-white flex items-center justify-center text-3xl mb-6 shadow-[0_0_30px_rgba(196,160,82,0.4)] z-10">
                                     🌍
                                 </div>
-                                <h3 class="text-2xl font-bold text-white mb-3 z-10 drop-shadow-sm">Worldwide Distribution</h3>
+                                <h3 class="text-2xl font-bold text-white mb-3 z-10 drop-shadow-sm">Worldwide Distribution
+                                </h3>
                                 <div class="text-sm text-slate-300 leading-relaxed max-w-md z-10 mx-auto">
                                     <ul class="text-left list-disc list-inside flex flex-col gap-1 w-fit mx-auto">
                                         <li>Amazon</li>
@@ -1798,7 +1802,8 @@
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-20">
 
             <div class="text-center mb-16 md:mb-24 media-header opacity-0 translate-y-8">
-                <span class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.25em] block mb-4 drop-shadow-sm">Multimedia</span>
+                <span
+                    class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.25em] block mb-4 drop-shadow-sm">Multimedia</span>
                 <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif text-white leading-[1.1] drop-shadow-md">
                     The Literary Media <span class="italic text-[#C4A052]">Lounge</span>
                 </h2>
@@ -1813,18 +1818,19 @@
                 <div class="w-full lg:w-7/12 sticky top-32 media-featured-container opacity-0 translate-y-10">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-2 h-2 rounded-full bg-[#C4A052] animate-pulse"></div>
-                        <span class="text-xs font-bold uppercase tracking-widest text-white drop-shadow-sm">Featured Masterclass</span>
+                        <span class="text-xs font-bold uppercase tracking-widest text-white drop-shadow-sm">Featured
+                            Masterclass</span>
                     </div>
 
-                    <a href="https://www.youtube.com/watch?v=AY-qNr2rKrE" target="_blank" class="media-featured-card cursor-pointer group block">
+                    <a href="https://www.youtube.com/watch?v=AY-qNr2rKrE" target="_blank"
+                        class="media-featured-card cursor-pointer group block">
                         <!-- Replace href="#" above with your desired link -->
                         <div class="media-featured-img-wrap aspect-[16/9] w-full bg-[#0a0502]">
                             <!-- Placeholder premium image -->
-                            <div
-                                class="media-featured-img w-full h-full bg-cover bg-center" style="background-image: url('{{ asset('images/lounge1.png') }}');">
+                            <div class="media-featured-img w-full h-full bg-cover bg-center"
+                                style="background-image: url('{{ asset('images/lounge1.png') }}');">
                             </div>
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
                             </div>
                             <div class="glass-sweep"></div>
 
@@ -1845,7 +1851,8 @@
                                         class="px-3 py-1 rounded-full bg-[#C4A052] text-[#0a0502] text-[9px] uppercase font-bold tracking-wider">Video</span>
                                     <span class="text-[10px] font-medium opacity-80">45 Min</span>
                                 </div>
-                                <h3 class="text-3xl font-serif mb-2 leading-tight drop-shadow-sm">The Architecture of Bestselling
+                                <h3 class="text-3xl font-serif mb-2 leading-tight drop-shadow-sm">The Architecture of
+                                    Bestselling
                                     Storytelling</h3>
                                 <p class="text-sm opacity-80 line-clamp-2">Join industry veteran Elena Rostova as she
                                     deconstructs the structural elements that define modern literary success.</p>
@@ -1864,25 +1871,30 @@
                     </div>
 
                     <!-- Podcast Card 1 -->
-                    <a href="https://www.youtube.com/watch?v=GYHQYqv9zIE" target="_blank" class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
+                    <a href="https://www.youtube.com/watch?v=GYHQYqv9zIE" target="_blank"
+                        class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
                         data-title="Designing Book Covers that Sell" data-author="Sarah Jennings">
-                        <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20" style="background-image: url('{{ asset('images/lounge2.png') }}');">
+                        <div class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20"
+                            style="background-image: url('{{ asset('images/lounge2.png') }}');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div
                                 class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)]" fill="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)]" fill="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </div>
                         </div>
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Podcast • Ep
+                                <span
+                                    class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Podcast
+                                    • Ep
                                     48</span>
                             </div>
-                            <h5 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
+                            <h5
+                                class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
                                 Designing Book Covers that Sell</h5>
                             <p class="text-[10px] text-slate-400 line-clamp-2 mb-2">Sarah Jennings breaks down cover
                                 formats, typography alignment, and color psychology.</p>
@@ -1897,10 +1909,11 @@
                     </a>
 
                     <!-- Video Card 1 -->
-                    <a href="https://www.youtube.com/watch?v=EoZFSRthP10&t=4s" target="_blank" class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group"
+                    <a href="https://www.youtube.com/watch?v=EoZFSRthP10&t=4s" target="_blank"
+                        class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group"
                         data-title="From Manuscript to Series A">
-                        <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20" style="background-image: url('{{ asset('images/lounge3.png') }}');">
+                        <div class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20"
+                            style="background-image: url('{{ asset('images/lounge3.png') }}');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div class="absolute inset-0 flex items-center justify-center text-white">
@@ -1912,9 +1925,11 @@
                         </div>
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="text-[9px] uppercase font-bold text-emerald-400 tracking-wider drop-shadow-sm">Interview</span>
+                                <span
+                                    class="text-[9px] uppercase font-bold text-emerald-400 tracking-wider drop-shadow-sm">Interview</span>
                             </div>
-                            <h5 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
+                            <h5
+                                class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
                                 From Manuscript to Series A</h5>
                             <p class="text-[10px] text-slate-400 line-clamp-2">R. Cunningham details publishing, organizing
                                 startup books, and reaching target audiences.</p>
@@ -1922,25 +1937,30 @@
                     </a>
 
                     <!-- Podcast Card 2 -->
-                    <a href="https://www.youtube.com/watch?v=F1U2Sp_ZKWc&t=23s" target="_blank" class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
+                    <a href="https://www.youtube.com/watch?v=F1U2Sp_ZKWc&t=23s" target="_blank"
+                        class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
                         data-title="The Art of Editing" data-author="Michael Chang">
-                        <div
-                            class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20" style="background-image: url('{{ asset('images/lounge4.png') }}');">
+                        <div class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20"
+                            style="background-image: url('{{ asset('images/lounge4.png') }}');">
                             <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
                             </div>
                             <div
                                 class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)]" fill="currentColor" viewBox="0 0 24 24">
+                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)]" fill="currentColor"
+                                    viewBox="0 0 24 24">
                                     <path d="M8 5v14l11-7z" />
                                 </svg>
                             </div>
                         </div>
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
-                                <span class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Podcast • Ep
+                                <span
+                                    class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Podcast
+                                    • Ep
                                     47</span>
                             </div>
-                            <h5 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
+                            <h5
+                                class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
                                 The Art of Ruthless Editing</h5>
                             <p class="text-[10px] text-slate-400 line-clamp-2 mb-2">How to kill your darlings and tighten
                                 your prose without losing your voice.</p>
@@ -1954,8 +1974,8 @@
                         </div>
                     </a>
 
-                  
-                    
+
+
 
                 </div>
             </div>
@@ -2106,12 +2126,15 @@
     </script>
 
     <!-- Hall of Authors Section -->
-    <section class="relative w-full min-h-screen bg-[#0a0502] text-white py-24 overflow-hidden" style="background-image: url('{{ asset('images/global.png') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <section class="relative w-full min-h-screen bg-[#0a0502] text-white py-24 overflow-hidden"
+        style="background-image: url('{{ asset('images/global.png') }}'); background-size: cover; background-position: center; background-attachment: fixed;">
         <!-- Overlays -->
-        <div class="absolute inset-0 bg-gradient-to-b from-[#0a0502]/90 via-[#0a0502]/60 to-[#0a0502]/90 pointer-events-none"></div>
+        <div
+            class="absolute inset-0 bg-gradient-to-b from-[#0a0502]/90 via-[#0a0502]/60 to-[#0a0502]/90 pointer-events-none">
+        </div>
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            
+
             <!-- Header -->
             <div class="text-center mb-16">
                 <p class="text-[#C4A052] text-xs font-bold uppercase tracking-[0.2em] mb-4">Hall of Authors</p>
@@ -2125,17 +2148,21 @@
 
             <!-- Content Grid: Video on Left, Testimonial on Right -->
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24">
-                
+
                 <!-- Video Section -->
-                <div class="lg:col-span-7 relative rounded-3xl overflow-hidden bg-black/40 border border-[#C4A052]/20 backdrop-blur-sm group h-[450px]" id="testimonial-video-container">
-                    <video id="testimonial-video" src="{{ asset('images/testimonial1.mp4') }}" muted loop playsinline class="w-full h-full object-cover opacity-80"></video>
+                <div class="lg:col-span-7 relative rounded-3xl overflow-hidden bg-black/40 border border-[#C4A052]/20 backdrop-blur-sm group h-[450px]"
+                    id="testimonial-video-container">
+                    <video id="testimonial-video" src="{{ asset('images/testimonial1.mp4') }}" muted loop playsinline
+                        class="w-full h-full object-cover opacity-80"></video>
                     <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
-                    
+
                     <!-- Top Badges -->
-                    <div class="absolute top-6 left-6 px-3 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">
+                    <div
+                        class="absolute top-6 left-6 px-3 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">
                         HD 1080p
                     </div>
-                    <div class="absolute top-6 right-6 px-3 py-1 bg-black/60 backdrop-blur-md rounded border border-white/10 text-[10px] font-bold text-white tracking-wider" id="video-time-display">
+                    <div class="absolute top-6 right-6 px-3 py-1 bg-black/60 backdrop-blur-md rounded border border-white/10 text-[10px] font-bold text-white tracking-wider"
+                        id="video-time-display">
                         00:00 / 00:00
                     </div>
 
@@ -2143,31 +2170,52 @@
                     <!-- Bottom Controls -->
                     <div class="absolute bottom-0 inset-x-0 p-8 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
                         <!-- Progress Bar -->
-                        <div class="w-full h-1 bg-white/20 rounded-full mb-6 relative cursor-pointer" id="video-progress-container">
-                            <div class="absolute left-0 top-0 h-full w-[0%] bg-[#C4A052] rounded-full" id="video-progress-fill"></div>
-                            <div class="absolute left-[0%] top-1/2 -translate-y-1/2 w-3 h-3 bg-[#C4A052] rounded-full shadow-[0_0_10px_#C4A052]" id="video-progress-thumb"></div>
+                        <div class="w-full h-1 bg-white/20 rounded-full mb-6 relative cursor-pointer"
+                            id="video-progress-container">
+                            <div class="absolute left-0 top-0 h-full w-[0%] bg-[#C4A052] rounded-full"
+                                id="video-progress-fill"></div>
+                            <div class="absolute left-[0%] top-1/2 -translate-y-1/2 w-3 h-3 bg-[#C4A052] rounded-full shadow-[0_0_10px_#C4A052]"
+                                id="video-progress-thumb"></div>
                         </div>
-                        
+
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
-                                <button id="video-mute-btn" class="text-white hover:text-[#C4A052] transition-colors focus:outline-none">
+                                <button id="video-mute-btn"
+                                    class="text-white hover:text-[#C4A052] transition-colors focus:outline-none">
                                     <!-- Speaker Icon (Muted by default) -->
-                                    <svg id="icon-muted" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" clip-rule="evenodd" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" /></svg>
+                                    <svg id="icon-muted" class="w-5 h-5" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"
+                                            clip-rule="evenodd" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
+                                    </svg>
                                     <!-- Speaker Icon (Unmuted) -->
-                                    <svg id="icon-unmuted" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" /></svg>
+                                    <svg id="icon-unmuted" class="w-5 h-5 hidden" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
+                                    </svg>
                                 </button>
-                                <input type="range" id="video-volume-slider" min="0" max="1" step="0.01" value="0" class="w-16 h-1 accent-[#C4A052] bg-white/20 rounded-lg appearance-none cursor-pointer">
+                                <input type="range" id="video-volume-slider" min="0" max="1" step="0.01" value="0"
+                                    class="w-16 h-1 accent-[#C4A052] bg-white/20 rounded-lg appearance-none cursor-pointer">
                             </div>
-                            <button id="view-more-videos-btn" class="flex items-center gap-2 px-4 py-2 rounded-full border border-[#C4A052]/30 text-[#C4A052] text-[10px] font-bold uppercase tracking-wider hover:bg-[#C4A052]/10 transition-colors">
+                            <button id="view-more-videos-btn"
+                                class="flex items-center gap-2 px-4 py-2 rounded-full border border-[#C4A052]/30 text-[#C4A052] text-[10px] font-bold uppercase tracking-wider hover:bg-[#C4A052]/10 transition-colors">
                                 View More Videos
-                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                </svg>
                             </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Testimonial Section (Carousel) -->
-                <div class="lg:col-span-5 relative rounded-3xl bg-[#0f131a]/80 border border-[#C4A052]/20 backdrop-blur-md p-10 lg:p-12 h-[450px] overflow-hidden" id="testimonial-carousel-container">
+                <div class="lg:col-span-5 relative rounded-3xl bg-[#0f131a]/80 border border-[#C4A052]/20 backdrop-blur-md p-10 lg:p-12 h-[450px] overflow-hidden"
+                    id="testimonial-carousel-container">
                     @php
                         $testimonials = [
                             [
@@ -2190,47 +2238,69 @@
 
                     <div class="relative w-full h-full">
                         @foreach($testimonials as $index => $test)
-                        <div class="testimonial-slide absolute inset-0 flex flex-col justify-between transition-opacity duration-500 {{ $index === 0 ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none' }}" data-index="{{ $index }}">
-                            <div>
-                                <div class="flex items-start justify-between mb-6">
-                                    <div class="text-[#C4A052]/20 font-serif text-6xl leading-none h-10">"</div>
-                                    <div class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#C4A052]/30 bg-[#C4A052]/10 text-[#C4A052] text-[10px] font-bold uppercase tracking-wider">
-                                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                                        Verified Review
+                            <div class="testimonial-slide absolute inset-0 flex flex-col justify-between transition-opacity duration-500 {{ $index === 0 ? 'opacity-100 z-10 pointer-events-auto' : 'opacity-0 z-0 pointer-events-none' }}"
+                                data-index="{{ $index }}">
+                                <div>
+                                    <div class="flex items-start justify-between mb-6">
+                                        <div class="text-[#C4A052]/20 font-serif text-6xl leading-none h-10">"</div>
+                                        <div
+                                            class="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#C4A052]/30 bg-[#C4A052]/10 text-[#C4A052] text-[10px] font-bold uppercase tracking-wider">
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                            </svg>
+                                            Verified Review
+                                        </div>
+                                    </div>
+
+                                    <!-- Stars -->
+                                    <div class="flex gap-1 mb-8">
+                                        @for($i = 0; $i < 5; $i++)
+                                            <svg class="w-4 h-4 text-[#C4A052]" fill="currentColor" viewBox="0 0 20 20">
+                                                <path
+                                                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                            </svg>
+                                        @endfor
+                                    </div>
+
+                                    <p
+                                        class="text-xl md:text-2xl text-slate-200 font-serif italic leading-relaxed line-clamp-4">
+                                        {{ $test['quote'] }}
+                                    </p>
+                                </div>
+
+                                <div>
+                                    <div class="flex items-center justify-between border-b border-white/5 pb-8 mb-8">
+                                        <div>
+                                            <h4 class="text-[#C4A052] text-xs font-bold uppercase tracking-wider mb-1">
+                                                {{ $test['name'] }}
+                                            </h4>
+                                            <p class="text-slate-500 text-[10px] uppercase tracking-wider">{{ $test['role'] }}
+                                            </p>
+                                        </div>
+                                        <img src="https://ui-avatars.com/api/?name={{ urlencode($test['name']) }}&background=0a0502&color=fff"
+                                            alt="{{ $test['name'] }}"
+                                            class="w-12 h-12 rounded-full border-2 border-transparent" />
+                                    </div>
+
+                                    <div class="flex items-center justify-between">
+                                        <button
+                                            class="testi-prev-btn w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M15 19l-7-7 7-7" />
+                                            </svg>
+                                        </button>
+                                        <button
+                                            class="testi-next-btn w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M9 5l7 7-7 7" />
+                                            </svg>
+                                        </button>
                                     </div>
                                 </div>
-
-                                <!-- Stars -->
-                                <div class="flex gap-1 mb-8">
-                                    @for($i = 0; $i < 5; $i++)
-                                        <svg class="w-4 h-4 text-[#C4A052]" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                                    @endfor
-                                </div>
-
-                                <p class="text-xl md:text-2xl text-slate-200 font-serif italic leading-relaxed line-clamp-4">
-                                    {{ $test['quote'] }}
-                                </p>
                             </div>
-
-                            <div>
-                                <div class="flex items-center justify-between border-b border-white/5 pb-8 mb-8">
-                                    <div>
-                                        <h4 class="text-[#C4A052] text-xs font-bold uppercase tracking-wider mb-1">{{ $test['name'] }}</h4>
-                                        <p class="text-slate-500 text-[10px] uppercase tracking-wider">{{ $test['role'] }}</p>
-                                    </div>
-                                    <img src="https://ui-avatars.com/api/?name={{ urlencode($test['name']) }}&background=0a0502&color=fff" alt="{{ $test['name'] }}" class="w-12 h-12 rounded-full border-2 border-transparent" />
-                                </div>
-
-                                <div class="flex items-center justify-between">
-                                    <button class="testi-prev-btn w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                                    </button>
-                                    <button class="testi-next-btn w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
                         @endforeach
                     </div>
                 </div>
@@ -2238,17 +2308,26 @@
             </div>
 
             <!-- CTA Section -->
-            <div class="max-w-4xl mx-auto rounded-3xl bg-[#0a0502]/80 border border-[#C4A052]/20 p-12 md:p-16 text-center relative overflow-hidden backdrop-blur-md">
+            <div
+                class="max-w-4xl mx-auto rounded-3xl bg-[#0a0502]/80 border border-[#C4A052]/20 p-12 md:p-16 text-center relative overflow-hidden backdrop-blur-md">
                 <!-- Subtle glow effects inside CTA -->
-                <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[1px] bg-gradient-to-r from-transparent via-[#C4A052]/50 to-transparent"></div>
-                <div class="absolute top-[40%] left-0 w-full h-[1px] bg-[#C4A052]/10 pointer-events-none transform -rotate-3"></div>
-                <div class="absolute top-[60%] left-0 w-full h-[1px] bg-[#C4A052]/10 pointer-events-none transform rotate-3"></div>
-                
+                <div
+                    class="absolute top-0 left-1/2 -translate-x-1/2 w-[150%] h-[1px] bg-gradient-to-r from-transparent via-[#C4A052]/50 to-transparent">
+                </div>
+                <div
+                    class="absolute top-[40%] left-0 w-full h-[1px] bg-[#C4A052]/10 pointer-events-none transform -rotate-3">
+                </div>
+                <div
+                    class="absolute top-[60%] left-0 w-full h-[1px] bg-[#C4A052]/10 pointer-events-none transform rotate-3">
+                </div>
+
                 <h3 class="text-3xl md:text-4xl font-serif text-white mb-4 relative z-10">Your Story Could Be Next.</h3>
                 <p class="text-slate-400 text-sm md:text-base max-w-lg mx-auto mb-10 relative z-10">
-                    Join thousands of authors who have successfully brought their manuscripts to life in our Hall of Authors.
+                    Join thousands of authors who have successfully brought their manuscripts to life in our Hall of
+                    Authors.
                 </p>
-                <button class="relative z-10 px-8 py-4 bg-[#C4A052] rounded-full text-black text-xs font-bold uppercase tracking-wider hover:bg-[#D4B247] transition-colors shadow-[0_0_20px_rgba(196,160,82,0.3)] hover:shadow-[0_0_30px_rgba(196,160,82,0.5)]">
+                <button
+                    class="relative z-10 px-8 py-4 bg-[#C4A052] rounded-full text-black text-xs font-bold uppercase tracking-wider hover:bg-[#D4B247] transition-colors shadow-[0_0_20px_rgba(196,160,82,0.3)] hover:shadow-[0_0_30px_rgba(196,160,82,0.5)]">
                     Start Your Publishing Journey
                 </button>
             </div>
@@ -2257,35 +2336,57 @@
 
         <!-- Video Modal -->
         <div id="video-modal" class="fixed inset-0 z-[100] hidden items-center justify-center pointer-events-none">
-            <div class="absolute inset-0 bg-black/80 backdrop-blur-sm modal-bg pointer-events-auto transition-opacity duration-300 opacity-0"></div>
-            <div class="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto bg-[#0a0502] border border-[#C4A052]/30 rounded-3xl p-8 z-10 scale-95 opacity-0 transition-all duration-300 pointer-events-auto shadow-2xl modal-content scrollbar-hide">
-                <button id="close-modal-btn" class="absolute top-6 right-6 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors bg-black/50 z-20">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            <div
+                class="absolute inset-0 bg-black/80 backdrop-blur-sm modal-bg pointer-events-auto transition-opacity duration-300 opacity-0">
+            </div>
+            <div
+                class="relative w-full max-w-7xl max-h-[90vh] overflow-y-auto bg-[#0a0502] border border-[#C4A052]/30 rounded-3xl p-8 z-10 scale-95 opacity-0 transition-all duration-300 pointer-events-auto shadow-2xl modal-content scrollbar-hide">
+                <button id="close-modal-btn"
+                    class="absolute top-6 right-6 w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-slate-400 hover:text-white hover:border-white/30 transition-colors bg-black/50 z-20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
                 </button>
                 <h3 class="text-2xl font-serif text-white mb-6">More Testimonial Videos</h3>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- Video Item 1 -->
-                    <div class="relative group rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video cursor-pointer" onclick="playModalVideo(this)">
-                        <video src="{{ asset('images/testimonial1.mp4') }}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" preload="metadata"></video>
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video cursor-pointer"
+                        onclick="playModalVideo(this)">
+                        <video src="{{ asset('images/testimonial1.mp4') }}"
+                            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                            preload="metadata"></video>
                         <div class="absolute inset-0 flex items-center justify-center play-icon-wrapper">
-                            <div class="w-12 h-12 rounded-full bg-black/60 border border-[#C4A052]/50 backdrop-blur-sm flex items-center justify-center text-[#C4A052] group-hover:scale-110 group-hover:bg-[#C4A052] group-hover:text-black transition-all duration-300 pointer-events-none">
-                                <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <div
+                                class="w-12 h-12 rounded-full bg-black/60 border border-[#C4A052]/50 backdrop-blur-sm flex items-center justify-center text-[#C4A052] group-hover:scale-110 group-hover:bg-[#C4A052] group-hover:text-black transition-all duration-300 pointer-events-none">
+                                <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
                             </div>
                         </div>
                         <div class="absolute bottom-4 left-4 overlay-text">
-                            <span class="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">Vera Adjin</span>
+                            <span
+                                class="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">Vera
+                                Adjin</span>
                         </div>
                     </div>
                     <!-- Video Item 2 -->
-                    <div class="relative group rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video cursor-pointer" onclick="playModalVideo(this)">
-                        <video src="{{ asset('images/ROBERT TISCHJ TESTIMONIAL.mp4') }}" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" preload="metadata"></video>
+                    <div class="relative group rounded-xl overflow-hidden border border-white/10 bg-black/50 aspect-video cursor-pointer"
+                        onclick="playModalVideo(this)">
+                        <video src="{{ asset('images/ROBERT TISCHJ TESTIMONIAL.mp4') }}"
+                            class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                            preload="metadata"></video>
                         <div class="absolute inset-0 flex items-center justify-center play-icon-wrapper">
-                            <div class="w-12 h-12 rounded-full bg-black/60 border border-[#C4A052]/50 backdrop-blur-sm flex items-center justify-center text-[#C4A052] group-hover:scale-110 group-hover:bg-[#C4A052] group-hover:text-black transition-all duration-300 pointer-events-none">
-                                <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <div
+                                class="w-12 h-12 rounded-full bg-black/60 border border-[#C4A052]/50 backdrop-blur-sm flex items-center justify-center text-[#C4A052] group-hover:scale-110 group-hover:bg-[#C4A052] group-hover:text-black transition-all duration-300 pointer-events-none">
+                                <svg class="w-5 h-5 ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z" />
+                                </svg>
                             </div>
                         </div>
                         <div class="absolute bottom-4 left-4 overlay-text">
-                            <span class="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">Robert Tisch</span>
+                            <span
+                                class="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-[#C4A052]/30 text-[10px] font-bold text-[#C4A052] uppercase tracking-wider">Robert
+                                Tisch</span>
                         </div>
                     </div>
                 </div>
@@ -2321,12 +2422,12 @@
                             video.volume = val;
                             if (val > 0) {
                                 video.muted = false;
-                                if(iconMuted) iconMuted.classList.add('hidden');
-                                if(iconUnmuted) iconUnmuted.classList.remove('hidden');
+                                if (iconMuted) iconMuted.classList.add('hidden');
+                                if (iconUnmuted) iconUnmuted.classList.remove('hidden');
                             } else {
                                 video.muted = true;
-                                if(iconMuted) iconMuted.classList.remove('hidden');
-                                if(iconUnmuted) iconUnmuted.classList.add('hidden');
+                                if (iconMuted) iconMuted.classList.remove('hidden');
+                                if (iconUnmuted) iconUnmuted.classList.add('hidden');
                             }
                         });
                     }
@@ -2337,7 +2438,7 @@
 
                     video.addEventListener('timeupdate', () => {
                         timeDisplay.textContent = `${formatTime(video.currentTime)} / ${formatTime(video.duration)}`;
-                        if(video.duration && !isDraggingProgress) {
+                        if (video.duration && !isDraggingProgress) {
                             const progress = (video.currentTime / video.duration) * 100;
                             progressFill.style.width = `${progress}%`;
                             progressThumb.style.left = `${progress}%`;
@@ -2374,19 +2475,19 @@
                             if (video.muted) {
                                 iconMuted.classList.remove('hidden');
                                 iconUnmuted.classList.add('hidden');
-                                if(volumeSlider) volumeSlider.value = 0;
+                                if (volumeSlider) volumeSlider.value = 0;
                             } else {
                                 iconMuted.classList.add('hidden');
                                 iconUnmuted.classList.remove('hidden');
                                 if (video.volume === 0) video.volume = 1; // restore if it was zero
-                                if(volumeSlider) volumeSlider.value = video.volume;
+                                if (volumeSlider) volumeSlider.value = video.volume;
                                 // Ensure it's playing if user interacts
                                 if (video.paused) video.play();
                             }
                         });
                     }
                 }
-                
+
                 if ('IntersectionObserver' in window && video) {
                     const videoObserver = new IntersectionObserver((entries) => {
                         entries.forEach(entry => {
@@ -2462,7 +2563,7 @@
                     modalBg.classList.replace('opacity-100', 'opacity-0');
                     modalContent.classList.replace('scale-100', 'scale-95');
                     modalContent.classList.replace('opacity-100', 'opacity-0');
-                    
+
                     // Stop any playing video in the modal
                     const playingVideos = modal.querySelectorAll('video');
                     playingVideos.forEach(v => {
@@ -2489,13 +2590,13 @@
                 if (modalBg) {
                     modalBg.addEventListener('click', closeModal);
                 }
-                
+
                 // Expose playModalVideo globally so inline onclick works
-                window.playModalVideo = function(container) {
+                window.playModalVideo = function (container) {
                     const v = container.querySelector('video');
                     const playIcon = container.querySelector('.play-icon-wrapper');
                     const overlayText = container.querySelector('.overlay-text');
-                    
+
                     if (v.paused) {
                         // Pause other videos
                         modal.querySelectorAll('video').forEach(vid => {
@@ -2610,7 +2711,7 @@
             letter-spacing: 0.2em;
             margin-bottom: 1rem;
             display: block;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .globe-title {
@@ -2619,7 +2720,7 @@
             color: #ffffff;
             line-height: 1.1;
             margin-bottom: 1.5rem;
-            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         .globe-title span {
@@ -2633,7 +2734,7 @@
             line-height: 1.7;
             margin-bottom: 2.5rem;
             max-width: 90%;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .globe-cta {
@@ -2677,7 +2778,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .globe-stat-item span {
@@ -2686,7 +2787,7 @@
             text-transform: uppercase;
             letter-spacing: 0.1em;
             font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         /* Partner Logos in 3D Space (HTML Overlays) */
@@ -2810,7 +2911,8 @@
             left: -20%;
             width: 140%;
             height: 140%;
-            pointer-events: none; /* Allows dragging on the parent container */
+            pointer-events: none;
+            /* Allows dragging on the parent container */
         }
     </style>
 
@@ -2867,7 +2969,8 @@
                 <div id="globe-webgl-container"></div>
 
                 <!-- HTML Overlays for Logos (Managed by JS) -->
-                <div id="satellites-container" class="absolute pointer-events-none overflow-visible" style="top: -20%; left: -20%; width: 140%; height: 140%;">
+                <div id="satellites-container" class="absolute pointer-events-none overflow-visible"
+                    style="top: -20%; left: -20%; width: 140%; height: 140%;">
                     <!-- Satellites will be injected here -->
                 </div>
             </div>
@@ -3040,14 +3143,14 @@
                 const el = document.createElement('div');
                 el.className = 'partner-logo-satellite pointer-events-auto';
                 el.innerHTML = `
-                                                            <img src="${partner.logo}" loading="lazy" alt="${partner.name} logo" onerror="this.src='https://via.placeholder.com/60?text=${partner.name.charAt(0)}'" />
-                                                            <div class="partner-info-card">
-                                                                <div class="partner-card-subtitle">${partner.platform}</div>
-                                                                <div class="partner-card-title">${partner.name}</div>
-                                                                <div class="partner-card-desc">${partner.desc}</div>
-                                                                <a href="#" class="partner-card-link">Learn More &rarr;</a>
-                                                            </div>
-                                                        `;
+                                                                            <img src="${partner.logo}" loading="lazy" alt="${partner.name} logo" onerror="this.src='https://via.placeholder.com/60?text=${partner.name.charAt(0)}'" />
+                                                                            <div class="partner-info-card">
+                                                                                <div class="partner-card-subtitle">${partner.platform}</div>
+                                                                                <div class="partner-card-title">${partner.name}</div>
+                                                                                <div class="partner-card-desc">${partner.desc}</div>
+                                                                                <a href="#" class="partner-card-link">Learn More &rarr;</a>
+                                                                            </div>
+                                                                        `;
                 satellitesContainer.appendChild(el);
 
                 satellites.push({
@@ -3188,7 +3291,7 @@
                     // Globe radius is 70.
                     // We smoothly fade out elements when they go behind the globe
                     const opacity = vector.z < 20 ? Math.max(0, (vector.z + 50) / 70) : 1;
-                    
+
                     if (opacity <= 0.05) {
                         sat.element.style.display = 'none';
                     } else {
@@ -3299,9 +3402,11 @@
         <!-- Intro Header & Featured Award -->
         <div class="relative z-10 w-full max-w-7xl mx-auto px-4 pt-32 pb-32 text-center" id="hor-intro">
             <span class="text-xs font-semibold text-[#C4A052] uppercase tracking-widest block mb-4">Achievements</span>
-            <h2 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-md mb-4" style="font-family: serif;">Voices of
+            <h2 class="text-4xl md:text-6xl font-extrabold text-white drop-shadow-md mb-4" style="font-family: serif;">
+                Voices of
                 Appreciation</h2>
-            <p class="text-lg md:text-xl text-slate-300 drop-shadow-sm italic mb-16">"Recognized for Excellence Worldwide"</p>
+            <p class="text-lg md:text-xl text-slate-300 drop-shadow-sm italic mb-16">"Recognized for Excellence Worldwide"
+            </p>
 
             <!-- Featured Award Glass Card -->
             <div
@@ -3309,10 +3414,12 @@
                 <div class="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none"></div>
                 <div class="relative z-10">
                     <span class="text-6xl block mb-6 drop-shadow-lg">🏆</span>
-                    <h3 class="text-3xl md:text-4xl font-bold mb-3 text-white drop-shadow-sm">Global Publisher of the Year</h3>
+                    <h3 class="text-3xl md:text-4xl font-bold mb-3 text-white drop-shadow-sm">Global Publisher of the Year
+                    </h3>
                     <p class="text-sm font-bold text-[#C4A052] tracking-[0.2em] uppercase mb-6">Independent Press Award •
                         2025</p>
-                    <p class="text-slate-300 leading-relaxed max-w-xl mx-auto drop-shadow-sm">Selected as the premier publishing design and
+                    <p class="text-slate-300 leading-relaxed max-w-xl mx-auto drop-shadow-sm">Selected as the premier
+                        publishing design and
                         distribution platform, demonstrating unparalleled commitment to author success and literary
                         excellence across continents.</p>
                 </div>
@@ -3328,28 +3435,24 @@
                 <!-- 2022 -->
                 <div
                     class="p-6 bg-black/50 backdrop-blur-md border border-[#C4A052]/30 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
-                    <div class="text-3xl font-bold text-[#C4A052] mb-3 font-serif drop-shadow-sm">2022</div>
                     <h4 class="font-bold text-white text-lg mb-2">First Recognition</h4>
                     <p class="text-sm text-slate-300">Establishing a new standard in independent publishing.</p>
                 </div>
                 <!-- 2023 -->
                 <div
                     class="p-6 bg-black/50 backdrop-blur-md border border-[#C4A052]/30 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
-                    <div class="text-3xl font-bold text-[#C4A052] mb-3 font-serif drop-shadow-sm">2023</div>
                     <h4 class="font-bold text-white text-lg mb-2">Publishing Excellence</h4>
                     <p class="text-sm text-slate-300">Recognized for outstanding editorial support and distribution.</p>
                 </div>
                 <!-- 2024 -->
                 <div
                     class="p-6 bg-black/50 backdrop-blur-md border border-[#C4A052]/30 rounded-2xl shadow-sm text-center hover:-translate-y-1 transition-transform">
-                    <div class="text-3xl font-bold text-[#C4A052] mb-3 font-serif drop-shadow-sm">2024</div>
                     <h4 class="font-bold text-white text-lg mb-2">Global Expansion</h4>
                     <p class="text-sm text-slate-300">Reaching authors and readers across 45+ distribution networks.</p>
                 </div>
                 <!-- 2025 -->
                 <div
                     class="p-6 bg-black/50 backdrop-blur-md border border-[#C4A052]/50 rounded-2xl shadow-md text-center ring-2 ring-[#C4A052]/30 hover:-translate-y-1 transition-transform">
-                    <div class="text-3xl font-bold text-[#C4A052] mb-3 font-serif drop-shadow-sm">2025</div>
                     <h4 class="font-bold text-white text-lg mb-2">Industry Award</h4>
                     <p class="text-sm text-slate-300">Celebrating our legacy in literary excellence and author success.</p>
                 </div>
@@ -3366,22 +3469,26 @@
         <!-- Premium Statistics -->
         <div class="relative z-10 w-full max-w-5xl mx-auto px-4 pb-32">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center hor-stats-grid">
-                <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
+                <div
+                    class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
                             data-target="25">0</span>+</div>
                     <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Industry Awards</div>
                 </div>
-                <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
+                <div
+                    class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
                             data-target="4.9">0</span></div>
                     <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Average Rating</div>
                 </div>
-                <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
+                <div
+                    class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
                             data-target="2.3">0</span>k</div>
                     <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Books Published</div>
                 </div>
-                <div class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
+                <div
+                    class="p-6 bg-black/50 backdrop-blur-md rounded-2xl border border-[#C4A052]/30 transition-transform hover:-translate-y-1">
                     <div class="text-3xl font-extrabold text-white mb-2 font-serif drop-shadow-sm"><span class="hor-counter"
                             data-target="25">0</span>+</div>
                     <div class="text-xs text-[#C4A052] font-bold tracking-wider uppercase">Countries</div>
@@ -3447,10 +3554,7 @@
                 <!-- Recognition Item -->
                 <div
                     class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
-                    <div
-                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
-                        2022
-                    </div>
+
                     <div>
                         <h4 class="font-bold text-white">First Recognition</h4>
                         <p class="text-sm text-slate-300 mt-1">Awarded for establishing a new standard in independent
@@ -3461,10 +3565,7 @@
                 <!-- Recognition Item -->
                 <div
                     class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
-                    <div
-                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
-                        2023
-                    </div>
+
                     <div>
                         <h4 class="font-bold text-white">Publishing Excellence</h4>
                         <p class="text-sm text-slate-300 mt-1">Recognized for outstanding editorial support and global
@@ -3475,10 +3576,7 @@
                 <!-- Recognition Item -->
                 <div
                     class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
-                    <div
-                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
-                        2024
-                    </div>
+
                     <div>
                         <h4 class="font-bold text-white">Global Expansion</h4>
                         <p class="text-sm text-slate-300 mt-1">Honored for successfully reaching authors and readers across
@@ -3489,10 +3587,7 @@
                 <!-- Recognition Item -->
                 <div
                     class="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/10 hover:border-yellow-500/50 hover:bg-white/10 transition-colors">
-                    <div
-                        class="w-12 h-12 rounded-full bg-yellow-500/20 flex items-center justify-center text-yellow-500 font-bold shrink-0 shadow-inner">
-                        2025
-                    </div>
+
                     <div>
                         <h4 class="font-bold text-white">Industry Award</h4>
                         <p class="text-sm text-slate-300 mt-1">Celebrating our continued legacy in building literary
@@ -3568,7 +3663,7 @@
             transform: rotateX(5deg) rotateY(-25deg);
             transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
-        
+
         .swiper-slide:hover .book-3d-showcase {
             transform: rotateX(2deg) rotateY(-5deg) translateY(-10px) translateZ(30px);
         }
@@ -3583,8 +3678,8 @@
             transform: translateZ(15px);
             border-radius: 2px 6px 6px 2px;
             overflow: hidden;
-            box-shadow: inset 4px 0 10px rgba(0,0,0,0.1);
-            border-left: 1px solid rgba(255,255,255,0.2);
+            box-shadow: inset 4px 0 10px rgba(0, 0, 0, 0.1);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .book-3d-showcase .book-back {
@@ -3592,7 +3687,7 @@
             transform: rotateY(180deg) translateZ(15px);
             background: #0f131a;
             border-radius: 6px 2px 2px 6px;
-            border-right: 1px solid rgba(255,255,255,0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
         }
 
         .book-3d-showcase .book-spine {
@@ -3603,7 +3698,7 @@
             margin-left: -15px;
             transform: rotateY(-90deg) translateZ(80px);
             background: linear-gradient(to right, #05070a, #151a24 20%, #0a0d14 80%, #05070a);
-            border-left: 1px solid rgba(255,255,255,0.05);
+            border-left: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         .book-3d-showcase .book-pages-right {
@@ -3614,7 +3709,7 @@
             margin-left: -13px;
             transform: rotateY(90deg) translateZ(77px);
             background: repeating-linear-gradient(to right, #e2e8f0, #e2e8f0 2px, #cbd5e1 3px, #f8fafc 3px);
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .book-3d-showcase .book-pages-top {
@@ -3642,20 +3737,37 @@
                 width: 200px;
                 height: 300px;
             }
-            .book-3d-showcase .book-front { transform: translateZ(20px); }
-            .book-3d-showcase .book-back { transform: rotateY(180deg) translateZ(20px); }
-            
+
+            .book-3d-showcase .book-front {
+                transform: translateZ(20px);
+            }
+
+            .book-3d-showcase .book-back {
+                transform: rotateY(180deg) translateZ(20px);
+            }
+
             .book-3d-showcase .book-spine {
-                width: 40px; margin-left: -20px; transform: rotateY(-90deg) translateZ(100px);
+                width: 40px;
+                margin-left: -20px;
+                transform: rotateY(-90deg) translateZ(100px);
             }
+
             .book-3d-showcase .book-pages-right {
-                width: 36px; margin-left: -18px; transform: rotateY(90deg) translateZ(97px);
+                width: 36px;
+                margin-left: -18px;
+                transform: rotateY(90deg) translateZ(97px);
             }
+
             .book-3d-showcase .book-pages-top {
-                height: 36px; margin-top: -18px; transform: rotateX(90deg) translateZ(147px);
+                height: 36px;
+                margin-top: -18px;
+                transform: rotateX(90deg) translateZ(147px);
             }
+
             .book-3d-showcase .book-pages-bottom {
-                height: 36px; margin-top: -18px; transform: rotateX(-90deg) translateZ(147px);
+                height: 36px;
+                margin-top: -18px;
+                transform: rotateX(-90deg) translateZ(147px);
             }
         }
     </style>

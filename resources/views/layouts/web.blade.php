@@ -303,9 +303,9 @@
             // Update tab buttons styles
             buttons.forEach(btn => {
                 if (btn.id === `btn-srv-${serviceId}`) {
-                    btn.className = "px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider border border-blue-600 bg-blue-600 text-white transition-all";
+                    btn.className = "px-5 py-2.5 rounded-full text-xs font-medium uppercase tracking-wider border border-[#C4A052] bg-[#C4A052] text-[#0a0502] hover:shadow-[0_0_15px_rgba(196,160,82,0.3)] transition-all";
                 } else {
-                    btn.className = "px-4 py-2 rounded-lg text-xs font-bold uppercase tracking-wider border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-850 transition-all";
+                    btn.className = "px-5 py-2.5 rounded-full text-xs font-medium uppercase tracking-wider border border-white/10 text-slate-300 hover:border-[#C4A052] hover:text-[#C4A052] transition-all";
                 }
             });
 
@@ -316,20 +316,20 @@
             let pointsList = '';
             data.points.forEach(pt => {
                 pointsList += `<li class="flex items-center gap-2">
-                        <span class="text-blue-600 font-bold">✓</span>
-                        <span>${pt}</span>
+                        <span class="text-[#C4A052] font-bold">✓</span>
+                        <span class="text-slate-300">${pt}</span>
                     </li>`;
             });
 
             container.innerHTML = `
-                    <h3 class="text-xl font-bold text-slate-900 dark:text-white">${data.title}</h3>
-                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">${data.desc}</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-slate-600 dark:text-slate-300">
+                    <h3 class="text-2xl font-serif font-bold text-white mb-2 drop-shadow-sm">${data.title}</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-6">${data.desc}</p>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                         ${pointsList}
                     </ul>
-                    <div class="pt-4 flex items-center justify-between border-t border-slate-200 dark:border-slate-800 mt-2">
-                        <span class="text-xs text-slate-400">Available globally</span>
-                        <a href="#contact-us" class="px-4 py-2 rounded bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold text-xs transition-colors">Request Catalog Quote</a>
+                    <div class="pt-6 mt-6 flex items-center justify-between border-t border-white/10">
+                        <span class="text-xs text-slate-400 uppercase tracking-wider font-bold">Available globally</span>
+                        <a href="#contact-us" class="px-6 py-2.5 rounded-full bg-[#C4A052] hover:bg-[#d4b05e] text-[#0a0502] font-bold text-xs uppercase tracking-wider transition-colors shadow-[0_0_15px_rgba(196,160,82,0.2)]">Request Quote</a>
                     </div>
                 `;
         }

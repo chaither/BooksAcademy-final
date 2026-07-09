@@ -3,12 +3,13 @@
 @section('content')
     <!-- Services Section (Publishing: Children's, B&W, Full Color, Marketing, Add-ons) -->
     <section id="services"
-        class="py-20 xl:py-28 2xl:py-32 min-h-screen flex flex-col justify-center bg-[#0a0d14] border-t border-white/5 transition-colors relative overflow-hidden">
+        class="py-20 xl:py-28 2xl:py-32 min-h-screen flex flex-col justify-center bg-black transition-colors relative overflow-hidden">
         
-        <!-- Decorative Background Elements -->
-        <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-            <div class="absolute top-[-10%] left-[-10%] w-96 h-96 bg-[#d4af37] rounded-full blur-[150px] opacity-[0.03]"></div>
-            <div class="absolute bottom-[-10%] right-[-10%] w-96 h-96 bg-[#d4af37] rounded-full blur-[150px] opacity-[0.03]"></div>
+        <!-- Background Layer with Image -->
+        <div class="absolute inset-0 w-full h-full z-0">
+            <img src="{{ asset('images/bookstore.png') }}" class="w-full h-full object-cover opacity-30 object-center blur-[2px]">
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0502] via-[#0a0502]/80 to-transparent"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0502] via-transparent to-[#0a0502]"></div>
         </div>
 
         <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10">
