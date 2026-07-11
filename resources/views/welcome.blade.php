@@ -1056,6 +1056,7 @@
     </section>
 
     <!-- The Journey to Publication & Spotlight (Redesigned) -->
+        <!-- The Journey to Publication & Spotlight (Redesigned) -->
     <style>
         /* Journey Section Styles */
         #journey-section {
@@ -1272,16 +1273,9 @@
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
                                     📖
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Available Format</h3>
-                                <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
-                                    <ul class="text-left list-disc list-inside flex flex-col gap-1">
-                                        <li>Paperback</li>
-                                        <li>E-Book</li>
-                                        <li>Cover</li>
-                                        <li>Custom text and layout formatting</li>
-                                        <li>Author-Designed Cover</li>
-                                    </ul>
-                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Manuscript</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Comprehensive evaluation of your
+                                    draft for structural flow, pacing, and narrative alignment.</p>
                             </div>
                         </div>
 
@@ -1298,22 +1292,11 @@
 
                                 <div
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
-                                    📝
+                                    ✏️
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Registrations &
-                                    Distribution</h3>
-                                <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
-                                    <ul class="text-left list-disc list-inside flex flex-col gap-1">
-                                        <li>Registration with Books in Print database</li>
-                                        <li>Copyrights Registrations</li>
-                                        <li>Assignment of ISBN</li>
-                                        <li>Library of Congress Registration</li>
-                                        <li>Worldwide Online Book Distribution</li>
-                                        <li>Online book sales and Royalty Accounting</li>
-                                        <li>Quarterly Royalty Payments</li>
-                                        <li>Books Academy Bookstore Availability</li>
-                                    </ul>
-                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Editing</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Professional line edits and
+                                    copyediting to polish prose while preserving your authentic voice.</p>
                             </div>
                         </div>
 
@@ -1330,18 +1313,11 @@
 
                                 <div
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
-                                    📐
+                                    🎨
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Interior Layout</h3>
-                                <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
-                                    <ul class="text-left list-disc list-inside flex flex-col gap-1">
-                                        <li>Trim size: 5.5″ x 0.39 x 8.5″, 6*9 etc.</li>
-                                        <li>Standard Text & Layout Formatting</li>
-                                        <li>Unlimited Image Insertion</li>
-                                        <li>Unlimited Corrections – Production Stage</li>
-                                        <li>Author Copies (1 Paperback, 4 Complimentary)</li>
-                                    </ul>
-                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Design</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Bespoke cover artistry and interior
+                                    typesetting crafted to capture your story's essence.</p>
                             </div>
                         </div>
 
@@ -1358,21 +1334,57 @@
 
                                 <div
                                     class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
-                                    ➕
+                                    🔍
                                 </div>
-                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Add Ons</h3>
-                                <div class="text-xs text-slate-400 leading-relaxed z-10 w-full">
-                                    <ul class="text-left list-disc list-inside flex flex-col gap-1">
-                                        <li>Right-pricing of the book</li>
-                                        <li>Author Discount for Bulk Book Orders</li>
-                                        <li>Social Media Creation (FB, IG, Twitter)</li>
-                                        <li>Free Promotions on blog site & social media</li>
-                                    </ul>
-                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Proofreading</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Rigorous final audit of digital
+                                    proofs to ensure impeccable quality before production.</p>
                             </div>
                         </div>
 
                         <!-- Step 5 -->
+                        <div
+                            class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:ml-auto md:mr-0 mt-0">
+                            <div
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
+                            </div>
+
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">05</span>
+
+                                <div
+                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
+                                    🖨️
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Printing</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">High-end physical production
+                                    utilizing premium paper stock, bindings, and finishes.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 6 -->
+                        <div
+                            class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:mr-auto md:ml-0 md:mt-32">
+                            <div
+                                class="journey-card-bg absolute inset-0 bg-gradient-to-br from-[#C4A052]/20 via-transparent to-transparent opacity-0 transition-opacity duration-500 pointer-events-none">
+                            </div>
+
+                            <div class="relative z-10 flex flex-col items-center text-center">
+                                <span
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">06</span>
+
+                                <div
+                                    class="journey-icon-wrap w-16 h-16 rounded-full bg-black/60 border border-[#C4A052]/50 text-white flex items-center justify-center text-2xl mb-6 shadow-inner z-10">
+                                    🌍
+                                </div>
+                                <h3 class="text-xl font-bold text-white mb-3 z-10 drop-shadow-sm">Distribution</h3>
+                                <p class="text-xs text-slate-400 leading-relaxed z-10">Seamless integration with global
+                                    networks including Amazon, Apple Books, and Ingram.</p>
+                            </div>
+                        </div>
+
+                        <!-- Step 7 -->
                         <div
                             class="journey-card rounded-2xl p-8 lg:p-10 relative overflow-hidden group w-full max-w-sm mx-auto md:col-span-2 mt-0 md:mt-12">
                             <div
@@ -1381,23 +1393,16 @@
 
                             <div class="relative z-10 flex flex-col items-center text-center">
                                 <span
-                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">05</span>
+                                    class="journey-step-num absolute top-0 left-0 text-6xl font-serif text-white/5 transition-colors duration-500 select-none -translate-x-4 -translate-y-6 pointer-events-none z-0">07</span>
 
                                 <div
                                     class="journey-icon-wrap w-20 h-20 rounded-full bg-gradient-to-br from-black/80 to-black/60 border-2 border-[#C4A052] text-white flex items-center justify-center text-3xl mb-6 shadow-[0_0_30px_rgba(196,160,82,0.4)] z-10">
-                                    🌍
+                                    🚀
                                 </div>
-                                <h3 class="text-2xl font-bold text-white mb-3 z-10 drop-shadow-sm">Worldwide Distribution
-                                </h3>
-                                <div class="text-sm text-slate-300 leading-relaxed max-w-md z-10 mx-auto">
-                                    <ul class="text-left list-disc list-inside flex flex-col gap-1 w-fit mx-auto">
-                                        <li>Amazon</li>
-                                        <li>Barnes and Noble</li>
-                                        <li>Books a Million</li>
-                                        <li>Walmart</li>
-                                        <li>Global Books Market Distribution Platforms</li>
-                                    </ul>
-                                </div>
+                                <h3 class="text-2xl font-bold text-white mb-3 z-10 drop-shadow-sm">Launch</h3>
+                                <p class="text-sm text-slate-300 leading-relaxed max-w-md z-10">Targeted marketing
+                                    strategies, press wire releases, and dedicated support to celebrate and elevate your
+                                    debut.</p>
                             </div>
                         </div>
 
