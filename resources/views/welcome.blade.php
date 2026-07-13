@@ -12,33 +12,37 @@
 
         <!-- Top Hero Content -->
         <div
-            class="w-full max-w-7xl mx-auto flex-1 flex flex-col items-center justify-center sm:mt-8 z-10 px-4 text-center">
-            <div class="max-w-3xl flex flex-col items-center space-y-6">
-                <!-- Welcome text -->
-                <div class="inline-flex items-center justify-center gap-4">
-                    <div class="h-[2px] w-8 sm:w-12 bg-[#C4A052]"></div>
-                    <h4 class="text-xs sm:text-sm font-bold tracking-[0.25em] text-[#E5D3B3] uppercase">Welcome To</h4>
-                    <div class="h-[2px] w-8 sm:w-12 bg-[#C4A052]"></div>
-                </div>
-
+            class="w-full max-w-7xl mx-auto flex-1 flex flex-col items-center justify-center sm:mt-8 z-10  text-center">
+            <div class="w-full max-w-6xl flex flex-col items-center space-y-0">
                 <!-- Logo replaces BOOKS ACADEMY text -->
                 <div id="logo-container"
-                    class="relative -left-4 sm:-left-8 md:-left-12 lg:-left-16 w-full max-w-[350px] sm:max-w-[450px] md:max-w-[600px] lg:max-w-[700px] opacity-0 transition-all duration-[1200ms] ease-out flex justify-start self-start"
-                    style="transform: translateY(30px); will-change: transform, opacity;">
-                    <img id="logo-large" src="{{ asset('images/cover8.png') }}" alt="BooksAcademy Logo Large"
-                        class="h-auto w-full object-contain object-left opacity-0 transition-opacity duration-500 will-change-transform">
+                    class="relative w-full max-w-[800px] sm:max-w-[1000px] md:max-w-[1200px] lg:max-w-[1500px] opacity-0 transition-all duration-[1200ms] ease-out flex justify-center self-center"
+                    style="transform: translateY(30px); z-index: 10; will-change: transform, opacity;">
+                    
+                    <div class="relative w-full h-full translate-x-8 sm:translate-x-12 md:translate-x-16 lg:translate-x-24">
+                        
+                        <!-- Welcome text overlaid on the logo, centered at the 40% mark (the letter A) -->
+                        <div class="absolute top-[10%] sm:top-[28%] md:top-[28%] left-[40%] -translate-x-1/2 inline-flex items-center justify-center gap-4 z-20 w-full pointer-events-none">
+                            <div class="h-[2px] w-8 sm:w-12 bg-[#C4A052]"></div>
+                            <h4 class="text-xs sm:text-sm font-bold tracking-[0.25em] text-[#E5D3B3] uppercase whitespace-nowrap">Welcome To</h4>
+                            <div class="h-[2px] w-8 sm:w-12 bg-[#C4A052]"></div>
+                        </div>
 
-                    <img id="logo-half-left" src="{{ asset('images/cover8.png') }}" alt="BooksAcademy Logo Left"
-                        class="absolute inset-0 h-auto w-full object-contain logo-half"
-                        style="clip-path: inset(0 50% 0 0); transform: translateX(-40px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
+                        <img id="logo-large" src="{{ asset('images/cover10.png') }}" alt="BooksAcademy Logo Large"
+                            class="mx-auto h-auto w-full object-contain object-center opacity-0 transition-opacity duration-500 will-change-transform">
 
-                    <img id="logo-half-right" src="{{ asset('images/cover8.png') }}" alt="BooksAcademy Logo Right"
-                        class="absolute inset-0 h-auto w-full object-contain logo-half"
-                        style="clip-path: inset(0 0 0 50%); transform: translateX(60px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
+                        <img id="logo-half-left" src="{{ asset('images/cover10.png') }}" alt="BooksAcademy Logo Left"
+                            class="absolute inset-0 mx-auto h-auto w-full object-contain object-center logo-half"
+                            style="clip-path: inset(0 60% 0 0); transform: translateX(-40px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
+
+                        <img id="logo-half-right" src="{{ asset('images/cover10.png') }}" alt="BooksAcademy Logo Right"
+                            class="absolute inset-0 mx-auto h-auto w-full object-contain object-center logo-half"
+                            style="clip-path: inset(0 0 0 40%); transform: translateX(60px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
+                    </div>
                 </div>
             </div>
 
-            <div class="-mt-6 sm:-mt-10 lg:-mt-8 flex flex-col items-center text-center opacity-0 transition-opacity duration-[1500ms] delay-700 fade-in-up"
+            <div class="-mt-16 sm:-mt-24 lg:-mt-32 flex flex-col items-center text-center opacity-0 transition-opacity duration-[1500ms] delay-700 fade-in-up"
                 id="hero-content">
                 <p class="text-[15px] sm:text-base md:text-lg text-white mb-2 font-serif tracking-wide">
                     Empowering writers. Enriching readers.
@@ -1815,13 +1819,13 @@
                             Masterclass</span>
                     </div>
 
-                    <a href="https://www.youtube.com/watch?v=AY-qNr2rKrE" target="_blank"
+                    <a href="https://www.youtube.com/watch?v=GYHQYqv9zIE" target="_blank"
                         class="media-featured-card cursor-pointer group block">
                         <!-- Replace href="#" above with your desired link -->
                         <div class="media-featured-img-wrap aspect-[16/9] w-full bg-[#0a0502]">
                             <!-- Placeholder premium image -->
                             <div class="media-featured-img w-full h-full bg-cover bg-center"
-                                style="background-image: url('{{ asset('images/lounge1.png') }}');">
+                                style="background-image: url('{{ asset('images/lounge2.png') }}');">
                             </div>
                             <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
                             </div>
@@ -1844,11 +1848,8 @@
                                         class="px-3 py-1 rounded-full bg-[#C4A052] text-[#0a0502] text-[9px] uppercase font-bold tracking-wider">Video</span>
                                     <span class="text-[10px] font-medium opacity-80">45 Min</span>
                                 </div>
-                                <h3 class="text-3xl font-serif mb-2 leading-tight drop-shadow-sm">The Architecture of
-                                    Bestselling
-                                    Storytelling</h3>
-                                <p class="text-sm opacity-80 line-clamp-2">Join industry veteran Elena Rostova as she
-                                    deconstructs the structural elements that define modern literary success.</p>
+                                <h3 class="text-3xl font-serif mb-2 leading-tight drop-shadow-sm">Author Spotlight Interview | Crossing The Wild Pacific | Robert R. Tisch</h3>
+                                <p class="text-sm opacity-80 line-clamp-2">Shining the spotlight on Robert R. Tisch, author of Crossing the Wild Pacific.</p>
                             </div>
                         </div>
                     </a>
@@ -1864,42 +1865,7 @@
                     </div>
 
                     <!-- Podcast Card 1 -->
-                    <a href="https://www.youtube.com/watch?v=GYHQYqv9zIE" target="_blank"
-                        class="media-list-card media-item opacity-0 translate-y-8 cursor-pointer flex gap-5 items-center group podcast-trigger"
-                        data-title="Designing Book Covers that Sell" data-author="Sarah Jennings">
-                        <div class="w-20 h-20 shrink-0 rounded-xl bg-cover bg-center shadow-md relative overflow-hidden border border-[#C4A052]/20"
-                            style="background-image: url('{{ asset('images/lounge2.png') }}');">
-                            <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 transition-colors">
-                            </div>
-                            <div
-                                class="absolute inset-0 flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                                <svg class="w-8 h-8 drop-shadow-[0_0_10px_rgba(196,160,82,0.8)]" fill="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path d="M8 5v14l11-7z" />
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="flex-1">
-                            <div class="flex items-center gap-2 mb-1">
-                                <span
-                                    class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Podcast
-                                    • Ep
-                                    48</span>
-                            </div>
-                            <h5
-                                class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
-                                Designing Book Covers that Sell</h5>
-                            <p class="text-[10px] text-slate-400 line-clamp-2 mb-2">Sarah Jennings breaks down cover
-                                formats, typography alignment, and color psychology.</p>
-                            <div class="h-4 flex items-end gap-[2px] opacity-0 group-hover:opacity-100 transition-opacity">
-                                <div class="waveform-bar h-1"></div>
-                                <div class="waveform-bar h-1"></div>
-                                <div class="waveform-bar h-1"></div>
-                                <div class="waveform-bar h-1"></div>
-                                <div class="waveform-bar h-1"></div>
-                            </div>
-                        </div>
-                    </a>
+                    
 
                     <!-- Video Card 1 -->
                     <a href="https://www.youtube.com/watch?v=EoZFSRthP10&t=4s" target="_blank"
@@ -1923,9 +1889,8 @@
                             </div>
                             <h5
                                 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
-                                From Manuscript to Series A</h5>
-                            <p class="text-[10px] text-slate-400 line-clamp-2">R. Cunningham details publishing, organizing
-                                startup books, and reaching target audiences.</p>
+                               When God Works Incognito | Fred Beck</h5>
+                            <p class="text-[10px] text-slate-400 line-clamp-2">Meet Fred Beck, the inspiring voice behind When God Works Incognito. In this spotlight, we celebrate his powerful journey, heartfelt storytelling, and the message of faith, hope, and purpose woven through his work.</p>
                         </div>
                     </a>
 
@@ -1948,15 +1913,14 @@
                         <div class="flex-1">
                             <div class="flex items-center gap-2 mb-1">
                                 <span
-                                    class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Podcast
-                                    • Ep
-                                    47</span>
+                                    class="text-[9px] uppercase font-bold text-[#C4A052] tracking-wider drop-shadow-sm">Author Spotlight Interview 
+                                    </span>
                             </div>
                             <h5
                                 class="font-bold text-sm text-white mb-1 group-hover:text-[#C4A052] transition-colors drop-shadow-sm">
-                                The Art of Ruthless Editing</h5>
-                            <p class="text-[10px] text-slate-400 line-clamp-2 mb-2">How to kill your darlings and tighten
-                                your prose without losing your voice.</p>
+                                Fully Human/Fully Alive | Lyle Simpson
+                                </h5>
+                            <p class="text-[10px] text-slate-400 line-clamp-2 mb-2">Fully Human / Fully Alive is written to help the 70% of all Americans Living today who are stuck on Maslow’s social level of living, not realizing that there are three levels above them that would greatly enhance their lives. </p>
                             <div class="h-4 flex items-end gap-[2px] opacity-0 group-hover:opacity-100 transition-opacity">
                                 <div class="waveform-bar h-1"></div>
                                 <div class="waveform-bar h-1"></div>

@@ -22,6 +22,9 @@ Route::get('/bookstore', function () {
 Route::get('/pressroom', function () {
     return view('pressroom');
 })->name('pressroom');
+Route::get('/pressroom/article/{id}', function ($id) {
+    return view('pressroom-article', ['id' => $id]);
+})->name('pressroom.article');
 Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
