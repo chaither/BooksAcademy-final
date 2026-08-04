@@ -8,37 +8,37 @@
 @section('content')
 
 @php
-    $books = [
-        [ 'id' => 1, 'image' => 'A-1.png', 'back_image' => 'B-1.png', 'spine_image' => 'S-1.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 2, 'image' => 'A-2.png', 'back_image' => 'B-2.png', 'spine_image' => 'S-2.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '20.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 3, 'image' => 'A-3.png', 'back_image' => 'B-3.png', 'spine_image' => 'S-3.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 4, 'image' => 'A-4.png', 'back_image' => 'B-4.png', 'spine_image' => 'S-4.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 5, 'image' => 'A-5.png', 'back_image' => 'B-5.png', 'spine_image' => 'S-5.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 6, 'image' => 'A-6.png', 'back_image' => 'B-6.png', 'spine_image' => 'S-6.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 7, 'image' => 'A-7.png', 'back_image' => 'B-7.png', 'spine_image' => 'S-7.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 8, 'image' => 'A-8.png', 'back_image' => 'B-8.png', 'spine_image' => 'S-8.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 9, 'image' => 'A-9.png', 'back_image' => 'B-9.png', 'spine_image' => 'S-9.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 10, 'image' => 'A-10.png', 'back_image' => 'B-10.png', 'spine_image' => 'S-10.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 11, 'image' => 'A-11.png', 'back_image' => 'B-11.png', 'spine_image' => 'S-11.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 12, 'image' => 'A-12.png', 'back_image' => 'B-12.png', 'spine_image' => 'S-12.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 13, 'image' => 'A-13.png', 'back_image' => 'B-13.png', 'spine_image' => 'S-13.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 14, 'image' => 'A-14.png', 'back_image' => 'B-14.png', 'spine_image' => 'S-14.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 15, 'image' => 'A-15.png', 'back_image' => 'B-15.png', 'spine_image' => 'S-15.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 16, 'image' => 'A-16.png', 'back_image' => 'B-16.png', 'spine_image' => 'S-16.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 17, 'image' => 'A-17.png', 'back_image' => 'B-17.png', 'spine_image' => 'S-17.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 18, 'image' => 'A-18.png', 'back_image' => 'B-18.png', 'spine_image' => 'S-18.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 19, 'image' => 'A-19.png', 'back_image' => 'B-19.png', 'spine_image' => 'S-19.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 20, 'image' => 'A-20.png', 'back_image' => 'B-20.png', 'spine_image' => 'S-20.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 21, 'image' => 'A-21.png', 'back_image' => 'B-21.png', 'spine_image' => 'S-21.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 22, 'image' => 'A-22.png', 'back_image' => 'B-22.png', 'spine_image' => 'S-22.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 23, 'image' => 'A-23.png', 'back_image' => 'B-23.png', 'spine_image' => 'S-23.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 24, 'image' => 'A-24.png', 'back_image' => 'B-24.png', 'spine_image' => 'S-24.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 25, 'image' => 'A-25.png', 'back_image' => 'B-25.png', 'spine_image' => 'S-25.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ],
-        [ 'id' => 26, 'image' => 'A-26.png', 'back_image' => 'B-26.png', 'spine_image' => 'S-26.png', 'title' => ' ', 'author' => 'Author Name', 'category' => 'Category', 'price' => '19.99', 'description' => 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics. Whether you are a beginner looking to get started or an experienced professional aiming to brush up on your knowledge, this book has something valuable to offer. The author draws upon years of industry experience to provide practical insights, real-world examples, and actionable advice that you can apply immediately. You will find detailed explanations, step-by-step tutorials, and insightful case studies that bring the concepts to life. Do not miss out on this opportunity to learn from one of the best in the field and take your expertise to the next level. Grab your copy today and start reading!' ]
-    ];
+    $books = [];
+    $categories = [];
+    if (isset($dbBooks) && count($dbBooks) > 0) {
+        foreach ($dbBooks as $b) {
+            $cat = trim($b->category) ?: 'General';
+            $books[] = [
+                'id' => 'db-' . $b->id,
+                'image' => asset('storage/' . $b->image),
+                'back_image' => $b->back_image ? asset('storage/' . $b->back_image) : asset('storage/' . $b->image),
+                'spine_image' => $b->spine_image ? asset('storage/' . $b->spine_image) : asset('storage/' . $b->image),
+                'title' => $b->title,
+                'author' => $b->author,
+                'category' => $cat,
+                'price' => number_format($b->price, 2),
+                'description' => $b->description ?: 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics.',
+            ];
+            if (!in_array($cat, $categories)) {
+                $categories[] = $cat;
+            }
+        }
+    }
 @endphp
 
 <style>
+    /* Reset Browser Default Outlines */
+    #bookSearch:focus, #categoryFilter:focus, #bookSearch, #categoryFilter {
+        outline: none !important;
+        box-shadow: none !important;
+        -webkit-tap-highlight-color: transparent;
+    }
+
     /* Robust 3D Book CSS */
     .book-wrapper {
         perspective: 1200px;
@@ -220,25 +220,61 @@
 </style>
 
     <section id="bookstore"
-        class="py-20 xl:py-28 2xl:py-32 min-h-screen flex flex-col justify-center bg-[#0a0d14] border-t border-white/5 transition-colors">
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
-            <div class="text-center max-w-2xl mx-auto mb-16">
-                <span class="text-xs font-semibold text-[#d4af37] uppercase tracking-[0.2em]">Catalog</span>
-                <h2 class="text-2xl sm:text-3xl lg:text-4xl 2xl:text-5xl font-serif text-white mt-3 tracking-wide">
-                    Browse the Academy Bookstore
+        class="relative py-20 xl:py-28 2xl:py-32 min-h-screen flex flex-col justify-center bg-[#0a0d14] border-t border-white/5 transition-colors overflow-hidden">
+        
+        <!-- Background Image with Soft Ambient Overlay -->
+        <div class="absolute inset-0 z-0 pointer-events-none">
+            <img src="/images/bookstore.png" alt="Bookstore Background" class="w-full h-full object-cover object-center opacity-75 filter contrast-105 scale-100">
+            <!-- Subtle top and bottom edge gradients only for seamless page blending -->
+            <div class="absolute inset-0 bg-gradient-to-b from-[#0a0d14] via-[#0a0d14]/30 to-[#0a0d14]"></div>
+        </div>
+
+        <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="inline-flex items-center gap-2 text-xs font-semibold text-[#d4af37] uppercase tracking-[0.25em] px-4 py-1.5 rounded-full bg-[#d4af37]/10 border border-[#d4af37]/20 backdrop-blur-md shadow-[0_0_15px_rgba(212,175,55,0.15)] mb-4">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#d4af37] animate-pulse"></span>
+                    Academy Catalog
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl 2xl:text-6xl font-serif text-white tracking-wide leading-tight drop-shadow-md">
+                    Browse the <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-amber-100 to-[#d4af37]">Academy Bookstore</span>
                 </h2>
-                <p class="text-xs sm:text-sm text-slate-400 mt-4 font-light tracking-wide">
+                <p class="text-sm sm:text-base text-slate-300 max-w-xl mx-auto mt-4 font-light tracking-wide leading-relaxed">
                     Acquire physical paperbacks or download direct eBooks.
                 </p>
             </div>
 
-            <!-- Search Bar -->
-            <div class="max-w-xl mx-auto mb-16 relative">
-                <input type="text" id="bookSearch" placeholder="Search by title, author, or category..." class="w-full bg-[#0f131a] border border-[#d4af37]/30 rounded-full py-4 px-8 text-white placeholder-slate-500 focus:outline-none focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37]/50 transition-colors text-sm font-light">
-                <div class="absolute right-6 top-1/2 -translate-y-1/2 text-[#d4af37]/60">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
+            <!-- Luxury Integrated Search & Category Filter Bar -->
+            <div class="max-w-4xl mx-auto mb-16 px-2">
+                <div class="relative flex items-center bg-gradient-to-r from-[#0f131a]/95 via-[#151a24]/95 to-[#0f131a]/95 backdrop-blur-xl border border-[#d4af37]/35 rounded-full shadow-[0_0_30px_rgba(212,175,55,0.1)] focus-within:border-[#d4af37] focus-within:shadow-[0_0_35px_rgba(212,175,55,0.2)] hover:border-[#d4af37]/50 transition-all duration-500 p-2 pl-6">
+                    
+                    <!-- Search Icon (Left) -->
+                    <div class="flex items-center justify-center w-8 h-8 rounded-full bg-[#d4af37]/10 text-[#d4af37] shrink-0 mr-3 shadow-[inset_0_0_10px_rgba(212,175,55,0.2)]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+
+                    <!-- Search Input (Center) -->
+                    <input type="text" id="bookSearch" placeholder="Search by title, author, or category..." class="w-full bg-transparent text-white placeholder-slate-400 focus:outline-none focus:ring-0 border-none outline-none text-sm font-light py-2">
+
+                    <!-- Filter Badge Pill (Right Inside Bar) -->
+                    <div class="relative shrink-0 flex items-center ml-2">
+                        <div class="flex items-center gap-2 bg-[#181f2c] border border-[#d4af37]/40 hover:border-[#d4af37] hover:bg-[#1e2738] transition-all duration-300 rounded-full px-4 py-2 shadow-sm relative group cursor-pointer">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-[#d4af37] shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                            </svg>
+                            <select id="categoryFilter" class="bg-transparent text-slate-200 font-medium text-xs border-none outline-none focus:outline-none focus:ring-0 cursor-pointer pr-5 appearance-none">
+                                <option value="all" class="bg-[#0f131a] text-slate-200">All Categories</option>
+                                @foreach ($categories as $cat)
+                                    <option value="{{ strtolower($cat) }}" class="bg-[#0f131a] text-slate-200">{{ $cat }}</option>
+                                @endforeach
+                            </select>
+                            <div class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[#d4af37]">
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -255,7 +291,7 @@
 
                         <div class="book-3d">
                             <div class="book-face book-front">
-                                <img src="/images/{{ $book['image'] }}" alt="{{ $book['title'] }}" class="w-full h-full object-cover">
+                                <img src="{{ (str_starts_with($book['image'], '/') || str_starts_with($book['image'], 'http')) ? $book['image'] : '/images/' . $book['image'] }}" alt="{{ $book['title'] }}" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-white/10 pointer-events-none"></div>
                             </div>
                             <div class="book-face book-back"></div>
@@ -364,6 +400,8 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const searchInput = document.getElementById('bookSearch');
+            const categorySelect = document.getElementById('categoryFilter');
+            const categoryPills = document.querySelectorAll('.category-pill');
             const bookCards = Array.from(document.querySelectorAll('#booksGrid > .group'));
             const noResults = document.getElementById('noResults');
             
@@ -374,6 +412,7 @@
 
             let currentPage = 1;
             const itemsPerPage = 12;
+            let selectedCategory = 'all';
             let filteredCards = [...bookCards];
 
             function renderPagination() {
@@ -406,6 +445,59 @@
                 }
             }
 
+            function filterBooks() {
+                const term = (searchInput ? searchInput.value : '').toLowerCase().trim();
+
+                filteredCards = bookCards.filter(card => {
+                    const title = (card.getAttribute('data-title') || '').toLowerCase();
+                    const author = (card.getAttribute('data-author') || '').toLowerCase();
+                    const category = (card.getAttribute('data-category') || '').toLowerCase();
+
+                    const matchesSearch = !term || title.includes(term) || author.includes(term) || category.includes(term);
+                    const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+
+                    return matchesSearch && matchesCategory;
+                });
+
+                currentPage = 1;
+                renderPagination();
+            }
+
+            if (searchInput) {
+                searchInput.addEventListener('input', filterBooks);
+            }
+
+            if (categorySelect) {
+                categorySelect.addEventListener('change', function(e) {
+                    selectedCategory = e.target.value;
+                    updatePillUI(selectedCategory);
+                    filterBooks();
+                });
+            }
+
+            categoryPills.forEach(pill => {
+                pill.addEventListener('click', function() {
+                    selectedCategory = this.getAttribute('data-category');
+                    if (categorySelect) {
+                        categorySelect.value = selectedCategory;
+                    }
+                    updatePillUI(selectedCategory);
+                    filterBooks();
+                });
+            });
+
+            function updatePillUI(cat) {
+                categoryPills.forEach(p => {
+                    if (p.getAttribute('data-category') === cat) {
+                        p.classList.add('bg-[#d4af37]', 'text-[#0a0d14]', 'active-pill');
+                        p.classList.remove('bg-[#0f131a]', 'text-slate-300', 'border', 'border-white/10');
+                    } else {
+                        p.classList.remove('bg-[#d4af37]', 'text-[#0a0d14]', 'active-pill');
+                        p.classList.add('bg-[#0f131a]', 'text-slate-300', 'border', 'border-white/10');
+                    }
+                });
+            }
+
             prevBtn.addEventListener('click', () => {
                 if (currentPage > 1) {
                     currentPage--;
@@ -423,22 +515,8 @@
                 }
             });
 
-            searchInput.addEventListener('input', function(e) {
-                const term = e.target.value.toLowerCase();
-                
-                filteredCards = bookCards.filter(card => {
-                    const title = (card.getAttribute('data-title') || '').toLowerCase();
-                    const author = (card.getAttribute('data-author') || '').toLowerCase();
-                    const category = (card.getAttribute('data-category') || '').toLowerCase();
-                    return title.includes(term) || author.includes(term) || category.includes(term);
-                });
-
-                currentPage = 1; // Reset to page 1 on search
-                renderPagination();
-            });
-
-            // Initial render
-            renderPagination();
+            // Initial filter & render
+            filterBooks();
 
             // Modal Logic
             const modal = document.getElementById('bookModal');
@@ -479,17 +557,23 @@
                 const spineImage = card.getAttribute('data-spine-image');
                 fullDescription = card.getAttribute('data-description') || '';
 
+                const resolveImgSrc = (src) => {
+                    if (!src) return '';
+                    if (src.startsWith('/') || src.startsWith('http')) return src;
+                    return `/images/${src}`;
+                };
+
                 modalTitle.textContent = title;
                 modalAuthor.textContent = `By ${author}`;
                 modalCategory.textContent = category;
-                modalPrice.textContent = `${price}`;
-                modalImage.src = `/images/${image}`;
+                modalPrice.textContent = price.includes('$') ? price : `$${price}`;
+                modalImage.src = resolveImgSrc(image);
                 
                 const modalBackImage = document.getElementById('modalBackImage');
                 const modalSpineImage = document.getElementById('modalSpineImage');
                 const modalSpineTitle = document.getElementById('modalSpineTitle');
-                if (modalBackImage) modalBackImage.src = `/images/${backImage}`;
-                if (modalSpineImage) modalSpineImage.src = `/images/${spineImage}`;
+                if (modalBackImage) modalBackImage.src = resolveImgSrc(backImage);
+                if (modalSpineImage) modalSpineImage.src = resolveImgSrc(spineImage);
                 if (modalSpineTitle) modalSpineTitle.textContent = title;
                 
                 const words = fullDescription.split(' ');

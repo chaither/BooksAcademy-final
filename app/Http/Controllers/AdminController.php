@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BookstoreBook;
 use App\Models\PublishedBook;
 use App\Models\RoyaltyReport;
 use App\Models\User;
@@ -19,11 +20,13 @@ class AdminController extends Controller
         $currentUser = auth()->user();
 
         if ($currentUser->is_admin) {
-            // Admin sees all regular users
+            // Admin sees all regular users and bookstore books
             $users = User::with(['royaltyReports', 'publishedBooks'])->where('is_admin', false)->latest()->get();
+            $bookstoreBooks = BookstoreBook::latest()->get();
 
             return view('dashboard', [
                 'users' => $users,
+                'bookstoreBooks' => $bookstoreBooks,
                 'isAdmin' => true,
             ]);
         }
@@ -237,5 +240,75 @@ class AdminController extends Controller
         $royaltyReport->delete();
 
         return redirect()->route('dashboard')->with('status', 'report-deleted');
+    }
+
+    /**
+     * Store a new book in the Bookstore catalog.
+     */
+    public function storeBookstoreBook(Request $request)
+    {
+        if (! auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'author' => ['required', 'string', 'max:255'],
+            'category' => ['nullable', 'string', 'max:255'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'description' => ['nullable', 'string'],
+            'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
+            'back_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
+            'spine_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
+        ]);
+
+        $imagePath = $request->file('image')->store('bookstore-books', 'public');
+
+        $backImagePath = null;
+        if ($request->hasFile('back_image')) {
+            $backImagePath = $request->file('back_image')->store('bookstore-books', 'public');
+        }
+
+        $spineImagePath = null;
+        if ($request->hasFile('spine_image')) {
+            $spineImagePath = $request->file('spine_image')->store('bookstore-books', 'public');
+        }
+
+        BookstoreBook::create([
+            'title' => $request->title,
+            'author' => $request->author,
+            'category' => $request->category ?: 'General',
+            'price' => $request->price,
+            'description' => $request->description,
+            'image' => $imagePath,
+            'back_image' => $backImagePath,
+            'spine_image' => $spineImagePath,
+        ]);
+
+        return redirect()->route('dashboard')->with('status', 'bookstore-book-added');
+    }
+
+    /**
+     * Delete a book from the Bookstore catalog.
+     */
+    public function deleteBookstoreBook(BookstoreBook $book)
+    {
+        if (! auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        if ($book->image) {
+            Storage::disk('public')->delete($book->image);
+        }
+        if ($book->back_image) {
+            Storage::disk('public')->delete($book->back_image);
+        }
+        if ($book->spine_image) {
+            Storage::disk('public')->delete($book->spine_image);
+        }
+
+        $book->delete();
+
+        return redirect()->route('dashboard')->with('status', 'bookstore-book-deleted');
     }
 }

@@ -14,6 +14,11 @@
                 <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" /></svg>
                 New Author
             </button>
+
+            <button @click="currentTab = 'bookstore-books'" :class="currentTab === 'bookstore-books' ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 font-bold' : 'text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-900'" class="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-colors text-left focus:outline-none">
+                <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                Bookstore Books
+            </button>
         </div>
     </div>
 
@@ -287,6 +292,128 @@
                         Create Account
                     </button>
                 </form>
+            </div>
+        </div>
+
+        <!-- ================= BOOKSTORE BOOKS TAB ================= -->
+        <div x-show="currentTab === 'bookstore-books'" style="display: none;">
+            <div class="space-y-8">
+                <!-- Add Bookstore Book Form -->
+                <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm space-y-4">
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white">Add Bookstore Book</h3>
+                        <p class="text-xs text-slate-400">Add a new book to the public Bookstore catalog along with its cover image.</p>
+                    </div>
+
+                    <form method="POST" action="{{ route('admin.bookstore-books.store') }}" enctype="multipart/form-data" class="space-y-4 pt-2">
+                        @csrf
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Book Title *</label>
+                                <input type="text" name="title" required placeholder="e.g. The Art of Coding" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:border-blue-600 focus:outline-none text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Author Name *</label>
+                                <input type="text" name="author" required placeholder="e.g. John Smith" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:border-blue-600 focus:outline-none text-xs">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Category</label>
+                                <input type="text" name="category" placeholder="e.g. Technology, Fiction, Business" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:border-blue-600 focus:outline-none text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Price ($) *</label>
+                                <input type="number" step="0.01" min="0" name="price" required placeholder="19.99" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:border-blue-600 focus:outline-none text-xs">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Book Description</label>
+                            <textarea name="description" rows="3" placeholder="Enter a detailed description of the book..." class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:border-blue-600 focus:outline-none text-xs resize-none"></textarea>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Front Cover Image *</label>
+                                <input type="file" name="image" required accept="image/*" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Back Cover Image (Optional)</label>
+                                <input type="file" name="back_image" accept="image/*" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Spine Image (Optional)</label>
+                                <input type="file" name="spine_image" accept="image/*" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                            </div>
+                        </div>
+
+                        <button type="submit" class="px-6 py-2.5 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-colors">
+                            Publish to Bookstore
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Existing Bookstore Books List -->
+                <div class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm">
+                    <div class="p-6 border-b border-slate-200 dark:border-slate-800">
+                        <h3 class="text-base font-bold text-slate-900 dark:text-white">Published Bookstore Books</h3>
+                        <p class="text-xs text-slate-400">Books currently in the database catalog.</p>
+                    </div>
+
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 font-bold uppercase border-b border-slate-200 dark:border-slate-800">
+                                    <th class="p-4">Cover</th>
+                                    <th class="p-4">Book Details</th>
+                                    <th class="p-4">Category</th>
+                                    <th class="p-4">Price</th>
+                                    <th class="p-4 text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100 dark:divide-slate-900">
+                                @forelse ($bookstoreBooks as $b)
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-900/50 transition-colors">
+                                        <td class="p-4">
+                                            @if($b->image)
+                                                <img src="{{ asset('storage/' . $b->image) }}" class="w-12 h-16 object-cover rounded shadow-sm">
+                                            @else
+                                                <div class="w-12 h-16 bg-slate-100 dark:bg-slate-800 rounded flex items-center justify-center text-slate-400">No Image</div>
+                                            @endif
+                                        </td>
+                                        <td class="p-4">
+                                            <div class="font-bold text-slate-900 dark:text-white">{{ $b->title }}</div>
+                                            <div class="text-[10px] text-slate-400 mt-0.5">By {{ $b->author }}</div>
+                                        </td>
+                                        <td class="p-4">
+                                            <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                                                {{ $b->category }}
+                                            </span>
+                                        </td>
+                                        <td class="p-4 font-bold text-slate-900 dark:text-white">
+                                            ${{ number_format($b->price, 2) }}
+                                        </td>
+                                        <td class="p-4 text-right">
+                                            <form method="POST" action="{{ route('admin.bookstore-books.delete', $b->id) }}" onsubmit="return confirm('Are you sure you want to delete this book from the bookstore catalog?');">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="px-2.5 py-1.5 rounded border border-transparent hover:border-red-200 dark:hover:border-red-900/35 hover:bg-red-50 dark:hover:bg-red-950/20 text-[10px] font-bold text-red-500 transition-colors">
+                                                    Delete
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <tr>
+                                        <td colspan="5" class="p-6 text-center text-slate-400 italic">No bookstore books added yet. Fill out the form above to add your first book.</td>
+                                    </tr>
+                                @endforelse
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
