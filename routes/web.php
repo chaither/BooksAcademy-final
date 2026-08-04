@@ -51,6 +51,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // Bookstore Catalog Admin Routes
     Route::post('/admin/bookstore-books', [AdminController::class, 'storeBookstoreBook'])->name('admin.bookstore-books.store');
+    Route::put('/admin/bookstore-books/{book}', [AdminController::class, 'updateBookstoreBook'])->name('admin.bookstore-books.update');
     Route::delete('/admin/bookstore-books/{book}', [AdminController::class, 'deleteBookstoreBook'])->name('admin.bookstore-books.delete');
 });
 

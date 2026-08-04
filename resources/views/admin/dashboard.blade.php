@@ -318,7 +318,7 @@
                             </div>
                         </div>
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                             <div>
                                 <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Category</label>
                                 <input type="text" name="category" placeholder="e.g. Technology, Fiction, Business" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:border-blue-600 focus:outline-none text-xs">
@@ -326,6 +326,10 @@
                             <div>
                                 <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Price ($) *</label>
                                 <input type="number" step="0.01" min="0" name="price" required placeholder="19.99" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:border-blue-600 focus:outline-none text-xs">
+                            </div>
+                            <div>
+                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1.5">Buy / Payment URL (Optional)</label>
+                                <input type="url" name="buy_url" placeholder="https://checkout.stripe.com/... or paypal link" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white placeholder-slate-400 focus:border-blue-600 focus:outline-none text-xs">
                             </div>
                         </div>
 
@@ -386,6 +390,12 @@
                                         <td class="p-4">
                                             <div class="font-bold text-slate-900 dark:text-white">{{ $b->title }}</div>
                                             <div class="text-[10px] text-slate-400 mt-0.5">By {{ $b->author }}</div>
+                                            @if($b->buy_url)
+                                                <a href="{{ $b->buy_url }}" target="_blank" class="text-[10px] text-blue-500 hover:underline flex items-center gap-1 mt-1">
+                                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" /></svg>
+                                                    Payment Link
+                                                </a>
+                                            @endif
                                         </td>
                                         <td class="p-4">
                                             <span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
@@ -395,14 +405,89 @@
                                         <td class="p-4 font-bold text-slate-900 dark:text-white">
                                             ${{ number_format($b->price, 2) }}
                                         </td>
-                                        <td class="p-4 text-right">
-                                            <form method="POST" action="{{ route('admin.bookstore-books.delete', $b->id) }}" onsubmit="return confirm('Are you sure you want to delete this book from the bookstore catalog?');">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="px-2.5 py-1.5 rounded border border-transparent hover:border-red-200 dark:hover:border-red-900/35 hover:bg-red-50 dark:hover:bg-red-950/20 text-[10px] font-bold text-red-500 transition-colors">
-                                                    Delete
+                                        <td class="p-4 text-right" x-data="{ openEdit: false }">
+                                            <div class="flex items-center justify-end gap-2">
+                                                <button type="button" @click="openEdit = true" class="px-2.5 py-1.5 rounded border border-slate-200 dark:border-slate-800 hover:border-blue-500 hover:bg-blue-50 dark:hover:bg-blue-950/20 text-[10px] font-bold text-blue-600 dark:text-blue-400 transition-colors">
+                                                    Edit
                                                 </button>
-                                            </form>
+                                                <form method="POST" action="{{ route('admin.bookstore-books.delete', $b->id) }}" onsubmit="return confirm('Are you sure you want to delete this book from the bookstore catalog?');">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="px-2.5 py-1.5 rounded border border-transparent hover:border-red-200 dark:hover:border-red-900/35 hover:bg-red-50 dark:hover:bg-red-950/20 text-[10px] font-bold text-red-500 transition-colors">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+
+                                            <!-- Edit Book Modal -->
+                                            <div x-show="openEdit" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm text-left" style="display: none;">
+                                                <div @click.away="openEdit = false" class="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto p-6 space-y-4">
+                                                    <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-900 pb-3">
+                                                        <h4 class="text-sm font-bold text-slate-900 dark:text-white">Edit Bookstore Book #{{ $b->id }}</h4>
+                                                        <button type="button" @click="openEdit = false" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 text-sm font-bold">&times;</button>
+                                                    </div>
+
+                                                    <form method="POST" action="{{ route('admin.bookstore-books.update', $b->id) }}" enctype="multipart/form-data" class="space-y-4 text-xs">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        
+                                                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                            <div>
+                                                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Book Title *</label>
+                                                                <input type="text" name="title" value="{{ $b->title }}" required class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs">
+                                                            </div>
+                                                            <div>
+                                                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Author Name *</label>
+                                                                <input type="text" name="author" value="{{ $b->author }}" required class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                                                            <div>
+                                                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Category</label>
+                                                                <input type="text" name="category" value="{{ $b->category }}" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs">
+                                                            </div>
+                                                            <div>
+                                                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Price ($) *</label>
+                                                                <input type="number" step="0.01" min="0" name="price" value="{{ $b->price }}" required class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs">
+                                                            </div>
+                                                            <div>
+                                                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Buy / Payment URL</label>
+                                                                <input type="url" name="buy_url" value="{{ $b->buy_url }}" placeholder="https://..." class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs">
+                                                            </div>
+                                                        </div>
+
+                                                        <div>
+                                                            <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Book Description</label>
+                                                            <textarea name="description" rows="3" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs resize-none">{{ $b->description }}</textarea>
+                                                        </div>
+
+                                                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-slate-100 dark:border-slate-900 pt-3">
+                                                            <div>
+                                                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Change Front Cover</label>
+                                                                <input type="file" name="image" accept="image/*" class="w-full text-xs">
+                                                            </div>
+                                                            <div>
+                                                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Change Back Cover</label>
+                                                                <input type="file" name="back_image" accept="image/*" class="w-full text-xs">
+                                                            </div>
+                                                            <div>
+                                                                <label class="block text-[10px] uppercase font-bold text-slate-400 mb-1">Change Spine Image</label>
+                                                                <input type="file" name="spine_image" accept="image/*" class="w-full text-xs">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="flex items-center justify-end gap-2 pt-2 border-t border-slate-100 dark:border-slate-900">
+                                                            <button type="button" @click="openEdit = false" class="px-4 py-2 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 font-bold text-xs">
+                                                                Cancel
+                                                            </button>
+                                                            <button type="submit" class="px-4 py-2 rounded bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs transition-colors">
+                                                                Save Changes
+                                                            </button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
                                         </td>
                                     </tr>
                                 @empty

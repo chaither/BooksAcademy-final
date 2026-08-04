@@ -11,6 +11,7 @@ class BookstoreBook extends Model
         'author',
         'category',
         'price',
+        'buy_url',
         'description',
         'image',
         'back_image',

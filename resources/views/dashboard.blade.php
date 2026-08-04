@@ -39,6 +39,11 @@
                     ✓ Bookstore book removed successfully.
                 </div>
             @endif
+            @if (session('status') == 'bookstore-book-updated')
+                <div class="p-4 rounded-lg bg-blue-50 dark:bg-blue-900/10 border border-blue-200 dark:border-blue-800/30 text-blue-600 dark:text-blue-400 text-xs font-semibold">
+                    ✓ Bookstore book details updated successfully!
+                </div>
+            @endif
 
             @if ($isAdmin)
                 <!-- ================= ADMIN DASHBOARD ================= -->

@@ -13,15 +13,20 @@
     if (isset($dbBooks) && count($dbBooks) > 0) {
         foreach ($dbBooks as $b) {
             $cat = trim($b->category) ?: 'General';
+            $imgUrl = (str_starts_with($b->image, '/') || str_starts_with($b->image, 'http')) ? $b->image : asset('storage/' . $b->image);
+            $backImgUrl = $b->back_image ? ((str_starts_with($b->back_image, '/') || str_starts_with($b->back_image, 'http')) ? $b->back_image : asset('storage/' . $b->back_image)) : $imgUrl;
+            $spineImgUrl = $b->spine_image ? ((str_starts_with($b->spine_image, '/') || str_starts_with($b->spine_image, 'http')) ? $b->spine_image : asset('storage/' . $b->spine_image)) : $imgUrl;
+
             $books[] = [
                 'id' => 'db-' . $b->id,
-                'image' => asset('storage/' . $b->image),
-                'back_image' => $b->back_image ? asset('storage/' . $b->back_image) : asset('storage/' . $b->image),
-                'spine_image' => $b->spine_image ? asset('storage/' . $b->spine_image) : asset('storage/' . $b->image),
+                'image' => $imgUrl,
+                'back_image' => $backImgUrl,
+                'spine_image' => $spineImgUrl,
                 'title' => $b->title,
                 'author' => $b->author,
                 'category' => $cat,
                 'price' => number_format($b->price, 2),
+                'buy_url' => $b->buy_url ?: '#',
                 'description' => $b->description ?: 'Dive into the contents of this excellent book, perfectly tailored for enhancing your skills and broadening your horizons. This comprehensive guide covers everything you need to know, starting from the very basics and moving all the way up to advanced topics.',
             ];
             if (!in_array($cat, $categories)) {
@@ -281,7 +286,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10" id="booksGrid">
                 @foreach ($books as $book)
                 <!-- Book Card {{ $book['id'] }} -->
-                <div class="group flex flex-col bg-[#0f131a] border border-white/5 rounded-2xl transition-all duration-500 hover:border-[#d4af37]/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] relative book-card cursor-pointer" data-title="{{ $book['title'] }}" data-author="{{ $book['author'] }}" data-category="{{ $book['category'] }}" data-price="{{ $book['price'] }}" data-image="{{ $book['image'] }}" data-back-image="{{ $book['back_image'] ?? $book['image'] }}" data-spine-image="{{ $book['spine_image'] ?? $book['image'] }}" data-description="{{ $book['description'] ?? '' }}">
+                <div class="group flex flex-col bg-[#0f131a] border border-white/5 rounded-2xl transition-all duration-500 hover:border-[#d4af37]/40 hover:shadow-[0_0_30px_rgba(212,175,55,0.1)] relative book-card cursor-pointer" data-title="{{ $book['title'] }}" data-author="{{ $book['author'] }}" data-category="{{ $book['category'] }}" data-price="{{ $book['price'] }}" data-buy-url="{{ $book['buy_url'] }}" data-image="{{ $book['image'] }}" data-back-image="{{ $book['back_image'] ?? $book['image'] }}" data-spine-image="{{ $book['spine_image'] ?? $book['image'] }}" data-description="{{ $book['description'] ?? '' }}">
                     <div class="relative flex justify-center items-center h-[340px] bg-gradient-to-b from-[#151a24] to-[#0f131a] rounded-t-2xl book-wrapper">
                         <div class="absolute bottom-10 w-48 h-12 z-0">
                             <div class="absolute inset-0 bg-[#d4af37] rounded-[50%] blur-xl opacity-20 transform scale-y-50 translate-y-2"></div>
@@ -291,7 +296,7 @@
 
                         <div class="book-3d">
                             <div class="book-face book-front">
-                                <img src="{{ (str_starts_with($book['image'], '/') || str_starts_with($book['image'], 'http')) ? $book['image'] : '/images/' . $book['image'] }}" alt="{{ $book['title'] }}" class="w-full h-full object-cover">
+                                <img src="{{ $book['image'] }}" alt="{{ $book['title'] }}" onerror="this.onerror=null; this.src='/images/S-3.png';" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-white/10 pointer-events-none"></div>
                             </div>
                             <div class="book-face book-back"></div>
@@ -348,15 +353,15 @@
                     <div class="w-full sm:w-1/2 flex justify-center items-center modal-book-wrapper py-8 overflow-visible">
                         <div class="modal-book-3d">
                             <div class="modal-book-face modal-book-front">
-                                <img id="modalImage" src="" alt="Book Cover" class="w-full h-full object-cover">
+                                <img id="modalImage" src="" alt="Book Cover" onerror="this.onerror=null; this.src='/images/S-3.png';" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-white/10 pointer-events-none"></div>
                             </div>
                             <div class="modal-book-face modal-book-back">
-                                <img id="modalBackImage" src="" alt="Book Back Cover" class="w-full h-full object-cover">
+                                <img id="modalBackImage" src="" alt="Book Back Cover" onerror="this.onerror=null; this.src='/images/S-3.png';" class="w-full h-full object-cover">
                                 <div class="absolute inset-0 bg-gradient-to-tr from-black/30 via-transparent to-white/10 pointer-events-none"></div>
                             </div>
                             <div class="modal-book-face modal-book-spine overflow-hidden">
-                                <img id="modalSpineImage" src="" alt="Book Spine" class="absolute inset-0 w-full h-full object-fill">
+                                <img id="modalSpineImage" src="" alt="Book Spine" onerror="this.onerror=null; this.src='/images/S-3.png';" class="absolute inset-0 w-full h-full object-fill">
                                 <div class="absolute inset-0 bg-black/40 pointer-events-none"></div>
                                 <span id="modalSpineTitle" class="relative z-10 text-[10px] text-white tracking-[0.3em] uppercase -rotate-90 whitespace-nowrap drop-shadow-md">Book Title</span>
                             </div>
@@ -381,15 +386,12 @@
                         </div>
                         
                         <div class="flex flex-col gap-3">
-                            <button class="w-full py-3 bg-[#d4af37] hover:bg-[#b5952f] text-[#0a0d14] font-semibold rounded-full transition-colors flex items-center justify-center gap-2">
+                            <a id="modalBuyLink" href="#" target="_blank" rel="noopener noreferrer" class="w-full py-3 bg-[#d4af37] hover:bg-[#b5952f] text-[#0a0d14] font-semibold rounded-full transition-all flex items-center justify-center gap-2 shadow-lg hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                                 </svg>
-                                Add to Cart
-                            </button>
-                            <button class="w-full py-3 border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/10 font-semibold rounded-full transition-colors">
                                 Buy Now
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -560,7 +562,7 @@
                 const resolveImgSrc = (src) => {
                     if (!src) return '';
                     if (src.startsWith('/') || src.startsWith('http')) return src;
-                    return `/images/${src}`;
+                    return `/storage/${src}`;
                 };
 
                 modalTitle.textContent = title;
@@ -576,6 +578,23 @@
                 if (modalSpineImage) modalSpineImage.src = resolveImgSrc(spineImage);
                 if (modalSpineTitle) modalSpineTitle.textContent = title;
                 
+                const buyUrl = card.getAttribute('data-buy-url');
+                const modalBuyLink = document.getElementById('modalBuyLink');
+                if (modalBuyLink) {
+                    if (buyUrl && buyUrl !== '#') {
+                        modalBuyLink.href = buyUrl;
+                        modalBuyLink.target = "_blank";
+                        modalBuyLink.onclick = null;
+                    } else {
+                        modalBuyLink.href = "javascript:void(0);";
+                        modalBuyLink.removeAttribute('target');
+                        modalBuyLink.onclick = function(e) {
+                            e.preventDefault();
+                            alert("Payment link for '" + title + "' will be configured soon by the admin.");
+                        };
+                    }
+                }
+
                 const words = fullDescription.split(' ');
                 if (words.length > 100) {
                     isExpanded = false;

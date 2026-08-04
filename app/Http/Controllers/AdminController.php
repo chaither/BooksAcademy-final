@@ -256,6 +256,7 @@ class AdminController extends Controller
             'author' => ['required', 'string', 'max:255'],
             'category' => ['nullable', 'string', 'max:255'],
             'price' => ['required', 'numeric', 'min:0'],
+            'buy_url' => ['nullable', 'string', 'max:500'],
             'description' => ['nullable', 'string'],
             'image' => ['required', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
             'back_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
@@ -279,6 +280,7 @@ class AdminController extends Controller
             'author' => $request->author,
             'category' => $request->category ?: 'General',
             'price' => $request->price,
+            'buy_url' => $request->buy_url,
             'description' => $request->description,
             'image' => $imagePath,
             'back_image' => $backImagePath,
@@ -310,5 +312,61 @@ class AdminController extends Controller
         $book->delete();
 
         return redirect()->route('dashboard')->with('status', 'bookstore-book-deleted');
+    }
+
+    /**
+     * Update an existing book in the Bookstore catalog.
+     */
+    public function updateBookstoreBook(Request $request, BookstoreBook $book)
+    {
+        if (! auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'author' => ['required', 'string', 'max:255'],
+            'category' => ['nullable', 'string', 'max:255'],
+            'price' => ['required', 'numeric', 'min:0'],
+            'buy_url' => ['nullable', 'string', 'max:500'],
+            'description' => ['nullable', 'string'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
+            'back_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
+            'spine_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'],
+        ]);
+
+        $data = [
+            'title' => $request->title,
+            'author' => $request->author,
+            'category' => $request->category ?: 'General',
+            'price' => $request->price,
+            'buy_url' => $request->buy_url,
+            'description' => $request->description,
+        ];
+
+        if ($request->hasFile('image')) {
+            if ($book->image) {
+                Storage::disk('public')->delete($book->image);
+            }
+            $data['image'] = $request->file('image')->store('bookstore-books', 'public');
+        }
+
+        if ($request->hasFile('back_image')) {
+            if ($book->back_image) {
+                Storage::disk('public')->delete($book->back_image);
+            }
+            $data['back_image'] = $request->file('back_image')->store('bookstore-books', 'public');
+        }
+
+        if ($request->hasFile('spine_image')) {
+            if ($book->spine_image) {
+                Storage::disk('public')->delete($book->spine_image);
+            }
+            $data['spine_image'] = $request->file('spine_image')->store('bookstore-books', 'public');
+        }
+
+        $book->update($data);
+
+        return redirect()->route('dashboard')->with('status', 'bookstore-book-updated');
     }
 }
