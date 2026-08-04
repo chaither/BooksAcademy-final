@@ -268,27 +268,72 @@
             children: {
                 title: "Children's Book Publishing Package",
                 desc: "Perfect square and landscape sizes designed for nursery books, containing storyboard coordinates, proof checks, softcover prints, and artwork allocations.",
-                points: ["Custom artist spreads", "Square size paper formats", "High-density color checks", "Paperback and hardcover options"]
+                badgeSub: "MADE FOR",
+                badgeMain: "YOUNG READERS",
+                image: "{{ asset('images/service_children.png') }}",
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>`,
+                points: [
+                    "Custom artist spreads",
+                    "Square size paper formats",
+                    "High-density color checks",
+                    "Paperback and hardcover options"
+                ]
             },
             bw: {
                 title: "Black & White Publishing Package",
                 desc: "Classic layout design crafted for memoirs, poetry, novels, and non-fiction. Features fine cream paper stock and elegant serif typeset grids.",
-                points: ["Standard novel layout", "Copy-editor reviews", "eBook format conversions", "Worldwide distribution registries"]
+                badgeSub: "CRAFTED FOR",
+                badgeMain: "MEMOIR & NOVELS",
+                image: "{{ asset('images/service_bw.png') }}",
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>`,
+                points: [
+                    "Standard novel layout",
+                    "Copy-editor reviews",
+                    "eBook format conversions",
+                    "Worldwide distribution registries"
+                ]
             },
             color: {
                 title: "Full Color Publishing Package",
-                desc: "Ideal layout choice for cookbooks, travel collections, and graphic novels. Crisp, glossy covers alongside premium heavy-coated paper.",
-                points: ["Coated paper stocks", "High-res color profiling", "Dustjacket options", "Artist layout proofing"]
+                desc: "Ideal layout choice for cookbooks, travel collections, art catalogs, and graphic novels. Crisp, glossy covers alongside premium heavy-coated paper.",
+                badgeSub: "VIBRANT",
+                badgeMain: "HIGH-RES ARTWORK",
+                image: "{{ asset('images/service_color.png') }}",
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" /></svg>`,
+                points: [
+                    "Coated paper stocks",
+                    "High-res color profiling",
+                    "Dustjacket options",
+                    "Artist layout proofing"
+                ]
             },
             marketing: {
                 title: "Author Marketing Campaign Package",
-                desc: "Launch campaigns to build immediate reader attention. Targeted media press releases, social assets, and Amazon keyword search optimization.",
-                points: ["Social media campaign assets", "Global press releases wiring", "SEO search listings", "Wholesale bookstore requests"]
+                desc: "Launch campaigns designed to generate immediate reader interest. Targeted press releases, custom social assets, and Amazon keyword search optimization.",
+                badgeSub: "MAXIMIZE",
+                badgeMain: "BESTSELLER REACH",
+                image: "{{ asset('images/service_marketing.png') }}",
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z" /></svg>`,
+                points: [
+                    "Social media campaign assets",
+                    "Global press releases wiring",
+                    "SEO search listings",
+                    "Wholesale bookstore requests"
+                ]
             },
             addons: {
                 title: "Premium Publishing Add-ons",
-                desc: "Optional configurations to secure additional rights, complete catalog registrations, record audiobook casts, or translate manuscripts.",
-                points: ["Library of Congress filing", "ISBN allocation", "Audiobook recording setups", "Global translations index"]
+                desc: "Optional configurations to secure additional rights, complete catalog registrations, record professional audiobook casts, or translate manuscripts.",
+                badgeSub: "EXCLUSIVE",
+                badgeMain: "VIP ADD-ONS",
+                image: "{{ asset('images/service_addons.png') }}",
+                iconSvg: `<svg xmlns="http://www.w3.org/2000/svg" class="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>`,
+                points: [
+                    "Library of Congress filing",
+                    "ISBN allocation",
+                    "Audiobook recording setups",
+                    "Global translations index"
+                ]
             }
         };
 
@@ -299,39 +344,63 @@
         function selectServiceCard(serviceId) {
             const buttons = document.querySelectorAll('#services-selector button');
             const data = servicesData[serviceId];
+            if (!data) return;
 
             // Update tab buttons styles
             buttons.forEach(btn => {
                 if (btn.id === `btn-srv-${serviceId}`) {
-                    btn.className = "px-5 py-2.5 rounded-full text-xs font-medium uppercase tracking-wider border border-[#C4A052] bg-[#C4A052] text-[#0a0502] hover:shadow-[0_0_15px_rgba(196,160,82,0.3)] transition-all";
+                    btn.className = "px-5 py-3 rounded-2xl text-xs sm:text-sm font-semibold tracking-wide border border-red-600 bg-red-600 text-white shadow-[0_0_20px_rgba(220,38,38,0.4)] transition-all flex items-center gap-2";
                 } else {
-                    btn.className = "px-5 py-2.5 rounded-full text-xs font-medium uppercase tracking-wider border border-white/10 text-slate-300 hover:border-[#C4A052] hover:text-[#C4A052] transition-all";
+                    btn.className = "px-5 py-3 rounded-2xl text-xs sm:text-sm font-medium tracking-wide border border-white/10 bg-white/5 text-slate-300 hover:border-red-500/50 hover:text-white transition-all flex items-center gap-2";
                 }
             });
 
-            // Update detail card content
-            const container = document.getElementById('service-content-body');
-            if (!container) return;
+            // Container smooth fade animation
+            const showcase = document.getElementById('service-showcase-container');
+            if (showcase) {
+                showcase.style.opacity = '0.3';
+                showcase.style.transform = 'translateY(10px)';
+            }
 
-            let pointsList = '';
-            data.points.forEach(pt => {
-                pointsList += `<li class="flex items-center gap-2">
-                        <span class="text-[#C4A052] font-bold">✓</span>
-                        <span class="text-slate-300">${pt}</span>
-                    </li>`;
-            });
+            setTimeout(() => {
+                // Update Book Mockup Image
+                const imgEl = document.getElementById('service-book-image');
+                if (imgEl) imgEl.src = data.image;
 
-            container.innerHTML = `
-                    <h3 class="text-2xl font-serif font-bold text-white mb-2 drop-shadow-sm">${data.title}</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed mb-6">${data.desc}</p>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                        ${pointsList}
-                    </ul>
-                    <div class="pt-6 mt-6 flex items-center justify-between border-t border-white/10">
-                        <span class="text-xs text-slate-400 uppercase tracking-wider font-bold">Available globally</span>
-                        <a href="#contact-us" class="px-6 py-2.5 rounded-full bg-[#C4A052] hover:bg-[#d4b05e] text-[#0a0502] font-bold text-xs uppercase tracking-wider transition-colors shadow-[0_0_15px_rgba(196,160,82,0.2)]">Request Quote</a>
-                    </div>
-                `;
+                // Update Metallic Badge Text
+                const badgeSubEl = document.getElementById('service-badge-sub');
+                if (badgeSubEl) badgeSubEl.textContent = data.badgeSub;
+
+                const badgeMainEl = document.getElementById('service-badge-main');
+                if (badgeMainEl) badgeMainEl.textContent = data.badgeMain;
+
+                // Update Icon SVG
+                const iconBox = document.getElementById('service-icon-box');
+                if (iconBox) iconBox.innerHTML = data.iconSvg;
+
+                // Update Title & Description
+                const titleEl = document.getElementById('service-title');
+                if (titleEl) titleEl.textContent = data.title;
+
+                const descEl = document.getElementById('service-desc');
+                if (descEl) descEl.textContent = data.desc;
+
+                // Update Points List
+                const gridEl = document.getElementById('service-points-grid');
+                if (gridEl) {
+                    gridEl.innerHTML = data.points.map(pt => `
+                        <li class="flex items-center gap-2.5">
+                            <span class="w-5 h-5 rounded-full bg-red-100 text-red-600 flex items-center justify-center text-xs font-bold shrink-0">✓</span>
+                            <span>${pt}</span>
+                        </li>
+                    `).join('');
+                }
+
+                if (showcase) {
+                    showcase.style.opacity = '1';
+                    showcase.style.transform = 'translateY(0)';
+                }
+            }, 180);
         }
 
         // Logo Animation Logic
