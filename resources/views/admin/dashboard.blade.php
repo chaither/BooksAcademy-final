@@ -189,6 +189,115 @@
                                             
                                         </div>
                                         
+                                        <!-- Weekly Royalty & Book Sales Manager Section -->
+                                        <div x-data="adminRoyaltyManager({{ $u->id }}, {{ json_encode($u->weeklyRoyalties) }})" class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 space-y-4">
+                                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                                                <div>
+                                                    <h4 class="font-bold text-xs text-slate-900 dark:text-white flex items-center gap-2">
+                                                        <svg class="w-4 h-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                                        </svg>
+                                                        Weekly Royalty & Book Sales Manager
+                                                    </h4>
+                                                    <p class="text-[10px] text-slate-400">Select month/year to automatically compute weeks, enter sales & books sold per week, and view live totals.</p>
+                                                </div>
+
+                                                <div x-show="saveSuccess" x-transition class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
+                                                    ✓ Weekly Royalties Saved!
+                                                </div>
+                                            </div>
+
+                                            <!-- Month & Year Selector Controls + Live Monthly Totals Card -->
+                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-100/70 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                                                <div>
+                                                    <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1">Select Month</label>
+                                                    <select x-model="selectedMonth" @change="generateWeeks()" class="w-full px-3 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                                                        <option value="1">January</option>
+                                                        <option value="2">February</option>
+                                                        <option value="3">March</option>
+                                                        <option value="4">April</option>
+                                                        <option value="5">May</option>
+                                                        <option value="6">June</option>
+                                                        <option value="7">July</option>
+                                                        <option value="8">August</option>
+                                                        <option value="9">September</option>
+                                                        <option value="10">October</option>
+                                                        <option value="11">November</option>
+                                                        <option value="12">December</option>
+                                                    </select>
+                                                </div>
+                                                <div>
+                                                    <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1">Select Year</label>
+                                                    <select x-model="selectedYear" @change="generateWeeks()" class="w-full px-3 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                                                        <option value="2024">2024</option>
+                                                        <option value="2025">2025</option>
+                                                        <option value="2026">2026</option>
+                                                        <option value="2027">2027</option>
+                                                    </select>
+                                                </div>
+                                                <div class="md:col-span-2 flex items-center justify-between gap-4 border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-800 pt-2 md:pt-0 md:pl-4">
+                                                    <div>
+                                                        <div class="text-[9px] font-bold uppercase text-slate-400">Total Monthly Sales</div>
+                                                        <div class="text-sm font-black text-indigo-600 dark:text-indigo-400" x-text="'₱' + totalMonthlySales.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})">₱0.00</div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <div class="text-[9px] font-bold uppercase text-slate-400">Total Books Sold</div>
+                                                        <div class="text-sm font-black text-purple-600 dark:text-purple-400" x-text="totalMonthlyBooks + ' Copies'">0 Copies</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Weekly Inputs Table -->
+                                            <form @submit.prevent="saveWeeklyRoyalties()" class="space-y-3">
+                                                <div class="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
+                                                    <table class="w-full text-left text-xs border-collapse">
+                                                        <thead>
+                                                            <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 font-bold uppercase text-[9px] border-b border-slate-200 dark:border-slate-800">
+                                                                <th class="p-2.5">Week</th>
+                                                                <th class="p-2.5">Date Period</th>
+                                                                <th class="p-2.5 w-32">Books Sold</th>
+                                                                <th class="p-2.5 w-40">Total Sales / Royalty (₱)</th>
+                                                                <th class="p-2.5 w-36">Status</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                                            <template x-for="(week, index) in weeks" :key="index">
+                                                                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-900/80">
+                                                                    <td class="p-2.5 font-bold text-slate-900 dark:text-white" x-text="'Week ' + week.week_number"></td>
+                                                                    <td class="p-2.5 text-slate-500 dark:text-slate-400 font-medium" x-text="week.period_label"></td>
+                                                                    <td class="p-2.5">
+                                                                        <input type="number" min="0" x-model.number="week.books_sold" class="w-full px-2.5 py-1 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                                                                    </td>
+                                                                    <td class="p-2.5">
+                                                                        <div class="relative">
+                                                                            <span class="absolute left-2.5 top-1 text-slate-400 text-xs">₱</span>
+                                                                            <input type="number" step="0.01" min="0" x-model.number="week.royalty_amount" class="w-full pl-6 pr-2 py-1 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                                                                        </div>
+                                                                    </td>
+                                                                    <td class="p-2.5">
+                                                                        <select x-model="week.status" class="w-full px-2 py-1 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                                                                            <option value="Paid">Paid</option>
+                                                                            <option value="Processing">Processing</option>
+                                                                            <option value="Upcoming">Upcoming</option>
+                                                                        </select>
+                                                                    </td>
+                                                                </tr>
+                                                            </template>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+
+                                                <div class="flex items-center justify-end">
+                                                    <button type="submit" :disabled="saving" class="px-4 py-2 rounded bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 text-white font-bold text-[10px] transition-colors flex items-center gap-1.5 shadow-xs">
+                                                        <svg x-show="!saving" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                                                        </svg>
+                                                        <span x-text="saving ? 'Saving...' : 'Save Weekly Royalties & Book Sales'"></span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+
                                         <!-- Published Books Section -->
                                         <div class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800">
                                             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -504,3 +613,96 @@
 
     </div>
 </div>
+
+<script>
+function adminRoyaltyManager(userId, initialData) {
+    return {
+        userId: userId,
+        initialData: initialData || [],
+        selectedMonth: 5, // Default May
+        selectedYear: 2025,
+        weeks: [],
+        saving: false,
+        saveSuccess: false,
+
+        init() {
+            this.generateWeeks();
+        },
+
+        generateWeeks() {
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+            const year = parseInt(this.selectedYear);
+            const month = parseInt(this.selectedMonth);
+            
+            const daysInMonth = new Date(year, month, 0).getDate();
+            const weekCount = daysInMonth > 28 ? 5 : 4;
+            const monthShort = monthNames[month - 1].substring(0, 3);
+            
+            const newWeeks = [];
+            for (let i = 1; i <= weekCount; i++) {
+                let startDay = (i - 1) * 7 + 1;
+                let endDay = i === 5 ? daysInMonth : Math.min(i * 7, daysInMonth);
+                let label = `${monthShort} ${startDay} – ${monthShort} ${endDay}`;
+
+                // Check if existing saved record for this user, year, month, week_number
+                const existing = this.initialData.find(r => r.year == year && r.month == month && r.week_number == i);
+
+                newWeeks.push({
+                    week_number: i,
+                    period_label: label,
+                    books_sold: existing ? parseInt(existing.books_sold) : 0,
+                    royalty_amount: existing ? parseFloat(existing.royalty_amount) : 0.00,
+                    status: existing ? existing.status : (i === weekCount ? 'Upcoming' : 'Paid')
+                });
+            }
+            this.weeks = newWeeks;
+        },
+
+        get totalMonthlySales() {
+            return this.weeks.reduce((sum, w) => sum + (parseFloat(w.royalty_amount) || 0), 0);
+        },
+
+        get totalMonthlyBooks() {
+            return this.weeks.reduce((sum, w) => sum + (parseInt(w.books_sold) || 0), 0);
+        },
+
+        async saveWeeklyRoyalties() {
+            this.saving = true;
+            this.saveSuccess = false;
+            try {
+                const response = await fetch(`/admin/users/${this.userId}/weekly-royalties`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        year: parseInt(this.selectedYear),
+                        month: parseInt(this.selectedMonth),
+                        weeks: this.weeks
+                    })
+                });
+                const data = await response.json();
+                if (data.success) {
+                    this.saveSuccess = true;
+                    // Update initialData in memory
+                    this.weeks.forEach(w => {
+                        const existingIdx = this.initialData.findIndex(r => r.year == this.selectedYear && r.month == this.selectedMonth && r.week_number == w.week_number);
+                        if (existingIdx !== -1) {
+                            this.initialData[existingIdx] = { ...this.initialData[existingIdx], ...w };
+                        } else {
+                            this.initialData.push({ year: parseInt(this.selectedYear), month: parseInt(this.selectedMonth), ...w });
+                        }
+                    });
+                    setTimeout(() => { this.saveSuccess = false; }, 3000);
+                }
+            } catch (err) {
+                console.error(err);
+            } finally {
+                this.saving = false;
+            }
+        }
+    }
+}
+</script>

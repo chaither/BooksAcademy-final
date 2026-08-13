@@ -6,6 +6,7 @@ use App\Models\BookstoreBook;
 use App\Models\PublishedBook;
 use App\Models\RoyaltyReport;
 use App\Models\User;
+use App\Models\UserWeeklyRoyalty;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -21,7 +22,7 @@ class AdminController extends Controller
 
         if ($currentUser->is_admin) {
             // Admin sees all regular users and bookstore books
-            $users = User::with(['royaltyReports', 'publishedBooks'])->where('is_admin', false)->latest()->get();
+            $users = User::with(['royaltyReports', 'publishedBooks', 'weeklyRoyalties'])->where('is_admin', false)->latest()->get();
             $bookstoreBooks = BookstoreBook::latest()->get();
 
             return view('dashboard', [
@@ -32,7 +33,7 @@ class AdminController extends Controller
         }
 
         // Regular user sees their own dashboard details
-        $currentUser->load(['royaltyReports', 'publishedBooks']);
+        $currentUser->load(['royaltyReports', 'publishedBooks', 'weeklyRoyalties']);
 
         return view('dashboard', [
             'user' => $currentUser,
@@ -368,5 +369,80 @@ class AdminController extends Controller
         $book->update($data);
 
         return redirect()->route('dashboard')->with('status', 'bookstore-book-updated');
+    }
+
+    /**
+     * Store or update weekly royalty records for a specific user, month, and year.
+     */
+    public function storeWeeklyRoyalties(Request $request, User $user)
+    {
+        if (! auth()->user()->is_admin) {
+            abort(403);
+        }
+
+        $request->validate([
+            'year' => ['required', 'integer'],
+            'month' => ['required', 'integer', 'min:1', 'max:12'],
+            'weeks' => ['required', 'array'],
+            'weeks.*.week_number' => ['required', 'integer'],
+            'weeks.*.period_label' => ['required', 'string'],
+            'weeks.*.books_sold' => ['required', 'integer', 'min:0'],
+            'weeks.*.royalty_amount' => ['required', 'numeric', 'min:0'],
+            'weeks.*.status' => ['required', 'string'],
+        ]);
+
+        $year = (int) $request->year;
+        $month = (int) $request->month;
+
+        foreach ($request->weeks as $week) {
+            UserWeeklyRoyalty::updateOrCreate(
+                [
+                    'user_id' => $user->id,
+                    'year' => $year,
+                    'month' => $month,
+                    'week_number' => (int) $week['week_number'],
+                ],
+                [
+                    'period_label' => $week['period_label'],
+                    'books_sold' => (int) $week['books_sold'],
+                    'royalty_amount' => (float) $week['royalty_amount'],
+                    'status' => $week['status'],
+                ]
+            );
+        }
+
+        if ($request->wantsJson()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Weekly royalty records updated successfully!',
+            ]);
+        }
+
+        return redirect()->route('dashboard')->with('status', 'weekly-royalties-updated');
+    }
+
+    /**
+     * Get weekly royalty records for a specific user, month, and year.
+     */
+    public function getWeeklyRoyalties(Request $request, User $user)
+    {
+        if (! auth()->user()->is_admin && auth()->id() !== $user->id) {
+            abort(403);
+        }
+
+        $year = (int) ($request->query('year') ?? date('Y'));
+        $month = (int) ($request->query('month') ?? date('n'));
+
+        $records = UserWeeklyRoyalty::where('user_id', $user->id)
+            ->where('year', $year)
+            ->where('month', $month)
+            ->orderBy('week_number', 'asc')
+            ->get();
+
+        return response()->json([
+            'year' => $year,
+            'month' => $month,
+            'records' => $records,
+        ]);
     }
 }

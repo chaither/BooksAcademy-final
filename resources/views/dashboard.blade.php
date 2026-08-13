@@ -44,6 +44,16 @@
                     ✓ Bookstore book details updated successfully!
                 </div>
             @endif
+            @if (session('status') == 'book-published')
+                <div class="p-4 rounded-lg bg-green-50 dark:bg-green-900/10 border border-green-200 dark:border-green-800/30 text-green-600 dark:text-green-400 text-xs font-semibold">
+                    ✓ Published book added to author's profile successfully!
+                </div>
+            @endif
+            @if (session('status') == 'book-deleted')
+                <div class="p-4 rounded-lg bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-800/30 text-red-600 dark:text-red-400 text-xs font-semibold">
+                    ✓ Published book removed from author's profile.
+                </div>
+            @endif
 
             @if ($isAdmin)
                 <!-- ================= ADMIN DASHBOARD ================= -->
