@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(PublishedBook::class);
     }
+
+    public function weeklyRoyalties()
+    {
+        return $this->hasMany(UserWeeklyRoyalty::class);
+    }
 }

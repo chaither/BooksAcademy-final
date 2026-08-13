@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ReportController;
+use App\Models\BookstoreBook;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +18,8 @@ Route::get('/services', function () {
     return view('services');
 })->name('services');
 Route::get('/bookstore', function () {
-    return view('bookstore');
+    $dbBooks = BookstoreBook::latest()->get();
+    return view('bookstore', compact('dbBooks'));
 })->name('bookstore');
 Route::get('/pressroom', function () {
     return view('pressroom');
@@ -46,6 +48,15 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Published Books Routes
     Route::post('/admin/users/{user}/published-books', [AdminController::class, 'storePublishedBook'])->name('admin.users.published-books.store');
     Route::delete('/admin/published-books/{publishedBook}', [AdminController::class, 'deletePublishedBook'])->name('admin.published-books.delete');
+
+    // Bookstore Catalog Admin Routes
+    Route::post('/admin/bookstore-books', [AdminController::class, 'storeBookstoreBook'])->name('admin.bookstore-books.store');
+    Route::put('/admin/bookstore-books/{book}', [AdminController::class, 'updateBookstoreBook'])->name('admin.bookstore-books.update');
+    Route::delete('/admin/bookstore-books/{book}', [AdminController::class, 'deleteBookstoreBook'])->name('admin.bookstore-books.delete');
+
+    // Weekly Royalties Admin Routes
+    Route::post('/admin/users/{user}/weekly-royalties', [AdminController::class, 'storeWeeklyRoyalties'])->name('admin.users.weekly-royalties.store');
+    Route::get('/admin/users/{user}/weekly-royalties', [AdminController::class, 'getWeeklyRoyalties'])->name('admin.users.weekly-royalties.get');
 });
 
 Route::middleware('auth')->group(function () {
