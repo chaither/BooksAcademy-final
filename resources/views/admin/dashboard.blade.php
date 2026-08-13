@@ -238,7 +238,7 @@
                                                 <div class="md:col-span-2 flex items-center justify-between gap-4 border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-800 pt-2 md:pt-0 md:pl-4">
                                                     <div>
                                                         <div class="text-[9px] font-bold uppercase text-slate-400">Total Monthly Sales</div>
-                                                        <div class="text-sm font-black text-indigo-600 dark:text-indigo-400" x-text="'$' + totalMonthlySales.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})">$0.00</div>
+                                                        <div class="text-sm font-black text-indigo-600 dark:text-indigo-400" x-text="'₱' + totalMonthlySales.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})">₱0.00</div>
                                                     </div>
                                                     <div class="text-right">
                                                         <div class="text-[9px] font-bold uppercase text-slate-400">Total Books Sold</div>
@@ -256,7 +256,7 @@
                                                                 <th class="p-2.5">Week</th>
                                                                 <th class="p-2.5">Date Period</th>
                                                                 <th class="p-2.5 w-32">Books Sold</th>
-                                                                <th class="p-2.5 w-40">Total Sales / Royalty ($)</th>
+                                                                <th class="p-2.5 w-40">Total Sales / Royalty (₱)</th>
                                                                 <th class="p-2.5 w-36">Status</th>
                                                             </tr>
                                                         </thead>
@@ -270,7 +270,7 @@
                                                                     </td>
                                                                     <td class="p-2.5">
                                                                         <div class="relative">
-                                                                            <span class="absolute left-2.5 top-1 text-slate-400 text-xs">$</span>
+                                                                            <span class="absolute left-2.5 top-1 text-slate-400 text-xs">₱</span>
                                                                             <input type="number" step="0.01" min="0" x-model.number="week.royalty_amount" class="w-full pl-6 pr-2 py-1 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
                                                                         </div>
                                                                     </td>

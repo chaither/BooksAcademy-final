@@ -159,7 +159,7 @@
                             Total Royalties
                         </h3>
                         <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight" x-text="totalRoyaltiesFormatted">
-                            $0.00
+                            ₱0.00
                         </div>
                         <div class="flex items-center gap-1 mt-2 text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">
                             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -191,7 +191,7 @@
                             Weekly Average
                         </h3>
                         <div class="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 tracking-tight" x-text="weeklyAverageFormatted">
-                            $0.00
+                            ₱0.00
                         </div>
                         <div class="flex items-center gap-1 mt-2 text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
                             <span>Per active cycle week</span>
@@ -206,7 +206,7 @@
 
                 <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-[10px] text-slate-400 font-medium">
                     <span>Avg per sale</span>
-                    <span class="font-bold text-emerald-600 dark:text-emerald-400" x-text="totalBooksSold > 0 ? ('$' + Math.round(totalRoyalties / totalBooksSold).toLocaleString()) : '$0'"></span>
+                    <span class="font-bold text-emerald-600 dark:text-emerald-400" x-text="totalBooksSold > 0 ? ('₱' + Math.round(totalRoyalties / totalBooksSold).toLocaleString()) : '₱0'"></span>
                 </div>
             </div>
 
@@ -247,7 +247,7 @@
                             Last Payment
                         </h3>
                         <div class="text-2xl sm:text-3xl font-black text-slate-900 dark:text-white tracking-tight" x-text="lastPaymentAmount">
-                            $0.00
+                            ₱0.00
                         </div>
                         <p class="text-xs text-slate-500 dark:text-slate-400 font-semibold mt-1" x-text="lastPaymentPeriod">
                             N/A
@@ -281,7 +281,7 @@
                                 <h3 class="text-xs sm:text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">
                                     WEEKLY ROYALTY OVERVIEW
                                 </h3>
-                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200/50 dark:border-indigo-800/50" x-text="metricMode === 'revenue' ? 'Revenue ($)' : 'Sales (Units)'">
+                                <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-indigo-50 dark:bg-indigo-950 text-indigo-600 dark:text-indigo-400 border border-indigo-200/50 dark:border-indigo-800/50" x-text="metricMode === 'revenue' ? 'Revenue (₱)' : 'Sales (Units)'">
                                 </span>
                             </div>
                             <p class="text-xs text-slate-400 mt-0.5 font-normal" x-text="'Performance trend curve for ' + selectedMonthText"></p>
@@ -292,7 +292,7 @@
                             <!-- Revenue vs Units Toggle -->
                             <div class="bg-slate-100 dark:bg-slate-800 p-1 rounded-xl flex items-center text-[11px] font-bold">
                                 <button @click="metricMode = 'revenue'" :class="{ 'bg-white dark:bg-slate-900 text-indigo-600 dark:text-indigo-400 shadow-xs': metricMode === 'revenue', 'text-slate-500 dark:text-slate-400': metricMode !== 'revenue' }" class="px-2.5 py-1 rounded-lg transition-all">
-                                    $ Revenue
+                                    ₱ Revenue
                                 </button>
                                 <button @click="metricMode = 'units'" :class="{ 'bg-white dark:bg-slate-900 text-purple-600 dark:text-purple-400 shadow-xs': metricMode === 'units', 'text-slate-500 dark:text-slate-400': metricMode !== 'units' }" class="px-2.5 py-1 rounded-lg transition-all">
                                     Units
@@ -330,11 +330,11 @@
                     <div class="grid grid-cols-3 gap-2 mb-3 bg-slate-50/70 dark:bg-slate-800/40 p-2.5 rounded-xl border border-slate-100 dark:border-slate-800 text-center">
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase font-bold block">Peak Weekly</span>
-                            <span class="text-xs font-black text-indigo-600 dark:text-indigo-400" x-text="peakWeeklyFormatted">$0.00</span>
+                            <span class="text-xs font-black text-indigo-600 dark:text-indigo-400" x-text="peakWeeklyFormatted">₱0.00</span>
                         </div>
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase font-bold block">Avg / Book</span>
-                            <span class="text-xs font-black text-emerald-600 dark:text-emerald-400" x-text="avgPerBookFormatted">$0.00</span>
+                            <span class="text-xs font-black text-emerald-600 dark:text-emerald-400" x-text="avgPerBookFormatted">₱0.00</span>
                         </div>
                         <div>
                             <span class="text-[10px] text-slate-400 uppercase font-bold block">Active Weeks</span>
@@ -704,9 +704,9 @@ function userRoyaltyDashboard(dbRoyalties) {
                     period: existing ? existing.period_label : periodLabel,
                     sold: sold,
                     amount: amount,
-                    amountFormatted: '$' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}),
+                    amountFormatted: '₱' + amount.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}),
                     status: status,
-                    gross: '$' + (amount * 5).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                    gross: '₱' + (amount * 5).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
                 });
             }
             return result;
@@ -717,7 +717,7 @@ function userRoyaltyDashboard(dbRoyalties) {
         },
 
         get totalRoyaltiesFormatted() {
-            return '$' + this.totalRoyalties.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            return '₱' + this.totalRoyalties.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         },
 
         get totalBooksSold() {
@@ -730,12 +730,12 @@ function userRoyaltyDashboard(dbRoyalties) {
         },
 
         get weeklyAverageFormatted() {
-            return '$' + this.weeklyAverage.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            return '₱' + this.weeklyAverage.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         },
 
         get lastPaymentAmount() {
             const paidWeek = [...this.currentWeeks].reverse().find(w => w.status === 'Paid');
-            return paidWeek ? paidWeek.amountFormatted : '$0.00';
+            return paidWeek ? paidWeek.amountFormatted : '₱0.00';
         },
 
         get lastPaymentPeriod() {
@@ -745,12 +745,12 @@ function userRoyaltyDashboard(dbRoyalties) {
 
         get peakWeeklyFormatted() {
             const max = Math.max(...this.currentWeeks.map(w => w.amount), 0);
-            return '$' + max.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            return '₱' + max.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
         },
 
         get avgPerBookFormatted() {
-            if (this.totalBooksSold <= 0) return '$0.00';
-            return '$' + Math.round(this.totalRoyalties / this.totalBooksSold).toLocaleString();
+            if (this.totalBooksSold <= 0) return '₱0.00';
+            return '₱' + Math.round(this.totalRoyalties / this.totalBooksSold).toLocaleString();
         },
 
         get activeWeeksCount() {
@@ -778,7 +778,7 @@ function userRoyaltyDashboard(dbRoyalties) {
             if (this.metricMode === 'units') {
                 return val.toLocaleString() + ' pcs';
             }
-            return '$' + val.toLocaleString();
+            return '₱' + val.toLocaleString();
         },
 
         get chartPoints() {
