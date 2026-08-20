@@ -198,19 +198,31 @@
                             'author_role' => 'Global Events Coordinator',
                             'content' => '
                                                 <p class="text-slate-300 leading-relaxed mb-6">
-                                                    Books Academy is excited to announce the launch of our new <strong>Golden PATHWAY</strong> initiative.
+                                                    <strong>Golden PATHWAY: Independent Bookstore Placement 📚</strong>
                                                 </p>
 
                                                 <p class="text-slate-300 leading-relaxed mb-6">
-                                                    This premium, comprehensive program is designed to guide authors through every step of their publishing, translation, and international distribution journey. By offering dedicated editorial mentoring, custom book cover designs, global retail placement, and strategic advertising support, we ensure your story reaches the audiences it deserves.
+                                                    Give your book the opportunity to be discovered where readers love to browse: independent bookstores.
                                                 </p>
 
                                                 <p class="text-slate-300 leading-relaxed mb-6">
-                                                    Our goal with the Golden PATHWAY is to empower independent authors with the same level of visibility and resources typically reserved for traditional best-sellers, helping you make a lasting impression in the literary world.
+                                                    Through our Book Placement Program, Books Academy helps authors showcase their books in physical independent bookstores, putting your work directly in front of real readers and local book communities.
+                                                </p>
+
+                                                <p class="text-slate-300 leading-relaxed mb-6">
+                                                    From the shelf to the hands of a curious reader, physical bookstore placement can help increase your book’s visibility, credibility, and discoverability beyond the online marketplace.
+                                                </p>
+
+                                                <p class="text-slate-300 leading-relaxed mb-6">
+                                                    Your story deserves a place on the shelf.
+                                                </p>
+
+                                                <p class="text-slate-300 leading-relaxed mb-6">
+                                                    Let’s help put your book where readers can find it.
                                                 </p>
 
                                                 <p class="text-[#d4af37] font-bold mt-8 text-sm">
-                                                    #GoldenPathway #BooksAcademy #AuthorSuccess #SelfPublishing #BookMarketing #GlobalDistribution #CreativeWriting
+                                                    #BookPlacement #IndependentBookstores #BooksAcademy #BookMarketing #AuthorSuccess #BookVisibility #IndieBookstores #Authors #Publishing #BookPromotion
                                                 </p>
 
                                                 <div class="my-12 relative group carousel-wrapper">
