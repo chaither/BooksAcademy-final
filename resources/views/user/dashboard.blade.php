@@ -139,8 +139,10 @@
             </div>
         </div>
 
-        <!-- 4 Key Stat Cards with Top Accent Glow & Mini Sparklines -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Dynamic Reports Area -->
+        <div x-show="hasData" class="space-y-6">
+            <!-- 4 Key Stat Cards with Top Accent Glow & Mini Sparklines -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             
             <!-- Card 1: Total Royalties -->
             <div class="group relative overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-indigo-300 dark:hover:border-indigo-700">
@@ -507,6 +509,21 @@
                 </div>
             </div>
 
+        </div> <!-- This ends the dynamic reports area content grid -->
+
+        </div> <!-- This ends the Dynamic Reports Area wrapper -->
+
+        <!-- Empty State when no data is saved for the selected month -->
+        <div x-show="!hasData" class="flex flex-col items-center justify-center py-16 px-4 text-center bg-slate-50/50 dark:bg-slate-900/30 rounded-3xl border border-dashed border-slate-200 dark:border-slate-800">
+            <div class="w-16 h-16 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 flex items-center justify-center text-indigo-500 dark:text-indigo-400 mb-4 border border-indigo-100/55 dark:border-indigo-900/30 shadow-xs">
+                <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+            </div>
+            <h3 class="text-base font-extrabold text-slate-800 dark:text-slate-200 tracking-tight">No Royalty Data Published</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 font-medium max-w-sm mt-1">
+                Official weekly statements and sales figures for <span class="font-bold text-indigo-600 dark:text-indigo-400" x-text="selectedMonthText"></span> have not been posted by the admin yet.
+            </p>
         </div>
 
         @if ($user->royaltyReports && $user->royaltyReports->count() > 0)
@@ -560,13 +577,27 @@ function userRoyaltyDashboard(dbRoyalties) {
     return {
         dbRoyalties: dbRoyalties || [],
         selectedYear: 2025,
-        selectedMonthNum: 5, // Default May
+        selectedMonthNum: 5, // Default May fallback
         selectedMonthText: 'May 1 – May 31, 2025',
         dateOpen: false,
         activePoint: null,
         metricMode: 'revenue', // 'revenue' or 'units'
         chartStyle: 'area', // 'area', 'line', or 'bar'
         isDark: document.documentElement.classList.contains('dark'),
+
+        init() {
+            const months = this.availableMonths;
+            if (months.length > 0) {
+                this.selectedMonthNum = months[0].monthNum;
+                this.selectedYear = months[0].yearNum;
+                this.selectedMonthText = months[0].label;
+            } else {
+                const now = new Date();
+                this.selectedYear = now.getFullYear();
+                this.selectedMonthNum = now.getMonth() + 1;
+                this.selectedMonthText = 'Select Month';
+            }
+        },
 
         toggleTheme() {
             this.isDark = !this.isDark;
@@ -587,15 +618,7 @@ function userRoyaltyDashboard(dbRoyalties) {
         },
 
         get availableMonths() {
-            // Start with the default January to May 2025
-            const list = [
-                { monthNum: 5, yearNum: 2025, label: 'May 1 – May 31, 2025', isCurrent: true },
-                { monthNum: 4, yearNum: 2025, label: 'April 1 – April 30, 2025' },
-                { monthNum: 3, yearNum: 2025, label: 'March 1 – March 31, 2025' },
-                { monthNum: 2, yearNum: 2025, label: 'February 1 – Feb 28, 2025' },
-                { monthNum: 1, yearNum: 2025, label: 'January 1 – Jan 31, 2025' }
-            ];
-
+            const list = [];
             const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
             // Add any other months that exist in dbRoyalties but are not in the list
@@ -607,36 +630,26 @@ function userRoyaltyDashboard(dbRoyalties) {
                     const daysInMonth = new Date(year, month, 0).getDate();
                     const monthName = monthNames[month - 1];
                     const label = `${monthName} 1 – ${monthName.substring(0, 3)} ${daysInMonth}, ${year}`;
-                    list.push({ monthNum: month, yearNum: year, label: label });
+                    list.push({ monthNum: month, yearNum: year, label: label, isCurrent: false });
                 }
             });
 
             // Sort list by year desc, then month desc
-            return list.sort((a, b) => {
+            const sortedList = list.sort((a, b) => {
                 if (b.yearNum !== a.yearNum) return b.yearNum - a.yearNum;
                 return b.monthNum - a.monthNum;
             });
+
+            // Mark the latest (first in sorted list) as isCurrent
+            if (sortedList.length > 0) {
+                sortedList[0].isCurrent = true;
+            }
+
+            return sortedList;
         },
 
-        getDemoDataForMonth(m, y) {
-            // Seed base values deterministically using month and year so data is stable
-            const seed = (y * 12) + m;
-            const pseudoRandom = (offset) => {
-                const x = Math.sin(seed + offset) * 10000;
-                return x - Math.floor(x);
-            };
-            
-            // Generate realistic values
-            const baseBooks = 20 + Math.round(pseudoRandom(1) * 45); // 20 to 65 books
-            const basePrice = 50; // $50 average per book
-            
-            return [
-                { sold: baseBooks, amount: baseBooks * basePrice, status: 'Paid' },
-                { sold: Math.round(baseBooks * 1.3), amount: Math.round(baseBooks * 1.3) * basePrice, status: 'Paid' },
-                { sold: Math.round(baseBooks * 0.85), amount: Math.round(baseBooks * 0.85) * basePrice, status: 'Paid' },
-                { sold: Math.round(baseBooks * 1.15), amount: Math.round(baseBooks * 1.15) * basePrice, status: 'Processing' },
-                { sold: Math.round(baseBooks * 0.6), amount: Math.round(baseBooks * 0.6) * basePrice, status: 'Upcoming' }
-            ];
+        get hasData() {
+            return this.dbRoyalties.some(r => r.year == this.selectedYear && r.month == this.selectedMonthNum);
         },
 
         get currentWeeks() {
@@ -651,9 +664,6 @@ function userRoyaltyDashboard(dbRoyalties) {
             // Filter DB records
             const dbRecords = this.dbRoyalties.filter(r => r.year == year && r.month == month);
 
-            // Default demo curve data when user has no database records entered for selected month
-            const defaultDemoData = this.getDemoDataForMonth(month, year);
-
             const result = [];
             for (let i = 1; i <= weekCount; i++) {
                 let startDay = (i - 1) * 7 + 1;
@@ -661,11 +671,10 @@ function userRoyaltyDashboard(dbRoyalties) {
                 let periodLabel = `${monthShort} ${startDay} – ${monthShort} ${endDay}`;
 
                 const existing = dbRecords.find(r => r.week_number == i);
-                const demo = defaultDemoData[i - 1] || { sold: 20, amount: 1000, status: 'Upcoming' };
 
-                const sold = existing ? parseInt(existing.books_sold) : (dbRecords.length > 0 ? 0 : demo.sold);
-                const amount = existing ? parseFloat(existing.royalty_amount) : (dbRecords.length > 0 ? 0 : demo.amount);
-                const status = existing ? existing.status : (dbRecords.length > 0 ? (i === weekCount ? 'Upcoming' : 'Paid') : demo.status);
+                const sold = existing ? parseInt(existing.books_sold) : 0;
+                const amount = existing ? parseFloat(existing.royalty_amount) : 0;
+                const status = existing ? existing.status : 'Upcoming';
 
                 result.push({
                     week_number: i,

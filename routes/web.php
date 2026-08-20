@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\ReportController;
+use App\Http\Controllers\ProfileController;
 use App\Models\BookstoreBook;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -19,6 +18,7 @@ Route::get('/services', function () {
 })->name('services');
 Route::get('/bookstore', function () {
     $dbBooks = BookstoreBook::latest()->get();
+
     return view('bookstore', compact('dbBooks'));
 })->name('bookstore');
 Route::get('/pressroom', function () {
@@ -63,9 +63,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-    // User PDF Uploads
-    Route::post('/reports', [ReportController::class, 'store'])->name('reports.store');
 });
 
 require __DIR__.'/auth.php';
