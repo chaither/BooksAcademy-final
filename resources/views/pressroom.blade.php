@@ -324,31 +324,59 @@
 
                 <!-- Article 3 -->
                 <a href="{{ route('pressroom.article', 3) }}"
-                    class="block col-span-12 md:col-span-6 lg:col-span-12 bg-[#0f131a] rounded-[1.5rem] overflow-hidden border border-white/5 shadow-sm hover:shadow-lg transition-shadow group flex flex-col md:flex-row cursor-pointer">
-                    <div class="w-full md:w-2/5 h-64 md:h-auto overflow-hidden relative">
+                    class="block col-span-12 md:col-span-6 lg:col-span-6 bg-[#0f131a] rounded-[1.5rem] overflow-hidden border border-white/5 shadow-sm hover:shadow-lg transition-shadow group flex flex-col cursor-pointer">
+                    <div class="h-48 overflow-hidden relative">
                         <img src="{{ asset('images/t2.jpg') }}" alt="Taipei International Book Exhibition"
                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
                     </div>
-                    <div class="w-full md:w-3/5 p-8 flex flex-col flex-1 justify-center">
+                    <div class="p-6 flex flex-col flex-1">
                         <span class="text-[10px] font-bold text-[#d4af37] uppercase tracking-widest mb-2">EXHIBITIONS</span>
-                        <div class="flex items-center gap-2 text-[10px] text-slate-400 font-medium mb-4">
+                        <div class="flex items-center gap-2 text-[10px] text-slate-400 font-medium mb-3">
                             <span>May 15, 2026</span>
                             <span>•</span>
                             <span>4 min read</span>
                         </div>
                         <h3
-                            class="text-2xl font-serif font-bold text-white mb-3 leading-tight group-hover:text-[#d4af37] transition-colors">
+                            class="text-xl font-serif font-bold text-white mb-2 leading-tight group-hover:text-[#d4af37] transition-colors">
                             Welcome to Taipei! 🇹🇼📚
                         </h3>
-                        <p class="text-sm text-slate-400 leading-relaxed mb-6">
+                        <p class="text-sm text-slate-400 leading-relaxed line-clamp-3 mb-6 flex-1">
                             Books Academy is delighted to be part of the Taipei International Book Exhibition.
                         </p>
-                        <div
-                            class="flex items-center text-slate-300 hover:text-[#d4af37] text-xs font-bold uppercase tracking-wider transition-colors mt-auto">
-                            Read Full Announcement
-                            <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        <div class="flex justify-end mt-auto text-slate-300 hover:text-white">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Article 4 -->
+                <a href="{{ route('pressroom.article', 4) }}"
+                    class="block col-span-12 md:col-span-6 lg:col-span-6 bg-[#0f131a] rounded-[1.5rem] overflow-hidden border border-white/5 shadow-sm hover:shadow-lg transition-shadow group flex flex-col cursor-pointer">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="{{ asset('images/z1.jpg') }}" alt="Golden Pathway Initiative"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-[10px] font-bold text-[#d4af37] uppercase tracking-widest mb-2">PROGRAMS</span>
+                        <div class="flex items-center gap-2 text-[10px] text-slate-400 font-medium mb-3">
+                            <span>June 18, 2026</span>
+                            <span>•</span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3
+                            class="text-xl font-serif font-bold text-white mb-2 leading-tight group-hover:text-[#d4af37] transition-colors">
+                            The Golden PATHWAY Initiative 🌟
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed line-clamp-3 mb-6 flex-1">
+                            Books Academy launches the Golden PATHWAY initiative to elevate and support authors on their journey to international success.
+                        </p>
+                        <div class="flex justify-end mt-auto text-slate-300 hover:text-white">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
                             </svg>
                         </div>
                     </div>

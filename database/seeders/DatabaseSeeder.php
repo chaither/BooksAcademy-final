@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'test@example.com',
                 'password' => bcrypt('password'),
                 'dashboard_title' => 'Author Onboarding Workspace',
-                'dashboard_content' => 'Welcome to Books Academy! Your draft is currently under review by our design and illustration editorial board. Please check back soon.',
+                'dashboard_content' => null,
                 'email_verified_at' => now(),
             ]);
         }
@@ -43,7 +43,7 @@ class DatabaseSeeder extends Seeder
                 'email' => 'chaither@chaither.com',
                 'password' => bcrypt('password'),
                 'dashboard_title' => 'Author Onboarding Workspace',
-                'dashboard_content' => 'Welcome to Books Academy! Your draft is currently under review by our design and illustration editorial board. Please check back soon.',
+                'dashboard_content' => null,
                 'email_verified_at' => now(),
             ]);
         }

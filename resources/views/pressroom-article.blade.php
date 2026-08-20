@@ -186,6 +186,49 @@
                                                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
                                                     </button>
                                                 </div>'
+                        ],
+                        4 => [
+                            'tag' => 'PROGRAMS',
+                            'date' => 'June 18, 2026',
+                            'read_time' => '4 min read',
+                            'title' => 'The Golden PATHWAY Initiative 🌟',
+                            'subtitle' => 'Books Academy launches the Golden PATHWAY initiative to elevate and support authors on their journey to international success.',
+                            'video' => asset('images/Video_1 (1).mp4'),
+                            'author' => 'Sarah Jenkins',
+                            'author_role' => 'Global Events Coordinator',
+                            'content' => '
+                                                <p class="text-slate-300 leading-relaxed mb-6">
+                                                    Books Academy is excited to announce the launch of our new <strong>Golden PATHWAY</strong> initiative.
+                                                </p>
+
+                                                <p class="text-slate-300 leading-relaxed mb-6">
+                                                    This premium, comprehensive program is designed to guide authors through every step of their publishing, translation, and international distribution journey. By offering dedicated editorial mentoring, custom book cover designs, global retail placement, and strategic advertising support, we ensure your story reaches the audiences it deserves.
+                                                </p>
+
+                                                <p class="text-slate-300 leading-relaxed mb-6">
+                                                    Our goal with the Golden PATHWAY is to empower independent authors with the same level of visibility and resources typically reserved for traditional best-sellers, helping you make a lasting impression in the literary world.
+                                                </p>
+
+                                                <p class="text-[#d4af37] font-bold mt-8 text-sm">
+                                                    #GoldenPathway #BooksAcademy #AuthorSuccess #SelfPublishing #BookMarketing #GlobalDistribution #CreativeWriting
+                                                </p>
+
+                                                <div class="my-12 relative group carousel-wrapper">
+                                                    <button class="absolute left-2 sm:-left-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-[#d4af37] text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all prev-btn shadow-lg" aria-label="Previous">
+                                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                                                    </button>
+                                                    <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-2 hide-scrollbar scroll-smooth carousel-container">
+                                                        <div class="snap-center shrink-0 w-[90%] sm:w-[75%] md:w-[65%]">
+                                                            <img src="' . asset('images/z1.jpg') . '" alt="Golden Pathway Gallery 1" class="w-full h-80 md:h-[28rem] object-cover rounded-2xl shadow-lg border border-white/10 cursor-zoom-in zoomable-image" draggable="false">
+                                                        </div>
+                                                        <div class="snap-center shrink-0 w-[90%] sm:w-[75%] md:w-[65%]">
+                                                            <img src="' . asset('images/z2.jpg') . '" alt="Golden Pathway Gallery 2" class="w-full h-80 md:h-[28rem] object-cover rounded-2xl shadow-lg border border-white/10 cursor-zoom-in zoomable-image" draggable="false">
+                                                        </div>
+                                                    </div>
+                                                    <button class="absolute right-2 sm:-right-4 top-1/2 -translate-y-1/2 z-10 bg-black/60 hover:bg-[#d4af37] text-white p-3 rounded-full opacity-0 group-hover:opacity-100 transition-all next-btn shadow-lg" aria-label="Next">
+                                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                                                    </button>
+                                                </div>'
                         ]
                     ];
 

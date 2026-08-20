@@ -58,7 +58,7 @@
                             <span class="text-[10px] px-2 py-0.5 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold">Official Notice</span>
                         </div>
                         <p class="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed font-medium whitespace-pre-line">
-                            {{ $user->dashboard_content ?? 'Welcome to Books Academy! Your draft is currently under review by our design and illustration editorial board. Please check back soon.' }}
+                            {{ $user->dashboard_content ?? "Welcome to Books Academy, {$user->name}! We are thrilled to have you here. Your personalized author portal is fully synced with our publishing system. You can monitor your sales performance, view weekly royalty statements, and access official documents right here. We look forward to publishing your next masterpiece!" }}
                         </p>
                     </div>
                 </div>
@@ -99,26 +99,18 @@
                             <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
                         </svg>
                     </button>
-
                     <!-- Dropdown Options -->
                     <div x-show="dateOpen" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-95" class="absolute right-0 mt-2 w-60 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl z-50 py-2 text-xs text-slate-700 dark:text-slate-200 divide-y divide-slate-100 dark:divide-slate-800" style="display: none;">
                         <div class="py-1">
-                            <button @click="setMonth(5, 2025, 'May 1 – May 31, 2025')" class="w-full text-left px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 font-bold flex items-center justify-between">
-                                <span>May 1 – May 31, 2025</span>
-                                <span class="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-900/50 dark:text-indigo-300 font-bold">Current</span>
-                            </button>
-                            <button @click="setMonth(4, 2025, 'April 1 – April 30, 2025')" class="w-full text-left px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium">
-                                April 1 – April 30, 2025
-                            </button>
-                            <button @click="setMonth(3, 2025, 'March 1 – March 31, 2025')" class="w-full text-left px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium">
-                                March 1 – March 31, 2025
-                            </button>
-                            <button @click="setMonth(2, 2025, 'February 1 – Feb 28, 2025')" class="w-full text-left px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium">
-                                February 1 – Feb 28, 2025
-                            </button>
-                            <button @click="setMonth(1, 2025, 'January 1 – Jan 31, 2025')" class="w-full text-left px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 font-medium">
-                                January 1 – Jan 31, 2025
-                            </button>
+                            <template x-for="item in availableMonths" :key="item.yearNum + '-' + item.monthNum">
+                                <button @click="setMonth(item.monthNum, item.yearNum, item.label)" 
+                                        :class="item.isCurrent ? 'font-bold' : 'font-medium'"
+                                        class="w-full text-left px-4 py-2 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600 dark:hover:text-indigo-400 flex items-center justify-between"
+                                        type="button">
+                                    <span x-text="item.label"></span>
+                                    <span x-show="item.isCurrent" class="text-[9px] px-1.5 py-0.5 rounded-full bg-indigo-100 text-indigo-700 dark:bg-indigo-950 dark:text-indigo-300 font-bold">Current</span>
+                                </button>
+                            </template>
                         </div>
                     </div>
                 </div>
@@ -517,76 +509,6 @@
 
         </div>
 
-        <!-- Published Books Portfolio Card -->
-        <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 sm:p-7 shadow-xs space-y-5">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-100 dark:border-slate-800/70 pb-4">
-                <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-purple-50 dark:bg-purple-950/60 text-purple-600 dark:text-purple-400 flex items-center justify-center border border-purple-100 dark:border-purple-900/40 shrink-0">
-                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">
-                            My Published Books & Catalog Portfolio
-                        </h3>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">Official titles published by Books Academy for your author account</p>
-                    </div>
-                </div>
-                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-purple-50 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-200 dark:border-purple-800/60 self-start sm:self-auto">
-                    <span class="w-2 h-2 rounded-full bg-purple-500 animate-pulse"></span>
-                    {{ $user->publishedBooks ? $user->publishedBooks->count() : 0 }} Published {{ Str::plural('Title', $user->publishedBooks ? $user->publishedBooks->count() : 0) }}
-                </span>
-            </div>
-
-            @if ($user->publishedBooks && $user->publishedBooks->count() > 0)
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-                    @foreach ($user->publishedBooks as $book)
-                        <div class="group relative overflow-hidden bg-slate-50/70 dark:bg-slate-800/40 border border-slate-200/80 dark:border-slate-800 rounded-2xl p-4 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:border-purple-300 dark:hover:border-purple-700 flex items-start gap-4">
-                            <!-- Cover Image or Decorative Fallback -->
-                            @if ($book->cover_image_path)
-                                <img src="{{ asset('storage/' . $book->cover_image_path) }}" alt="{{ $book->title }}" class="w-16 h-22 object-cover rounded-xl shadow-md shrink-0 group-hover:scale-105 transition-transform duration-300">
-                            @else
-                                <div class="w-16 h-22 rounded-xl bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 p-2.5 flex flex-col justify-between text-white shrink-0 shadow-md group-hover:scale-105 transition-transform duration-300">
-                                    <div class="w-4 h-4 rounded-full bg-white/20 flex items-center justify-center">
-                                        <svg class="w-2.5 h-2.5 text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                                    </div>
-                                    <span class="text-[9px] font-black leading-tight line-clamp-2 uppercase tracking-tighter opacity-90">{{ $book->title }}</span>
-                                </div>
-                            @endif
-
-                            <div class="min-w-0 flex-1 space-y-1.5 py-0.5">
-                                <span class="inline-flex items-center gap-1 text-[10px] font-extrabold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 rounded-md border border-emerald-200 dark:border-emerald-800/50">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                    Published & Distributed
-                                </span>
-                                <h4 class="font-extrabold text-sm text-slate-900 dark:text-white leading-snug truncate" title="{{ $book->title }}">
-                                    {{ $book->title }}
-                                </h4>
-                                <p class="text-[11px] text-slate-500 dark:text-slate-400 font-medium">
-                                    Author: <span class="font-bold text-slate-700 dark:text-slate-200">{{ $user->name }}</span>
-                                </p>
-                                <div class="pt-1 flex items-center justify-between text-[10px] text-slate-400 font-medium border-t border-slate-200/60 dark:border-slate-700/50 mt-2">
-                                    <span>Added {{ $book->created_at ? $book->created_at->format('M d, Y') : 'Recently' }}</span>
-                                    <span class="text-indigo-600 dark:text-indigo-400 font-bold group-hover:underline">Active Title</span>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            @else
-                <div class="p-8 rounded-2xl bg-slate-50/50 dark:bg-slate-800/30 border border-dashed border-slate-200 dark:border-slate-800 text-center space-y-2">
-                    <div class="w-12 h-12 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-500 mx-auto flex items-center justify-center">
-                        <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
-                    </div>
-                    <h4 class="text-xs font-extrabold text-slate-700 dark:text-slate-300">No Published Books Cataloged Yet</h4>
-                    <p class="text-xs text-slate-400 max-w-md mx-auto">When the administrator adds a published book to your profile, it will appear here in your author workspace portfolio.</p>
-                </div>
-            @endif
-        </div>
-
         @if ($user->royaltyReports && $user->royaltyReports->count() > 0)
             <div class="bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-3xl p-6 sm:p-7 shadow-xs space-y-4">
                 <div class="flex items-center justify-between">
@@ -664,6 +586,59 @@ function userRoyaltyDashboard(dbRoyalties) {
             this.dateOpen = false;
         },
 
+        get availableMonths() {
+            // Start with the default January to May 2025
+            const list = [
+                { monthNum: 5, yearNum: 2025, label: 'May 1 – May 31, 2025', isCurrent: true },
+                { monthNum: 4, yearNum: 2025, label: 'April 1 – April 30, 2025' },
+                { monthNum: 3, yearNum: 2025, label: 'March 1 – March 31, 2025' },
+                { monthNum: 2, yearNum: 2025, label: 'February 1 – Feb 28, 2025' },
+                { monthNum: 1, yearNum: 2025, label: 'January 1 – Jan 31, 2025' }
+            ];
+
+            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+            // Add any other months that exist in dbRoyalties but are not in the list
+            this.dbRoyalties.forEach(r => {
+                const year = parseInt(r.year);
+                const month = parseInt(r.month);
+                const exists = list.some(item => item.monthNum === month && item.yearNum === year);
+                if (!exists) {
+                    const daysInMonth = new Date(year, month, 0).getDate();
+                    const monthName = monthNames[month - 1];
+                    const label = `${monthName} 1 – ${monthName.substring(0, 3)} ${daysInMonth}, ${year}`;
+                    list.push({ monthNum: month, yearNum: year, label: label });
+                }
+            });
+
+            // Sort list by year desc, then month desc
+            return list.sort((a, b) => {
+                if (b.yearNum !== a.yearNum) return b.yearNum - a.yearNum;
+                return b.monthNum - a.monthNum;
+            });
+        },
+
+        getDemoDataForMonth(m, y) {
+            // Seed base values deterministically using month and year so data is stable
+            const seed = (y * 12) + m;
+            const pseudoRandom = (offset) => {
+                const x = Math.sin(seed + offset) * 10000;
+                return x - Math.floor(x);
+            };
+            
+            // Generate realistic values
+            const baseBooks = 20 + Math.round(pseudoRandom(1) * 45); // 20 to 65 books
+            const basePrice = 50; // $50 average per book
+            
+            return [
+                { sold: baseBooks, amount: baseBooks * basePrice, status: 'Paid' },
+                { sold: Math.round(baseBooks * 1.3), amount: Math.round(baseBooks * 1.3) * basePrice, status: 'Paid' },
+                { sold: Math.round(baseBooks * 0.85), amount: Math.round(baseBooks * 0.85) * basePrice, status: 'Paid' },
+                { sold: Math.round(baseBooks * 1.15), amount: Math.round(baseBooks * 1.15) * basePrice, status: 'Processing' },
+                { sold: Math.round(baseBooks * 0.6), amount: Math.round(baseBooks * 0.6) * basePrice, status: 'Upcoming' }
+            ];
+        },
+
         get currentWeeks() {
             const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
             const year = parseInt(this.selectedYear);
@@ -677,13 +652,7 @@ function userRoyaltyDashboard(dbRoyalties) {
             const dbRecords = this.dbRoyalties.filter(r => r.year == year && r.month == month);
 
             // Default demo curve data when user has no database records entered for selected month
-            const defaultDemoData = [
-                { sold: 28, amount: 1400, status: 'Paid' },
-                { sold: 56, amount: 2800, status: 'Paid' },
-                { sold: 42, amount: 2100, status: 'Paid' },
-                { sold: 68, amount: 3400, status: 'Processing' },
-                { sold: 35, amount: 1750, status: 'Upcoming' },
-            ];
+            const defaultDemoData = this.getDemoDataForMonth(month, year);
 
             const result = [];
             for (let i = 1; i <= weekCount; i++) {

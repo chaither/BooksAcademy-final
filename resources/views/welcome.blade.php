@@ -16,33 +16,32 @@
             <div class="w-full max-w-6xl flex flex-col items-center space-y-0">
                 <!-- Logo replaces BOOKS ACADEMY text -->
                 <div id="logo-container"
-                    class="relative w-full max-w-[800px] sm:max-w-[1000px] md:max-w-[1200px] lg:max-w-[1500px] opacity-0 transition-all duration-[1200ms] ease-out flex justify-center self-center"
+                    class="relative w-full max-w-[450px] sm:max-w-[550px] md:max-w-[650px] lg:max-w-[750px] opacity-0 transition-all duration-[1200ms] ease-out flex justify-center self-center"
                     style="transform: translateY(30px); z-index: 10; will-change: transform, opacity;">
-                    
-                    <div class="relative w-full h-full translate-x-8 sm:translate-x-12 md:translate-x-16 lg:translate-x-24">
+                                     <div class="relative w-full h-full -translate-x-8 sm:-translate-x-12 md:-translate-x-16 lg:-translate-x-24">
                         
-                        <!-- Welcome text overlaid on the logo, centered at the 40% mark (the letter A) -->
-                        <div class="absolute top-[10%] sm:top-[28%] md:top-[28%] left-[40%] -translate-x-1/2 inline-flex items-center justify-center gap-4 z-20 w-full pointer-events-none">
-                            <div class="h-[2px] w-8 sm:w-12 bg-[#C4A052]"></div>
-                            <h4 class="text-xs sm:text-sm font-bold tracking-[0.25em] text-[#E5D3B3] uppercase whitespace-nowrap">Welcome To</h4>
-                            <div class="h-[2px] w-8 sm:w-12 bg-[#C4A052]"></div>
-                        </div>
+                        <img id="logo-large" src="{{ asset('images/cover8.png') }}" alt="BooksAcademy Logo Large"
+                            class="mx-auto h-auto w-full object-contain object-center opacity-0 transition-opacity duration-500 will-change-transform z-10">
 
-                        <img id="logo-large" src="{{ asset('images/cover10.png') }}" alt="BooksAcademy Logo Large"
-                            class="mx-auto h-auto w-full object-contain object-center opacity-0 transition-opacity duration-500 will-change-transform">
+                        <img id="logo-half-left" src="{{ asset('images/cover8.png') }}" alt="BooksAcademy Logo Left"
+                            class="absolute inset-0 mx-auto h-auto w-full object-contain object-center logo-half z-10"
+                            style="clip-path: inset(0 45% 0 0); transform: translateX(-40px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
 
-                        <img id="logo-half-left" src="{{ asset('images/cover10.png') }}" alt="BooksAcademy Logo Left"
-                            class="absolute inset-0 mx-auto h-auto w-full object-contain object-center logo-half"
-                            style="clip-path: inset(0 60% 0 0); transform: translateX(-40px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
+                        <img id="logo-half-right" src="{{ asset('images/cover8.png') }}" alt="BooksAcademy Logo Right"
+                            class="absolute inset-0 mx-auto h-auto w-full object-contain object-center logo-half z-10"
+                            style="clip-path: inset(0 0 0 55%); transform: translateX(60px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
+                    </div>
 
-                        <img id="logo-half-right" src="{{ asset('images/cover10.png') }}" alt="BooksAcademy Logo Right"
-                            class="absolute inset-0 mx-auto h-auto w-full object-contain object-center logo-half"
-                            style="clip-path: inset(0 0 0 40%); transform: translateX(60px); opacity: 0; transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease-out;">
+                    <!-- Welcome text overlaid on the logo, centered perfectly in the middle of the screen -->
+                    <div class="absolute top-[-4%] sm:top-[10%] md:top-[10%] left-1/2 -translate-x-1/2 inline-flex items-center justify-center gap-8 z-20 w-full pointer-events-none">
+                        <div class="h-[3px] w-8 sm:w-12 bg-[#C4A052]"></div>
+                        <h4 class="text-xs sm:text-sm font-bold tracking-[0.25em] text-[#E5D3B3] uppercase whitespace-nowrap">Welcome To</h4>
+                        <div class="h-[3px] w-8 sm:w-12 bg-[#C4A052]"></div>
                     </div>
                 </div>
             </div>
 
-            <div class="-mt-16 sm:-mt-24 lg:-mt-32 flex flex-col items-center text-center opacity-0 transition-opacity duration-[1500ms] delay-700 fade-in-up"
+            <div class="mt-2 sm:mt-3 lg:mt-4 flex flex-col items-center text-center opacity-0 transition-opacity duration-[1500ms] delay-700 fade-in-up"
                 id="hero-content">
                 <p class="text-[15px] sm:text-base md:text-lg text-white mb-2 font-serif tracking-wide">
                     Empowering writers. Enriching readers.
@@ -925,17 +924,17 @@
 
     <!-- Latest Happenings Section -->
     <section id="latest-happenings"
-        class="relative py-24 xl:py-32 2xl:py-40 border-b bg-[#0a0502] border-[#C4A052]/20 transition-colors overflow-hidden">
+        class="relative py-24 xl:py-32 border-b bg-[#0a0502] border-[#C4A052]/20 transition-colors overflow-hidden">
 
         <!-- Background Image -->
-        <div class="absolute inset-0 z-0">
+        <div class="absolute inset-0 z-0 opacity-40">
             <img src="{{ asset('images/latest.png') }}" alt="Latest Happenings Background"
                 class="w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 bg-gradient-to-b from-[#0a0502] via-[#0a0502]/60 to-[#0a0502]"></div>
         </div>
 
-        <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 2xl:px-12 relative z-10">
-            <!-- Section Header -->
+        <div class="w-full max-w-7xl 2xl:max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-10 relative z-10">
+            <!-- Section Header (Restored to its original top position) -->
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 opacity-0 transition-all duration-1000 ease-out translate-y-10"
                 id="happenings-header">
                 <div class="space-y-4 max-w-xl">
@@ -950,111 +949,57 @@
                         News, events, and achievements—discover what's new in the world of books and beyond.
                     </p>
                 </div>
-                <a href="#"
-                    class="inline-flex items-center gap-3 text-[10px] font-bold uppercase tracking-widest text-slate-300 hover:text-[#C4A052] transition-colors group">
-                    View All Updates
-                    <span
-                        class="w-8 h-8 rounded-full border border-slate-600 flex items-center justify-center group-hover:border-[#C4A052] group-hover:text-[#C4A052] transition-all">&rarr;</span>
-                </a>
             </div>
 
-            <!-- Cards Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Card 1 -->
-                <article
-                    class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 border border-[#C4A052]/30 hover:border-[#C4A052]/60"
-                    id="happening-card-1">
-                    <div class="aspect-[4/5] overflow-hidden relative p-5 pb-0">
-                        <div class="w-full h-full rounded-t-2xl overflow-hidden relative border border-[#C4A052]/20 shadow-2xl bg-[#0a0502]">
-                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ asset('images/A-42.jpg') }}');">
-                            </div>
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80">
-                            </div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="px-4 py-1.5 bg-[#C4A052] text-[#0a0502] text-[9px] font-bold uppercase tracking-widest rounded-full shadow-[0_0_15px_rgba(196,160,82,0.5)]">Partnership</span>
-                            </div>
-                        </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-16 items-center">
+                <!-- Large Image Column (lg:col-span-7) -->
+                <div class="lg:col-span-7 relative group opacity-0 translate-y-10 transition-all duration-1000 ease-out" id="happening-card-1">
+                    <!-- Premium frame border -->
+                    <div class="absolute inset-0 border border-[#C4A052]/30 rounded-3xl -translate-x-3 translate-y-3 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-500 z-0"></div>
+                    
+                    <div class="relative overflow-hidden rounded-3xl border border-[#C4A052]/30 hover:border-[#C4A052]/60 transition-colors duration-500 shadow-2xl z-10 bg-black/40 backdrop-blur-sm p-4">
+                        <img src="{{ asset('images/london.png') }}" alt="Books Academy at the London Book Fair"
+                            class="w-full h-auto rounded-2xl object-cover transform group-hover:scale-[1.02] transition-transform duration-700">
                     </div>
-                    <div class="p-8 space-y-3">
-                        <div class="flex items-center gap-3">
-                           
-                            <span class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">By Mr. Kermit Holt</span>
-                        </div>
-                        <h3
-                            class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
-                            <a href="#">Poetry at Its Best Volume 2: The Paraphrase of the New Testament</a>
-                        </h3>
-                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-5">
-                            Books Academy is thrilled to announce the successful launch of your book, “Poetry at Its Best Volume 2: The Paraphrase of the New Testament”. As your publishing partner, we are excited to embark on this literary journey with you, aiming for great success together.
-                        </p>
-                    </div>
-                </article>
+                </div>
 
-                <!-- Card 2 -->
-                <article
-                    class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 delay-[200ms] border border-[#C4A052]/30 hover:border-[#C4A052]/60"
-                    id="happening-card-2">
-                    <div class="aspect-[4/5] overflow-hidden relative p-5 pb-0">
-                        <div class="w-full h-full rounded-t-2xl overflow-hidden relative border border-[#C4A052]/20 shadow-2xl bg-[#0a0502]">
-                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ asset('images/A-41.jpg') }}');">
-                            </div>
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80">
-                            </div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="px-4 py-1.5 bg-[#1a110a] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-[#C4A052]/50">New Release</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-8 space-y-3">
-                        <div class="flex items-center gap-3">
-                         
-                            <span class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">By Dr. Trent Stephens</span>
-                        </div>
-                        <h3
-                            class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
-                            <a href="#">The Last Tournament: Book 2 of: William de Braose Squire of Winchester</a>
+                <!-- Description Column (lg:col-span-5) -->
+                <div class="lg:col-span-5 space-y-6 sm:space-y-8 opacity-0 translate-y-10 transition-all duration-1000 ease-out" id="happening-card-2">
+                    <div class="space-y-4">
+                        <span class="text-[10px] font-bold text-[#C4A052] uppercase tracking-[0.25em] flex items-center gap-4">
+                            <span class="w-8 h-[1px] bg-[#C4A052]"></span>
+                            Featured Spotlight
+                        </span>
+                        <h3 class="text-3xl sm:text-4xl font-serif text-white leading-[1.2] drop-shadow-md">
+                            Books Academy at the <span class="italic text-[#C4A052]">London Book Fair</span>
                         </h3>
-                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-5">
-                            Books Academy is thrilled to announce the successful launch of your book, “The Last Tournament: Book 2 of: William de Braose Squire of Winchester”. As your publishing partner, we are excited to embark on this literary journey with you, aiming for great success together.
+                    </div>
+                    
+                    <div class="space-y-4 text-[14px] sm:text-base text-slate-300 leading-relaxed font-serif">
+                        <p>
+                            Books Academy is proud to represent and showcase our talented authors at the world-renowned London Book Fair. As one of the largest international publishing events, the London Book Fair provides an exceptional global platform for our authors' work, connecting them with publishers, agents, and readers from all around the world.
+                        </p>
+                        <p class="text-[13px] text-slate-400 font-sans leading-relaxed">
+                            Through our international showcase representation, we ensure that outstanding indie voices get the spotlight they deserve, placing physical copies of their books directly in front of global publishing decision-makers.
                         </p>
                     </div>
-                </article>
 
-                <!-- Card 3 -->
-                <article
-                    class="group bg-black/50 backdrop-blur-md rounded-3xl overflow-hidden hover:shadow-[0_0_30px_rgba(196,160,82,0.15)] transition-all duration-500 hover:-translate-y-2 opacity-0 translate-y-10 delay-[400ms] border border-[#C4A052]/30 hover:border-[#C4A052]/60"
-                    id="happening-card-3">
-                    <div class="aspect-[4/5] overflow-hidden relative p-5 pb-0">
-                        <div class="w-full h-full rounded-t-2xl overflow-hidden relative border border-[#C4A052]/20 shadow-2xl bg-[#0a0502]">
-                            <div class="absolute inset-0 bg-contain bg-no-repeat bg-center group-hover:scale-105 transition-transform duration-700" style="background-image: url('{{ asset('images/A-40.jpg') }}');">
-                            </div>
-                            <div
-                                class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80">
-                            </div>
-                            <div class="absolute bottom-4 left-4">
-                                <span
-                                    class="px-4 py-1.5 bg-[#1a110a] text-white text-[9px] font-bold uppercase tracking-widest rounded-full shadow-lg border border-[#C4A052]/50">Partnership</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-8 space-y-3">
-                        <div class="flex items-center gap-3">
-                           
-                            <span class="text-[9px] text-[#C4A052] font-bold uppercase tracking-widest block">By Mr. Donald Mosbaugh</span>
-                        </div>
-                        <h3
-                            class="text-[20px] font-serif text-white group-hover:text-[#C4A052] transition-colors leading-[1.3] drop-shadow-sm pb-1">
-                            <a href="#">The Mountain of the New Jerusalem in Heaven</a>
-                        </h3>
-                        <p class="text-[11px] text-slate-400 leading-relaxed line-clamp-5">
-                            Books Academy is thrilled to announce the successful launch of your book, “The Mountain of the New Jerusalem in Heaven”. As your publishing partner, we are excited to embark on this literary journey with you, aiming for great success together.
-                        </p>
-                    </div>
-                </article>
+                    <!-- Key highlights -->
+                    <ul class="space-y-3 text-[12px] sm:text-[13px] text-slate-300 font-sans">
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C4A052]"></span>
+                            Global rights and translation representation opportunities
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C4A052]"></span>
+                            Physical book displays in the main exhibition hall
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#C4A052]"></span>
+                            Direct exposure to international agents and acquisitions editors
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>

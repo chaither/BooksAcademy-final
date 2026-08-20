@@ -186,7 +186,7 @@
                             </div>
                             <div>
                                 <h4 class="text-[11px] font-bold uppercase tracking-widest mb-1 text-slate-100">EMAIL US</h4>
-                                <p class="text-sm text-slate-300 leading-relaxed font-medium">support@booksacademy.org</p>
+                                <p class="text-sm text-slate-300 leading-relaxed font-medium">support@booksacademy.net</p>
                             </div>
                         </div>
                     </div>

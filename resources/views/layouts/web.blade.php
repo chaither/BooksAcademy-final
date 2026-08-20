@@ -421,7 +421,7 @@
                 // Step 1: Slide container up to upper center and fade in
                 logoContainer.classList.remove('opacity-0');
                 logoContainer.classList.add('opacity-100');
-                logoContainer.style.transform = 'translateY(-50px)';
+                logoContainer.style.transform = 'translateY(10px)';
 
                 const heroContent = document.getElementById('hero-content');
                 if(heroContent) {
