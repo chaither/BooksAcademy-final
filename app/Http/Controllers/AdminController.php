@@ -6,7 +6,8 @@ use App\Models\BookstoreBook;
 use App\Models\PublishedBook;
 use App\Models\RoyaltyReport;
 use App\Models\User;
-use App\Models\UserWeeklyRoyalty;
+use App\Models\UserQuarterlyRoyalty;
+use App\Models\PublishedBookQuarterlySale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
@@ -22,7 +23,7 @@ class AdminController extends Controller
 
         if ($currentUser->is_admin) {
             // Admin sees all regular users and bookstore books
-            $users = User::with(['royaltyReports', 'publishedBooks', 'weeklyRoyalties'])->where('is_admin', false)->latest()->get();
+            $users = User::with(['royaltyReports', 'publishedBooks.quarterlySales', 'quarterlyRoyalties'])->where('is_admin', false)->latest()->get();
             $bookstoreBooks = BookstoreBook::latest()->get();
 
             return view('dashboard', [
@@ -33,7 +34,7 @@ class AdminController extends Controller
         }
 
         // Regular user sees their own dashboard details
-        $currentUser->load(['royaltyReports', 'publishedBooks', 'weeklyRoyalties']);
+        $currentUser->load(['royaltyReports', 'publishedBooks.quarterlySales', 'quarterlyRoyalties']);
 
         return view('dashboard', [
             'user' => $currentUser,
@@ -372,9 +373,9 @@ class AdminController extends Controller
     }
 
     /**
-     * Store or update weekly royalty records for a specific user, month, and year.
+     * Store or update quarterly royalty records and book sales for a specific user and year.
      */
-    public function storeWeeklyRoyalties(Request $request, User $user)
+    public function storeQuarterlyRoyalties(Request $request, User $user)
     {
         if (! auth()->user()->is_admin) {
             abort(403);
@@ -382,31 +383,53 @@ class AdminController extends Controller
 
         $request->validate([
             'year' => ['required', 'integer'],
-            'month' => ['required', 'integer', 'min:1', 'max:12'],
-            'weeks' => ['required', 'array'],
-            'weeks.*.week_number' => ['required', 'integer'],
-            'weeks.*.period_label' => ['required', 'string'],
-            'weeks.*.books_sold' => ['required', 'integer', 'min:0'],
-            'weeks.*.royalty_amount' => ['required', 'numeric', 'min:0'],
-            'weeks.*.status' => ['required', 'string'],
+            'quarters' => ['required', 'array'],
+            'quarters.*.quarter' => ['required', 'integer', 'min:1', 'max:4'],
+            'quarters.*.status' => ['required', 'string'],
+            'quarters.*.book_sales' => ['nullable', 'array'],
+            'quarters.*.book_sales.*.published_book_id' => ['required', 'integer'],
+            'quarters.*.book_sales.*.books_sold' => ['required', 'integer', 'min:0'],
+            'quarters.*.book_sales.*.royalty_amount' => ['required', 'numeric', 'min:0'],
         ]);
 
         $year = (int) $request->year;
-        $month = (int) $request->month;
 
-        foreach ($request->weeks as $week) {
-            UserWeeklyRoyalty::updateOrCreate(
+        foreach ($request->quarters as $qData) {
+            $quarter = (int) $qData['quarter'];
+            $status = $qData['status'];
+            $bookSales = $qData['book_sales'] ?? [];
+
+            // Calculate aggregate totals
+            $totalBooksSold = 0;
+            $totalRoyaltyAmount = 0.00;
+
+            foreach ($bookSales as $sale) {
+                $totalBooksSold += (int) $sale['books_sold'];
+                $totalRoyaltyAmount += (float) $sale['royalty_amount'];
+
+                PublishedBookQuarterlySale::updateOrCreate(
+                    [
+                        'published_book_id' => (int) $sale['published_book_id'],
+                        'year' => $year,
+                        'quarter' => $quarter,
+                    ],
+                    [
+                        'books_sold' => (int) $sale['books_sold'],
+                        'royalty_amount' => (float) $sale['royalty_amount'],
+                    ]
+                );
+            }
+
+            UserQuarterlyRoyalty::updateOrCreate(
                 [
                     'user_id' => $user->id,
                     'year' => $year,
-                    'month' => $month,
-                    'week_number' => (int) $week['week_number'],
+                    'quarter' => $quarter,
                 ],
                 [
-                    'period_label' => $week['period_label'],
-                    'books_sold' => (int) $week['books_sold'],
-                    'royalty_amount' => (float) $week['royalty_amount'],
-                    'status' => $week['status'],
+                    'books_sold' => $totalBooksSold,
+                    'royalty_amount' => $totalRoyaltyAmount,
+                    'status' => $status,
                 ]
             );
         }
@@ -414,35 +437,39 @@ class AdminController extends Controller
         if ($request->wantsJson()) {
             return response()->json([
                 'success' => true,
-                'message' => 'Weekly royalty records updated successfully!',
+                'message' => 'Quarterly royalty records updated successfully!',
             ]);
         }
 
-        return redirect()->route('dashboard')->with('status', 'weekly-royalties-updated');
+        return redirect()->route('dashboard')->with('status', 'quarterly-royalties-updated');
     }
 
     /**
-     * Get weekly royalty records for a specific user, month, and year.
+     * Get quarterly royalty records and book sales for a specific user and year.
      */
-    public function getWeeklyRoyalties(Request $request, User $user)
+    public function getQuarterlyRoyalties(Request $request, User $user)
     {
         if (! auth()->user()->is_admin && auth()->id() !== $user->id) {
             abort(403);
         }
 
         $year = (int) ($request->query('year') ?? date('Y'));
-        $month = (int) ($request->query('month') ?? date('n'));
 
-        $records = UserWeeklyRoyalty::where('user_id', $user->id)
+        $records = UserQuarterlyRoyalty::where('user_id', $user->id)
             ->where('year', $year)
-            ->where('month', $month)
-            ->orderBy('week_number', 'asc')
+            ->orderBy('quarter', 'asc')
+            ->get();
+
+        // Also fetch book-by-book sales for this user's published books for this year
+        $bookIds = $user->publishedBooks->pluck('id');
+        $bookSales = PublishedBookQuarterlySale::whereIn('published_book_id', $bookIds)
+            ->where('year', $year)
             ->get();
 
         return response()->json([
             'year' => $year,
-            'month' => $month,
             'records' => $records,
+            'bookSales' => $bookSales,
         ]);
     }
 }

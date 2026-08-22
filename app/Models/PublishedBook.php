@@ -16,4 +16,9 @@ class PublishedBook extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function quarterlySales()
+    {
+        return $this->hasMany(PublishedBookQuarterlySale::class);
+    }
 }

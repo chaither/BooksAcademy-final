@@ -60,8 +60,8 @@ class User extends Authenticatable
         return $this->hasMany(PublishedBook::class);
     }
 
-    public function weeklyRoyalties()
+    public function quarterlyRoyalties()
     {
-        return $this->hasMany(UserWeeklyRoyalty::class);
+        return $this->hasMany(UserQuarterlyRoyalty::class);
     }
 }

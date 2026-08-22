@@ -54,9 +54,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::put('/admin/bookstore-books/{book}', [AdminController::class, 'updateBookstoreBook'])->name('admin.bookstore-books.update');
     Route::delete('/admin/bookstore-books/{book}', [AdminController::class, 'deleteBookstoreBook'])->name('admin.bookstore-books.delete');
 
-    // Weekly Royalties Admin Routes
-    Route::post('/admin/users/{user}/weekly-royalties', [AdminController::class, 'storeWeeklyRoyalties'])->name('admin.users.weekly-royalties.store');
-    Route::get('/admin/users/{user}/weekly-royalties', [AdminController::class, 'getWeeklyRoyalties'])->name('admin.users.weekly-royalties.get');
+    // Quarterly Royalties Admin Routes
+    Route::post('/admin/users/{user}/quarterly-royalties', [AdminController::class, 'storeQuarterlyRoyalties'])->name('admin.users.quarterly-royalties.store');
+    Route::get('/admin/users/{user}/quarterly-royalties', [AdminController::class, 'getQuarterlyRoyalties'])->name('admin.users.quarterly-royalties.get');
 });
 
 Route::middleware('auth')->group(function () {

@@ -5,18 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserWeeklyRoyalty extends Model
+class UserQuarterlyRoyalty extends Model
 {
     use HasFactory;
 
-    protected $table = 'user_weekly_royalties';
+    protected $table = 'user_quarterly_royalties';
 
     protected $fillable = [
         'user_id',
         'year',
-        'month',
-        'week_number',
-        'period_label',
+        'quarter',
         'books_sold',
         'royalty_amount',
         'status',
@@ -24,8 +22,7 @@ class UserWeeklyRoyalty extends Model
 
     protected $casts = [
         'year' => 'integer',
-        'month' => 'integer',
-        'week_number' => 'integer',
+        'quarter' => 'integer',
         'books_sold' => 'integer',
         'royalty_amount' => 'float',
     ];

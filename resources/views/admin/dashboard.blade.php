@@ -189,46 +189,29 @@
                                             
                                         </div>
                                         
-                                        <!-- Weekly Royalty & Book Sales Manager Section -->
-                                        <div x-data="adminRoyaltyManager({{ $u->id }}, {{ json_encode($u->weeklyRoyalties) }})" class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 space-y-4">
+                                        <!-- Quarterly Royalty & Book Sales Manager Section -->
+                                        <div x-data="adminRoyaltyManager({{ $u->id }}, {{ json_encode($u->quarterlyRoyalties) }}, {{ json_encode($u->publishedBooks->map(fn($b) => ['id' => $b->id, 'title' => $b->title, 'sales' => $b->quarterlySales])) }})" class="pt-6 mt-6 border-t border-slate-200 dark:border-slate-800 space-y-4">
                                             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                                                 <div>
                                                     <h4 class="font-bold text-xs text-slate-900 dark:text-white flex items-center gap-2">
                                                         <svg class="w-4 h-4 text-indigo-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
                                                         </svg>
-                                                        Weekly Royalty & Book Sales Manager
+                                                        Quarterly Royalty & Book Sales Manager
                                                     </h4>
-                                                    <p class="text-[10px] text-slate-400">Select month/year to automatically compute weeks, enter sales & books sold per week, and view live totals.</p>
+                                                    <p class="text-[10px] text-slate-400">Select year to automatically compute quarters, enter copies sold & royalties per published book, and view live totals.</p>
                                                 </div>
 
                                                 <div x-show="saveSuccess" x-transition class="text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-3 py-1 rounded-full border border-emerald-200 dark:border-emerald-800">
-                                                    ✓ Weekly Royalties Saved!
+                                                    ✓ Quarterly Royalties Saved!
                                                 </div>
                                             </div>
 
-                                            <!-- Month & Year Selector Controls + Live Monthly Totals Card -->
-                                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-100/70 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
-                                                <div>
-                                                    <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1">Select Month</label>
-                                                    <select x-model="selectedMonth" @change="generateWeeks()" class="w-full px-3 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
-                                                        <option value="1">January</option>
-                                                        <option value="2">February</option>
-                                                        <option value="3">March</option>
-                                                        <option value="4">April</option>
-                                                        <option value="5">May</option>
-                                                        <option value="6">June</option>
-                                                        <option value="7">July</option>
-                                                        <option value="8">August</option>
-                                                        <option value="9">September</option>
-                                                        <option value="10">October</option>
-                                                        <option value="11">November</option>
-                                                        <option value="12">December</option>
-                                                    </select>
-                                                </div>
+                                            <!-- Year Selector Controls + Live Yearly Totals Card -->
+                                            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-100/70 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
                                                 <div>
                                                     <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1">Select Year</label>
-                                                    <select x-model="selectedYear" @change="generateWeeks()" class="w-full px-3 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                                                    <select x-model="selectedYear" @change="generateQuarters()" class="w-full px-3 py-1.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
                                                         <option value="2024">2024</option>
                                                         <option value="2025">2025</option>
                                                         <option value="2026">2026</option>
@@ -237,54 +220,56 @@
                                                 </div>
                                                 <div class="md:col-span-2 flex items-center justify-between gap-4 border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-800 pt-2 md:pt-0 md:pl-4">
                                                     <div>
-                                                        <div class="text-[9px] font-bold uppercase text-slate-400">Total Monthly Sales</div>
-                                                        <div class="text-sm font-black text-indigo-600 dark:text-indigo-400" x-text="'$' + totalMonthlySales.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})">$0.00</div>
+                                                        <div class="text-[9px] font-bold uppercase text-slate-400">Total Yearly Royalties</div>
+                                                        <div class="text-sm font-black text-indigo-600 dark:text-indigo-400" x-text="'$' + totalYearlySales.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})">$0.00</div>
                                                     </div>
                                                     <div class="text-right">
-                                                        <div class="text-[9px] font-bold uppercase text-slate-400">Total Books Sold</div>
-                                                        <div class="text-sm font-black text-purple-600 dark:text-purple-400" x-text="totalMonthlyBooks + ' Copies'">0 Copies</div>
+                                                        <div class="text-[9px] font-bold uppercase text-slate-400">Total Yearly Books Sold</div>
+                                                        <div class="text-sm font-black text-purple-600 dark:text-purple-400" x-text="totalYearlyBooks.toLocaleString() + ' Copies'">0 Copies</div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <!-- Weekly Inputs Table -->
-                                            <form @submit.prevent="saveWeeklyRoyalties()" class="space-y-3">
-                                                <div class="overflow-x-auto rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50">
-                                                    <table class="w-full text-left text-xs border-collapse">
-                                                        <thead>
-                                                            <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 font-bold uppercase text-[9px] border-b border-slate-200 dark:border-slate-800">
-                                                                <th class="p-2.5">Week</th>
-                                                                <th class="p-2.5">Date Period</th>
-                                                                <th class="p-2.5 w-32">Books Sold</th>
-                                                                <th class="p-2.5 w-40">Total Sales / Royalty ($)</th>
-                                                                <th class="p-2.5 w-36">Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
-                                                            <template x-for="(week, index) in weeks" :key="index">
-                                                                <tr class="hover:bg-slate-50/80 dark:hover:bg-slate-900/80">
-                                                                    <td class="p-2.5 font-bold text-slate-900 dark:text-white" x-text="'Week ' + week.week_number"></td>
-                                                                    <td class="p-2.5 text-slate-500 dark:text-slate-400 font-medium" x-text="week.period_label"></td>
-                                                                    <td class="p-2.5">
-                                                                        <input type="number" min="0" x-model.number="week.books_sold" class="w-full px-2.5 py-1 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
-                                                                    </td>
-                                                                    <td class="p-2.5">
-                                                                        <div class="relative">
-                                                                            <span class="absolute left-2.5 top-1 text-slate-400 text-xs">$</span>
-                                                                            <input type="number" step="0.01" min="0" x-model.number="week.royalty_amount" class="w-full pl-6 pr-2 py-1 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
+                                            <!-- Quarterly Inputs -->
+                                            <form @submit.prevent="saveQuarterlyRoyalties()" class="space-y-4">
+                                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                                    <template x-for="(q, qIdx) in quarters" :key="q.quarter">
+                                                        <div class="p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
+                                                            <div class="flex items-center justify-between border-b border-slate-100 dark:border-slate-800 pb-2">
+                                                                <span class="font-extrabold text-xs text-indigo-600 dark:text-indigo-400" x-text="q.name + ': ' + q.period"></span>
+                                                                <select x-model="q.status" class="px-2 py-0.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-semibold focus:outline-none">
+                                                                    <option value="Paid">Paid</option>
+                                                                    <option value="Processing">Processing</option>
+                                                                    <option value="Upcoming">Upcoming</option>
+                                                                </select>
+                                                            </div>
+                                                            
+                                                            <!-- Book Sales List for this Quarter -->
+                                                            <div class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                                                                <template x-if="q.book_sales.length === 0">
+                                                                    <p class="text-[10px] text-slate-400 italic">No published books added for this user yet.</p>
+                                                                </template>
+                                                                <template x-for="(bookSale, bsIdx) in q.book_sales" :key="bookSale.published_book_id">
+                                                                    <div class="grid grid-cols-12 gap-2 items-center text-[10px]">
+                                                                        <div class="col-span-6 font-bold text-slate-700 dark:text-slate-300 truncate" x-text="bookSale.title"></div>
+                                                                        <div class="col-span-3">
+                                                                            <input type="number" min="0" placeholder="Sold" x-model.number="bookSale.books_sold" class="w-full px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs">
                                                                         </div>
-                                                                    </td>
-                                                                    <td class="p-2.5">
-                                                                        <select x-model="week.status" class="w-full px-2 py-1 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white text-xs font-semibold focus:outline-none focus:border-indigo-500">
-                                                                            <option value="Paid">Paid</option>
-                                                                            <option value="Processing">Processing</option>
-                                                                            <option value="Upcoming">Upcoming</option>
-                                                                        </select>
-                                                                    </td>
-                                                                </tr>
-                                                            </template>
-                                                        </tbody>
-                                                    </table>
+                                                                        <div class="col-span-3 relative">
+                                                                            <span class="absolute left-1 top-1 text-slate-400">$</span>
+                                                                            <input type="number" step="0.01" min="0" placeholder="Royalty" x-model.number="bookSale.royalty_amount" class="w-full pl-3.5 pr-1 py-0.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs">
+                                                                        </div>
+                                                                    </div>
+                                                                </template>
+                                                            </div>
+
+                                                            <!-- Quarter Totals Summary footer inside card -->
+                                                            <div class="pt-2 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[10px] font-semibold text-slate-400">
+                                                                <span>Total copies: <span class="font-extrabold text-purple-600" x-text="q.book_sales.reduce((sum, bs) => sum + (parseInt(bs.books_sold) || 0), 0)"></span></span>
+                                                                <span>Total royalties: <span class="font-extrabold text-indigo-600" x-text="'$' + q.book_sales.reduce((sum, bs) => sum + (parseFloat(bs.royalty_amount) || 0), 0).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})"></span></span>
+                                                            </div>
+                                                        </div>
+                                                    </template>
                                                 </div>
 
                                                 <div class="flex items-center justify-end">
@@ -292,7 +277,7 @@
                                                         <svg x-show="!saving" class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
                                                             <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
                                                         </svg>
-                                                        <span x-text="saving ? 'Saving...' : 'Save Weekly Royalties & Book Sales'"></span>
+                                                        <span x-text="saving ? 'Saving...' : 'Save Quarterly Royalties & Book Sales'"></span>
                                                     </button>
                                                 </div>
                                             </form>
@@ -615,62 +600,79 @@
 </div>
 
 <script>
-function adminRoyaltyManager(userId, initialData) {
+function adminRoyaltyManager(userId, initialRoyalties, initialBooks) {
     return {
         userId: userId,
-        initialData: initialData || [],
-        selectedMonth: 5, // Default May
+        initialRoyalties: initialRoyalties || [],
+        initialBooks: initialBooks || [],
         selectedYear: 2025,
-        weeks: [],
+        quarters: [],
         saving: false,
         saveSuccess: false,
 
         init() {
-            this.generateWeeks();
+            this.generateQuarters();
         },
 
-        generateWeeks() {
-            const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        generateQuarters() {
+            const periods = {
+                1: { name: 'Q1', period: 'Jan – Mar' },
+                2: { name: 'Q2', period: 'Apr – Jun' },
+                3: { name: 'Q3', period: 'Jul – Sep' },
+                4: { name: 'Q4', period: 'Oct – Dec' }
+            };
+            
             const year = parseInt(this.selectedYear);
-            const month = parseInt(this.selectedMonth);
-            
-            const daysInMonth = new Date(year, month, 0).getDate();
-            const weekCount = daysInMonth > 28 ? 5 : 4;
-            const monthShort = monthNames[month - 1].substring(0, 3);
-            
-            const newWeeks = [];
-            for (let i = 1; i <= weekCount; i++) {
-                let startDay = (i - 1) * 7 + 1;
-                let endDay = i === 5 ? daysInMonth : Math.min(i * 7, daysInMonth);
-                let label = `${monthShort} ${startDay} – ${monthShort} ${endDay}`;
+            const newQuarters = [];
 
-                // Check if existing saved record for this user, year, month, week_number
-                const existing = this.initialData.find(r => r.year == year && r.month == month && r.week_number == i);
+            for (let q = 1; q <= 4; q++) {
+                // Find existing royalty record
+                const existingRoyalty = this.initialRoyalties.find(r => r.year == year && r.quarter == q);
+                
+                // Build book sales inputs
+                const bookSales = this.initialBooks.map(book => {
+                    // Check if there is an existing sale record for this book in this quarter
+                    const existingSale = (book.sales || []).find(s => s.year == year && s.quarter == q);
+                    return {
+                        published_book_id: book.id,
+                        title: book.title,
+                        books_sold: existingSale ? parseInt(existingSale.books_sold) : 0,
+                        royalty_amount: existingSale ? parseFloat(existingSale.royalty_amount) : 0.00
+                    };
+                });
 
-                newWeeks.push({
-                    week_number: i,
-                    period_label: label,
-                    books_sold: existing ? parseInt(existing.books_sold) : 0,
-                    royalty_amount: existing ? parseFloat(existing.royalty_amount) : 0.00,
-                    status: existing ? existing.status : (i === weekCount ? 'Upcoming' : 'Paid')
+                newQuarters.push({
+                    quarter: q,
+                    name: periods[q].name,
+                    period: periods[q].period,
+                    status: existingRoyalty ? existingRoyalty.status : 'Upcoming',
+                    book_sales: bookSales
                 });
             }
-            this.weeks = newWeeks;
+            this.quarters = newQuarters;
         },
 
-        get totalMonthlySales() {
-            return this.weeks.reduce((sum, w) => sum + (parseFloat(w.royalty_amount) || 0), 0);
+        get totalYearlySales() {
+            return this.quarters.reduce((sum, q) => {
+                return sum + q.book_sales.reduce((qSum, bs) => qSum + (parseFloat(bs.royalty_amount) || 0), 0);
+            }, 0);
         },
 
-        get totalMonthlyBooks() {
-            return this.weeks.reduce((sum, w) => sum + (parseInt(w.books_sold) || 0), 0);
+        get totalYearlyBooks() {
+            return this.quarters.reduce((sum, q) => {
+                return sum + q.book_sales.reduce((qSum, bs) => qSum + (parseInt(bs.books_sold) || 0), 0);
+            }, 0);
         },
 
-        async saveWeeklyRoyalties() {
+        // Backward compatibility getters to avoid errors if referenced elsewhere
+        get totalMonthlySales() { return this.totalYearlySales; },
+        get totalMonthlyBooks() { return this.totalYearlyBooks; },
+
+        async saveQuarterlyRoyalties() {
             this.saving = true;
             this.saveSuccess = false;
             try {
-                const response = await fetch(`/admin/users/${this.userId}/weekly-royalties`, {
+                const response = await fetch(`/admin/users/${this.userId}/quarterly-royalties`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -679,22 +681,53 @@ function adminRoyaltyManager(userId, initialData) {
                     },
                     body: JSON.stringify({
                         year: parseInt(this.selectedYear),
-                        month: parseInt(this.selectedMonth),
-                        weeks: this.weeks
+                        quarters: this.quarters
                     })
                 });
                 const data = await response.json();
                 if (data.success) {
                     this.saveSuccess = true;
-                    // Update initialData in memory
-                    this.weeks.forEach(w => {
-                        const existingIdx = this.initialData.findIndex(r => r.year == this.selectedYear && r.month == this.selectedMonth && r.week_number == w.week_number);
-                        if (existingIdx !== -1) {
-                            this.initialData[existingIdx] = { ...this.initialData[existingIdx], ...w };
+                    
+                    // Update initialRoyalties and initialBooks in memory
+                    this.quarters.forEach(q => {
+                        const qSumSold = q.book_sales.reduce((sum, bs) => sum + (parseInt(bs.books_sold) || 0), 0);
+                        const qSumAmt = q.book_sales.reduce((sum, bs) => sum + (parseFloat(bs.royalty_amount) || 0), 0);
+                        
+                        const existingRoyaltyIdx = this.initialRoyalties.findIndex(r => r.year == this.selectedYear && r.quarter == q.quarter);
+                        const rObj = {
+                            year: parseInt(this.selectedYear),
+                            quarter: q.quarter,
+                            books_sold: qSumSold,
+                            royalty_amount: qSumAmt,
+                            status: q.status
+                        };
+                        if (existingRoyaltyIdx !== -1) {
+                            this.initialRoyalties[existingRoyaltyIdx] = { ...this.initialRoyalties[existingRoyaltyIdx], ...rObj };
                         } else {
-                            this.initialData.push({ year: parseInt(this.selectedYear), month: parseInt(this.selectedMonth), ...w });
+                            this.initialRoyalties.push(rObj);
                         }
+
+                        // Update book sales
+                        q.book_sales.forEach(bs => {
+                            const book = this.initialBooks.find(b => b.id == bs.published_book_id);
+                            if (book) {
+                                if (!book.sales) book.sales = [];
+                                const existingSaleIdx = book.sales.findIndex(s => s.year == this.selectedYear && s.quarter == q.quarter);
+                                const sObj = {
+                                    year: parseInt(this.selectedYear),
+                                    quarter: q.quarter,
+                                    books_sold: bs.books_sold,
+                                    royalty_amount: bs.royalty_amount
+                                };
+                                if (existingSaleIdx !== -1) {
+                                    book.sales[existingSaleIdx] = { ...book.sales[existingSaleIdx], ...sObj };
+                                } else {
+                                    book.sales.push(sObj);
+                                }
+                            }
+                        });
                     });
+                    
                     setTimeout(() => { this.saveSuccess = false; }, 3000);
                 }
             } catch (err) {
