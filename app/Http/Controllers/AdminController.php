@@ -192,7 +192,9 @@ class AdminController extends Controller
 
         $request->validate([
             'title' => ['required', 'string', 'max:255'],
-            'cover_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:5120'], // Max 5MB Image
+            'cover_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:5120'], // Max 5MB Image
+            'flag_images' => ['nullable', 'array'],
+            'flag_images.*' => ['image', 'mimes:jpeg,png,jpg,gif,svg,webp', 'max:2048'], // Max 2MB per flag image
         ]);
 
         $path = null;
@@ -200,9 +202,17 @@ class AdminController extends Controller
             $path = $request->file('cover_image')->store('published-books', 'public');
         }
 
+        $flagPaths = [];
+        if ($request->hasFile('flag_images')) {
+            foreach ($request->file('flag_images') as $file) {
+                $flagPaths[] = $file->store('flag-images', 'public');
+            }
+        }
+
         $user->publishedBooks()->create([
             'title' => $request->title,
             'cover_image_path' => $path,
+            'flag_images' => $flagPaths,
         ]);
 
         return redirect()->route('dashboard')->with('status', 'book-published');
@@ -219,6 +229,12 @@ class AdminController extends Controller
 
         if ($publishedBook->cover_image_path) {
             Storage::disk('public')->delete($publishedBook->cover_image_path);
+        }
+
+        if ($publishedBook->flag_images && is_array($publishedBook->flag_images)) {
+            foreach ($publishedBook->flag_images as $fPath) {
+                Storage::disk('public')->delete($fPath);
+            }
         }
 
         $publishedBook->delete();

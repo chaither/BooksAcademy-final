@@ -17,6 +17,7 @@ class PublishedBookQuarterlySale extends Model
         'quarter',
         'books_sold',
         'royalty_amount',
+        'countries',
     ];
 
     protected $casts = [
@@ -24,6 +25,7 @@ class PublishedBookQuarterlySale extends Model
         'quarter' => 'integer',
         'books_sold' => 'integer',
         'royalty_amount' => 'float',
+        'countries' => 'array',
     ];
 
     public function publishedBook()
