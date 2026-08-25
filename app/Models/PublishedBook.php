@@ -10,6 +10,11 @@ class PublishedBook extends Model
         'user_id',
         'title',
         'cover_image_path',
+        'flag_images',
+    ];
+
+    protected $casts = [
+        'flag_images' => 'array',
     ];
 
     public function user()

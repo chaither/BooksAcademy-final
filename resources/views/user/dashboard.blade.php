@@ -7,6 +7,7 @@
             'id' => $book->id,
             'title' => $book->title,
             'cover_image_path' => $book->cover_image_path ? asset('storage/' . $book->cover_image_path) : null,
+            'flag_images' => collect($book->flag_images ?? [])->map(fn($path) => asset('storage/' . $path))->toArray(),
             'sales' => $book->quarterlySales ?? []
         ];
     });
@@ -150,8 +151,8 @@
 
         <!-- Dynamic Reports Area -->
         <div x-show="hasData" class="space-y-6">
-            <!-- 4 Key Stat Cards with Top Accent Glow & Mini Sparklines -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- 3 Key Stat Cards with Top Accent Glow & Mini Sparklines -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             
                 <!-- Card 1: Total Books Sold -->
                 <div class="group relative overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-purple-300 dark:hover:border-purple-700">
@@ -209,34 +210,6 @@
                     <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-[10px] text-slate-400 font-medium">
                         <span>Royalty aggregate</span>
                         <span class="font-bold text-indigo-600 dark:text-indigo-400" x-text="selectedPeriod === 'all' ? 'All Year' : 'Q' + selectedPeriod">All Year</span>
-                    </div>
-                </div>
-
-                <!-- Card 3: Average Royalty per Book -->
-                <div class="group relative overflow-hidden bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800/80 rounded-2xl p-5 shadow-xs transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:border-emerald-300 dark:hover:border-emerald-700">
-                    <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-500 to-teal-400"></div>
-                    <div class="flex items-start justify-between">
-                        <div>
-                            <h3 class="text-[11px] font-extrabold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider mb-1">
-                                Average Royalty / Book
-                            </h3>
-                            <div class="text-2xl sm:text-3xl font-black text-emerald-600 dark:text-emerald-400 tracking-tight" x-text="averageRoyaltyFormatted">
-                                $0.00
-                            </div>
-                            <div class="flex items-center gap-1 mt-2 text-[11px] text-slate-500 dark:text-slate-400 font-semibold">
-                                <span>Per sold unit average</span>
-                            </div>
-                        </div>
-                        <div class="w-11 h-11 rounded-xl bg-emerald-50 dark:bg-emerald-950/60 text-emerald-600 dark:text-emerald-400 flex items-center justify-center shrink-0 border border-emerald-100 dark:border-emerald-900/40 group-hover:scale-110 transition-transform">
-                            <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
-                            </svg>
-                        </div>
-                    </div>
-
-                    <div class="mt-3 pt-2 border-t border-slate-100 dark:border-slate-800/60 flex items-center justify-between text-[10px] text-slate-400 font-medium">
-                        <span>Avg per sale</span>
-                        <span class="font-bold text-emerald-600 dark:text-emerald-400" x-text="selectedPeriod === 'all' ? 'All Year' : 'Q' + selectedPeriod">All Year</span>
                     </div>
                 </div>
 
@@ -497,7 +470,7 @@
                         <h3 class="text-xs sm:text-sm font-black text-slate-900 dark:text-white uppercase tracking-wider">
                             Top Selling Books (<span x-text="selectedPeriod === 'all' ? 'All Year' : 'Q' + selectedPeriod">All Year</span>)
                         </h3>
-                        <p class="text-xs text-slate-400 mt-0.5 font-normal">Real-time copy distribution and average royalty rates per book.</p>
+                        <p class="text-xs text-slate-400 mt-0.5 font-normal">Real-time copy distribution, total royalties, and country sales breakdown.</p>
                     </div>
 
                     <!-- Period Quick Toggle Dropdown -->
@@ -518,7 +491,7 @@
                                 <th class="py-3 px-3">Book Title</th>
                                 <th class="py-3 px-3 text-center">Books Sold</th>
                                 <th class="py-3 px-3 text-right">Royalties</th>
-                                <th class="py-3 px-3 text-right rounded-r-xl">Average per Book</th>
+                                <th class="py-3 px-3 text-right rounded-r-xl">Countries Sold</th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-slate-100 dark:divide-slate-800/60 text-xs">
@@ -542,7 +515,29 @@
                                     </td>
                                     <td class="py-3.5 px-3 text-center font-bold text-slate-700 dark:text-slate-300" x-text="book.sold.toLocaleString()"></td>
                                     <td class="py-3.5 px-3 text-right font-black text-indigo-600 dark:text-indigo-400" x-text="book.royaltiesFormatted"></td>
-                                    <td class="py-3.5 px-3 text-right font-semibold text-slate-600 dark:text-slate-400" x-text="book.avgPerBookFormatted"></td>
+                                    <td class="py-3.5 px-3">
+                                        <template x-if="book.sold > 0">
+                                            <div class="flex items-center justify-end -space-x-2 overflow-hidden">
+                                                <template x-for="(flagUrl, fIdx) in book.flag_images.slice(0, 4)" :key="fIdx">
+                                                    <img :src="flagUrl"
+                                                         class="relative inline-block h-8 w-8 rounded-full object-cover ring-2 ring-white dark:ring-slate-900 z-10 hover:z-20 transition-all border border-slate-200/50 dark:border-slate-800">
+                                                </template>
+                                                <template x-if="book.flag_images.length > 4">
+                                                    <div class="relative inline-flex items-center justify-center h-8 w-8 rounded-full bg-slate-800 dark:bg-slate-700 ring-2 ring-white dark:ring-slate-900 text-[10px] font-bold text-white z-0">
+                                                        <span x-text="(book.flag_images.length - 4) + '+'"></span>
+                                                    </div>
+                                                </template>
+                                                <template x-if="book.flag_images.length === 0">
+                                                    <span class="text-slate-400 dark:text-slate-500 italic text-[11px] pr-2">None</span>
+                                                </template>
+                                            </div>
+                                        </template>
+                                        <template x-if="book.sold === 0">
+                                            <div class="flex items-center justify-end">
+                                                <span class="text-slate-400 dark:text-slate-500 italic text-[11px] pr-2">None</span>
+                                            </div>
+                                        </template>
+                                    </td>
                                 </tr>
                             </template>
                         </tbody>
@@ -773,7 +768,6 @@ function userRoyaltyDashboard(dbRoyalties, dbBooks) {
                     }
                 }
                 
-                const avgPerBook = sold > 0 ? (royalties / sold) : 0;
                 return {
                     id: book.id,
                     title: book.title,
@@ -781,7 +775,7 @@ function userRoyaltyDashboard(dbRoyalties, dbBooks) {
                     sold: sold,
                     royalties: royalties,
                     royaltiesFormatted: '$' + royalties.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}),
-                    avgPerBookFormatted: '$' + avgPerBook.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})
+                    flag_images: book.flag_images || []
                 };
             });
 

@@ -250,7 +250,7 @@
                                                                     <p class="text-[10px] text-slate-400 italic">No published books added for this user yet.</p>
                                                                 </template>
                                                                 <template x-for="(bookSale, bsIdx) in q.book_sales" :key="bookSale.published_book_id">
-                                                                    <div class="grid grid-cols-12 gap-2 items-center text-[10px]">
+                                                                    <div class="grid grid-cols-12 gap-2 items-center text-[10px] py-1 border-b border-slate-100 dark:border-slate-800/40 last:border-0">
                                                                         <div class="col-span-6 font-bold text-slate-700 dark:text-slate-300 truncate" x-text="bookSale.title"></div>
                                                                         <div class="col-span-3">
                                                                             <input type="number" min="0" placeholder="Sold" x-model.number="bookSale.books_sold" class="w-full px-1.5 py-0.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-xs">
@@ -297,9 +297,15 @@
                                                         <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Book Title</label>
                                                         <input type="text" name="title" required placeholder="e.g. The Great Novel" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
                                                     </div>
-                                                    <div>
-                                                        <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Cover Image (Optional)</label>
-                                                        <input type="file" name="cover_image" accept="image/*" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                                                    <div class="grid grid-cols-2 gap-4">
+                                                        <div>
+                                                            <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Cover Image (Optional)</label>
+                                                            <input type="file" name="cover_image" accept="image/*" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                                                        </div>
+                                                        <div>
+                                                            <label class="block text-[9px] uppercase font-bold text-slate-400 mb-1.5">Flag Images (Multiple, Optional)</label>
+                                                            <input type="file" name="flag_images[]" multiple accept="image/*" class="w-full px-3 py-2 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-900 dark:text-white focus:outline-none text-xs">
+                                                        </div>
                                                     </div>
                                                     <button type="submit" class="px-4 py-2 rounded bg-purple-600 hover:bg-purple-700 text-white font-bold text-[10px] transition-colors">
                                                         Add Book
@@ -320,7 +326,16 @@
                                                                             <svg class="w-4 h-4 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" /></svg>
                                                                         </div>
                                                                     @endif
-                                                                    <span class="text-[10px] font-bold text-slate-700 dark:text-slate-300">{{ $book->title }}</span>
+                                                                    <div class="flex flex-col gap-0.5">
+                                                                        <span class="text-[10px] font-bold text-slate-700 dark:text-slate-300 leading-tight">{{ $book->title }}</span>
+                                                                        @if($book->flag_images && count($book->flag_images) > 0)
+                                                                            <div class="flex flex-wrap gap-0.5 mt-0.5">
+                                                                                @foreach($book->flag_images as $flagPath)
+                                                                                    <img src="{{ asset('storage/' . $flagPath) }}" class="w-3.5 h-3.5 rounded-full object-cover border border-slate-200 dark:border-slate-800">
+                                                                                @endforeach
+                                                                            </div>
+                                                                        @endif
+                                                                    </div>
                                                                 </div>
                                                                 <form method="POST" action="{{ route('admin.published-books.delete', $book->id) }}" onsubmit="return confirm('Delete this published book?');">
                                                                     @csrf
