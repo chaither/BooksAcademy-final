@@ -1,16 +1,15 @@
 <?php
 
-use App\Models\User;
 use App\Models\PublishedBook;
+use App\Models\User;
 use App\Models\UserQuarterlyRoyalty;
-use App\Models\PublishedBookQuarterlySale;
 
 test('admin can store quarterly royalties and book sales for a user', function () {
     $admin = User::factory()->create(['is_admin' => true]);
     $user = User::factory()->create(['is_admin' => false]);
     $book = PublishedBook::create([
         'user_id' => $user->id,
-        'title' => 'Test Novel'
+        'title' => 'Test Novel',
     ]);
 
     $response = $this
@@ -25,26 +24,26 @@ test('admin can store quarterly royalties and book sales for a user', function (
                         [
                             'published_book_id' => $book->id,
                             'books_sold' => 10,
-                            'royalty_amount' => 100.00
-                        ]
-                    ]
+                            'royalty_amount' => 100.00,
+                        ],
+                    ],
                 ],
                 [
                     'quarter' => 2,
                     'status' => 'Upcoming',
-                    'book_sales' => []
+                    'book_sales' => [],
                 ],
                 [
                     'quarter' => 3,
                     'status' => 'Upcoming',
-                    'book_sales' => []
+                    'book_sales' => [],
                 ],
                 [
                     'quarter' => 4,
                     'status' => 'Upcoming',
-                    'book_sales' => []
+                    'book_sales' => [],
                 ],
-            ]
+            ],
         ]);
 
     $response->assertOk();
@@ -56,7 +55,7 @@ test('admin can store quarterly royalties and book sales for a user', function (
         'quarter' => 1,
         'books_sold' => 10,
         'royalty_amount' => 100.00,
-        'status' => 'Paid'
+        'status' => 'Paid',
     ]);
 
     $this->assertDatabaseHas('published_book_quarterly_sales', [
@@ -64,7 +63,7 @@ test('admin can store quarterly royalties and book sales for a user', function (
         'year' => 2025,
         'quarter' => 1,
         'books_sold' => 10,
-        'royalty_amount' => 100.00
+        'royalty_amount' => 100.00,
     ]);
 });
 
@@ -76,7 +75,7 @@ test('non-admin cannot store quarterly royalties', function () {
         ->actingAs($user)
         ->postJson("/admin/users/{$otherUser->id}/quarterly-royalties", [
             'year' => 2025,
-            'quarters' => []
+            'quarters' => [],
         ]);
 
     $response->assertForbidden();
@@ -93,7 +92,7 @@ test('authenticated user or admin can retrieve quarterly royalties', function ()
         'quarter' => 1,
         'books_sold' => 50,
         'royalty_amount' => 500.00,
-        'status' => 'Paid'
+        'status' => 'Paid',
     ]);
 
     // Retrieve as user themselves

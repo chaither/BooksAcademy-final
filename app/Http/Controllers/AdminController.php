@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\BookstoreBook;
 use App\Models\PublishedBook;
+use App\Models\PublishedBookQuarterlySale;
 use App\Models\RoyaltyReport;
 use App\Models\User;
 use App\Models\UserQuarterlyRoyalty;
-use App\Models\PublishedBookQuarterlySale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
