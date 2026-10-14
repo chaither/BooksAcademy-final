@@ -382,6 +382,74 @@
                     </div>
                 </a>
 
+                <!-- Article 5 -->
+                <a href="{{ route('pressroom.article', 5) }}"
+                    class="block col-span-12 md:col-span-6 lg:col-span-6 bg-[#0f131a] rounded-[1.5rem] overflow-hidden border border-white/5 shadow-sm hover:shadow-lg transition-shadow group flex flex-col cursor-pointer">
+                    <div class="h-48 overflow-hidden relative bg-black/40">
+                        <img src="{{ asset('images/lounge3.png') }}" alt="When God Works Incognito - Fred Beck"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-red-600/90 backdrop-blur-sm text-white text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 shadow-md">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            PDF Report
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-[10px] font-bold text-[#d4af37] uppercase tracking-widest mb-2">PRESS RELEASE</span>
+                        <div class="flex items-center gap-2 text-[10px] text-slate-400 font-medium mb-3">
+                            <span>November 24, 2025</span>
+                            <span>•</span>
+                            <span>4 min read</span>
+                        </div>
+                        <h3
+                            class="text-xl font-serif font-bold text-white mb-2 leading-tight group-hover:text-[#d4af37] transition-colors">
+                            Fred Beck’s "When God Works Incognito" 📖
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed line-clamp-3 mb-6 flex-1">
+                            Official press release distribution report reveals widespread syndication across major US and Canadian newswires, search engines, and national broadcasts.
+                        </p>
+                        <div class="flex justify-end mt-auto text-slate-300 hover:text-white">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Article 6 -->
+                <a href="{{ route('pressroom.article', 6) }}"
+                    class="block col-span-12 md:col-span-6 lg:col-span-6 bg-[#0f131a] rounded-[1.5rem] overflow-hidden border border-white/5 shadow-sm hover:shadow-lg transition-shadow group flex flex-col cursor-pointer">
+                    <div class="h-48 overflow-hidden relative bg-black/40">
+                        <img src="{{ asset('images/lounge2.png') }}" alt="Crossing the Wild Pacific - Robert Tisch"
+                            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <span class="absolute top-3 right-3 bg-red-600/90 backdrop-blur-sm text-white text-[9px] font-bold px-2.5 py-1 rounded-full uppercase tracking-wider flex items-center gap-1 shadow-md">
+                            <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                            PDF Report
+                        </span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <span class="text-[10px] font-bold text-[#d4af37] uppercase tracking-widest mb-2">PRESS RELEASE</span>
+                        <div class="flex items-center gap-2 text-[10px] text-slate-400 font-medium mb-3">
+                            <span>November 24, 2025</span>
+                            <span>•</span>
+                            <span>5 min read</span>
+                        </div>
+                        <h3
+                            class="text-xl font-serif font-bold text-white mb-2 leading-tight group-hover:text-[#d4af37] transition-colors">
+                            Robert Tisch’s "Crossing the Wild Pacific" 🌊⛵
+                        </h3>
+                        <p class="text-sm text-slate-400 leading-relaxed line-clamp-3 mb-6 flex-1">
+                            Official press release distribution report reveals broad syndication across US & Canadian environmental networks, travel hubs, and television affiliates.
+                        </p>
+                        <div class="flex justify-end mt-auto text-slate-300 hover:text-white">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                    d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </a>
+
             </div>
 
             <!-- Bottom Banner (Explore More Stories) -->
