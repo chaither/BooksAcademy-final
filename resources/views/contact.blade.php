@@ -162,14 +162,14 @@
                 </div>
 
                 <!-- Gradient Overlay from top to fade out the map under text -->
-                <div class="absolute inset-x-0 top-0 h-[300px] bg-gradient-to-b from-[#0F1B3D] via-[#0F1B3D]/90 to-transparent z-0 pointer-events-none"></div>
+                <div class="absolute inset-x-0 top-0 h-[360px] bg-gradient-to-b from-[#0F1B3D] via-[#0F1B3D]/95 to-transparent z-0 pointer-events-none"></div>
                 <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#0F1B3D]/50 to-transparent z-0 pointer-events-none"></div>
 
                 <!-- Contact Info Overlays -->
                 <div class="relative z-10 p-8 sm:p-12">
                     <h3 class="text-2xl font-serif font-bold mb-8 text-[#C9A227]">Contact Information</h3>
                     
-                    <div class="flex flex-col gap-8">
+                    <div class="flex flex-col gap-6">
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-[#1e293b] flex items-center justify-center shrink-0 border border-white/5 shadow-lg backdrop-blur-sm">
                                 <svg class="w-5 h-5 text-[#C9A227]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.243-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
@@ -179,6 +179,18 @@
                                 <p class="text-sm text-slate-300 leading-relaxed font-medium">823 Broad St, Augusta, GA 30901, Estados Unidos</p>
                             </div>
                         </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-[#1e293b] flex items-center justify-center shrink-0 border border-white/5 shadow-lg backdrop-blur-sm">
+                                <svg class="w-5 h-5 text-[#C9A227]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-[11px] font-bold uppercase tracking-widest mb-1 text-slate-100">PHONE NUMBER</h4>
+                                <p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    <a href="tel:+17062878045" class="hover:text-[#C9A227] transition-colors">(706) 287-8045</a>
+                                </p>
+                            </div>
+                        </div>
                         
                         <div class="flex items-start gap-4">
                             <div class="w-10 h-10 rounded-full bg-[#1e293b] flex items-center justify-center shrink-0 border border-white/5 shadow-lg backdrop-blur-sm">
@@ -186,7 +198,9 @@
                             </div>
                             <div>
                                 <h4 class="text-[11px] font-bold uppercase tracking-widest mb-1 text-slate-100">EMAIL US</h4>
-                                <p class="text-sm text-slate-300 leading-relaxed font-medium">support@booksacademy.net</p>
+                                <p class="text-sm text-slate-300 leading-relaxed font-medium">
+                                    <a href="mailto:support@booksacademy.net" class="hover:text-[#C9A227] transition-colors">support@booksacademy.net</a>
+                                </p>
                             </div>
                         </div>
                     </div>
