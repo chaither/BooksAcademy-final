@@ -434,12 +434,14 @@
                                                       :class="{
                                                           'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40': q.status === 'Paid',
                                                           'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-800/40': q.status === 'Processing',
+                                                          'bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 border border-blue-200 dark:border-blue-800/40': q.status === 'Posted' || q.status === 'POSTED',
                                                           'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border border-slate-200 dark:border-slate-700/50': q.status === 'Upcoming'
                                                       }">
                                                     <span class="w-1.5 h-1.5 rounded-full"
                                                           :class="{
                                                               'bg-emerald-500 animate-pulse': q.status === 'Paid',
                                                               'bg-amber-500 animate-pulse': q.status === 'Processing',
+                                                              'bg-blue-500 animate-pulse': q.status === 'Posted' || q.status === 'POSTED',
                                                               'bg-slate-400': q.status === 'Upcoming'
                                                           }"></span>
                                                     <span x-text="q.status"></span>

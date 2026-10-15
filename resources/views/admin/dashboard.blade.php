@@ -240,6 +240,7 @@
                                                                 <select x-model="q.status" class="px-2 py-0.5 rounded border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-[10px] font-semibold focus:outline-none">
                                                                     <option value="Paid">Paid</option>
                                                                     <option value="Processing">Processing</option>
+                                                                    <option value="Posted">Posted</option>
                                                                     <option value="Upcoming">Upcoming</option>
                                                                 </select>
                                                             </div>
